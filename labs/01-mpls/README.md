@@ -1,7 +1,7 @@
 # Lab diagram
 
 ![Lab diagram]
-(RARE/labs/01-mpls/mpls.png)
+(https://github.com/frederic-loui/RARE/blob/master/labs/01-mpls/mpls.png)
 
 # TL;DR
 
