@@ -1,3 +1,8 @@
+# Lab diagram
+
+![Lab diagram]
+(mpls.png)
+
 # TL;DR
 
 ```
@@ -11,4 +16,3 @@ make controller
 ./clean
 
 ```
-
