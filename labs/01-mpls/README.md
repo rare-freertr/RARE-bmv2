@@ -1,7 +1,7 @@
 # Lab diagram
 
 ![Lab diagram]
-(mpls.png)
+(RARE/labs/01-mpls/mpls.png)
 
 # TL;DR
 
