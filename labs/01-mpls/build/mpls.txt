@@ -1,0 +1,139 @@
+pkg_info {
+  arch: "v1model"
+}
+tables {
+  preamble {
+    id: 33605438
+    name: "Basic_ingress.ipv4_lpm"
+    alias: "ipv4_lpm"
+  }
+  match_fields {
+    id: 1
+    name: "hdr.ipv4.dstAddr"
+    bitwidth: 32
+    match_type: LPM
+  }
+  action_refs {
+    id: 16842001
+  }
+  action_refs {
+    id: 16781744
+  }
+  action_refs {
+    id: 16780983
+  }
+  action_refs {
+    id: 16800567
+  }
+  size: 1024
+}
+tables {
+  preamble {
+    id: 33588550
+    name: "Basic_ingress.mpls_exact"
+    alias: "mpls_exact"
+  }
+  match_fields {
+    id: 1
+    name: "hdr.mpls.label"
+    bitwidth: 20
+    match_type: EXACT
+  }
+  action_refs {
+    id: 16816255
+  }
+  action_refs {
+    id: 16835905
+  }
+  action_refs {
+    id: 16780983
+  }
+  action_refs {
+    id: 16800567
+  }
+  size: 1024
+}
+actions {
+  preamble {
+    id: 16800567
+    name: "NoAction"
+    alias: "NoAction"
+  }
+}
+actions {
+  preamble {
+    id: 16780983
+    name: "Basic_ingress.drop"
+    alias: "drop"
+  }
+}
+actions {
+  preamble {
+    id: 16842001
+    name: "Basic_ingress.ipv4_forward"
+    alias: "ipv4_forward"
+  }
+  params {
+    id: 1
+    name: "dstAddr"
+    bitwidth: 48
+  }
+  params {
+    id: 2
+    name: "port"
+    bitwidth: 9
+  }
+}
+actions {
+  preamble {
+    id: 16781744
+    name: "Basic_ingress.mpls_ingress"
+    alias: "mpls_ingress"
+  }
+  params {
+    id: 1
+    name: "port"
+    bitwidth: 9
+  }
+  params {
+    id: 2
+    name: "new_label"
+    bitwidth: 20
+  }
+}
+actions {
+  preamble {
+    id: 16816255
+    name: "Basic_ingress.mpls_core"
+    alias: "mpls_core"
+  }
+  params {
+    id: 1
+    name: "port"
+    bitwidth: 9
+  }
+  params {
+    id: 2
+    name: "new_label"
+    bitwidth: 20
+  }
+}
+actions {
+  preamble {
+    id: 16835905
+    name: "Basic_ingress.mpls_egress"
+    alias: "mpls_egress"
+  }
+  params {
+    id: 1
+    name: "dstAddr"
+    bitwidth: 48
+  }
+  params {
+    id: 2
+    name: "port"
+    bitwidth: 9
+  }
+}
+type_info {
+}

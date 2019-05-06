@@ -1,0 +1,1681 @@
+Calling target program-options parser
+[09:39:00.558] [bmv2] [D] [thread 15875] Set default default entry for table 'Basic_ingress.mpls_exact': NoAction - 
+[09:39:00.558] [bmv2] [D] [thread 15875] Set default default entry for table 'Basic_ingress.ipv4_lpm': NoAction - 
+Adding interface s2-eth1 as port 1
+[09:39:00.561] [bmv2] [D] [thread 15875] Adding interface s2-eth1 as port 1
+Adding interface s2-eth2 as port 2
+[09:39:00.601] [bmv2] [D] [thread 15875] Adding interface s2-eth2 as port 2
+Adding interface s2-eth3 as port 3
+[09:39:00.629] [bmv2] [D] [thread 15875] Adding interface s2-eth3 as port 3
+Adding interface s2-eth4 as port 4
+[09:39:00.661] [bmv2] [D] [thread 15875] Adding interface s2-eth4 as port 4
+I0506 09:39:00.689799108   15875 server_builder.cc:247]      Synchronous server. Num CQs: 1, Min pollers: 1, Max Pollers: 2147483647, CQ timeout (msec): 1000
+Server listening on 0.0.0.0:50052
+[09:39:00.694] [bmv2] [I] [thread 15875] Starting Thrift server on port 9091
+[09:39:00.694] [bmv2] [I] [thread 15875] Thrift server was started
+[09:39:00.698] [bmv2] [D] [thread 15882] [0.0] [cxt 0] Processing packet received on port 3
+[09:39:00.698] [bmv2] [D] [thread 15882] [0.0] [cxt 0] Parser 'parser': start
+[09:39:00.698] [bmv2] [D] [thread 15882] [0.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:00.698] [bmv2] [D] [thread 15882] [0.0] [cxt 0] Extracting header 'ethernet'
+[09:39:00.698] [bmv2] [D] [thread 15882] [0.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:00.698] [bmv2] [T] [thread 15882] [0.0] [cxt 0] Bytes parsed: 14
+[09:39:00.698] [bmv2] [D] [thread 15882] [0.0] [cxt 0] Parser 'parser': end
+[09:39:00.698] [bmv2] [D] [thread 15882] [0.0] [cxt 0] Pipeline 'ingress': start
+[09:39:00.698] [bmv2] [T] [thread 15882] [0.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:00.698] [bmv2] [T] [thread 15882] [0.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:00.698] [bmv2] [D] [thread 15882] [0.0] [cxt 0] Pipeline 'ingress': end
+[09:39:00.698] [bmv2] [D] [thread 15882] [0.0] [cxt 0] Egress port is 0
+[09:39:00.699] [bmv2] [D] [thread 15883] [0.0] [cxt 0] Pipeline 'egress': start
+[09:39:00.699] [bmv2] [D] [thread 15883] [0.0] [cxt 0] Pipeline 'egress': end
+[09:39:00.699] [bmv2] [D] [thread 15883] [0.0] [cxt 0] Deparser 'deparser': start
+[09:39:00.699] [bmv2] [T] [thread 15883] [0.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:00.699] [bmv2] [D] [thread 15883] [0.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:00.699] [bmv2] [D] [thread 15883] [0.0] [cxt 0] Deparser 'deparser': end
+[09:39:00.699] [bmv2] [D] [thread 15887] [0.0] [cxt 0] Transmitting packet of size 78 out of port 0
+[09:39:01.042] [bmv2] [D] [thread 15882] [1.0] [cxt 0] Processing packet received on port 4
+[09:39:01.042] [bmv2] [D] [thread 15882] [1.0] [cxt 0] Parser 'parser': start
+[09:39:01.042] [bmv2] [D] [thread 15882] [1.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:01.042] [bmv2] [D] [thread 15882] [1.0] [cxt 0] Extracting header 'ethernet'
+[09:39:01.042] [bmv2] [D] [thread 15882] [1.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:01.042] [bmv2] [T] [thread 15882] [1.0] [cxt 0] Bytes parsed: 14
+[09:39:01.042] [bmv2] [D] [thread 15882] [1.0] [cxt 0] Parser 'parser': end
+[09:39:01.042] [bmv2] [D] [thread 15882] [1.0] [cxt 0] Pipeline 'ingress': start
+[09:39:01.042] [bmv2] [T] [thread 15882] [1.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:01.042] [bmv2] [T] [thread 15882] [1.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:01.042] [bmv2] [D] [thread 15882] [1.0] [cxt 0] Pipeline 'ingress': end
+[09:39:01.042] [bmv2] [D] [thread 15882] [1.0] [cxt 0] Egress port is 0
+[09:39:01.042] [bmv2] [D] [thread 15882] [2.0] [cxt 0] Processing packet received on port 4
+[09:39:01.042] [bmv2] [D] [thread 15882] [2.0] [cxt 0] Parser 'parser': start
+[09:39:01.042] [bmv2] [D] [thread 15882] [2.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:01.042] [bmv2] [D] [thread 15882] [2.0] [cxt 0] Extracting header 'ethernet'
+[09:39:01.042] [bmv2] [D] [thread 15883] [1.0] [cxt 0] Pipeline 'egress': start
+[09:39:01.042] [bmv2] [D] [thread 15882] [2.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:01.042] [bmv2] [D] [thread 15883] [1.0] [cxt 0] Pipeline 'egress': end
+[09:39:01.042] [bmv2] [T] [thread 15882] [2.0] [cxt 0] Bytes parsed: 14
+[09:39:01.042] [bmv2] [D] [thread 15883] [1.0] [cxt 0] Deparser 'deparser': start
+[09:39:01.042] [bmv2] [D] [thread 15882] [2.0] [cxt 0] Parser 'parser': end
+[09:39:01.042] [bmv2] [T] [thread 15883] [1.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:01.042] [bmv2] [D] [thread 15882] [2.0] [cxt 0] Pipeline 'ingress': start
+[09:39:01.042] [bmv2] [D] [thread 15883] [1.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:01.042] [bmv2] [T] [thread 15882] [2.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:01.042] [bmv2] [D] [thread 15883] [1.0] [cxt 0] Deparser 'deparser': end
+[09:39:01.042] [bmv2] [T] [thread 15882] [2.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:01.042] [bmv2] [D] [thread 15882] [2.0] [cxt 0] Pipeline 'ingress': end
+[09:39:01.042] [bmv2] [D] [thread 15887] [1.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[09:39:01.042] [bmv2] [D] [thread 15882] [2.0] [cxt 0] Egress port is 0
+[09:39:01.043] [bmv2] [D] [thread 15883] [2.0] [cxt 0] Pipeline 'egress': start
+[09:39:01.043] [bmv2] [D] [thread 15883] [2.0] [cxt 0] Pipeline 'egress': end
+[09:39:01.043] [bmv2] [D] [thread 15883] [2.0] [cxt 0] Deparser 'deparser': start
+[09:39:01.043] [bmv2] [T] [thread 15883] [2.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:01.043] [bmv2] [D] [thread 15883] [2.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:01.043] [bmv2] [D] [thread 15883] [2.0] [cxt 0] Deparser 'deparser': end
+[09:39:01.043] [bmv2] [D] [thread 15887] [2.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[09:39:01.053] [bmv2] [D] [thread 15882] [3.0] [cxt 0] Processing packet received on port 4
+[09:39:01.053] [bmv2] [D] [thread 15882] [3.0] [cxt 0] Parser 'parser': start
+[09:39:01.053] [bmv2] [D] [thread 15882] [3.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:01.053] [bmv2] [D] [thread 15882] [3.0] [cxt 0] Extracting header 'ethernet'
+[09:39:01.053] [bmv2] [D] [thread 15882] [3.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:01.053] [bmv2] [T] [thread 15882] [3.0] [cxt 0] Bytes parsed: 14
+[09:39:01.053] [bmv2] [D] [thread 15882] [3.0] [cxt 0] Parser 'parser': end
+[09:39:01.053] [bmv2] [D] [thread 15882] [3.0] [cxt 0] Pipeline 'ingress': start
+[09:39:01.053] [bmv2] [T] [thread 15882] [3.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:01.053] [bmv2] [T] [thread 15882] [3.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:01.053] [bmv2] [D] [thread 15882] [3.0] [cxt 0] Pipeline 'ingress': end
+[09:39:01.053] [bmv2] [D] [thread 15882] [3.0] [cxt 0] Egress port is 0
+[09:39:01.054] [bmv2] [D] [thread 15883] [3.0] [cxt 0] Pipeline 'egress': start
+[09:39:01.054] [bmv2] [D] [thread 15883] [3.0] [cxt 0] Pipeline 'egress': end
+[09:39:01.054] [bmv2] [D] [thread 15883] [3.0] [cxt 0] Deparser 'deparser': start
+[09:39:01.054] [bmv2] [T] [thread 15883] [3.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:01.054] [bmv2] [D] [thread 15883] [3.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:01.054] [bmv2] [D] [thread 15883] [3.0] [cxt 0] Deparser 'deparser': end
+[09:39:01.054] [bmv2] [D] [thread 15887] [3.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[09:39:01.129] [bmv2] [D] [thread 15882] [4.0] [cxt 0] Processing packet received on port 3
+[09:39:01.129] [bmv2] [D] [thread 15882] [4.0] [cxt 0] Parser 'parser': start
+[09:39:01.129] [bmv2] [D] [thread 15882] [4.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:01.129] [bmv2] [D] [thread 15882] [4.0] [cxt 0] Extracting header 'ethernet'
+[09:39:01.129] [bmv2] [D] [thread 15882] [4.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:01.129] [bmv2] [T] [thread 15882] [4.0] [cxt 0] Bytes parsed: 14
+[09:39:01.130] [bmv2] [D] [thread 15882] [4.0] [cxt 0] Parser 'parser': end
+[09:39:01.130] [bmv2] [D] [thread 15882] [4.0] [cxt 0] Pipeline 'ingress': start
+[09:39:01.130] [bmv2] [T] [thread 15882] [4.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:01.130] [bmv2] [T] [thread 15882] [4.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:01.130] [bmv2] [D] [thread 15882] [4.0] [cxt 0] Pipeline 'ingress': end
+[09:39:01.130] [bmv2] [D] [thread 15882] [4.0] [cxt 0] Egress port is 0
+[09:39:01.130] [bmv2] [D] [thread 15882] [5.0] [cxt 0] Processing packet received on port 3
+[09:39:01.130] [bmv2] [D] [thread 15882] [5.0] [cxt 0] Parser 'parser': start
+[09:39:01.130] [bmv2] [D] [thread 15882] [5.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:01.130] [bmv2] [D] [thread 15882] [5.0] [cxt 0] Extracting header 'ethernet'
+[09:39:01.130] [bmv2] [D] [thread 15882] [5.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:01.130] [bmv2] [T] [thread 15882] [5.0] [cxt 0] Bytes parsed: 14
+[09:39:01.130] [bmv2] [D] [thread 15882] [5.0] [cxt 0] Parser 'parser': end
+[09:39:01.130] [bmv2] [D] [thread 15883] [4.0] [cxt 0] Pipeline 'egress': start
+[09:39:01.130] [bmv2] [D] [thread 15882] [5.0] [cxt 0] Pipeline 'ingress': start
+[09:39:01.130] [bmv2] [D] [thread 15883] [4.0] [cxt 0] Pipeline 'egress': end
+[09:39:01.130] [bmv2] [D] [thread 15883] [4.0] [cxt 0] Deparser 'deparser': start
+[09:39:01.130] [bmv2] [T] [thread 15882] [5.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:01.130] [bmv2] [T] [thread 15883] [4.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:01.130] [bmv2] [T] [thread 15882] [5.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:01.130] [bmv2] [D] [thread 15883] [4.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:01.130] [bmv2] [D] [thread 15882] [5.0] [cxt 0] Pipeline 'ingress': end
+[09:39:01.130] [bmv2] [D] [thread 15883] [4.0] [cxt 0] Deparser 'deparser': end
+[09:39:01.130] [bmv2] [D] [thread 15882] [5.0] [cxt 0] Egress port is 0
+[09:39:01.130] [bmv2] [D] [thread 15883] [5.0] [cxt 0] Pipeline 'egress': start
+[09:39:01.130] [bmv2] [D] [thread 15883] [5.0] [cxt 0] Pipeline 'egress': end
+[09:39:01.130] [bmv2] [D] [thread 15883] [5.0] [cxt 0] Deparser 'deparser': start
+[09:39:01.130] [bmv2] [T] [thread 15883] [5.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:01.130] [bmv2] [D] [thread 15883] [5.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:01.130] [bmv2] [D] [thread 15883] [5.0] [cxt 0] Deparser 'deparser': end
+[09:39:01.130] [bmv2] [D] [thread 15887] [4.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[09:39:01.130] [bmv2] [D] [thread 15887] [5.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[09:39:01.310] [bmv2] [D] [thread 15882] [6.0] [cxt 0] Processing packet received on port 2
+[09:39:01.310] [bmv2] [D] [thread 15882] [6.0] [cxt 0] Parser 'parser': start
+[09:39:01.310] [bmv2] [D] [thread 15882] [6.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:01.310] [bmv2] [D] [thread 15882] [6.0] [cxt 0] Extracting header 'ethernet'
+[09:39:01.310] [bmv2] [D] [thread 15882] [6.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:01.310] [bmv2] [T] [thread 15882] [6.0] [cxt 0] Bytes parsed: 14
+[09:39:01.310] [bmv2] [D] [thread 15882] [6.0] [cxt 0] Parser 'parser': end
+[09:39:01.310] [bmv2] [D] [thread 15882] [6.0] [cxt 0] Pipeline 'ingress': start
+[09:39:01.310] [bmv2] [T] [thread 15882] [6.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:01.310] [bmv2] [T] [thread 15882] [6.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:01.310] [bmv2] [D] [thread 15882] [6.0] [cxt 0] Pipeline 'ingress': end
+[09:39:01.310] [bmv2] [D] [thread 15882] [6.0] [cxt 0] Egress port is 0
+[09:39:01.310] [bmv2] [D] [thread 15882] [7.0] [cxt 0] Processing packet received on port 2
+[09:39:01.310] [bmv2] [D] [thread 15882] [7.0] [cxt 0] Parser 'parser': start
+[09:39:01.310] [bmv2] [D] [thread 15882] [7.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:01.310] [bmv2] [D] [thread 15882] [7.0] [cxt 0] Extracting header 'ethernet'
+[09:39:01.310] [bmv2] [D] [thread 15882] [7.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:01.310] [bmv2] [T] [thread 15882] [7.0] [cxt 0] Bytes parsed: 14
+[09:39:01.310] [bmv2] [D] [thread 15883] [6.0] [cxt 0] Pipeline 'egress': start
+[09:39:01.310] [bmv2] [D] [thread 15882] [7.0] [cxt 0] Parser 'parser': end
+[09:39:01.310] [bmv2] [D] [thread 15883] [6.0] [cxt 0] Pipeline 'egress': end
+[09:39:01.310] [bmv2] [D] [thread 15882] [7.0] [cxt 0] Pipeline 'ingress': start
+[09:39:01.310] [bmv2] [D] [thread 15883] [6.0] [cxt 0] Deparser 'deparser': start
+[09:39:01.310] [bmv2] [T] [thread 15882] [7.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:01.310] [bmv2] [T] [thread 15883] [6.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:01.310] [bmv2] [T] [thread 15882] [7.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:01.310] [bmv2] [D] [thread 15883] [6.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:01.310] [bmv2] [D] [thread 15882] [7.0] [cxt 0] Pipeline 'ingress': end
+[09:39:01.310] [bmv2] [D] [thread 15883] [6.0] [cxt 0] Deparser 'deparser': end
+[09:39:01.310] [bmv2] [D] [thread 15882] [7.0] [cxt 0] Egress port is 0
+[09:39:01.310] [bmv2] [D] [thread 15883] [7.0] [cxt 0] Pipeline 'egress': start
+[09:39:01.310] [bmv2] [D] [thread 15883] [7.0] [cxt 0] Pipeline 'egress': end
+[09:39:01.310] [bmv2] [D] [thread 15883] [7.0] [cxt 0] Deparser 'deparser': start
+[09:39:01.310] [bmv2] [T] [thread 15883] [7.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:01.310] [bmv2] [D] [thread 15883] [7.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:01.310] [bmv2] [D] [thread 15883] [7.0] [cxt 0] Deparser 'deparser': end
+[09:39:01.311] [bmv2] [D] [thread 15887] [6.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[09:39:01.311] [bmv2] [D] [thread 15887] [7.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[09:39:01.353] [bmv2] [D] [thread 15882] [8.0] [cxt 0] Processing packet received on port 2
+[09:39:01.354] [bmv2] [D] [thread 15882] [8.0] [cxt 0] Parser 'parser': start
+[09:39:01.354] [bmv2] [D] [thread 15882] [8.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:01.354] [bmv2] [D] [thread 15882] [8.0] [cxt 0] Extracting header 'ethernet'
+[09:39:01.354] [bmv2] [D] [thread 15882] [8.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:01.354] [bmv2] [T] [thread 15882] [8.0] [cxt 0] Bytes parsed: 14
+[09:39:01.354] [bmv2] [D] [thread 15882] [8.0] [cxt 0] Parser 'parser': end
+[09:39:01.354] [bmv2] [D] [thread 15882] [8.0] [cxt 0] Pipeline 'ingress': start
+[09:39:01.354] [bmv2] [T] [thread 15882] [8.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:01.354] [bmv2] [T] [thread 15882] [8.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:01.354] [bmv2] [D] [thread 15882] [8.0] [cxt 0] Pipeline 'ingress': end
+[09:39:01.354] [bmv2] [D] [thread 15882] [8.0] [cxt 0] Egress port is 0
+[09:39:01.354] [bmv2] [D] [thread 15882] [9.0] [cxt 0] Processing packet received on port 2
+[09:39:01.354] [bmv2] [D] [thread 15882] [9.0] [cxt 0] Parser 'parser': start
+[09:39:01.354] [bmv2] [D] [thread 15882] [9.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:01.354] [bmv2] [D] [thread 15882] [9.0] [cxt 0] Extracting header 'ethernet'
+[09:39:01.354] [bmv2] [D] [thread 15882] [9.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:01.354] [bmv2] [D] [thread 15883] [8.0] [cxt 0] Pipeline 'egress': start
+[09:39:01.354] [bmv2] [T] [thread 15882] [9.0] [cxt 0] Bytes parsed: 14
+[09:39:01.354] [bmv2] [D] [thread 15883] [8.0] [cxt 0] Pipeline 'egress': end
+[09:39:01.354] [bmv2] [D] [thread 15882] [9.0] [cxt 0] Parser 'parser': end
+[09:39:01.354] [bmv2] [D] [thread 15883] [8.0] [cxt 0] Deparser 'deparser': start
+[09:39:01.354] [bmv2] [D] [thread 15882] [9.0] [cxt 0] Pipeline 'ingress': start
+[09:39:01.354] [bmv2] [T] [thread 15883] [8.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:01.354] [bmv2] [T] [thread 15882] [9.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:01.354] [bmv2] [D] [thread 15883] [8.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:01.354] [bmv2] [T] [thread 15882] [9.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:01.354] [bmv2] [D] [thread 15883] [8.0] [cxt 0] Deparser 'deparser': end
+[09:39:01.354] [bmv2] [D] [thread 15882] [9.0] [cxt 0] Pipeline 'ingress': end
+[09:39:01.354] [bmv2] [D] [thread 15882] [9.0] [cxt 0] Egress port is 0
+[09:39:01.354] [bmv2] [D] [thread 15887] [8.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[09:39:01.354] [bmv2] [D] [thread 15883] [9.0] [cxt 0] Pipeline 'egress': start
+[09:39:01.354] [bmv2] [D] [thread 15883] [9.0] [cxt 0] Pipeline 'egress': end
+[09:39:01.354] [bmv2] [D] [thread 15883] [9.0] [cxt 0] Deparser 'deparser': start
+[09:39:01.354] [bmv2] [T] [thread 15883] [9.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:01.354] [bmv2] [D] [thread 15883] [9.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:01.354] [bmv2] [D] [thread 15883] [9.0] [cxt 0] Deparser 'deparser': end
+[09:39:01.354] [bmv2] [D] [thread 15887] [9.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[09:39:01.433] [bmv2] [D] [thread 15882] [10.0] [cxt 0] Processing packet received on port 1
+[09:39:01.433] [bmv2] [D] [thread 15882] [10.0] [cxt 0] Parser 'parser': start
+[09:39:01.434] [bmv2] [D] [thread 15882] [10.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:01.434] [bmv2] [D] [thread 15882] [10.0] [cxt 0] Extracting header 'ethernet'
+[09:39:01.434] [bmv2] [D] [thread 15882] [10.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:01.434] [bmv2] [T] [thread 15882] [10.0] [cxt 0] Bytes parsed: 14
+[09:39:01.434] [bmv2] [D] [thread 15882] [10.0] [cxt 0] Parser 'parser': end
+[09:39:01.434] [bmv2] [D] [thread 15882] [10.0] [cxt 0] Pipeline 'ingress': start
+[09:39:01.434] [bmv2] [T] [thread 15882] [10.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:01.434] [bmv2] [T] [thread 15882] [10.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:01.434] [bmv2] [D] [thread 15882] [10.0] [cxt 0] Pipeline 'ingress': end
+[09:39:01.434] [bmv2] [D] [thread 15882] [10.0] [cxt 0] Egress port is 0
+[09:39:01.434] [bmv2] [D] [thread 15882] [11.0] [cxt 0] Processing packet received on port 1
+[09:39:01.434] [bmv2] [D] [thread 15882] [11.0] [cxt 0] Parser 'parser': start
+[09:39:01.434] [bmv2] [D] [thread 15882] [11.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:01.434] [bmv2] [D] [thread 15882] [11.0] [cxt 0] Extracting header 'ethernet'
+[09:39:01.434] [bmv2] [D] [thread 15882] [11.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:01.434] [bmv2] [D] [thread 15883] [10.0] [cxt 0] Pipeline 'egress': start
+[09:39:01.434] [bmv2] [T] [thread 15882] [11.0] [cxt 0] Bytes parsed: 14
+[09:39:01.434] [bmv2] [D] [thread 15883] [10.0] [cxt 0] Pipeline 'egress': end
+[09:39:01.434] [bmv2] [D] [thread 15882] [11.0] [cxt 0] Parser 'parser': end
+[09:39:01.434] [bmv2] [D] [thread 15883] [10.0] [cxt 0] Deparser 'deparser': start
+[09:39:01.434] [bmv2] [D] [thread 15882] [11.0] [cxt 0] Pipeline 'ingress': start
+[09:39:01.434] [bmv2] [T] [thread 15883] [10.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:01.434] [bmv2] [T] [thread 15882] [11.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:01.434] [bmv2] [D] [thread 15883] [10.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:01.434] [bmv2] [T] [thread 15882] [11.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:01.434] [bmv2] [D] [thread 15883] [10.0] [cxt 0] Deparser 'deparser': end
+[09:39:01.434] [bmv2] [D] [thread 15882] [11.0] [cxt 0] Pipeline 'ingress': end
+[09:39:01.434] [bmv2] [D] [thread 15882] [11.0] [cxt 0] Egress port is 0
+[09:39:01.434] [bmv2] [D] [thread 15887] [10.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[09:39:01.434] [bmv2] [D] [thread 15883] [11.0] [cxt 0] Pipeline 'egress': start
+[09:39:01.434] [bmv2] [D] [thread 15883] [11.0] [cxt 0] Pipeline 'egress': end
+[09:39:01.434] [bmv2] [D] [thread 15883] [11.0] [cxt 0] Deparser 'deparser': start
+[09:39:01.434] [bmv2] [T] [thread 15883] [11.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:01.434] [bmv2] [D] [thread 15883] [11.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:01.434] [bmv2] [D] [thread 15883] [11.0] [cxt 0] Deparser 'deparser': end
+[09:39:01.434] [bmv2] [D] [thread 15887] [11.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[09:39:01.473] [bmv2] [D] [thread 15882] [12.0] [cxt 0] Processing packet received on port 4
+[09:39:01.473] [bmv2] [D] [thread 15882] [12.0] [cxt 0] Parser 'parser': start
+[09:39:01.474] [bmv2] [D] [thread 15882] [12.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:01.474] [bmv2] [D] [thread 15882] [12.0] [cxt 0] Extracting header 'ethernet'
+[09:39:01.474] [bmv2] [D] [thread 15882] [12.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:01.474] [bmv2] [T] [thread 15882] [12.0] [cxt 0] Bytes parsed: 14
+[09:39:01.474] [bmv2] [D] [thread 15882] [12.0] [cxt 0] Parser 'parser': end
+[09:39:01.474] [bmv2] [D] [thread 15882] [12.0] [cxt 0] Pipeline 'ingress': start
+[09:39:01.474] [bmv2] [T] [thread 15882] [12.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:01.474] [bmv2] [T] [thread 15882] [12.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:01.474] [bmv2] [D] [thread 15882] [12.0] [cxt 0] Pipeline 'ingress': end
+[09:39:01.474] [bmv2] [D] [thread 15882] [12.0] [cxt 0] Egress port is 0
+[09:39:01.474] [bmv2] [D] [thread 15882] [13.0] [cxt 0] Processing packet received on port 4
+[09:39:01.474] [bmv2] [D] [thread 15882] [13.0] [cxt 0] Parser 'parser': start
+[09:39:01.474] [bmv2] [D] [thread 15882] [13.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:01.474] [bmv2] [D] [thread 15882] [13.0] [cxt 0] Extracting header 'ethernet'
+[09:39:01.474] [bmv2] [D] [thread 15882] [13.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:01.474] [bmv2] [D] [thread 15883] [12.0] [cxt 0] Pipeline 'egress': start
+[09:39:01.474] [bmv2] [T] [thread 15882] [13.0] [cxt 0] Bytes parsed: 14
+[09:39:01.474] [bmv2] [D] [thread 15883] [12.0] [cxt 0] Pipeline 'egress': end
+[09:39:01.474] [bmv2] [D] [thread 15882] [13.0] [cxt 0] Parser 'parser': end
+[09:39:01.474] [bmv2] [D] [thread 15883] [12.0] [cxt 0] Deparser 'deparser': start
+[09:39:01.474] [bmv2] [D] [thread 15882] [13.0] [cxt 0] Pipeline 'ingress': start
+[09:39:01.474] [bmv2] [T] [thread 15883] [12.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:01.474] [bmv2] [T] [thread 15882] [13.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:01.474] [bmv2] [D] [thread 15883] [12.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:01.474] [bmv2] [D] [thread 15883] [12.0] [cxt 0] Deparser 'deparser': end
+[09:39:01.474] [bmv2] [T] [thread 15882] [13.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:01.474] [bmv2] [D] [thread 15882] [13.0] [cxt 0] Pipeline 'ingress': end
+[09:39:01.474] [bmv2] [D] [thread 15887] [12.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[09:39:01.474] [bmv2] [D] [thread 15882] [13.0] [cxt 0] Egress port is 0
+[09:39:01.474] [bmv2] [D] [thread 15883] [13.0] [cxt 0] Pipeline 'egress': start
+[09:39:01.474] [bmv2] [D] [thread 15883] [13.0] [cxt 0] Pipeline 'egress': end
+[09:39:01.474] [bmv2] [D] [thread 15883] [13.0] [cxt 0] Deparser 'deparser': start
+[09:39:01.474] [bmv2] [T] [thread 15883] [13.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:01.475] [bmv2] [D] [thread 15883] [13.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:01.475] [bmv2] [D] [thread 15883] [13.0] [cxt 0] Deparser 'deparser': end
+[09:39:01.475] [bmv2] [D] [thread 15887] [13.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[09:39:01.573] [bmv2] [D] [thread 15882] [14.0] [cxt 0] Processing packet received on port 3
+[09:39:01.573] [bmv2] [D] [thread 15882] [14.0] [cxt 0] Parser 'parser': start
+[09:39:01.573] [bmv2] [D] [thread 15882] [14.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:01.573] [bmv2] [D] [thread 15882] [14.0] [cxt 0] Extracting header 'ethernet'
+[09:39:01.573] [bmv2] [D] [thread 15882] [14.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:01.573] [bmv2] [T] [thread 15882] [14.0] [cxt 0] Bytes parsed: 14
+[09:39:01.573] [bmv2] [D] [thread 15882] [14.0] [cxt 0] Parser 'parser': end
+[09:39:01.573] [bmv2] [D] [thread 15882] [14.0] [cxt 0] Pipeline 'ingress': start
+[09:39:01.573] [bmv2] [T] [thread 15882] [14.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:01.573] [bmv2] [T] [thread 15882] [14.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:01.574] [bmv2] [D] [thread 15882] [14.0] [cxt 0] Pipeline 'ingress': end
+[09:39:01.574] [bmv2] [D] [thread 15882] [14.0] [cxt 0] Egress port is 0
+[09:39:01.574] [bmv2] [D] [thread 15883] [14.0] [cxt 0] Pipeline 'egress': start
+[09:39:01.574] [bmv2] [D] [thread 15883] [14.0] [cxt 0] Pipeline 'egress': end
+[09:39:01.574] [bmv2] [D] [thread 15883] [14.0] [cxt 0] Deparser 'deparser': start
+[09:39:01.574] [bmv2] [T] [thread 15883] [14.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:01.574] [bmv2] [D] [thread 15883] [14.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:01.574] [bmv2] [D] [thread 15883] [14.0] [cxt 0] Deparser 'deparser': end
+[09:39:01.574] [bmv2] [D] [thread 15887] [14.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[09:39:01.697] [bmv2] [D] [thread 15882] [15.0] [cxt 0] Processing packet received on port 3
+[09:39:01.698] [bmv2] [D] [thread 15882] [15.0] [cxt 0] Parser 'parser': start
+[09:39:01.698] [bmv2] [D] [thread 15882] [15.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:01.698] [bmv2] [D] [thread 15882] [15.0] [cxt 0] Extracting header 'ethernet'
+[09:39:01.698] [bmv2] [D] [thread 15882] [15.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:01.698] [bmv2] [T] [thread 15882] [15.0] [cxt 0] Bytes parsed: 14
+[09:39:01.698] [bmv2] [D] [thread 15882] [15.0] [cxt 0] Parser 'parser': end
+[09:39:01.698] [bmv2] [D] [thread 15882] [15.0] [cxt 0] Pipeline 'ingress': start
+[09:39:01.698] [bmv2] [T] [thread 15882] [15.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:01.698] [bmv2] [T] [thread 15882] [15.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:01.698] [bmv2] [D] [thread 15882] [15.0] [cxt 0] Pipeline 'ingress': end
+[09:39:01.698] [bmv2] [D] [thread 15882] [15.0] [cxt 0] Egress port is 0
+[09:39:01.698] [bmv2] [D] [thread 15882] [16.0] [cxt 0] Processing packet received on port 3
+[09:39:01.698] [bmv2] [D] [thread 15882] [16.0] [cxt 0] Parser 'parser': start
+[09:39:01.698] [bmv2] [D] [thread 15882] [16.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:01.698] [bmv2] [D] [thread 15882] [16.0] [cxt 0] Extracting header 'ethernet'
+[09:39:01.698] [bmv2] [D] [thread 15882] [16.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:01.698] [bmv2] [T] [thread 15882] [16.0] [cxt 0] Bytes parsed: 14
+[09:39:01.698] [bmv2] [D] [thread 15882] [16.0] [cxt 0] Parser 'parser': end
+[09:39:01.698] [bmv2] [D] [thread 15882] [16.0] [cxt 0] Pipeline 'ingress': start
+[09:39:01.698] [bmv2] [T] [thread 15882] [16.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:01.698] [bmv2] [T] [thread 15882] [16.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:01.698] [bmv2] [D] [thread 15882] [16.0] [cxt 0] Pipeline 'ingress': end
+[09:39:01.698] [bmv2] [D] [thread 15882] [16.0] [cxt 0] Egress port is 0
+[09:39:01.698] [bmv2] [D] [thread 15883] [15.0] [cxt 0] Pipeline 'egress': start
+[09:39:01.698] [bmv2] [D] [thread 15883] [15.0] [cxt 0] Pipeline 'egress': end
+[09:39:01.698] [bmv2] [D] [thread 15883] [15.0] [cxt 0] Deparser 'deparser': start
+[09:39:01.698] [bmv2] [T] [thread 15883] [15.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:01.699] [bmv2] [D] [thread 15883] [15.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:01.699] [bmv2] [D] [thread 15883] [15.0] [cxt 0] Deparser 'deparser': end
+[09:39:01.699] [bmv2] [D] [thread 15883] [16.0] [cxt 0] Pipeline 'egress': start
+[09:39:01.699] [bmv2] [D] [thread 15883] [16.0] [cxt 0] Pipeline 'egress': end
+[09:39:01.699] [bmv2] [D] [thread 15883] [16.0] [cxt 0] Deparser 'deparser': start
+[09:39:01.699] [bmv2] [T] [thread 15883] [16.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:01.699] [bmv2] [D] [thread 15883] [16.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:01.699] [bmv2] [D] [thread 15883] [16.0] [cxt 0] Deparser 'deparser': end
+[09:39:01.699] [bmv2] [D] [thread 15887] [15.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[09:39:01.699] [bmv2] [D] [thread 15887] [16.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[09:39:01.769] [bmv2] [D] [thread 15882] [17.0] [cxt 0] Processing packet received on port 2
+[09:39:01.769] [bmv2] [D] [thread 15882] [17.0] [cxt 0] Parser 'parser': start
+[09:39:01.769] [bmv2] [D] [thread 15882] [17.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:01.769] [bmv2] [D] [thread 15882] [17.0] [cxt 0] Extracting header 'ethernet'
+[09:39:01.769] [bmv2] [D] [thread 15882] [17.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:01.770] [bmv2] [T] [thread 15882] [17.0] [cxt 0] Bytes parsed: 14
+[09:39:01.770] [bmv2] [D] [thread 15882] [17.0] [cxt 0] Parser 'parser': end
+[09:39:01.770] [bmv2] [D] [thread 15882] [17.0] [cxt 0] Pipeline 'ingress': start
+[09:39:01.770] [bmv2] [T] [thread 15882] [17.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:01.770] [bmv2] [T] [thread 15882] [17.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:01.770] [bmv2] [D] [thread 15882] [17.0] [cxt 0] Pipeline 'ingress': end
+[09:39:01.770] [bmv2] [D] [thread 15882] [17.0] [cxt 0] Egress port is 0
+[09:39:01.770] [bmv2] [D] [thread 15883] [17.0] [cxt 0] Pipeline 'egress': start
+[09:39:01.770] [bmv2] [D] [thread 15883] [17.0] [cxt 0] Pipeline 'egress': end
+[09:39:01.770] [bmv2] [D] [thread 15883] [17.0] [cxt 0] Deparser 'deparser': start
+[09:39:01.770] [bmv2] [T] [thread 15883] [17.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:01.770] [bmv2] [D] [thread 15883] [17.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:01.770] [bmv2] [D] [thread 15883] [17.0] [cxt 0] Deparser 'deparser': end
+[09:39:01.770] [bmv2] [D] [thread 15887] [17.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[09:39:01.785] [bmv2] [D] [thread 15882] [18.0] [cxt 0] Processing packet received on port 4
+[09:39:01.785] [bmv2] [D] [thread 15882] [18.0] [cxt 0] Parser 'parser': start
+[09:39:01.785] [bmv2] [D] [thread 15882] [18.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:01.785] [bmv2] [D] [thread 15882] [18.0] [cxt 0] Extracting header 'ethernet'
+[09:39:01.785] [bmv2] [D] [thread 15882] [18.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:01.785] [bmv2] [T] [thread 15882] [18.0] [cxt 0] Bytes parsed: 14
+[09:39:01.786] [bmv2] [D] [thread 15882] [18.0] [cxt 0] Parser 'parser': end
+[09:39:01.786] [bmv2] [D] [thread 15882] [18.0] [cxt 0] Pipeline 'ingress': start
+[09:39:01.786] [bmv2] [T] [thread 15882] [18.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:01.786] [bmv2] [T] [thread 15882] [18.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:01.786] [bmv2] [D] [thread 15882] [18.0] [cxt 0] Pipeline 'ingress': end
+[09:39:01.786] [bmv2] [D] [thread 15882] [18.0] [cxt 0] Egress port is 0
+[09:39:01.786] [bmv2] [D] [thread 15883] [18.0] [cxt 0] Pipeline 'egress': start
+[09:39:01.786] [bmv2] [D] [thread 15883] [18.0] [cxt 0] Pipeline 'egress': end
+[09:39:01.786] [bmv2] [D] [thread 15883] [18.0] [cxt 0] Deparser 'deparser': start
+[09:39:01.786] [bmv2] [T] [thread 15883] [18.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:01.786] [bmv2] [D] [thread 15883] [18.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:01.786] [bmv2] [D] [thread 15883] [18.0] [cxt 0] Deparser 'deparser': end
+[09:39:01.786] [bmv2] [D] [thread 15887] [18.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[09:39:02.041] [bmv2] [D] [thread 15882] [19.0] [cxt 0] Processing packet received on port 2
+[09:39:02.041] [bmv2] [D] [thread 15882] [19.0] [cxt 0] Parser 'parser': start
+[09:39:02.041] [bmv2] [D] [thread 15882] [19.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:02.041] [bmv2] [D] [thread 15882] [19.0] [cxt 0] Extracting header 'ethernet'
+[09:39:02.041] [bmv2] [D] [thread 15882] [19.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:02.041] [bmv2] [T] [thread 15882] [19.0] [cxt 0] Bytes parsed: 14
+[09:39:02.041] [bmv2] [D] [thread 15882] [19.0] [cxt 0] Parser 'parser': end
+[09:39:02.042] [bmv2] [D] [thread 15882] [19.0] [cxt 0] Pipeline 'ingress': start
+[09:39:02.042] [bmv2] [T] [thread 15882] [19.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:02.042] [bmv2] [T] [thread 15882] [19.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:02.042] [bmv2] [D] [thread 15882] [19.0] [cxt 0] Pipeline 'ingress': end
+[09:39:02.042] [bmv2] [D] [thread 15882] [19.0] [cxt 0] Egress port is 0
+[09:39:02.042] [bmv2] [D] [thread 15883] [19.0] [cxt 0] Pipeline 'egress': start
+[09:39:02.042] [bmv2] [D] [thread 15883] [19.0] [cxt 0] Pipeline 'egress': end
+[09:39:02.042] [bmv2] [D] [thread 15883] [19.0] [cxt 0] Deparser 'deparser': start
+[09:39:02.042] [bmv2] [T] [thread 15883] [19.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:02.042] [bmv2] [D] [thread 15883] [19.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:02.042] [bmv2] [D] [thread 15883] [19.0] [cxt 0] Deparser 'deparser': end
+[09:39:02.042] [bmv2] [D] [thread 15887] [19.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[09:39:02.053] [bmv2] [D] [thread 15882] [20.0] [cxt 0] Processing packet received on port 1
+[09:39:02.053] [bmv2] [D] [thread 15882] [20.0] [cxt 0] Parser 'parser': start
+[09:39:02.053] [bmv2] [D] [thread 15882] [20.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:02.053] [bmv2] [D] [thread 15882] [20.0] [cxt 0] Extracting header 'ethernet'
+[09:39:02.053] [bmv2] [D] [thread 15882] [20.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:02.053] [bmv2] [T] [thread 15882] [20.0] [cxt 0] Bytes parsed: 14
+[09:39:02.053] [bmv2] [D] [thread 15882] [20.0] [cxt 0] Parser 'parser': end
+[09:39:02.053] [bmv2] [D] [thread 15882] [20.0] [cxt 0] Pipeline 'ingress': start
+[09:39:02.053] [bmv2] [T] [thread 15882] [20.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:02.053] [bmv2] [T] [thread 15882] [20.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:02.053] [bmv2] [D] [thread 15882] [20.0] [cxt 0] Pipeline 'ingress': end
+[09:39:02.053] [bmv2] [D] [thread 15882] [20.0] [cxt 0] Egress port is 0
+[09:39:02.054] [bmv2] [D] [thread 15883] [20.0] [cxt 0] Pipeline 'egress': start
+[09:39:02.054] [bmv2] [D] [thread 15883] [20.0] [cxt 0] Pipeline 'egress': end
+[09:39:02.054] [bmv2] [D] [thread 15883] [20.0] [cxt 0] Deparser 'deparser': start
+[09:39:02.054] [bmv2] [T] [thread 15883] [20.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:02.054] [bmv2] [D] [thread 15883] [20.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:02.054] [bmv2] [D] [thread 15883] [20.0] [cxt 0] Deparser 'deparser': end
+[09:39:02.054] [bmv2] [D] [thread 15887] [20.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[09:39:02.497] [bmv2] [D] [thread 15882] [21.0] [cxt 0] Processing packet received on port 3
+[09:39:02.497] [bmv2] [D] [thread 15882] [21.0] [cxt 0] Parser 'parser': start
+[09:39:02.497] [bmv2] [D] [thread 15882] [21.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:02.497] [bmv2] [D] [thread 15882] [21.0] [cxt 0] Extracting header 'ethernet'
+[09:39:02.497] [bmv2] [D] [thread 15882] [21.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:02.497] [bmv2] [T] [thread 15882] [21.0] [cxt 0] Bytes parsed: 14
+[09:39:02.497] [bmv2] [D] [thread 15882] [21.0] [cxt 0] Parser 'parser': end
+[09:39:02.498] [bmv2] [D] [thread 15882] [21.0] [cxt 0] Pipeline 'ingress': start
+[09:39:02.498] [bmv2] [T] [thread 15882] [21.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:02.498] [bmv2] [T] [thread 15882] [21.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:02.498] [bmv2] [D] [thread 15882] [21.0] [cxt 0] Pipeline 'ingress': end
+[09:39:02.498] [bmv2] [D] [thread 15882] [21.0] [cxt 0] Egress port is 0
+[09:39:02.498] [bmv2] [D] [thread 15883] [21.0] [cxt 0] Pipeline 'egress': start
+[09:39:02.498] [bmv2] [D] [thread 15883] [21.0] [cxt 0] Pipeline 'egress': end
+[09:39:02.498] [bmv2] [D] [thread 15883] [21.0] [cxt 0] Deparser 'deparser': start
+[09:39:02.498] [bmv2] [T] [thread 15883] [21.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:02.498] [bmv2] [D] [thread 15883] [21.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:02.498] [bmv2] [D] [thread 15883] [21.0] [cxt 0] Deparser 'deparser': end
+[09:39:02.498] [bmv2] [D] [thread 15887] [21.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[09:39:03.181] [bmv2] [D] [thread 15882] [22.0] [cxt 0] Processing packet received on port 1
+[09:39:03.181] [bmv2] [D] [thread 15882] [22.0] [cxt 0] Parser 'parser': start
+[09:39:03.181] [bmv2] [D] [thread 15882] [22.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:03.181] [bmv2] [D] [thread 15882] [22.0] [cxt 0] Extracting header 'ethernet'
+[09:39:03.181] [bmv2] [D] [thread 15882] [22.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:03.182] [bmv2] [T] [thread 15882] [22.0] [cxt 0] Bytes parsed: 14
+[09:39:03.182] [bmv2] [D] [thread 15882] [22.0] [cxt 0] Parser 'parser': end
+[09:39:03.182] [bmv2] [D] [thread 15882] [22.0] [cxt 0] Pipeline 'ingress': start
+[09:39:03.182] [bmv2] [T] [thread 15882] [22.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:03.182] [bmv2] [T] [thread 15882] [22.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:03.182] [bmv2] [D] [thread 15882] [22.0] [cxt 0] Pipeline 'ingress': end
+[09:39:03.182] [bmv2] [D] [thread 15882] [22.0] [cxt 0] Egress port is 0
+[09:39:03.182] [bmv2] [D] [thread 15882] [23.0] [cxt 0] Processing packet received on port 1
+[09:39:03.182] [bmv2] [D] [thread 15882] [23.0] [cxt 0] Parser 'parser': start
+[09:39:03.182] [bmv2] [D] [thread 15882] [23.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:03.182] [bmv2] [D] [thread 15882] [23.0] [cxt 0] Extracting header 'ethernet'
+[09:39:03.182] [bmv2] [D] [thread 15882] [23.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:03.182] [bmv2] [T] [thread 15882] [23.0] [cxt 0] Bytes parsed: 14
+[09:39:03.182] [bmv2] [D] [thread 15883] [22.0] [cxt 0] Pipeline 'egress': start
+[09:39:03.182] [bmv2] [D] [thread 15882] [23.0] [cxt 0] Parser 'parser': end
+[09:39:03.182] [bmv2] [D] [thread 15883] [22.0] [cxt 0] Pipeline 'egress': end
+[09:39:03.182] [bmv2] [D] [thread 15882] [23.0] [cxt 0] Pipeline 'ingress': start
+[09:39:03.182] [bmv2] [D] [thread 15883] [22.0] [cxt 0] Deparser 'deparser': start
+[09:39:03.182] [bmv2] [T] [thread 15882] [23.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:03.182] [bmv2] [T] [thread 15883] [22.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:03.182] [bmv2] [T] [thread 15882] [23.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:03.182] [bmv2] [D] [thread 15883] [22.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:03.182] [bmv2] [D] [thread 15882] [23.0] [cxt 0] Pipeline 'ingress': end
+[09:39:03.182] [bmv2] [D] [thread 15883] [22.0] [cxt 0] Deparser 'deparser': end
+[09:39:03.182] [bmv2] [D] [thread 15882] [23.0] [cxt 0] Egress port is 0
+[09:39:03.182] [bmv2] [D] [thread 15887] [22.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[09:39:03.182] [bmv2] [D] [thread 15883] [23.0] [cxt 0] Pipeline 'egress': start
+[09:39:03.182] [bmv2] [D] [thread 15883] [23.0] [cxt 0] Pipeline 'egress': end
+[09:39:03.182] [bmv2] [D] [thread 15883] [23.0] [cxt 0] Deparser 'deparser': start
+[09:39:03.182] [bmv2] [T] [thread 15883] [23.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:03.182] [bmv2] [D] [thread 15883] [23.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:03.182] [bmv2] [D] [thread 15883] [23.0] [cxt 0] Deparser 'deparser': end
+[09:39:03.182] [bmv2] [D] [thread 15887] [23.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[09:39:03.214] [bmv2] [D] [thread 15882] [24.0] [cxt 0] Processing packet received on port 1
+[09:39:03.214] [bmv2] [D] [thread 15882] [24.0] [cxt 0] Parser 'parser': start
+[09:39:03.214] [bmv2] [D] [thread 15882] [24.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:03.214] [bmv2] [D] [thread 15882] [24.0] [cxt 0] Extracting header 'ethernet'
+[09:39:03.214] [bmv2] [D] [thread 15882] [24.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:03.214] [bmv2] [T] [thread 15882] [24.0] [cxt 0] Bytes parsed: 14
+[09:39:03.214] [bmv2] [D] [thread 15882] [24.0] [cxt 0] Parser 'parser': end
+[09:39:03.214] [bmv2] [D] [thread 15882] [24.0] [cxt 0] Pipeline 'ingress': start
+[09:39:03.214] [bmv2] [T] [thread 15882] [24.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:03.214] [bmv2] [T] [thread 15882] [24.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:03.214] [bmv2] [D] [thread 15882] [24.0] [cxt 0] Pipeline 'ingress': end
+[09:39:03.214] [bmv2] [D] [thread 15882] [24.0] [cxt 0] Egress port is 0
+[09:39:03.214] [bmv2] [D] [thread 15882] [25.0] [cxt 0] Processing packet received on port 1
+[09:39:03.214] [bmv2] [D] [thread 15882] [25.0] [cxt 0] Parser 'parser': start
+[09:39:03.214] [bmv2] [D] [thread 15882] [25.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:03.214] [bmv2] [D] [thread 15882] [25.0] [cxt 0] Extracting header 'ethernet'
+[09:39:03.214] [bmv2] [D] [thread 15882] [25.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:03.214] [bmv2] [D] [thread 15883] [24.0] [cxt 0] Pipeline 'egress': start
+[09:39:03.214] [bmv2] [D] [thread 15883] [24.0] [cxt 0] Pipeline 'egress': end
+[09:39:03.214] [bmv2] [D] [thread 15883] [24.0] [cxt 0] Deparser 'deparser': start
+[09:39:03.214] [bmv2] [T] [thread 15883] [24.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:03.214] [bmv2] [D] [thread 15883] [24.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:03.214] [bmv2] [D] [thread 15883] [24.0] [cxt 0] Deparser 'deparser': end
+[09:39:03.214] [bmv2] [T] [thread 15882] [25.0] [cxt 0] Bytes parsed: 14
+[09:39:03.214] [bmv2] [D] [thread 15887] [24.0] [cxt 0] Transmitting packet of size 78 out of port 0
+[09:39:03.214] [bmv2] [D] [thread 15882] [25.0] [cxt 0] Parser 'parser': end
+[09:39:03.214] [bmv2] [D] [thread 15882] [25.0] [cxt 0] Pipeline 'ingress': start
+[09:39:03.214] [bmv2] [T] [thread 15882] [25.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:03.214] [bmv2] [T] [thread 15882] [25.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:03.214] [bmv2] [D] [thread 15882] [25.0] [cxt 0] Pipeline 'ingress': end
+[09:39:03.214] [bmv2] [D] [thread 15882] [25.0] [cxt 0] Egress port is 0
+[09:39:03.214] [bmv2] [D] [thread 15883] [25.0] [cxt 0] Pipeline 'egress': start
+[09:39:03.214] [bmv2] [D] [thread 15883] [25.0] [cxt 0] Pipeline 'egress': end
+[09:39:03.214] [bmv2] [D] [thread 15883] [25.0] [cxt 0] Deparser 'deparser': start
+[09:39:03.215] [bmv2] [T] [thread 15883] [25.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:03.215] [bmv2] [D] [thread 15883] [25.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:03.215] [bmv2] [D] [thread 15883] [25.0] [cxt 0] Deparser 'deparser': end
+[09:39:03.215] [bmv2] [D] [thread 15887] [25.0] [cxt 0] Transmitting packet of size 86 out of port 0
+[09:39:03.668] [bmv2] [D] [thread 15882] [26.0] [cxt 0] Processing packet received on port 1
+[09:39:03.668] [bmv2] [D] [thread 15882] [26.0] [cxt 0] Parser 'parser': start
+[09:39:03.668] [bmv2] [D] [thread 15882] [26.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:03.668] [bmv2] [D] [thread 15882] [26.0] [cxt 0] Extracting header 'ethernet'
+[09:39:03.668] [bmv2] [D] [thread 15882] [26.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:03.668] [bmv2] [T] [thread 15882] [26.0] [cxt 0] Bytes parsed: 14
+[09:39:03.668] [bmv2] [D] [thread 15882] [26.0] [cxt 0] Parser 'parser': end
+[09:39:03.668] [bmv2] [D] [thread 15882] [26.0] [cxt 0] Pipeline 'ingress': start
+[09:39:03.668] [bmv2] [T] [thread 15882] [26.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:03.668] [bmv2] [T] [thread 15882] [26.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:03.668] [bmv2] [D] [thread 15882] [26.0] [cxt 0] Pipeline 'ingress': end
+[09:39:03.668] [bmv2] [D] [thread 15882] [26.0] [cxt 0] Egress port is 0
+[09:39:03.668] [bmv2] [D] [thread 15883] [26.0] [cxt 0] Pipeline 'egress': start
+[09:39:03.668] [bmv2] [D] [thread 15883] [26.0] [cxt 0] Pipeline 'egress': end
+[09:39:03.668] [bmv2] [D] [thread 15883] [26.0] [cxt 0] Deparser 'deparser': start
+[09:39:03.668] [bmv2] [T] [thread 15883] [26.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:03.668] [bmv2] [D] [thread 15883] [26.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:03.668] [bmv2] [D] [thread 15883] [26.0] [cxt 0] Deparser 'deparser': end
+[09:39:03.668] [bmv2] [D] [thread 15887] [26.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[09:39:03.709] [bmv2] [D] [thread 15882] [27.0] [cxt 0] Processing packet received on port 1
+[09:39:03.710] [bmv2] [D] [thread 15882] [27.0] [cxt 0] Parser 'parser': start
+[09:39:03.710] [bmv2] [D] [thread 15882] [27.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:03.710] [bmv2] [D] [thread 15882] [27.0] [cxt 0] Extracting header 'ethernet'
+[09:39:03.710] [bmv2] [D] [thread 15882] [27.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:03.710] [bmv2] [T] [thread 15882] [27.0] [cxt 0] Bytes parsed: 14
+[09:39:03.710] [bmv2] [D] [thread 15882] [27.0] [cxt 0] Parser 'parser': end
+[09:39:03.710] [bmv2] [D] [thread 15882] [27.0] [cxt 0] Pipeline 'ingress': start
+[09:39:03.710] [bmv2] [T] [thread 15882] [27.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:03.710] [bmv2] [T] [thread 15882] [27.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:03.710] [bmv2] [D] [thread 15882] [27.0] [cxt 0] Pipeline 'ingress': end
+[09:39:03.710] [bmv2] [D] [thread 15882] [27.0] [cxt 0] Egress port is 0
+[09:39:03.710] [bmv2] [D] [thread 15883] [27.0] [cxt 0] Pipeline 'egress': start
+[09:39:03.710] [bmv2] [D] [thread 15883] [27.0] [cxt 0] Pipeline 'egress': end
+[09:39:03.710] [bmv2] [D] [thread 15883] [27.0] [cxt 0] Deparser 'deparser': start
+[09:39:03.710] [bmv2] [T] [thread 15883] [27.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:03.710] [bmv2] [D] [thread 15883] [27.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:03.710] [bmv2] [D] [thread 15883] [27.0] [cxt 0] Deparser 'deparser': end
+[09:39:03.710] [bmv2] [D] [thread 15887] [27.0] [cxt 0] Transmitting packet of size 90 out of port 0
+[09:39:05.053] [bmv2] [D] [thread 15882] [28.0] [cxt 0] Processing packet received on port 4
+[09:39:05.053] [bmv2] [D] [thread 15882] [28.0] [cxt 0] Parser 'parser': start
+[09:39:05.053] [bmv2] [D] [thread 15882] [28.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:05.053] [bmv2] [D] [thread 15882] [28.0] [cxt 0] Extracting header 'ethernet'
+[09:39:05.053] [bmv2] [D] [thread 15882] [28.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:05.053] [bmv2] [T] [thread 15882] [28.0] [cxt 0] Bytes parsed: 14
+[09:39:05.053] [bmv2] [D] [thread 15882] [28.0] [cxt 0] Parser 'parser': end
+[09:39:05.053] [bmv2] [D] [thread 15882] [28.0] [cxt 0] Pipeline 'ingress': start
+[09:39:05.053] [bmv2] [T] [thread 15882] [28.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:05.054] [bmv2] [T] [thread 15882] [28.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:05.054] [bmv2] [D] [thread 15882] [28.0] [cxt 0] Pipeline 'ingress': end
+[09:39:05.054] [bmv2] [D] [thread 15882] [28.0] [cxt 0] Egress port is 0
+[09:39:05.054] [bmv2] [D] [thread 15883] [28.0] [cxt 0] Pipeline 'egress': start
+[09:39:05.054] [bmv2] [D] [thread 15883] [28.0] [cxt 0] Pipeline 'egress': end
+[09:39:05.054] [bmv2] [D] [thread 15883] [28.0] [cxt 0] Deparser 'deparser': start
+[09:39:05.054] [bmv2] [T] [thread 15883] [28.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:05.054] [bmv2] [D] [thread 15883] [28.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:05.054] [bmv2] [D] [thread 15883] [28.0] [cxt 0] Deparser 'deparser': end
+[09:39:05.054] [bmv2] [D] [thread 15887] [28.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[09:39:05.133] [bmv2] [D] [thread 15882] [29.0] [cxt 0] Processing packet received on port 3
+[09:39:05.133] [bmv2] [D] [thread 15882] [29.0] [cxt 0] Parser 'parser': start
+[09:39:05.133] [bmv2] [D] [thread 15882] [29.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:05.133] [bmv2] [D] [thread 15882] [29.0] [cxt 0] Extracting header 'ethernet'
+[09:39:05.133] [bmv2] [D] [thread 15882] [29.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:05.133] [bmv2] [T] [thread 15882] [29.0] [cxt 0] Bytes parsed: 14
+[09:39:05.133] [bmv2] [D] [thread 15882] [29.0] [cxt 0] Parser 'parser': end
+[09:39:05.133] [bmv2] [D] [thread 15882] [29.0] [cxt 0] Pipeline 'ingress': start
+[09:39:05.133] [bmv2] [T] [thread 15882] [29.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:05.133] [bmv2] [T] [thread 15882] [29.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:05.133] [bmv2] [D] [thread 15882] [29.0] [cxt 0] Pipeline 'ingress': end
+[09:39:05.134] [bmv2] [D] [thread 15882] [29.0] [cxt 0] Egress port is 0
+[09:39:05.134] [bmv2] [D] [thread 15883] [29.0] [cxt 0] Pipeline 'egress': start
+[09:39:05.134] [bmv2] [D] [thread 15883] [29.0] [cxt 0] Pipeline 'egress': end
+[09:39:05.134] [bmv2] [D] [thread 15883] [29.0] [cxt 0] Deparser 'deparser': start
+[09:39:05.134] [bmv2] [T] [thread 15883] [29.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:05.134] [bmv2] [D] [thread 15883] [29.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:05.134] [bmv2] [D] [thread 15883] [29.0] [cxt 0] Deparser 'deparser': end
+[09:39:05.134] [bmv2] [D] [thread 15887] [29.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[09:39:05.317] [bmv2] [D] [thread 15882] [30.0] [cxt 0] Processing packet received on port 2
+[09:39:05.317] [bmv2] [D] [thread 15882] [30.0] [cxt 0] Parser 'parser': start
+[09:39:05.317] [bmv2] [D] [thread 15882] [30.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:05.317] [bmv2] [D] [thread 15882] [30.0] [cxt 0] Extracting header 'ethernet'
+[09:39:05.317] [bmv2] [D] [thread 15882] [30.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:05.317] [bmv2] [T] [thread 15882] [30.0] [cxt 0] Bytes parsed: 14
+[09:39:05.317] [bmv2] [D] [thread 15882] [30.0] [cxt 0] Parser 'parser': end
+[09:39:05.317] [bmv2] [D] [thread 15882] [30.0] [cxt 0] Pipeline 'ingress': start
+[09:39:05.318] [bmv2] [T] [thread 15882] [30.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:05.318] [bmv2] [T] [thread 15882] [30.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:05.318] [bmv2] [D] [thread 15882] [30.0] [cxt 0] Pipeline 'ingress': end
+[09:39:05.318] [bmv2] [D] [thread 15882] [30.0] [cxt 0] Egress port is 0
+[09:39:05.318] [bmv2] [D] [thread 15883] [30.0] [cxt 0] Pipeline 'egress': start
+[09:39:05.318] [bmv2] [D] [thread 15883] [30.0] [cxt 0] Pipeline 'egress': end
+[09:39:05.318] [bmv2] [D] [thread 15883] [30.0] [cxt 0] Deparser 'deparser': start
+[09:39:05.318] [bmv2] [T] [thread 15883] [30.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:05.318] [bmv2] [D] [thread 15883] [30.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:05.318] [bmv2] [D] [thread 15883] [30.0] [cxt 0] Deparser 'deparser': end
+[09:39:05.318] [bmv2] [D] [thread 15887] [30.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[09:39:05.357] [bmv2] [D] [thread 15882] [31.0] [cxt 0] Processing packet received on port 2
+[09:39:05.357] [bmv2] [D] [thread 15882] [31.0] [cxt 0] Parser 'parser': start
+[09:39:05.357] [bmv2] [D] [thread 15882] [31.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:05.357] [bmv2] [D] [thread 15882] [31.0] [cxt 0] Extracting header 'ethernet'
+[09:39:05.357] [bmv2] [D] [thread 15882] [31.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:05.357] [bmv2] [T] [thread 15882] [31.0] [cxt 0] Bytes parsed: 14
+[09:39:05.357] [bmv2] [D] [thread 15882] [31.0] [cxt 0] Parser 'parser': end
+[09:39:05.358] [bmv2] [D] [thread 15882] [31.0] [cxt 0] Pipeline 'ingress': start
+[09:39:05.358] [bmv2] [T] [thread 15882] [31.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:05.358] [bmv2] [T] [thread 15882] [31.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:05.358] [bmv2] [D] [thread 15882] [31.0] [cxt 0] Pipeline 'ingress': end
+[09:39:05.358] [bmv2] [D] [thread 15882] [31.0] [cxt 0] Egress port is 0
+[09:39:05.358] [bmv2] [D] [thread 15883] [31.0] [cxt 0] Pipeline 'egress': start
+[09:39:05.358] [bmv2] [D] [thread 15883] [31.0] [cxt 0] Pipeline 'egress': end
+[09:39:05.358] [bmv2] [D] [thread 15883] [31.0] [cxt 0] Deparser 'deparser': start
+[09:39:05.358] [bmv2] [T] [thread 15883] [31.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:05.358] [bmv2] [D] [thread 15883] [31.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:05.358] [bmv2] [D] [thread 15883] [31.0] [cxt 0] Deparser 'deparser': end
+[09:39:05.358] [bmv2] [D] [thread 15887] [31.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[09:39:05.437] [bmv2] [D] [thread 15882] [32.0] [cxt 0] Processing packet received on port 1
+[09:39:05.437] [bmv2] [D] [thread 15882] [32.0] [cxt 0] Parser 'parser': start
+[09:39:05.437] [bmv2] [D] [thread 15882] [32.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:05.437] [bmv2] [D] [thread 15882] [32.0] [cxt 0] Extracting header 'ethernet'
+[09:39:05.437] [bmv2] [D] [thread 15882] [32.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:05.437] [bmv2] [T] [thread 15882] [32.0] [cxt 0] Bytes parsed: 14
+[09:39:05.437] [bmv2] [D] [thread 15882] [32.0] [cxt 0] Parser 'parser': end
+[09:39:05.437] [bmv2] [D] [thread 15882] [32.0] [cxt 0] Pipeline 'ingress': start
+[09:39:05.438] [bmv2] [T] [thread 15882] [32.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:05.438] [bmv2] [T] [thread 15882] [32.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:05.438] [bmv2] [D] [thread 15882] [32.0] [cxt 0] Pipeline 'ingress': end
+[09:39:05.438] [bmv2] [D] [thread 15882] [32.0] [cxt 0] Egress port is 0
+[09:39:05.438] [bmv2] [D] [thread 15883] [32.0] [cxt 0] Pipeline 'egress': start
+[09:39:05.438] [bmv2] [D] [thread 15883] [32.0] [cxt 0] Pipeline 'egress': end
+[09:39:05.438] [bmv2] [D] [thread 15883] [32.0] [cxt 0] Deparser 'deparser': start
+[09:39:05.438] [bmv2] [T] [thread 15883] [32.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:05.438] [bmv2] [D] [thread 15883] [32.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:05.438] [bmv2] [D] [thread 15883] [32.0] [cxt 0] Deparser 'deparser': end
+[09:39:05.438] [bmv2] [D] [thread 15887] [32.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[09:39:05.485] [bmv2] [D] [thread 15882] [33.0] [cxt 0] Processing packet received on port 4
+[09:39:05.485] [bmv2] [D] [thread 15882] [33.0] [cxt 0] Parser 'parser': start
+[09:39:05.485] [bmv2] [D] [thread 15882] [33.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:05.485] [bmv2] [D] [thread 15882] [33.0] [cxt 0] Extracting header 'ethernet'
+[09:39:05.485] [bmv2] [D] [thread 15882] [33.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:05.485] [bmv2] [T] [thread 15882] [33.0] [cxt 0] Bytes parsed: 14
+[09:39:05.485] [bmv2] [D] [thread 15882] [33.0] [cxt 0] Parser 'parser': end
+[09:39:05.486] [bmv2] [D] [thread 15882] [33.0] [cxt 0] Pipeline 'ingress': start
+[09:39:05.486] [bmv2] [T] [thread 15882] [33.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:05.486] [bmv2] [T] [thread 15882] [33.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:05.486] [bmv2] [D] [thread 15882] [33.0] [cxt 0] Pipeline 'ingress': end
+[09:39:05.486] [bmv2] [D] [thread 15882] [33.0] [cxt 0] Egress port is 0
+[09:39:05.486] [bmv2] [D] [thread 15883] [33.0] [cxt 0] Pipeline 'egress': start
+[09:39:05.486] [bmv2] [D] [thread 15883] [33.0] [cxt 0] Pipeline 'egress': end
+[09:39:05.486] [bmv2] [D] [thread 15883] [33.0] [cxt 0] Deparser 'deparser': start
+[09:39:05.486] [bmv2] [T] [thread 15883] [33.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:05.486] [bmv2] [D] [thread 15883] [33.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:05.486] [bmv2] [D] [thread 15883] [33.0] [cxt 0] Deparser 'deparser': end
+[09:39:05.486] [bmv2] [D] [thread 15887] [33.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[09:39:05.709] [bmv2] [D] [thread 15882] [34.0] [cxt 0] Processing packet received on port 3
+[09:39:05.709] [bmv2] [D] [thread 15882] [34.0] [cxt 0] Parser 'parser': start
+[09:39:05.709] [bmv2] [D] [thread 15882] [34.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:05.709] [bmv2] [D] [thread 15882] [34.0] [cxt 0] Extracting header 'ethernet'
+[09:39:05.709] [bmv2] [D] [thread 15882] [34.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:05.709] [bmv2] [T] [thread 15882] [34.0] [cxt 0] Bytes parsed: 14
+[09:39:05.709] [bmv2] [D] [thread 15882] [34.0] [cxt 0] Parser 'parser': end
+[09:39:05.709] [bmv2] [D] [thread 15882] [34.0] [cxt 0] Pipeline 'ingress': start
+[09:39:05.710] [bmv2] [T] [thread 15882] [34.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:05.710] [bmv2] [T] [thread 15882] [34.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:05.710] [bmv2] [D] [thread 15882] [34.0] [cxt 0] Pipeline 'ingress': end
+[09:39:05.710] [bmv2] [D] [thread 15882] [34.0] [cxt 0] Egress port is 0
+[09:39:05.710] [bmv2] [D] [thread 15883] [34.0] [cxt 0] Pipeline 'egress': start
+[09:39:05.710] [bmv2] [D] [thread 15883] [34.0] [cxt 0] Pipeline 'egress': end
+[09:39:05.710] [bmv2] [D] [thread 15883] [34.0] [cxt 0] Deparser 'deparser': start
+[09:39:05.710] [bmv2] [T] [thread 15883] [34.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:05.710] [bmv2] [D] [thread 15883] [34.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:05.710] [bmv2] [D] [thread 15883] [34.0] [cxt 0] Deparser 'deparser': end
+[09:39:05.710] [bmv2] [D] [thread 15887] [34.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[09:39:09.061] [bmv2] [D] [thread 15882] [35.0] [cxt 0] Processing packet received on port 4
+[09:39:09.061] [bmv2] [D] [thread 15882] [35.0] [cxt 0] Parser 'parser': start
+[09:39:09.061] [bmv2] [D] [thread 15882] [35.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:09.061] [bmv2] [D] [thread 15882] [35.0] [cxt 0] Extracting header 'ethernet'
+[09:39:09.061] [bmv2] [D] [thread 15882] [35.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:09.062] [bmv2] [T] [thread 15882] [35.0] [cxt 0] Bytes parsed: 14
+[09:39:09.062] [bmv2] [D] [thread 15882] [35.0] [cxt 0] Parser 'parser': end
+[09:39:09.062] [bmv2] [D] [thread 15882] [35.0] [cxt 0] Pipeline 'ingress': start
+[09:39:09.062] [bmv2] [T] [thread 15882] [35.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:09.062] [bmv2] [T] [thread 15882] [35.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:09.062] [bmv2] [D] [thread 15882] [35.0] [cxt 0] Pipeline 'ingress': end
+[09:39:09.062] [bmv2] [D] [thread 15882] [35.0] [cxt 0] Egress port is 0
+[09:39:09.062] [bmv2] [D] [thread 15883] [35.0] [cxt 0] Pipeline 'egress': start
+[09:39:09.062] [bmv2] [D] [thread 15883] [35.0] [cxt 0] Pipeline 'egress': end
+[09:39:09.062] [bmv2] [D] [thread 15883] [35.0] [cxt 0] Deparser 'deparser': start
+[09:39:09.062] [bmv2] [T] [thread 15883] [35.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:09.062] [bmv2] [D] [thread 15883] [35.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:09.062] [bmv2] [D] [thread 15883] [35.0] [cxt 0] Deparser 'deparser': end
+[09:39:09.062] [bmv2] [D] [thread 15887] [35.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[09:39:09.141] [bmv2] [D] [thread 15882] [36.0] [cxt 0] Processing packet received on port 3
+[09:39:09.141] [bmv2] [D] [thread 15882] [36.0] [cxt 0] Parser 'parser': start
+[09:39:09.141] [bmv2] [D] [thread 15882] [36.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:09.141] [bmv2] [D] [thread 15882] [36.0] [cxt 0] Extracting header 'ethernet'
+[09:39:09.141] [bmv2] [D] [thread 15882] [36.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:09.142] [bmv2] [T] [thread 15882] [36.0] [cxt 0] Bytes parsed: 14
+[09:39:09.142] [bmv2] [D] [thread 15882] [36.0] [cxt 0] Parser 'parser': end
+[09:39:09.142] [bmv2] [D] [thread 15882] [36.0] [cxt 0] Pipeline 'ingress': start
+[09:39:09.142] [bmv2] [T] [thread 15882] [36.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:09.142] [bmv2] [T] [thread 15882] [36.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:09.142] [bmv2] [D] [thread 15882] [36.0] [cxt 0] Pipeline 'ingress': end
+[09:39:09.142] [bmv2] [D] [thread 15882] [36.0] [cxt 0] Egress port is 0
+[09:39:09.142] [bmv2] [D] [thread 15883] [36.0] [cxt 0] Pipeline 'egress': start
+[09:39:09.142] [bmv2] [D] [thread 15883] [36.0] [cxt 0] Pipeline 'egress': end
+[09:39:09.142] [bmv2] [D] [thread 15883] [36.0] [cxt 0] Deparser 'deparser': start
+[09:39:09.142] [bmv2] [T] [thread 15883] [36.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:09.142] [bmv2] [D] [thread 15883] [36.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:09.142] [bmv2] [D] [thread 15883] [36.0] [cxt 0] Deparser 'deparser': end
+[09:39:09.142] [bmv2] [D] [thread 15887] [36.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[09:39:09.325] [bmv2] [D] [thread 15882] [37.0] [cxt 0] Processing packet received on port 2
+[09:39:09.325] [bmv2] [D] [thread 15882] [37.0] [cxt 0] Parser 'parser': start
+[09:39:09.325] [bmv2] [D] [thread 15882] [37.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:09.325] [bmv2] [D] [thread 15882] [37.0] [cxt 0] Extracting header 'ethernet'
+[09:39:09.326] [bmv2] [D] [thread 15882] [37.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:09.326] [bmv2] [T] [thread 15882] [37.0] [cxt 0] Bytes parsed: 14
+[09:39:09.326] [bmv2] [D] [thread 15882] [37.0] [cxt 0] Parser 'parser': end
+[09:39:09.326] [bmv2] [D] [thread 15882] [37.0] [cxt 0] Pipeline 'ingress': start
+[09:39:09.326] [bmv2] [T] [thread 15882] [37.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:09.326] [bmv2] [T] [thread 15882] [37.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:09.326] [bmv2] [D] [thread 15882] [37.0] [cxt 0] Pipeline 'ingress': end
+[09:39:09.326] [bmv2] [D] [thread 15882] [37.0] [cxt 0] Egress port is 0
+[09:39:09.326] [bmv2] [D] [thread 15883] [37.0] [cxt 0] Pipeline 'egress': start
+[09:39:09.326] [bmv2] [D] [thread 15883] [37.0] [cxt 0] Pipeline 'egress': end
+[09:39:09.326] [bmv2] [D] [thread 15883] [37.0] [cxt 0] Deparser 'deparser': start
+[09:39:09.326] [bmv2] [T] [thread 15883] [37.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:09.326] [bmv2] [D] [thread 15883] [37.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:09.326] [bmv2] [D] [thread 15883] [37.0] [cxt 0] Deparser 'deparser': end
+[09:39:09.326] [bmv2] [D] [thread 15887] [37.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[09:39:09.365] [bmv2] [D] [thread 15882] [38.0] [cxt 0] Processing packet received on port 2
+[09:39:09.365] [bmv2] [D] [thread 15882] [38.0] [cxt 0] Parser 'parser': start
+[09:39:09.365] [bmv2] [D] [thread 15882] [38.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:09.365] [bmv2] [D] [thread 15882] [38.0] [cxt 0] Extracting header 'ethernet'
+[09:39:09.365] [bmv2] [D] [thread 15882] [38.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:09.365] [bmv2] [T] [thread 15882] [38.0] [cxt 0] Bytes parsed: 14
+[09:39:09.365] [bmv2] [D] [thread 15882] [38.0] [cxt 0] Parser 'parser': end
+[09:39:09.366] [bmv2] [D] [thread 15882] [38.0] [cxt 0] Pipeline 'ingress': start
+[09:39:09.366] [bmv2] [T] [thread 15882] [38.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:09.366] [bmv2] [T] [thread 15882] [38.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:09.366] [bmv2] [D] [thread 15882] [38.0] [cxt 0] Pipeline 'ingress': end
+[09:39:09.366] [bmv2] [D] [thread 15882] [38.0] [cxt 0] Egress port is 0
+[09:39:09.366] [bmv2] [D] [thread 15883] [38.0] [cxt 0] Pipeline 'egress': start
+[09:39:09.366] [bmv2] [D] [thread 15883] [38.0] [cxt 0] Pipeline 'egress': end
+[09:39:09.366] [bmv2] [D] [thread 15883] [38.0] [cxt 0] Deparser 'deparser': start
+[09:39:09.366] [bmv2] [T] [thread 15883] [38.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:09.366] [bmv2] [D] [thread 15883] [38.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:09.366] [bmv2] [D] [thread 15883] [38.0] [cxt 0] Deparser 'deparser': end
+[09:39:09.366] [bmv2] [D] [thread 15887] [38.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[09:39:09.445] [bmv2] [D] [thread 15882] [39.0] [cxt 0] Processing packet received on port 1
+[09:39:09.445] [bmv2] [D] [thread 15882] [39.0] [cxt 0] Parser 'parser': start
+[09:39:09.445] [bmv2] [D] [thread 15882] [39.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:09.445] [bmv2] [D] [thread 15882] [39.0] [cxt 0] Extracting header 'ethernet'
+[09:39:09.445] [bmv2] [D] [thread 15882] [39.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:09.445] [bmv2] [T] [thread 15882] [39.0] [cxt 0] Bytes parsed: 14
+[09:39:09.445] [bmv2] [D] [thread 15882] [39.0] [cxt 0] Parser 'parser': end
+[09:39:09.446] [bmv2] [D] [thread 15882] [39.0] [cxt 0] Pipeline 'ingress': start
+[09:39:09.446] [bmv2] [T] [thread 15882] [39.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:09.446] [bmv2] [T] [thread 15882] [39.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:09.446] [bmv2] [D] [thread 15882] [39.0] [cxt 0] Pipeline 'ingress': end
+[09:39:09.446] [bmv2] [D] [thread 15882] [39.0] [cxt 0] Egress port is 0
+[09:39:09.446] [bmv2] [D] [thread 15883] [39.0] [cxt 0] Pipeline 'egress': start
+[09:39:09.446] [bmv2] [D] [thread 15883] [39.0] [cxt 0] Pipeline 'egress': end
+[09:39:09.446] [bmv2] [D] [thread 15883] [39.0] [cxt 0] Deparser 'deparser': start
+[09:39:09.446] [bmv2] [T] [thread 15883] [39.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:09.446] [bmv2] [D] [thread 15883] [39.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:09.446] [bmv2] [D] [thread 15883] [39.0] [cxt 0] Deparser 'deparser': end
+[09:39:09.446] [bmv2] [D] [thread 15887] [39.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[09:39:09.493] [bmv2] [D] [thread 15882] [40.0] [cxt 0] Processing packet received on port 4
+[09:39:09.493] [bmv2] [D] [thread 15882] [40.0] [cxt 0] Parser 'parser': start
+[09:39:09.493] [bmv2] [D] [thread 15882] [40.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:09.493] [bmv2] [D] [thread 15882] [40.0] [cxt 0] Extracting header 'ethernet'
+[09:39:09.493] [bmv2] [D] [thread 15882] [40.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:09.493] [bmv2] [T] [thread 15882] [40.0] [cxt 0] Bytes parsed: 14
+[09:39:09.493] [bmv2] [D] [thread 15882] [40.0] [cxt 0] Parser 'parser': end
+[09:39:09.493] [bmv2] [D] [thread 15882] [40.0] [cxt 0] Pipeline 'ingress': start
+[09:39:09.494] [bmv2] [T] [thread 15882] [40.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:09.494] [bmv2] [T] [thread 15882] [40.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:09.494] [bmv2] [D] [thread 15882] [40.0] [cxt 0] Pipeline 'ingress': end
+[09:39:09.494] [bmv2] [D] [thread 15882] [40.0] [cxt 0] Egress port is 0
+[09:39:09.494] [bmv2] [D] [thread 15883] [40.0] [cxt 0] Pipeline 'egress': start
+[09:39:09.494] [bmv2] [D] [thread 15883] [40.0] [cxt 0] Pipeline 'egress': end
+[09:39:09.494] [bmv2] [D] [thread 15883] [40.0] [cxt 0] Deparser 'deparser': start
+[09:39:09.494] [bmv2] [T] [thread 15883] [40.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:09.494] [bmv2] [D] [thread 15883] [40.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:09.494] [bmv2] [D] [thread 15883] [40.0] [cxt 0] Deparser 'deparser': end
+[09:39:09.494] [bmv2] [D] [thread 15887] [40.0] [cxt 0] Transmitting packet of size 70 out of port 0
+[09:39:09.717] [bmv2] [D] [thread 15882] [41.0] [cxt 0] Processing packet received on port 3
+[09:39:09.717] [bmv2] [D] [thread 15882] [41.0] [cxt 0] Parser 'parser': start
+[09:39:09.717] [bmv2] [D] [thread 15882] [41.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:39:09.717] [bmv2] [D] [thread 15882] [41.0] [cxt 0] Extracting header 'ethernet'
+[09:39:09.717] [bmv2] [D] [thread 15882] [41.0] [cxt 0] Parser state 'start': key is 86dd
+[09:39:09.717] [bmv2] [T] [thread 15882] [41.0] [cxt 0] Bytes parsed: 14
+[09:39:09.717] [bmv2] [D] [thread 15882] [41.0] [cxt 0] Parser 'parser': end
+[09:39:09.717] [bmv2] [D] [thread 15882] [41.0] [cxt 0] Pipeline 'ingress': start
+[09:39:09.718] [bmv2] [T] [thread 15882] [41.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is false
+[09:39:09.718] [bmv2] [T] [thread 15882] [41.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:39:09.718] [bmv2] [D] [thread 15882] [41.0] [cxt 0] Pipeline 'ingress': end
+[09:39:09.718] [bmv2] [D] [thread 15882] [41.0] [cxt 0] Egress port is 0
+[09:39:09.718] [bmv2] [D] [thread 15883] [41.0] [cxt 0] Pipeline 'egress': start
+[09:39:09.718] [bmv2] [D] [thread 15883] [41.0] [cxt 0] Pipeline 'egress': end
+[09:39:09.718] [bmv2] [D] [thread 15883] [41.0] [cxt 0] Deparser 'deparser': start
+[09:39:09.718] [bmv2] [T] [thread 15883] [41.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:39:09.718] [bmv2] [D] [thread 15883] [41.0] [cxt 0] Deparsing header 'ethernet'
+[09:39:09.718] [bmv2] [D] [thread 15883] [41.0] [cxt 0] Deparser 'deparser': end
+[09:39:09.718] [bmv2] [D] [thread 15887] [41.0] [cxt 0] Transmitting packet of size 70 out of port 0
+New connection
+P4Runtime SetForwardingPipelineConfig
+[09:43:11.362] [bmv2] [W] [thread 16083] [P4Runtime] p4::tmp::P4DeviceConfig is deprecated
+[09:43:11.368] [bmv2] [D] [thread 16083] Set default default entry for table 'Basic_ingress.mpls_exact': NoAction - 
+[09:43:11.368] [bmv2] [D] [thread 16083] Set default default entry for table 'Basic_ingress.ipv4_lpm': NoAction - 
+P4Runtime Write
+device_id: 1
+election_id {
+  low: 1
+}
+updates {
+  type: INSERT
+  entity {
+    table_entry {
+      table_id: 33588550
+      match {
+        field_id: 1
+        exact {
+          value: "\000\003\374"
+        }
+      }
+      action {
+        action {
+          action_id: 16816255
+          params {
+            param_id: 2
+            value: "\000\007\356"
+          }
+          params {
+            param_id: 1
+            value: "\000\004"
+          }
+        }
+      }
+    }
+  }
+}
+[09:43:11.402] [bmv2] [D] [thread 16083] Entry 0 added to table 'Basic_ingress.mpls_exact'
+[09:43:11.402] [bmv2] [D] [thread 16083] Dumping entry 0
+Match key:
+* hdr.mpls.label      : EXACT     0003fc
+Action entry: Basic_ingress.mpls_core - 4,7ee,
+
+P4Runtime Write
+device_id: 1
+election_id {
+  low: 1
+}
+updates {
+  type: INSERT
+  entity {
+    table_entry {
+      table_id: 33588550
+      match {
+        field_id: 1
+        exact {
+          value: "\000\013\314"
+        }
+      }
+      action {
+        action {
+          action_id: 16816255
+          params {
+            param_id: 2
+            value: "\000\010?"
+          }
+          params {
+            param_id: 1
+            value: "\000\003"
+          }
+        }
+      }
+    }
+  }
+}
+[09:43:11.403] [bmv2] [D] [thread 16083] Entry 1 added to table 'Basic_ingress.mpls_exact'
+[09:43:11.403] [bmv2] [D] [thread 16083] Dumping entry 1
+Match key:
+* hdr.mpls.label      : EXACT     000bcc
+Action entry: Basic_ingress.mpls_core - 3,83f,
+
+P4Runtime Read
+device_id: 1
+entities {
+  table_entry {
+  }
+}
+Connection removed
+[09:43:33.221] [bmv2] [D] [thread 15882] [42.0] [cxt 0] Processing packet received on port 2
+[09:43:33.222] [bmv2] [D] [thread 15882] [42.0] [cxt 0] Parser 'parser': start
+[09:43:33.222] [bmv2] [D] [thread 15882] [42.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:43:33.222] [bmv2] [D] [thread 15882] [42.0] [cxt 0] Extracting header 'ethernet'
+[09:43:33.222] [bmv2] [D] [thread 15882] [42.0] [cxt 0] Parser state 'start': key is 8847
+[09:43:33.222] [bmv2] [T] [thread 15882] [42.0] [cxt 0] Bytes parsed: 14
+[09:43:33.222] [bmv2] [D] [thread 15882] [42.0] [cxt 0] Parser 'parser' entering state 'parse_mpls'
+[09:43:33.222] [bmv2] [D] [thread 15882] [42.0] [cxt 0] Extracting header 'mpls'
+[09:43:33.222] [bmv2] [D] [thread 15882] [42.0] [cxt 0] Parser state 'parse_mpls' has no switch, going to default next state
+[09:43:33.222] [bmv2] [T] [thread 15882] [42.0] [cxt 0] Bytes parsed: 18
+[09:43:33.222] [bmv2] [D] [thread 15882] [42.0] [cxt 0] Parser 'parser': end
+[09:43:33.222] [bmv2] [D] [thread 15882] [42.0] [cxt 0] Pipeline 'ingress': start
+[09:43:33.222] [bmv2] [T] [thread 15882] [42.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is true
+[09:43:33.222] [bmv2] [T] [thread 15882] [42.0] [cxt 0] Applying table 'Basic_ingress.mpls_exact'
+[09:43:33.222] [bmv2] [D] [thread 15882] [42.0] [cxt 0] Looking up key:
+* hdr.mpls.label      : 0003fc
+
+[09:43:33.222] [bmv2] [D] [thread 15882] [42.0] [cxt 0] Table 'Basic_ingress.mpls_exact': hit with handle 0
+[09:43:33.222] [bmv2] [D] [thread 15882] [42.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.mpls.label      : EXACT     0003fc
+Action entry: Basic_ingress.mpls_core - 4,7ee,
+
+[09:43:33.222] [bmv2] [D] [thread 15882] [42.0] [cxt 0] Action entry is Basic_ingress.mpls_core - 4,7ee,
+[09:43:33.222] [bmv2] [T] [thread 15882] [42.0] [cxt 0] Action Basic_ingress.mpls_core
+[09:43:33.222] [bmv2] [T] [thread 15882] [42.0] [cxt 0] mpls.p4(99) Primitive standard_metadata.egress_spec = port
+[09:43:33.222] [bmv2] [T] [thread 15882] [42.0] [cxt 0] mpls.p4(101) Primitive hdr.mpls.setValid()
+[09:43:33.222] [bmv2] [T] [thread 15882] [42.0] [cxt 0] mpls.p4(102) Primitive hdr.mpls.label = new_label
+[09:43:33.222] [bmv2] [T] [thread 15882] [42.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:43:33.222] [bmv2] [D] [thread 15882] [42.0] [cxt 0] Pipeline 'ingress': end
+[09:43:33.222] [bmv2] [D] [thread 15882] [42.0] [cxt 0] Egress port is 4
+[09:43:33.222] [bmv2] [D] [thread 15883] [42.0] [cxt 0] Pipeline 'egress': start
+[09:43:33.223] [bmv2] [D] [thread 15883] [42.0] [cxt 0] Pipeline 'egress': end
+[09:43:33.223] [bmv2] [D] [thread 15883] [42.0] [cxt 0] Deparser 'deparser': start
+[09:43:33.223] [bmv2] [T] [thread 15883] [42.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:43:33.223] [bmv2] [D] [thread 15883] [42.0] [cxt 0] Deparsing header 'ethernet'
+[09:43:33.223] [bmv2] [D] [thread 15883] [42.0] [cxt 0] Deparsing header 'mpls'
+[09:43:33.223] [bmv2] [D] [thread 15883] [42.0] [cxt 0] Deparser 'deparser': end
+[09:43:33.223] [bmv2] [D] [thread 15887] [42.0] [cxt 0] Transmitting packet of size 102 out of port 4
+[09:43:33.230] [bmv2] [D] [thread 15882] [43.0] [cxt 0] Processing packet received on port 4
+[09:43:33.230] [bmv2] [D] [thread 15882] [43.0] [cxt 0] Parser 'parser': start
+[09:43:33.231] [bmv2] [D] [thread 15882] [43.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:43:33.231] [bmv2] [D] [thread 15882] [43.0] [cxt 0] Extracting header 'ethernet'
+[09:43:33.231] [bmv2] [D] [thread 15882] [43.0] [cxt 0] Parser state 'start': key is 8847
+[09:43:33.231] [bmv2] [T] [thread 15882] [43.0] [cxt 0] Bytes parsed: 14
+[09:43:33.231] [bmv2] [D] [thread 15882] [43.0] [cxt 0] Parser 'parser' entering state 'parse_mpls'
+[09:43:33.231] [bmv2] [D] [thread 15882] [43.0] [cxt 0] Extracting header 'mpls'
+[09:43:33.231] [bmv2] [D] [thread 15882] [43.0] [cxt 0] Parser state 'parse_mpls' has no switch, going to default next state
+[09:43:33.231] [bmv2] [T] [thread 15882] [43.0] [cxt 0] Bytes parsed: 18
+[09:43:33.231] [bmv2] [D] [thread 15882] [43.0] [cxt 0] Parser 'parser': end
+[09:43:33.231] [bmv2] [D] [thread 15882] [43.0] [cxt 0] Pipeline 'ingress': start
+[09:43:33.231] [bmv2] [T] [thread 15882] [43.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is true
+[09:43:33.231] [bmv2] [T] [thread 15882] [43.0] [cxt 0] Applying table 'Basic_ingress.mpls_exact'
+[09:43:33.231] [bmv2] [D] [thread 15882] [43.0] [cxt 0] Looking up key:
+* hdr.mpls.label      : 000bcc
+
+[09:43:33.231] [bmv2] [D] [thread 15882] [43.0] [cxt 0] Table 'Basic_ingress.mpls_exact': hit with handle 1
+[09:43:33.231] [bmv2] [D] [thread 15882] [43.0] [cxt 0] Dumping entry 1
+Match key:
+* hdr.mpls.label      : EXACT     000bcc
+Action entry: Basic_ingress.mpls_core - 3,83f,
+
+[09:43:33.231] [bmv2] [D] [thread 15882] [43.0] [cxt 0] Action entry is Basic_ingress.mpls_core - 3,83f,
+[09:43:33.231] [bmv2] [T] [thread 15882] [43.0] [cxt 0] Action Basic_ingress.mpls_core
+[09:43:33.231] [bmv2] [T] [thread 15882] [43.0] [cxt 0] mpls.p4(99) Primitive standard_metadata.egress_spec = port
+[09:43:33.231] [bmv2] [T] [thread 15882] [43.0] [cxt 0] mpls.p4(101) Primitive hdr.mpls.setValid()
+[09:43:33.231] [bmv2] [T] [thread 15882] [43.0] [cxt 0] mpls.p4(102) Primitive hdr.mpls.label = new_label
+[09:43:33.231] [bmv2] [T] [thread 15882] [43.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:43:33.231] [bmv2] [D] [thread 15882] [43.0] [cxt 0] Pipeline 'ingress': end
+[09:43:33.231] [bmv2] [D] [thread 15882] [43.0] [cxt 0] Egress port is 3
+[09:43:33.231] [bmv2] [D] [thread 15886] [43.0] [cxt 0] Pipeline 'egress': start
+[09:43:33.231] [bmv2] [D] [thread 15886] [43.0] [cxt 0] Pipeline 'egress': end
+[09:43:33.231] [bmv2] [D] [thread 15886] [43.0] [cxt 0] Deparser 'deparser': start
+[09:43:33.231] [bmv2] [T] [thread 15886] [43.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:43:33.231] [bmv2] [D] [thread 15886] [43.0] [cxt 0] Deparsing header 'ethernet'
+[09:43:33.231] [bmv2] [D] [thread 15886] [43.0] [cxt 0] Deparsing header 'mpls'
+[09:43:33.232] [bmv2] [D] [thread 15886] [43.0] [cxt 0] Deparser 'deparser': end
+[09:43:33.232] [bmv2] [D] [thread 15887] [43.0] [cxt 0] Transmitting packet of size 102 out of port 3
+[09:43:34.221] [bmv2] [D] [thread 15882] [44.0] [cxt 0] Processing packet received on port 2
+[09:43:34.221] [bmv2] [D] [thread 15882] [44.0] [cxt 0] Parser 'parser': start
+[09:43:34.221] [bmv2] [D] [thread 15882] [44.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:43:34.221] [bmv2] [D] [thread 15882] [44.0] [cxt 0] Extracting header 'ethernet'
+[09:43:34.221] [bmv2] [D] [thread 15882] [44.0] [cxt 0] Parser state 'start': key is 8847
+[09:43:34.222] [bmv2] [T] [thread 15882] [44.0] [cxt 0] Bytes parsed: 14
+[09:43:34.222] [bmv2] [D] [thread 15882] [44.0] [cxt 0] Parser 'parser' entering state 'parse_mpls'
+[09:43:34.222] [bmv2] [D] [thread 15882] [44.0] [cxt 0] Extracting header 'mpls'
+[09:43:34.222] [bmv2] [D] [thread 15882] [44.0] [cxt 0] Parser state 'parse_mpls' has no switch, going to default next state
+[09:43:34.222] [bmv2] [T] [thread 15882] [44.0] [cxt 0] Bytes parsed: 18
+[09:43:34.222] [bmv2] [D] [thread 15882] [44.0] [cxt 0] Parser 'parser': end
+[09:43:34.222] [bmv2] [D] [thread 15882] [44.0] [cxt 0] Pipeline 'ingress': start
+[09:43:34.222] [bmv2] [T] [thread 15882] [44.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is true
+[09:43:34.222] [bmv2] [T] [thread 15882] [44.0] [cxt 0] Applying table 'Basic_ingress.mpls_exact'
+[09:43:34.222] [bmv2] [D] [thread 15882] [44.0] [cxt 0] Looking up key:
+* hdr.mpls.label      : 0003fc
+
+[09:43:34.222] [bmv2] [D] [thread 15882] [44.0] [cxt 0] Table 'Basic_ingress.mpls_exact': hit with handle 0
+[09:43:34.222] [bmv2] [D] [thread 15882] [44.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.mpls.label      : EXACT     0003fc
+Action entry: Basic_ingress.mpls_core - 4,7ee,
+
+[09:43:34.222] [bmv2] [D] [thread 15882] [44.0] [cxt 0] Action entry is Basic_ingress.mpls_core - 4,7ee,
+[09:43:34.222] [bmv2] [T] [thread 15882] [44.0] [cxt 0] Action Basic_ingress.mpls_core
+[09:43:34.222] [bmv2] [T] [thread 15882] [44.0] [cxt 0] mpls.p4(99) Primitive standard_metadata.egress_spec = port
+[09:43:34.222] [bmv2] [T] [thread 15882] [44.0] [cxt 0] mpls.p4(101) Primitive hdr.mpls.setValid()
+[09:43:34.222] [bmv2] [T] [thread 15882] [44.0] [cxt 0] mpls.p4(102) Primitive hdr.mpls.label = new_label
+[09:43:34.222] [bmv2] [T] [thread 15882] [44.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:43:34.222] [bmv2] [D] [thread 15882] [44.0] [cxt 0] Pipeline 'ingress': end
+[09:43:34.222] [bmv2] [D] [thread 15882] [44.0] [cxt 0] Egress port is 4
+[09:43:34.222] [bmv2] [D] [thread 15883] [44.0] [cxt 0] Pipeline 'egress': start
+[09:43:34.222] [bmv2] [D] [thread 15883] [44.0] [cxt 0] Pipeline 'egress': end
+[09:43:34.222] [bmv2] [D] [thread 15883] [44.0] [cxt 0] Deparser 'deparser': start
+[09:43:34.222] [bmv2] [T] [thread 15883] [44.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:43:34.222] [bmv2] [D] [thread 15883] [44.0] [cxt 0] Deparsing header 'ethernet'
+[09:43:34.222] [bmv2] [D] [thread 15883] [44.0] [cxt 0] Deparsing header 'mpls'
+[09:43:34.222] [bmv2] [D] [thread 15883] [44.0] [cxt 0] Deparser 'deparser': end
+[09:43:34.222] [bmv2] [D] [thread 15887] [44.0] [cxt 0] Transmitting packet of size 102 out of port 4
+[09:43:34.229] [bmv2] [D] [thread 15882] [45.0] [cxt 0] Processing packet received on port 4
+[09:43:34.229] [bmv2] [D] [thread 15882] [45.0] [cxt 0] Parser 'parser': start
+[09:43:34.229] [bmv2] [D] [thread 15882] [45.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:43:34.229] [bmv2] [D] [thread 15882] [45.0] [cxt 0] Extracting header 'ethernet'
+[09:43:34.229] [bmv2] [D] [thread 15882] [45.0] [cxt 0] Parser state 'start': key is 8847
+[09:43:34.229] [bmv2] [T] [thread 15882] [45.0] [cxt 0] Bytes parsed: 14
+[09:43:34.229] [bmv2] [D] [thread 15882] [45.0] [cxt 0] Parser 'parser' entering state 'parse_mpls'
+[09:43:34.229] [bmv2] [D] [thread 15882] [45.0] [cxt 0] Extracting header 'mpls'
+[09:43:34.229] [bmv2] [D] [thread 15882] [45.0] [cxt 0] Parser state 'parse_mpls' has no switch, going to default next state
+[09:43:34.229] [bmv2] [T] [thread 15882] [45.0] [cxt 0] Bytes parsed: 18
+[09:43:34.229] [bmv2] [D] [thread 15882] [45.0] [cxt 0] Parser 'parser': end
+[09:43:34.229] [bmv2] [D] [thread 15882] [45.0] [cxt 0] Pipeline 'ingress': start
+[09:43:34.229] [bmv2] [T] [thread 15882] [45.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is true
+[09:43:34.229] [bmv2] [T] [thread 15882] [45.0] [cxt 0] Applying table 'Basic_ingress.mpls_exact'
+[09:43:34.229] [bmv2] [D] [thread 15882] [45.0] [cxt 0] Looking up key:
+* hdr.mpls.label      : 000bcc
+
+[09:43:34.229] [bmv2] [D] [thread 15882] [45.0] [cxt 0] Table 'Basic_ingress.mpls_exact': hit with handle 1
+[09:43:34.229] [bmv2] [D] [thread 15882] [45.0] [cxt 0] Dumping entry 1
+Match key:
+* hdr.mpls.label      : EXACT     000bcc
+Action entry: Basic_ingress.mpls_core - 3,83f,
+
+[09:43:34.229] [bmv2] [D] [thread 15882] [45.0] [cxt 0] Action entry is Basic_ingress.mpls_core - 3,83f,
+[09:43:34.229] [bmv2] [T] [thread 15882] [45.0] [cxt 0] Action Basic_ingress.mpls_core
+[09:43:34.229] [bmv2] [T] [thread 15882] [45.0] [cxt 0] mpls.p4(99) Primitive standard_metadata.egress_spec = port
+[09:43:34.229] [bmv2] [T] [thread 15882] [45.0] [cxt 0] mpls.p4(101) Primitive hdr.mpls.setValid()
+[09:43:34.229] [bmv2] [T] [thread 15882] [45.0] [cxt 0] mpls.p4(102) Primitive hdr.mpls.label = new_label
+[09:43:34.229] [bmv2] [T] [thread 15882] [45.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:43:34.229] [bmv2] [D] [thread 15882] [45.0] [cxt 0] Pipeline 'ingress': end
+[09:43:34.229] [bmv2] [D] [thread 15882] [45.0] [cxt 0] Egress port is 3
+[09:43:34.230] [bmv2] [D] [thread 15886] [45.0] [cxt 0] Pipeline 'egress': start
+[09:43:34.230] [bmv2] [D] [thread 15886] [45.0] [cxt 0] Pipeline 'egress': end
+[09:43:34.230] [bmv2] [D] [thread 15886] [45.0] [cxt 0] Deparser 'deparser': start
+[09:43:34.230] [bmv2] [T] [thread 15886] [45.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:43:34.230] [bmv2] [D] [thread 15886] [45.0] [cxt 0] Deparsing header 'ethernet'
+[09:43:34.230] [bmv2] [D] [thread 15886] [45.0] [cxt 0] Deparsing header 'mpls'
+[09:43:34.230] [bmv2] [D] [thread 15886] [45.0] [cxt 0] Deparser 'deparser': end
+[09:43:34.230] [bmv2] [D] [thread 15887] [45.0] [cxt 0] Transmitting packet of size 102 out of port 3
+[09:43:35.223] [bmv2] [D] [thread 15882] [46.0] [cxt 0] Processing packet received on port 2
+[09:43:35.223] [bmv2] [D] [thread 15882] [46.0] [cxt 0] Parser 'parser': start
+[09:43:35.223] [bmv2] [D] [thread 15882] [46.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:43:35.223] [bmv2] [D] [thread 15882] [46.0] [cxt 0] Extracting header 'ethernet'
+[09:43:35.223] [bmv2] [D] [thread 15882] [46.0] [cxt 0] Parser state 'start': key is 8847
+[09:43:35.223] [bmv2] [T] [thread 15882] [46.0] [cxt 0] Bytes parsed: 14
+[09:43:35.223] [bmv2] [D] [thread 15882] [46.0] [cxt 0] Parser 'parser' entering state 'parse_mpls'
+[09:43:35.223] [bmv2] [D] [thread 15882] [46.0] [cxt 0] Extracting header 'mpls'
+[09:43:35.223] [bmv2] [D] [thread 15882] [46.0] [cxt 0] Parser state 'parse_mpls' has no switch, going to default next state
+[09:43:35.223] [bmv2] [T] [thread 15882] [46.0] [cxt 0] Bytes parsed: 18
+[09:43:35.223] [bmv2] [D] [thread 15882] [46.0] [cxt 0] Parser 'parser': end
+[09:43:35.223] [bmv2] [D] [thread 15882] [46.0] [cxt 0] Pipeline 'ingress': start
+[09:43:35.223] [bmv2] [T] [thread 15882] [46.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is true
+[09:43:35.223] [bmv2] [T] [thread 15882] [46.0] [cxt 0] Applying table 'Basic_ingress.mpls_exact'
+[09:43:35.223] [bmv2] [D] [thread 15882] [46.0] [cxt 0] Looking up key:
+* hdr.mpls.label      : 0003fc
+
+[09:43:35.223] [bmv2] [D] [thread 15882] [46.0] [cxt 0] Table 'Basic_ingress.mpls_exact': hit with handle 0
+[09:43:35.223] [bmv2] [D] [thread 15882] [46.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.mpls.label      : EXACT     0003fc
+Action entry: Basic_ingress.mpls_core - 4,7ee,
+
+[09:43:35.223] [bmv2] [D] [thread 15882] [46.0] [cxt 0] Action entry is Basic_ingress.mpls_core - 4,7ee,
+[09:43:35.223] [bmv2] [T] [thread 15882] [46.0] [cxt 0] Action Basic_ingress.mpls_core
+[09:43:35.223] [bmv2] [T] [thread 15882] [46.0] [cxt 0] mpls.p4(99) Primitive standard_metadata.egress_spec = port
+[09:43:35.223] [bmv2] [T] [thread 15882] [46.0] [cxt 0] mpls.p4(101) Primitive hdr.mpls.setValid()
+[09:43:35.223] [bmv2] [T] [thread 15882] [46.0] [cxt 0] mpls.p4(102) Primitive hdr.mpls.label = new_label
+[09:43:35.223] [bmv2] [T] [thread 15882] [46.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:43:35.223] [bmv2] [D] [thread 15882] [46.0] [cxt 0] Pipeline 'ingress': end
+[09:43:35.223] [bmv2] [D] [thread 15882] [46.0] [cxt 0] Egress port is 4
+[09:43:35.224] [bmv2] [D] [thread 15883] [46.0] [cxt 0] Pipeline 'egress': start
+[09:43:35.224] [bmv2] [D] [thread 15883] [46.0] [cxt 0] Pipeline 'egress': end
+[09:43:35.224] [bmv2] [D] [thread 15883] [46.0] [cxt 0] Deparser 'deparser': start
+[09:43:35.224] [bmv2] [T] [thread 15883] [46.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:43:35.224] [bmv2] [D] [thread 15883] [46.0] [cxt 0] Deparsing header 'ethernet'
+[09:43:35.224] [bmv2] [D] [thread 15883] [46.0] [cxt 0] Deparsing header 'mpls'
+[09:43:35.224] [bmv2] [D] [thread 15883] [46.0] [cxt 0] Deparser 'deparser': end
+[09:43:35.224] [bmv2] [D] [thread 15887] [46.0] [cxt 0] Transmitting packet of size 102 out of port 4
+[09:43:35.230] [bmv2] [D] [thread 15882] [47.0] [cxt 0] Processing packet received on port 4
+[09:43:35.230] [bmv2] [D] [thread 15882] [47.0] [cxt 0] Parser 'parser': start
+[09:43:35.230] [bmv2] [D] [thread 15882] [47.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:43:35.230] [bmv2] [D] [thread 15882] [47.0] [cxt 0] Extracting header 'ethernet'
+[09:43:35.230] [bmv2] [D] [thread 15882] [47.0] [cxt 0] Parser state 'start': key is 8847
+[09:43:35.230] [bmv2] [T] [thread 15882] [47.0] [cxt 0] Bytes parsed: 14
+[09:43:35.230] [bmv2] [D] [thread 15882] [47.0] [cxt 0] Parser 'parser' entering state 'parse_mpls'
+[09:43:35.230] [bmv2] [D] [thread 15882] [47.0] [cxt 0] Extracting header 'mpls'
+[09:43:35.230] [bmv2] [D] [thread 15882] [47.0] [cxt 0] Parser state 'parse_mpls' has no switch, going to default next state
+[09:43:35.230] [bmv2] [T] [thread 15882] [47.0] [cxt 0] Bytes parsed: 18
+[09:43:35.230] [bmv2] [D] [thread 15882] [47.0] [cxt 0] Parser 'parser': end
+[09:43:35.230] [bmv2] [D] [thread 15882] [47.0] [cxt 0] Pipeline 'ingress': start
+[09:43:35.231] [bmv2] [T] [thread 15882] [47.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is true
+[09:43:35.231] [bmv2] [T] [thread 15882] [47.0] [cxt 0] Applying table 'Basic_ingress.mpls_exact'
+[09:43:35.231] [bmv2] [D] [thread 15882] [47.0] [cxt 0] Looking up key:
+* hdr.mpls.label      : 000bcc
+
+[09:43:35.231] [bmv2] [D] [thread 15882] [47.0] [cxt 0] Table 'Basic_ingress.mpls_exact': hit with handle 1
+[09:43:35.231] [bmv2] [D] [thread 15882] [47.0] [cxt 0] Dumping entry 1
+Match key:
+* hdr.mpls.label      : EXACT     000bcc
+Action entry: Basic_ingress.mpls_core - 3,83f,
+
+[09:43:35.231] [bmv2] [D] [thread 15882] [47.0] [cxt 0] Action entry is Basic_ingress.mpls_core - 3,83f,
+[09:43:35.231] [bmv2] [T] [thread 15882] [47.0] [cxt 0] Action Basic_ingress.mpls_core
+[09:43:35.231] [bmv2] [T] [thread 15882] [47.0] [cxt 0] mpls.p4(99) Primitive standard_metadata.egress_spec = port
+[09:43:35.231] [bmv2] [T] [thread 15882] [47.0] [cxt 0] mpls.p4(101) Primitive hdr.mpls.setValid()
+[09:43:35.231] [bmv2] [T] [thread 15882] [47.0] [cxt 0] mpls.p4(102) Primitive hdr.mpls.label = new_label
+[09:43:35.231] [bmv2] [T] [thread 15882] [47.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:43:35.231] [bmv2] [D] [thread 15882] [47.0] [cxt 0] Pipeline 'ingress': end
+[09:43:35.231] [bmv2] [D] [thread 15882] [47.0] [cxt 0] Egress port is 3
+[09:43:35.231] [bmv2] [D] [thread 15886] [47.0] [cxt 0] Pipeline 'egress': start
+[09:43:35.231] [bmv2] [D] [thread 15886] [47.0] [cxt 0] Pipeline 'egress': end
+[09:43:35.231] [bmv2] [D] [thread 15886] [47.0] [cxt 0] Deparser 'deparser': start
+[09:43:35.231] [bmv2] [T] [thread 15886] [47.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:43:35.231] [bmv2] [D] [thread 15886] [47.0] [cxt 0] Deparsing header 'ethernet'
+[09:43:35.231] [bmv2] [D] [thread 15886] [47.0] [cxt 0] Deparsing header 'mpls'
+[09:43:35.231] [bmv2] [D] [thread 15886] [47.0] [cxt 0] Deparser 'deparser': end
+[09:43:35.231] [bmv2] [D] [thread 15887] [47.0] [cxt 0] Transmitting packet of size 102 out of port 3
+[09:43:36.223] [bmv2] [D] [thread 15882] [48.0] [cxt 0] Processing packet received on port 2
+[09:43:36.223] [bmv2] [D] [thread 15882] [48.0] [cxt 0] Parser 'parser': start
+[09:43:36.223] [bmv2] [D] [thread 15882] [48.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:43:36.223] [bmv2] [D] [thread 15882] [48.0] [cxt 0] Extracting header 'ethernet'
+[09:43:36.223] [bmv2] [D] [thread 15882] [48.0] [cxt 0] Parser state 'start': key is 8847
+[09:43:36.223] [bmv2] [T] [thread 15882] [48.0] [cxt 0] Bytes parsed: 14
+[09:43:36.223] [bmv2] [D] [thread 15882] [48.0] [cxt 0] Parser 'parser' entering state 'parse_mpls'
+[09:43:36.223] [bmv2] [D] [thread 15882] [48.0] [cxt 0] Extracting header 'mpls'
+[09:43:36.223] [bmv2] [D] [thread 15882] [48.0] [cxt 0] Parser state 'parse_mpls' has no switch, going to default next state
+[09:43:36.223] [bmv2] [T] [thread 15882] [48.0] [cxt 0] Bytes parsed: 18
+[09:43:36.223] [bmv2] [D] [thread 15882] [48.0] [cxt 0] Parser 'parser': end
+[09:43:36.223] [bmv2] [D] [thread 15882] [48.0] [cxt 0] Pipeline 'ingress': start
+[09:43:36.223] [bmv2] [T] [thread 15882] [48.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is true
+[09:43:36.223] [bmv2] [T] [thread 15882] [48.0] [cxt 0] Applying table 'Basic_ingress.mpls_exact'
+[09:43:36.223] [bmv2] [D] [thread 15882] [48.0] [cxt 0] Looking up key:
+* hdr.mpls.label      : 0003fc
+
+[09:43:36.223] [bmv2] [D] [thread 15882] [48.0] [cxt 0] Table 'Basic_ingress.mpls_exact': hit with handle 0
+[09:43:36.223] [bmv2] [D] [thread 15882] [48.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.mpls.label      : EXACT     0003fc
+Action entry: Basic_ingress.mpls_core - 4,7ee,
+
+[09:43:36.223] [bmv2] [D] [thread 15882] [48.0] [cxt 0] Action entry is Basic_ingress.mpls_core - 4,7ee,
+[09:43:36.224] [bmv2] [T] [thread 15882] [48.0] [cxt 0] Action Basic_ingress.mpls_core
+[09:43:36.224] [bmv2] [T] [thread 15882] [48.0] [cxt 0] mpls.p4(99) Primitive standard_metadata.egress_spec = port
+[09:43:36.224] [bmv2] [T] [thread 15882] [48.0] [cxt 0] mpls.p4(101) Primitive hdr.mpls.setValid()
+[09:43:36.224] [bmv2] [T] [thread 15882] [48.0] [cxt 0] mpls.p4(102) Primitive hdr.mpls.label = new_label
+[09:43:36.224] [bmv2] [T] [thread 15882] [48.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:43:36.224] [bmv2] [D] [thread 15882] [48.0] [cxt 0] Pipeline 'ingress': end
+[09:43:36.224] [bmv2] [D] [thread 15882] [48.0] [cxt 0] Egress port is 4
+[09:43:36.224] [bmv2] [D] [thread 15883] [48.0] [cxt 0] Pipeline 'egress': start
+[09:43:36.224] [bmv2] [D] [thread 15883] [48.0] [cxt 0] Pipeline 'egress': end
+[09:43:36.224] [bmv2] [D] [thread 15883] [48.0] [cxt 0] Deparser 'deparser': start
+[09:43:36.224] [bmv2] [T] [thread 15883] [48.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:43:36.224] [bmv2] [D] [thread 15883] [48.0] [cxt 0] Deparsing header 'ethernet'
+[09:43:36.224] [bmv2] [D] [thread 15883] [48.0] [cxt 0] Deparsing header 'mpls'
+[09:43:36.224] [bmv2] [D] [thread 15883] [48.0] [cxt 0] Deparser 'deparser': end
+[09:43:36.224] [bmv2] [D] [thread 15887] [48.0] [cxt 0] Transmitting packet of size 102 out of port 4
+[09:43:36.230] [bmv2] [D] [thread 15882] [49.0] [cxt 0] Processing packet received on port 4
+[09:43:36.230] [bmv2] [D] [thread 15882] [49.0] [cxt 0] Parser 'parser': start
+[09:43:36.230] [bmv2] [D] [thread 15882] [49.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:43:36.230] [bmv2] [D] [thread 15882] [49.0] [cxt 0] Extracting header 'ethernet'
+[09:43:36.231] [bmv2] [D] [thread 15882] [49.0] [cxt 0] Parser state 'start': key is 8847
+[09:43:36.231] [bmv2] [T] [thread 15882] [49.0] [cxt 0] Bytes parsed: 14
+[09:43:36.231] [bmv2] [D] [thread 15882] [49.0] [cxt 0] Parser 'parser' entering state 'parse_mpls'
+[09:43:36.231] [bmv2] [D] [thread 15882] [49.0] [cxt 0] Extracting header 'mpls'
+[09:43:36.231] [bmv2] [D] [thread 15882] [49.0] [cxt 0] Parser state 'parse_mpls' has no switch, going to default next state
+[09:43:36.231] [bmv2] [T] [thread 15882] [49.0] [cxt 0] Bytes parsed: 18
+[09:43:36.231] [bmv2] [D] [thread 15882] [49.0] [cxt 0] Parser 'parser': end
+[09:43:36.231] [bmv2] [D] [thread 15882] [49.0] [cxt 0] Pipeline 'ingress': start
+[09:43:36.231] [bmv2] [T] [thread 15882] [49.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is true
+[09:43:36.231] [bmv2] [T] [thread 15882] [49.0] [cxt 0] Applying table 'Basic_ingress.mpls_exact'
+[09:43:36.231] [bmv2] [D] [thread 15882] [49.0] [cxt 0] Looking up key:
+* hdr.mpls.label      : 000bcc
+
+[09:43:36.231] [bmv2] [D] [thread 15882] [49.0] [cxt 0] Table 'Basic_ingress.mpls_exact': hit with handle 1
+[09:43:36.231] [bmv2] [D] [thread 15882] [49.0] [cxt 0] Dumping entry 1
+Match key:
+* hdr.mpls.label      : EXACT     000bcc
+Action entry: Basic_ingress.mpls_core - 3,83f,
+
+[09:43:36.231] [bmv2] [D] [thread 15882] [49.0] [cxt 0] Action entry is Basic_ingress.mpls_core - 3,83f,
+[09:43:36.231] [bmv2] [T] [thread 15882] [49.0] [cxt 0] Action Basic_ingress.mpls_core
+[09:43:36.231] [bmv2] [T] [thread 15882] [49.0] [cxt 0] mpls.p4(99) Primitive standard_metadata.egress_spec = port
+[09:43:36.231] [bmv2] [T] [thread 15882] [49.0] [cxt 0] mpls.p4(101) Primitive hdr.mpls.setValid()
+[09:43:36.231] [bmv2] [T] [thread 15882] [49.0] [cxt 0] mpls.p4(102) Primitive hdr.mpls.label = new_label
+[09:43:36.231] [bmv2] [T] [thread 15882] [49.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:43:36.231] [bmv2] [D] [thread 15882] [49.0] [cxt 0] Pipeline 'ingress': end
+[09:43:36.231] [bmv2] [D] [thread 15882] [49.0] [cxt 0] Egress port is 3
+[09:43:36.231] [bmv2] [D] [thread 15886] [49.0] [cxt 0] Pipeline 'egress': start
+[09:43:36.231] [bmv2] [D] [thread 15886] [49.0] [cxt 0] Pipeline 'egress': end
+[09:43:36.231] [bmv2] [D] [thread 15886] [49.0] [cxt 0] Deparser 'deparser': start
+[09:43:36.231] [bmv2] [T] [thread 15886] [49.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:43:36.231] [bmv2] [D] [thread 15886] [49.0] [cxt 0] Deparsing header 'ethernet'
+[09:43:36.231] [bmv2] [D] [thread 15886] [49.0] [cxt 0] Deparsing header 'mpls'
+[09:43:36.231] [bmv2] [D] [thread 15886] [49.0] [cxt 0] Deparser 'deparser': end
+[09:43:36.232] [bmv2] [D] [thread 15887] [49.0] [cxt 0] Transmitting packet of size 102 out of port 3
+[09:43:37.224] [bmv2] [D] [thread 15882] [50.0] [cxt 0] Processing packet received on port 2
+[09:43:37.224] [bmv2] [D] [thread 15882] [50.0] [cxt 0] Parser 'parser': start
+[09:43:37.224] [bmv2] [D] [thread 15882] [50.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:43:37.224] [bmv2] [D] [thread 15882] [50.0] [cxt 0] Extracting header 'ethernet'
+[09:43:37.224] [bmv2] [D] [thread 15882] [50.0] [cxt 0] Parser state 'start': key is 8847
+[09:43:37.224] [bmv2] [T] [thread 15882] [50.0] [cxt 0] Bytes parsed: 14
+[09:43:37.224] [bmv2] [D] [thread 15882] [50.0] [cxt 0] Parser 'parser' entering state 'parse_mpls'
+[09:43:37.224] [bmv2] [D] [thread 15882] [50.0] [cxt 0] Extracting header 'mpls'
+[09:43:37.224] [bmv2] [D] [thread 15882] [50.0] [cxt 0] Parser state 'parse_mpls' has no switch, going to default next state
+[09:43:37.224] [bmv2] [T] [thread 15882] [50.0] [cxt 0] Bytes parsed: 18
+[09:43:37.224] [bmv2] [D] [thread 15882] [50.0] [cxt 0] Parser 'parser': end
+[09:43:37.224] [bmv2] [D] [thread 15882] [50.0] [cxt 0] Pipeline 'ingress': start
+[09:43:37.224] [bmv2] [T] [thread 15882] [50.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is true
+[09:43:37.224] [bmv2] [T] [thread 15882] [50.0] [cxt 0] Applying table 'Basic_ingress.mpls_exact'
+[09:43:37.224] [bmv2] [D] [thread 15882] [50.0] [cxt 0] Looking up key:
+* hdr.mpls.label      : 0003fc
+
+[09:43:37.224] [bmv2] [D] [thread 15882] [50.0] [cxt 0] Table 'Basic_ingress.mpls_exact': hit with handle 0
+[09:43:37.225] [bmv2] [D] [thread 15882] [50.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.mpls.label      : EXACT     0003fc
+Action entry: Basic_ingress.mpls_core - 4,7ee,
+
+[09:43:37.225] [bmv2] [D] [thread 15882] [50.0] [cxt 0] Action entry is Basic_ingress.mpls_core - 4,7ee,
+[09:43:37.225] [bmv2] [T] [thread 15882] [50.0] [cxt 0] Action Basic_ingress.mpls_core
+[09:43:37.225] [bmv2] [T] [thread 15882] [50.0] [cxt 0] mpls.p4(99) Primitive standard_metadata.egress_spec = port
+[09:43:37.225] [bmv2] [T] [thread 15882] [50.0] [cxt 0] mpls.p4(101) Primitive hdr.mpls.setValid()
+[09:43:37.225] [bmv2] [T] [thread 15882] [50.0] [cxt 0] mpls.p4(102) Primitive hdr.mpls.label = new_label
+[09:43:37.225] [bmv2] [T] [thread 15882] [50.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:43:37.225] [bmv2] [D] [thread 15882] [50.0] [cxt 0] Pipeline 'ingress': end
+[09:43:37.225] [bmv2] [D] [thread 15882] [50.0] [cxt 0] Egress port is 4
+[09:43:37.225] [bmv2] [D] [thread 15883] [50.0] [cxt 0] Pipeline 'egress': start
+[09:43:37.225] [bmv2] [D] [thread 15883] [50.0] [cxt 0] Pipeline 'egress': end
+[09:43:37.225] [bmv2] [D] [thread 15883] [50.0] [cxt 0] Deparser 'deparser': start
+[09:43:37.225] [bmv2] [T] [thread 15883] [50.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:43:37.225] [bmv2] [D] [thread 15883] [50.0] [cxt 0] Deparsing header 'ethernet'
+[09:43:37.225] [bmv2] [D] [thread 15883] [50.0] [cxt 0] Deparsing header 'mpls'
+[09:43:37.225] [bmv2] [D] [thread 15883] [50.0] [cxt 0] Deparser 'deparser': end
+[09:43:37.225] [bmv2] [D] [thread 15887] [50.0] [cxt 0] Transmitting packet of size 102 out of port 4
+[09:43:37.231] [bmv2] [D] [thread 15882] [51.0] [cxt 0] Processing packet received on port 4
+[09:43:37.231] [bmv2] [D] [thread 15882] [51.0] [cxt 0] Parser 'parser': start
+[09:43:37.231] [bmv2] [D] [thread 15882] [51.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:43:37.231] [bmv2] [D] [thread 15882] [51.0] [cxt 0] Extracting header 'ethernet'
+[09:43:37.231] [bmv2] [D] [thread 15882] [51.0] [cxt 0] Parser state 'start': key is 8847
+[09:43:37.231] [bmv2] [T] [thread 15882] [51.0] [cxt 0] Bytes parsed: 14
+[09:43:37.231] [bmv2] [D] [thread 15882] [51.0] [cxt 0] Parser 'parser' entering state 'parse_mpls'
+[09:43:37.231] [bmv2] [D] [thread 15882] [51.0] [cxt 0] Extracting header 'mpls'
+[09:43:37.232] [bmv2] [D] [thread 15882] [51.0] [cxt 0] Parser state 'parse_mpls' has no switch, going to default next state
+[09:43:37.232] [bmv2] [T] [thread 15882] [51.0] [cxt 0] Bytes parsed: 18
+[09:43:37.232] [bmv2] [D] [thread 15882] [51.0] [cxt 0] Parser 'parser': end
+[09:43:37.232] [bmv2] [D] [thread 15882] [51.0] [cxt 0] Pipeline 'ingress': start
+[09:43:37.232] [bmv2] [T] [thread 15882] [51.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is true
+[09:43:37.232] [bmv2] [T] [thread 15882] [51.0] [cxt 0] Applying table 'Basic_ingress.mpls_exact'
+[09:43:37.232] [bmv2] [D] [thread 15882] [51.0] [cxt 0] Looking up key:
+* hdr.mpls.label      : 000bcc
+
+[09:43:37.232] [bmv2] [D] [thread 15882] [51.0] [cxt 0] Table 'Basic_ingress.mpls_exact': hit with handle 1
+[09:43:37.232] [bmv2] [D] [thread 15882] [51.0] [cxt 0] Dumping entry 1
+Match key:
+* hdr.mpls.label      : EXACT     000bcc
+Action entry: Basic_ingress.mpls_core - 3,83f,
+
+[09:43:37.232] [bmv2] [D] [thread 15882] [51.0] [cxt 0] Action entry is Basic_ingress.mpls_core - 3,83f,
+[09:43:37.232] [bmv2] [T] [thread 15882] [51.0] [cxt 0] Action Basic_ingress.mpls_core
+[09:43:37.232] [bmv2] [T] [thread 15882] [51.0] [cxt 0] mpls.p4(99) Primitive standard_metadata.egress_spec = port
+[09:43:37.232] [bmv2] [T] [thread 15882] [51.0] [cxt 0] mpls.p4(101) Primitive hdr.mpls.setValid()
+[09:43:37.232] [bmv2] [T] [thread 15882] [51.0] [cxt 0] mpls.p4(102) Primitive hdr.mpls.label = new_label
+[09:43:37.232] [bmv2] [T] [thread 15882] [51.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:43:37.232] [bmv2] [D] [thread 15882] [51.0] [cxt 0] Pipeline 'ingress': end
+[09:43:37.232] [bmv2] [D] [thread 15882] [51.0] [cxt 0] Egress port is 3
+[09:43:37.232] [bmv2] [D] [thread 15886] [51.0] [cxt 0] Pipeline 'egress': start
+[09:43:37.232] [bmv2] [D] [thread 15886] [51.0] [cxt 0] Pipeline 'egress': end
+[09:43:37.232] [bmv2] [D] [thread 15886] [51.0] [cxt 0] Deparser 'deparser': start
+[09:43:37.232] [bmv2] [T] [thread 15886] [51.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:43:37.232] [bmv2] [D] [thread 15886] [51.0] [cxt 0] Deparsing header 'ethernet'
+[09:43:37.232] [bmv2] [D] [thread 15886] [51.0] [cxt 0] Deparsing header 'mpls'
+[09:43:37.232] [bmv2] [D] [thread 15886] [51.0] [cxt 0] Deparser 'deparser': end
+[09:43:37.232] [bmv2] [D] [thread 15887] [51.0] [cxt 0] Transmitting packet of size 102 out of port 3
+[09:43:42.230] [bmv2] [D] [thread 15882] [52.0] [cxt 0] Processing packet received on port 4
+[09:43:42.230] [bmv2] [D] [thread 15882] [52.0] [cxt 0] Parser 'parser': start
+[09:43:42.230] [bmv2] [D] [thread 15882] [52.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:43:42.230] [bmv2] [D] [thread 15882] [52.0] [cxt 0] Extracting header 'ethernet'
+[09:43:42.230] [bmv2] [D] [thread 15882] [52.0] [cxt 0] Parser state 'start': key is 8847
+[09:43:42.230] [bmv2] [T] [thread 15882] [52.0] [cxt 0] Bytes parsed: 14
+[09:43:42.230] [bmv2] [D] [thread 15882] [52.0] [cxt 0] Parser 'parser' entering state 'parse_mpls'
+[09:43:42.230] [bmv2] [D] [thread 15882] [52.0] [cxt 0] Extracting header 'mpls'
+[09:43:42.230] [bmv2] [D] [thread 15882] [52.0] [cxt 0] Parser state 'parse_mpls' has no switch, going to default next state
+[09:43:42.230] [bmv2] [T] [thread 15882] [52.0] [cxt 0] Bytes parsed: 18
+[09:43:42.230] [bmv2] [D] [thread 15882] [52.0] [cxt 0] Parser 'parser': end
+[09:43:42.230] [bmv2] [D] [thread 15882] [52.0] [cxt 0] Pipeline 'ingress': start
+[09:43:42.230] [bmv2] [T] [thread 15882] [52.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is true
+[09:43:42.230] [bmv2] [T] [thread 15882] [52.0] [cxt 0] Applying table 'Basic_ingress.mpls_exact'
+[09:43:42.230] [bmv2] [D] [thread 15882] [52.0] [cxt 0] Looking up key:
+* hdr.mpls.label      : 000bcc
+
+[09:43:42.230] [bmv2] [D] [thread 15882] [52.0] [cxt 0] Table 'Basic_ingress.mpls_exact': hit with handle 1
+[09:43:42.230] [bmv2] [D] [thread 15882] [52.0] [cxt 0] Dumping entry 1
+Match key:
+* hdr.mpls.label      : EXACT     000bcc
+Action entry: Basic_ingress.mpls_core - 3,83f,
+
+[09:43:42.230] [bmv2] [D] [thread 15882] [52.0] [cxt 0] Action entry is Basic_ingress.mpls_core - 3,83f,
+[09:43:42.230] [bmv2] [T] [thread 15882] [52.0] [cxt 0] Action Basic_ingress.mpls_core
+[09:43:42.230] [bmv2] [T] [thread 15882] [52.0] [cxt 0] mpls.p4(99) Primitive standard_metadata.egress_spec = port
+[09:43:42.230] [bmv2] [T] [thread 15882] [52.0] [cxt 0] mpls.p4(101) Primitive hdr.mpls.setValid()
+[09:43:42.230] [bmv2] [T] [thread 15882] [52.0] [cxt 0] mpls.p4(102) Primitive hdr.mpls.label = new_label
+[09:43:42.230] [bmv2] [T] [thread 15882] [52.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:43:42.230] [bmv2] [D] [thread 15882] [52.0] [cxt 0] Pipeline 'ingress': end
+[09:43:42.230] [bmv2] [D] [thread 15882] [52.0] [cxt 0] Egress port is 3
+[09:43:42.231] [bmv2] [D] [thread 15886] [52.0] [cxt 0] Pipeline 'egress': start
+[09:43:42.231] [bmv2] [D] [thread 15886] [52.0] [cxt 0] Pipeline 'egress': end
+[09:43:42.231] [bmv2] [D] [thread 15886] [52.0] [cxt 0] Deparser 'deparser': start
+[09:43:42.231] [bmv2] [T] [thread 15886] [52.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:43:42.231] [bmv2] [D] [thread 15886] [52.0] [cxt 0] Deparsing header 'ethernet'
+[09:43:42.231] [bmv2] [D] [thread 15886] [52.0] [cxt 0] Deparsing header 'mpls'
+[09:43:42.231] [bmv2] [D] [thread 15886] [52.0] [cxt 0] Deparser 'deparser': end
+[09:43:42.231] [bmv2] [D] [thread 15887] [52.0] [cxt 0] Transmitting packet of size 102 out of port 3
+[09:43:42.234] [bmv2] [D] [thread 15882] [53.0] [cxt 0] Processing packet received on port 2
+[09:43:42.234] [bmv2] [D] [thread 15882] [53.0] [cxt 0] Parser 'parser': start
+[09:43:42.234] [bmv2] [D] [thread 15882] [53.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:43:42.234] [bmv2] [D] [thread 15882] [53.0] [cxt 0] Extracting header 'ethernet'
+[09:43:42.234] [bmv2] [D] [thread 15882] [53.0] [cxt 0] Parser state 'start': key is 8847
+[09:43:42.234] [bmv2] [T] [thread 15882] [53.0] [cxt 0] Bytes parsed: 14
+[09:43:42.234] [bmv2] [D] [thread 15882] [53.0] [cxt 0] Parser 'parser' entering state 'parse_mpls'
+[09:43:42.234] [bmv2] [D] [thread 15882] [53.0] [cxt 0] Extracting header 'mpls'
+[09:43:42.234] [bmv2] [D] [thread 15882] [53.0] [cxt 0] Parser state 'parse_mpls' has no switch, going to default next state
+[09:43:42.234] [bmv2] [T] [thread 15882] [53.0] [cxt 0] Bytes parsed: 18
+[09:43:42.234] [bmv2] [D] [thread 15882] [53.0] [cxt 0] Parser 'parser': end
+[09:43:42.234] [bmv2] [D] [thread 15882] [53.0] [cxt 0] Pipeline 'ingress': start
+[09:43:42.234] [bmv2] [T] [thread 15882] [53.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is true
+[09:43:42.234] [bmv2] [T] [thread 15882] [53.0] [cxt 0] Applying table 'Basic_ingress.mpls_exact'
+[09:43:42.234] [bmv2] [D] [thread 15882] [53.0] [cxt 0] Looking up key:
+* hdr.mpls.label      : 0003fc
+
+[09:43:42.234] [bmv2] [D] [thread 15882] [53.0] [cxt 0] Table 'Basic_ingress.mpls_exact': hit with handle 0
+[09:43:42.234] [bmv2] [D] [thread 15882] [53.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.mpls.label      : EXACT     0003fc
+Action entry: Basic_ingress.mpls_core - 4,7ee,
+
+[09:43:42.234] [bmv2] [D] [thread 15882] [53.0] [cxt 0] Action entry is Basic_ingress.mpls_core - 4,7ee,
+[09:43:42.234] [bmv2] [T] [thread 15882] [53.0] [cxt 0] Action Basic_ingress.mpls_core
+[09:43:42.234] [bmv2] [T] [thread 15882] [53.0] [cxt 0] mpls.p4(99) Primitive standard_metadata.egress_spec = port
+[09:43:42.235] [bmv2] [T] [thread 15882] [53.0] [cxt 0] mpls.p4(101) Primitive hdr.mpls.setValid()
+[09:43:42.235] [bmv2] [T] [thread 15882] [53.0] [cxt 0] mpls.p4(102) Primitive hdr.mpls.label = new_label
+[09:43:42.235] [bmv2] [T] [thread 15882] [53.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:43:42.235] [bmv2] [D] [thread 15882] [53.0] [cxt 0] Pipeline 'ingress': end
+[09:43:42.235] [bmv2] [D] [thread 15882] [53.0] [cxt 0] Egress port is 4
+[09:43:42.235] [bmv2] [D] [thread 15883] [53.0] [cxt 0] Pipeline 'egress': start
+[09:43:42.235] [bmv2] [D] [thread 15883] [53.0] [cxt 0] Pipeline 'egress': end
+[09:43:42.235] [bmv2] [D] [thread 15883] [53.0] [cxt 0] Deparser 'deparser': start
+[09:43:42.235] [bmv2] [T] [thread 15883] [53.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:43:42.235] [bmv2] [D] [thread 15883] [53.0] [cxt 0] Deparsing header 'ethernet'
+[09:43:42.235] [bmv2] [D] [thread 15883] [53.0] [cxt 0] Deparsing header 'mpls'
+[09:43:42.235] [bmv2] [D] [thread 15883] [53.0] [cxt 0] Deparser 'deparser': end
+[09:43:42.235] [bmv2] [D] [thread 15887] [53.0] [cxt 0] Transmitting packet of size 102 out of port 4
+[09:43:43.231] [bmv2] [D] [thread 15882] [54.0] [cxt 0] Processing packet received on port 4
+[09:43:43.231] [bmv2] [D] [thread 15882] [54.0] [cxt 0] Parser 'parser': start
+[09:43:43.231] [bmv2] [D] [thread 15882] [54.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:43:43.231] [bmv2] [D] [thread 15882] [54.0] [cxt 0] Extracting header 'ethernet'
+[09:43:43.231] [bmv2] [D] [thread 15882] [54.0] [cxt 0] Parser state 'start': key is 8847
+[09:43:43.231] [bmv2] [T] [thread 15882] [54.0] [cxt 0] Bytes parsed: 14
+[09:43:43.231] [bmv2] [D] [thread 15882] [54.0] [cxt 0] Parser 'parser' entering state 'parse_mpls'
+[09:43:43.231] [bmv2] [D] [thread 15882] [54.0] [cxt 0] Extracting header 'mpls'
+[09:43:43.231] [bmv2] [D] [thread 15882] [54.0] [cxt 0] Parser state 'parse_mpls' has no switch, going to default next state
+[09:43:43.231] [bmv2] [T] [thread 15882] [54.0] [cxt 0] Bytes parsed: 18
+[09:43:43.231] [bmv2] [D] [thread 15882] [54.0] [cxt 0] Parser 'parser': end
+[09:43:43.231] [bmv2] [D] [thread 15882] [54.0] [cxt 0] Pipeline 'ingress': start
+[09:43:43.231] [bmv2] [T] [thread 15882] [54.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is true
+[09:43:43.231] [bmv2] [T] [thread 15882] [54.0] [cxt 0] Applying table 'Basic_ingress.mpls_exact'
+[09:43:43.231] [bmv2] [D] [thread 15882] [54.0] [cxt 0] Looking up key:
+* hdr.mpls.label      : 000bcc
+
+[09:43:43.231] [bmv2] [D] [thread 15882] [54.0] [cxt 0] Table 'Basic_ingress.mpls_exact': hit with handle 1
+[09:43:43.231] [bmv2] [D] [thread 15882] [54.0] [cxt 0] Dumping entry 1
+Match key:
+* hdr.mpls.label      : EXACT     000bcc
+Action entry: Basic_ingress.mpls_core - 3,83f,
+
+[09:43:43.232] [bmv2] [D] [thread 15882] [54.0] [cxt 0] Action entry is Basic_ingress.mpls_core - 3,83f,
+[09:43:43.232] [bmv2] [T] [thread 15882] [54.0] [cxt 0] Action Basic_ingress.mpls_core
+[09:43:43.232] [bmv2] [T] [thread 15882] [54.0] [cxt 0] mpls.p4(99) Primitive standard_metadata.egress_spec = port
+[09:43:43.232] [bmv2] [T] [thread 15882] [54.0] [cxt 0] mpls.p4(101) Primitive hdr.mpls.setValid()
+[09:43:43.232] [bmv2] [T] [thread 15882] [54.0] [cxt 0] mpls.p4(102) Primitive hdr.mpls.label = new_label
+[09:43:43.232] [bmv2] [T] [thread 15882] [54.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:43:43.232] [bmv2] [D] [thread 15882] [54.0] [cxt 0] Pipeline 'ingress': end
+[09:43:43.232] [bmv2] [D] [thread 15882] [54.0] [cxt 0] Egress port is 3
+[09:43:43.232] [bmv2] [D] [thread 15886] [54.0] [cxt 0] Pipeline 'egress': start
+[09:43:43.232] [bmv2] [D] [thread 15886] [54.0] [cxt 0] Pipeline 'egress': end
+[09:43:43.232] [bmv2] [D] [thread 15886] [54.0] [cxt 0] Deparser 'deparser': start
+[09:43:43.232] [bmv2] [T] [thread 15886] [54.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:43:43.232] [bmv2] [D] [thread 15886] [54.0] [cxt 0] Deparsing header 'ethernet'
+[09:43:43.232] [bmv2] [D] [thread 15886] [54.0] [cxt 0] Deparsing header 'mpls'
+[09:43:43.232] [bmv2] [D] [thread 15886] [54.0] [cxt 0] Deparser 'deparser': end
+[09:43:43.232] [bmv2] [D] [thread 15887] [54.0] [cxt 0] Transmitting packet of size 102 out of port 3
+[09:43:43.236] [bmv2] [D] [thread 15882] [55.0] [cxt 0] Processing packet received on port 2
+[09:43:43.236] [bmv2] [D] [thread 15882] [55.0] [cxt 0] Parser 'parser': start
+[09:43:43.236] [bmv2] [D] [thread 15882] [55.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:43:43.236] [bmv2] [D] [thread 15882] [55.0] [cxt 0] Extracting header 'ethernet'
+[09:43:43.236] [bmv2] [D] [thread 15882] [55.0] [cxt 0] Parser state 'start': key is 8847
+[09:43:43.236] [bmv2] [T] [thread 15882] [55.0] [cxt 0] Bytes parsed: 14
+[09:43:43.236] [bmv2] [D] [thread 15882] [55.0] [cxt 0] Parser 'parser' entering state 'parse_mpls'
+[09:43:43.236] [bmv2] [D] [thread 15882] [55.0] [cxt 0] Extracting header 'mpls'
+[09:43:43.236] [bmv2] [D] [thread 15882] [55.0] [cxt 0] Parser state 'parse_mpls' has no switch, going to default next state
+[09:43:43.236] [bmv2] [T] [thread 15882] [55.0] [cxt 0] Bytes parsed: 18
+[09:43:43.236] [bmv2] [D] [thread 15882] [55.0] [cxt 0] Parser 'parser': end
+[09:43:43.236] [bmv2] [D] [thread 15882] [55.0] [cxt 0] Pipeline 'ingress': start
+[09:43:43.236] [bmv2] [T] [thread 15882] [55.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is true
+[09:43:43.236] [bmv2] [T] [thread 15882] [55.0] [cxt 0] Applying table 'Basic_ingress.mpls_exact'
+[09:43:43.236] [bmv2] [D] [thread 15882] [55.0] [cxt 0] Looking up key:
+* hdr.mpls.label      : 0003fc
+
+[09:43:43.236] [bmv2] [D] [thread 15882] [55.0] [cxt 0] Table 'Basic_ingress.mpls_exact': hit with handle 0
+[09:43:43.236] [bmv2] [D] [thread 15882] [55.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.mpls.label      : EXACT     0003fc
+Action entry: Basic_ingress.mpls_core - 4,7ee,
+
+[09:43:43.236] [bmv2] [D] [thread 15882] [55.0] [cxt 0] Action entry is Basic_ingress.mpls_core - 4,7ee,
+[09:43:43.236] [bmv2] [T] [thread 15882] [55.0] [cxt 0] Action Basic_ingress.mpls_core
+[09:43:43.236] [bmv2] [T] [thread 15882] [55.0] [cxt 0] mpls.p4(99) Primitive standard_metadata.egress_spec = port
+[09:43:43.236] [bmv2] [T] [thread 15882] [55.0] [cxt 0] mpls.p4(101) Primitive hdr.mpls.setValid()
+[09:43:43.236] [bmv2] [T] [thread 15882] [55.0] [cxt 0] mpls.p4(102) Primitive hdr.mpls.label = new_label
+[09:43:43.236] [bmv2] [T] [thread 15882] [55.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:43:43.236] [bmv2] [D] [thread 15882] [55.0] [cxt 0] Pipeline 'ingress': end
+[09:43:43.236] [bmv2] [D] [thread 15882] [55.0] [cxt 0] Egress port is 4
+[09:43:43.236] [bmv2] [D] [thread 15883] [55.0] [cxt 0] Pipeline 'egress': start
+[09:43:43.236] [bmv2] [D] [thread 15883] [55.0] [cxt 0] Pipeline 'egress': end
+[09:43:43.236] [bmv2] [D] [thread 15883] [55.0] [cxt 0] Deparser 'deparser': start
+[09:43:43.236] [bmv2] [T] [thread 15883] [55.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:43:43.236] [bmv2] [D] [thread 15883] [55.0] [cxt 0] Deparsing header 'ethernet'
+[09:43:43.236] [bmv2] [D] [thread 15883] [55.0] [cxt 0] Deparsing header 'mpls'
+[09:43:43.236] [bmv2] [D] [thread 15883] [55.0] [cxt 0] Deparser 'deparser': end
+[09:43:43.236] [bmv2] [D] [thread 15887] [55.0] [cxt 0] Transmitting packet of size 102 out of port 4
+[09:43:44.232] [bmv2] [D] [thread 15882] [56.0] [cxt 0] Processing packet received on port 4
+[09:43:44.232] [bmv2] [D] [thread 15882] [56.0] [cxt 0] Parser 'parser': start
+[09:43:44.232] [bmv2] [D] [thread 15882] [56.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:43:44.232] [bmv2] [D] [thread 15882] [56.0] [cxt 0] Extracting header 'ethernet'
+[09:43:44.232] [bmv2] [D] [thread 15882] [56.0] [cxt 0] Parser state 'start': key is 8847
+[09:43:44.232] [bmv2] [T] [thread 15882] [56.0] [cxt 0] Bytes parsed: 14
+[09:43:44.232] [bmv2] [D] [thread 15882] [56.0] [cxt 0] Parser 'parser' entering state 'parse_mpls'
+[09:43:44.232] [bmv2] [D] [thread 15882] [56.0] [cxt 0] Extracting header 'mpls'
+[09:43:44.232] [bmv2] [D] [thread 15882] [56.0] [cxt 0] Parser state 'parse_mpls' has no switch, going to default next state
+[09:43:44.232] [bmv2] [T] [thread 15882] [56.0] [cxt 0] Bytes parsed: 18
+[09:43:44.232] [bmv2] [D] [thread 15882] [56.0] [cxt 0] Parser 'parser': end
+[09:43:44.232] [bmv2] [D] [thread 15882] [56.0] [cxt 0] Pipeline 'ingress': start
+[09:43:44.232] [bmv2] [T] [thread 15882] [56.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is true
+[09:43:44.232] [bmv2] [T] [thread 15882] [56.0] [cxt 0] Applying table 'Basic_ingress.mpls_exact'
+[09:43:44.233] [bmv2] [D] [thread 15882] [56.0] [cxt 0] Looking up key:
+* hdr.mpls.label      : 000bcc
+
+[09:43:44.233] [bmv2] [D] [thread 15882] [56.0] [cxt 0] Table 'Basic_ingress.mpls_exact': hit with handle 1
+[09:43:44.233] [bmv2] [D] [thread 15882] [56.0] [cxt 0] Dumping entry 1
+Match key:
+* hdr.mpls.label      : EXACT     000bcc
+Action entry: Basic_ingress.mpls_core - 3,83f,
+
+[09:43:44.233] [bmv2] [D] [thread 15882] [56.0] [cxt 0] Action entry is Basic_ingress.mpls_core - 3,83f,
+[09:43:44.233] [bmv2] [T] [thread 15882] [56.0] [cxt 0] Action Basic_ingress.mpls_core
+[09:43:44.233] [bmv2] [T] [thread 15882] [56.0] [cxt 0] mpls.p4(99) Primitive standard_metadata.egress_spec = port
+[09:43:44.233] [bmv2] [T] [thread 15882] [56.0] [cxt 0] mpls.p4(101) Primitive hdr.mpls.setValid()
+[09:43:44.233] [bmv2] [T] [thread 15882] [56.0] [cxt 0] mpls.p4(102) Primitive hdr.mpls.label = new_label
+[09:43:44.233] [bmv2] [T] [thread 15882] [56.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:43:44.233] [bmv2] [D] [thread 15882] [56.0] [cxt 0] Pipeline 'ingress': end
+[09:43:44.233] [bmv2] [D] [thread 15882] [56.0] [cxt 0] Egress port is 3
+[09:43:44.233] [bmv2] [D] [thread 15886] [56.0] [cxt 0] Pipeline 'egress': start
+[09:43:44.233] [bmv2] [D] [thread 15886] [56.0] [cxt 0] Pipeline 'egress': end
+[09:43:44.233] [bmv2] [D] [thread 15886] [56.0] [cxt 0] Deparser 'deparser': start
+[09:43:44.233] [bmv2] [T] [thread 15886] [56.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:43:44.233] [bmv2] [D] [thread 15886] [56.0] [cxt 0] Deparsing header 'ethernet'
+[09:43:44.233] [bmv2] [D] [thread 15886] [56.0] [cxt 0] Deparsing header 'mpls'
+[09:43:44.233] [bmv2] [D] [thread 15886] [56.0] [cxt 0] Deparser 'deparser': end
+[09:43:44.233] [bmv2] [D] [thread 15887] [56.0] [cxt 0] Transmitting packet of size 102 out of port 3
+[09:43:44.236] [bmv2] [D] [thread 15882] [57.0] [cxt 0] Processing packet received on port 2
+[09:43:44.236] [bmv2] [D] [thread 15882] [57.0] [cxt 0] Parser 'parser': start
+[09:43:44.236] [bmv2] [D] [thread 15882] [57.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:43:44.236] [bmv2] [D] [thread 15882] [57.0] [cxt 0] Extracting header 'ethernet'
+[09:43:44.237] [bmv2] [D] [thread 15882] [57.0] [cxt 0] Parser state 'start': key is 8847
+[09:43:44.237] [bmv2] [T] [thread 15882] [57.0] [cxt 0] Bytes parsed: 14
+[09:43:44.237] [bmv2] [D] [thread 15882] [57.0] [cxt 0] Parser 'parser' entering state 'parse_mpls'
+[09:43:44.237] [bmv2] [D] [thread 15882] [57.0] [cxt 0] Extracting header 'mpls'
+[09:43:44.237] [bmv2] [D] [thread 15882] [57.0] [cxt 0] Parser state 'parse_mpls' has no switch, going to default next state
+[09:43:44.237] [bmv2] [T] [thread 15882] [57.0] [cxt 0] Bytes parsed: 18
+[09:43:44.237] [bmv2] [D] [thread 15882] [57.0] [cxt 0] Parser 'parser': end
+[09:43:44.237] [bmv2] [D] [thread 15882] [57.0] [cxt 0] Pipeline 'ingress': start
+[09:43:44.237] [bmv2] [T] [thread 15882] [57.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is true
+[09:43:44.237] [bmv2] [T] [thread 15882] [57.0] [cxt 0] Applying table 'Basic_ingress.mpls_exact'
+[09:43:44.237] [bmv2] [D] [thread 15882] [57.0] [cxt 0] Looking up key:
+* hdr.mpls.label      : 0003fc
+
+[09:43:44.237] [bmv2] [D] [thread 15882] [57.0] [cxt 0] Table 'Basic_ingress.mpls_exact': hit with handle 0
+[09:43:44.237] [bmv2] [D] [thread 15882] [57.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.mpls.label      : EXACT     0003fc
+Action entry: Basic_ingress.mpls_core - 4,7ee,
+
+[09:43:44.237] [bmv2] [D] [thread 15882] [57.0] [cxt 0] Action entry is Basic_ingress.mpls_core - 4,7ee,
+[09:43:44.237] [bmv2] [T] [thread 15882] [57.0] [cxt 0] Action Basic_ingress.mpls_core
+[09:43:44.237] [bmv2] [T] [thread 15882] [57.0] [cxt 0] mpls.p4(99) Primitive standard_metadata.egress_spec = port
+[09:43:44.237] [bmv2] [T] [thread 15882] [57.0] [cxt 0] mpls.p4(101) Primitive hdr.mpls.setValid()
+[09:43:44.237] [bmv2] [T] [thread 15882] [57.0] [cxt 0] mpls.p4(102) Primitive hdr.mpls.label = new_label
+[09:43:44.237] [bmv2] [T] [thread 15882] [57.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:43:44.237] [bmv2] [D] [thread 15882] [57.0] [cxt 0] Pipeline 'ingress': end
+[09:43:44.237] [bmv2] [D] [thread 15882] [57.0] [cxt 0] Egress port is 4
+[09:43:44.237] [bmv2] [D] [thread 15883] [57.0] [cxt 0] Pipeline 'egress': start
+[09:43:44.237] [bmv2] [D] [thread 15883] [57.0] [cxt 0] Pipeline 'egress': end
+[09:43:44.237] [bmv2] [D] [thread 15883] [57.0] [cxt 0] Deparser 'deparser': start
+[09:43:44.237] [bmv2] [T] [thread 15883] [57.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:43:44.237] [bmv2] [D] [thread 15883] [57.0] [cxt 0] Deparsing header 'ethernet'
+[09:43:44.237] [bmv2] [D] [thread 15883] [57.0] [cxt 0] Deparsing header 'mpls'
+[09:43:44.237] [bmv2] [D] [thread 15883] [57.0] [cxt 0] Deparser 'deparser': end
+[09:43:44.237] [bmv2] [D] [thread 15887] [57.0] [cxt 0] Transmitting packet of size 102 out of port 4
+[09:43:45.234] [bmv2] [D] [thread 15882] [58.0] [cxt 0] Processing packet received on port 4
+[09:43:45.234] [bmv2] [D] [thread 15882] [58.0] [cxt 0] Parser 'parser': start
+[09:43:45.234] [bmv2] [D] [thread 15882] [58.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:43:45.234] [bmv2] [D] [thread 15882] [58.0] [cxt 0] Extracting header 'ethernet'
+[09:43:45.234] [bmv2] [D] [thread 15882] [58.0] [cxt 0] Parser state 'start': key is 8847
+[09:43:45.234] [bmv2] [T] [thread 15882] [58.0] [cxt 0] Bytes parsed: 14
+[09:43:45.234] [bmv2] [D] [thread 15882] [58.0] [cxt 0] Parser 'parser' entering state 'parse_mpls'
+[09:43:45.234] [bmv2] [D] [thread 15882] [58.0] [cxt 0] Extracting header 'mpls'
+[09:43:45.234] [bmv2] [D] [thread 15882] [58.0] [cxt 0] Parser state 'parse_mpls' has no switch, going to default next state
+[09:43:45.234] [bmv2] [T] [thread 15882] [58.0] [cxt 0] Bytes parsed: 18
+[09:43:45.234] [bmv2] [D] [thread 15882] [58.0] [cxt 0] Parser 'parser': end
+[09:43:45.234] [bmv2] [D] [thread 15882] [58.0] [cxt 0] Pipeline 'ingress': start
+[09:43:45.234] [bmv2] [T] [thread 15882] [58.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is true
+[09:43:45.234] [bmv2] [T] [thread 15882] [58.0] [cxt 0] Applying table 'Basic_ingress.mpls_exact'
+[09:43:45.234] [bmv2] [D] [thread 15882] [58.0] [cxt 0] Looking up key:
+* hdr.mpls.label      : 000bcc
+
+[09:43:45.234] [bmv2] [D] [thread 15882] [58.0] [cxt 0] Table 'Basic_ingress.mpls_exact': hit with handle 1
+[09:43:45.234] [bmv2] [D] [thread 15882] [58.0] [cxt 0] Dumping entry 1
+Match key:
+* hdr.mpls.label      : EXACT     000bcc
+Action entry: Basic_ingress.mpls_core - 3,83f,
+
+[09:43:45.234] [bmv2] [D] [thread 15882] [58.0] [cxt 0] Action entry is Basic_ingress.mpls_core - 3,83f,
+[09:43:45.234] [bmv2] [T] [thread 15882] [58.0] [cxt 0] Action Basic_ingress.mpls_core
+[09:43:45.234] [bmv2] [T] [thread 15882] [58.0] [cxt 0] mpls.p4(99) Primitive standard_metadata.egress_spec = port
+[09:43:45.234] [bmv2] [T] [thread 15882] [58.0] [cxt 0] mpls.p4(101) Primitive hdr.mpls.setValid()
+[09:43:45.234] [bmv2] [T] [thread 15882] [58.0] [cxt 0] mpls.p4(102) Primitive hdr.mpls.label = new_label
+[09:43:45.235] [bmv2] [T] [thread 15882] [58.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:43:45.235] [bmv2] [D] [thread 15882] [58.0] [cxt 0] Pipeline 'ingress': end
+[09:43:45.235] [bmv2] [D] [thread 15882] [58.0] [cxt 0] Egress port is 3
+[09:43:45.235] [bmv2] [D] [thread 15886] [58.0] [cxt 0] Pipeline 'egress': start
+[09:43:45.235] [bmv2] [D] [thread 15886] [58.0] [cxt 0] Pipeline 'egress': end
+[09:43:45.235] [bmv2] [D] [thread 15886] [58.0] [cxt 0] Deparser 'deparser': start
+[09:43:45.235] [bmv2] [T] [thread 15886] [58.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:43:45.235] [bmv2] [D] [thread 15886] [58.0] [cxt 0] Deparsing header 'ethernet'
+[09:43:45.235] [bmv2] [D] [thread 15886] [58.0] [cxt 0] Deparsing header 'mpls'
+[09:43:45.235] [bmv2] [D] [thread 15886] [58.0] [cxt 0] Deparser 'deparser': end
+[09:43:45.235] [bmv2] [D] [thread 15887] [58.0] [cxt 0] Transmitting packet of size 102 out of port 3
+[09:43:45.238] [bmv2] [D] [thread 15882] [59.0] [cxt 0] Processing packet received on port 2
+[09:43:45.238] [bmv2] [D] [thread 15882] [59.0] [cxt 0] Parser 'parser': start
+[09:43:45.238] [bmv2] [D] [thread 15882] [59.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:43:45.238] [bmv2] [D] [thread 15882] [59.0] [cxt 0] Extracting header 'ethernet'
+[09:43:45.238] [bmv2] [D] [thread 15882] [59.0] [cxt 0] Parser state 'start': key is 8847
+[09:43:45.238] [bmv2] [T] [thread 15882] [59.0] [cxt 0] Bytes parsed: 14
+[09:43:45.238] [bmv2] [D] [thread 15882] [59.0] [cxt 0] Parser 'parser' entering state 'parse_mpls'
+[09:43:45.238] [bmv2] [D] [thread 15882] [59.0] [cxt 0] Extracting header 'mpls'
+[09:43:45.239] [bmv2] [D] [thread 15882] [59.0] [cxt 0] Parser state 'parse_mpls' has no switch, going to default next state
+[09:43:45.239] [bmv2] [T] [thread 15882] [59.0] [cxt 0] Bytes parsed: 18
+[09:43:45.239] [bmv2] [D] [thread 15882] [59.0] [cxt 0] Parser 'parser': end
+[09:43:45.239] [bmv2] [D] [thread 15882] [59.0] [cxt 0] Pipeline 'ingress': start
+[09:43:45.239] [bmv2] [T] [thread 15882] [59.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is true
+[09:43:45.239] [bmv2] [T] [thread 15882] [59.0] [cxt 0] Applying table 'Basic_ingress.mpls_exact'
+[09:43:45.239] [bmv2] [D] [thread 15882] [59.0] [cxt 0] Looking up key:
+* hdr.mpls.label      : 0003fc
+
+[09:43:45.239] [bmv2] [D] [thread 15882] [59.0] [cxt 0] Table 'Basic_ingress.mpls_exact': hit with handle 0
+[09:43:45.239] [bmv2] [D] [thread 15882] [59.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.mpls.label      : EXACT     0003fc
+Action entry: Basic_ingress.mpls_core - 4,7ee,
+
+[09:43:45.239] [bmv2] [D] [thread 15882] [59.0] [cxt 0] Action entry is Basic_ingress.mpls_core - 4,7ee,
+[09:43:45.239] [bmv2] [T] [thread 15882] [59.0] [cxt 0] Action Basic_ingress.mpls_core
+[09:43:45.239] [bmv2] [T] [thread 15882] [59.0] [cxt 0] mpls.p4(99) Primitive standard_metadata.egress_spec = port
+[09:43:45.239] [bmv2] [T] [thread 15882] [59.0] [cxt 0] mpls.p4(101) Primitive hdr.mpls.setValid()
+[09:43:45.239] [bmv2] [T] [thread 15882] [59.0] [cxt 0] mpls.p4(102) Primitive hdr.mpls.label = new_label
+[09:43:45.239] [bmv2] [T] [thread 15882] [59.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:43:45.239] [bmv2] [D] [thread 15882] [59.0] [cxt 0] Pipeline 'ingress': end
+[09:43:45.239] [bmv2] [D] [thread 15882] [59.0] [cxt 0] Egress port is 4
+[09:43:45.239] [bmv2] [D] [thread 15883] [59.0] [cxt 0] Pipeline 'egress': start
+[09:43:45.239] [bmv2] [D] [thread 15883] [59.0] [cxt 0] Pipeline 'egress': end
+[09:43:45.239] [bmv2] [D] [thread 15883] [59.0] [cxt 0] Deparser 'deparser': start
+[09:43:45.239] [bmv2] [T] [thread 15883] [59.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:43:45.239] [bmv2] [D] [thread 15883] [59.0] [cxt 0] Deparsing header 'ethernet'
+[09:43:45.239] [bmv2] [D] [thread 15883] [59.0] [cxt 0] Deparsing header 'mpls'
+[09:43:45.239] [bmv2] [D] [thread 15883] [59.0] [cxt 0] Deparser 'deparser': end
+[09:43:45.239] [bmv2] [D] [thread 15887] [59.0] [cxt 0] Transmitting packet of size 102 out of port 4
+[09:43:46.236] [bmv2] [D] [thread 15882] [60.0] [cxt 0] Processing packet received on port 4
+[09:43:46.236] [bmv2] [D] [thread 15882] [60.0] [cxt 0] Parser 'parser': start
+[09:43:46.236] [bmv2] [D] [thread 15882] [60.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:43:46.236] [bmv2] [D] [thread 15882] [60.0] [cxt 0] Extracting header 'ethernet'
+[09:43:46.236] [bmv2] [D] [thread 15882] [60.0] [cxt 0] Parser state 'start': key is 8847
+[09:43:46.236] [bmv2] [T] [thread 15882] [60.0] [cxt 0] Bytes parsed: 14
+[09:43:46.236] [bmv2] [D] [thread 15882] [60.0] [cxt 0] Parser 'parser' entering state 'parse_mpls'
+[09:43:46.236] [bmv2] [D] [thread 15882] [60.0] [cxt 0] Extracting header 'mpls'
+[09:43:46.236] [bmv2] [D] [thread 15882] [60.0] [cxt 0] Parser state 'parse_mpls' has no switch, going to default next state
+[09:43:46.236] [bmv2] [T] [thread 15882] [60.0] [cxt 0] Bytes parsed: 18
+[09:43:46.236] [bmv2] [D] [thread 15882] [60.0] [cxt 0] Parser 'parser': end
+[09:43:46.236] [bmv2] [D] [thread 15882] [60.0] [cxt 0] Pipeline 'ingress': start
+[09:43:46.236] [bmv2] [T] [thread 15882] [60.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is true
+[09:43:46.236] [bmv2] [T] [thread 15882] [60.0] [cxt 0] Applying table 'Basic_ingress.mpls_exact'
+[09:43:46.236] [bmv2] [D] [thread 15882] [60.0] [cxt 0] Looking up key:
+* hdr.mpls.label      : 000bcc
+
+[09:43:46.236] [bmv2] [D] [thread 15882] [60.0] [cxt 0] Table 'Basic_ingress.mpls_exact': hit with handle 1
+[09:43:46.236] [bmv2] [D] [thread 15882] [60.0] [cxt 0] Dumping entry 1
+Match key:
+* hdr.mpls.label      : EXACT     000bcc
+Action entry: Basic_ingress.mpls_core - 3,83f,
+
+[09:43:46.236] [bmv2] [D] [thread 15882] [60.0] [cxt 0] Action entry is Basic_ingress.mpls_core - 3,83f,
+[09:43:46.236] [bmv2] [T] [thread 15882] [60.0] [cxt 0] Action Basic_ingress.mpls_core
+[09:43:46.236] [bmv2] [T] [thread 15882] [60.0] [cxt 0] mpls.p4(99) Primitive standard_metadata.egress_spec = port
+[09:43:46.236] [bmv2] [T] [thread 15882] [60.0] [cxt 0] mpls.p4(101) Primitive hdr.mpls.setValid()
+[09:43:46.236] [bmv2] [T] [thread 15882] [60.0] [cxt 0] mpls.p4(102) Primitive hdr.mpls.label = new_label
+[09:43:46.236] [bmv2] [T] [thread 15882] [60.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:43:46.236] [bmv2] [D] [thread 15882] [60.0] [cxt 0] Pipeline 'ingress': end
+[09:43:46.236] [bmv2] [D] [thread 15882] [60.0] [cxt 0] Egress port is 3
+[09:43:46.237] [bmv2] [D] [thread 15886] [60.0] [cxt 0] Pipeline 'egress': start
+[09:43:46.237] [bmv2] [D] [thread 15886] [60.0] [cxt 0] Pipeline 'egress': end
+[09:43:46.237] [bmv2] [D] [thread 15886] [60.0] [cxt 0] Deparser 'deparser': start
+[09:43:46.237] [bmv2] [T] [thread 15886] [60.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:43:46.237] [bmv2] [D] [thread 15886] [60.0] [cxt 0] Deparsing header 'ethernet'
+[09:43:46.237] [bmv2] [D] [thread 15886] [60.0] [cxt 0] Deparsing header 'mpls'
+[09:43:46.237] [bmv2] [D] [thread 15886] [60.0] [cxt 0] Deparser 'deparser': end
+[09:43:46.237] [bmv2] [D] [thread 15887] [60.0] [cxt 0] Transmitting packet of size 102 out of port 3
+[09:43:46.240] [bmv2] [D] [thread 15882] [61.0] [cxt 0] Processing packet received on port 2
+[09:43:46.240] [bmv2] [D] [thread 15882] [61.0] [cxt 0] Parser 'parser': start
+[09:43:46.240] [bmv2] [D] [thread 15882] [61.0] [cxt 0] Parser 'parser' entering state 'start'
+[09:43:46.240] [bmv2] [D] [thread 15882] [61.0] [cxt 0] Extracting header 'ethernet'
+[09:43:46.240] [bmv2] [D] [thread 15882] [61.0] [cxt 0] Parser state 'start': key is 8847
+[09:43:46.240] [bmv2] [T] [thread 15882] [61.0] [cxt 0] Bytes parsed: 14
+[09:43:46.240] [bmv2] [D] [thread 15882] [61.0] [cxt 0] Parser 'parser' entering state 'parse_mpls'
+[09:43:46.240] [bmv2] [D] [thread 15882] [61.0] [cxt 0] Extracting header 'mpls'
+[09:43:46.240] [bmv2] [D] [thread 15882] [61.0] [cxt 0] Parser state 'parse_mpls' has no switch, going to default next state
+[09:43:46.240] [bmv2] [T] [thread 15882] [61.0] [cxt 0] Bytes parsed: 18
+[09:43:46.240] [bmv2] [D] [thread 15882] [61.0] [cxt 0] Parser 'parser': end
+[09:43:46.240] [bmv2] [D] [thread 15882] [61.0] [cxt 0] Pipeline 'ingress': start
+[09:43:46.240] [bmv2] [T] [thread 15882] [61.0] [cxt 0] mpls.p4(144) Condition "hdr.mpls.isValid()" (node_2) is true
+[09:43:46.240] [bmv2] [T] [thread 15882] [61.0] [cxt 0] Applying table 'Basic_ingress.mpls_exact'
+[09:43:46.240] [bmv2] [D] [thread 15882] [61.0] [cxt 0] Looking up key:
+* hdr.mpls.label      : 0003fc
+
+[09:43:46.240] [bmv2] [D] [thread 15882] [61.0] [cxt 0] Table 'Basic_ingress.mpls_exact': hit with handle 0
+[09:43:46.240] [bmv2] [D] [thread 15882] [61.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.mpls.label      : EXACT     0003fc
+Action entry: Basic_ingress.mpls_core - 4,7ee,
+
+[09:43:46.240] [bmv2] [D] [thread 15882] [61.0] [cxt 0] Action entry is Basic_ingress.mpls_core - 4,7ee,
+[09:43:46.240] [bmv2] [T] [thread 15882] [61.0] [cxt 0] Action Basic_ingress.mpls_core
+[09:43:46.240] [bmv2] [T] [thread 15882] [61.0] [cxt 0] mpls.p4(99) Primitive standard_metadata.egress_spec = port
+[09:43:46.240] [bmv2] [T] [thread 15882] [61.0] [cxt 0] mpls.p4(101) Primitive hdr.mpls.setValid()
+[09:43:46.240] [bmv2] [T] [thread 15882] [61.0] [cxt 0] mpls.p4(102) Primitive hdr.mpls.label = new_label
+[09:43:46.240] [bmv2] [T] [thread 15882] [61.0] [cxt 0] mpls.p4(148) Condition "hdr.ipv4.isValid()" (node_4) is false
+[09:43:46.240] [bmv2] [D] [thread 15882] [61.0] [cxt 0] Pipeline 'ingress': end
+[09:43:46.240] [bmv2] [D] [thread 15882] [61.0] [cxt 0] Egress port is 4
+[09:43:46.240] [bmv2] [D] [thread 15883] [61.0] [cxt 0] Pipeline 'egress': start
+[09:43:46.240] [bmv2] [D] [thread 15883] [61.0] [cxt 0] Pipeline 'egress': end
+[09:43:46.240] [bmv2] [D] [thread 15883] [61.0] [cxt 0] Deparser 'deparser': start
+[09:43:46.240] [bmv2] [T] [thread 15883] [61.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[09:43:46.240] [bmv2] [D] [thread 15883] [61.0] [cxt 0] Deparsing header 'ethernet'
+[09:43:46.240] [bmv2] [D] [thread 15883] [61.0] [cxt 0] Deparsing header 'mpls'
+[09:43:46.240] [bmv2] [D] [thread 15883] [61.0] [cxt 0] Deparser 'deparser': end
+[09:43:46.241] [bmv2] [D] [thread 15887] [61.0] [cxt 0] Transmitting packet of size 102 out of port 4
