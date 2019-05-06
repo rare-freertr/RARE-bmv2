@@ -25,4 +25,5 @@ All materials here inherit from several P4Lang public resources:
 *	[Andy Fingerhut P4 guides](https://github.com/jafingerhut/p4-guide)
 *	[P4Lang material from ETH Zurich / Advanced Topics in Communication Networks lecture](https://github.com/kevinbird61/p4-researching.git)
 *	[Kevin Cyu](https://github.com/kevinbird61/p4-researching.git)
+*	And others that I may have forgotten ...
 
