@@ -19,12 +19,14 @@ RARE/
 ├── IX-labs
 ├── PE-labs
 ├── P-labs
+├── resources
 ├── SR-labs
 ├── unit-labs
 └── utils
 ```
 
 * `utils` folder includes tools derived from [P4Lang/tutorial](https://github.com/p4lang/tutorials)
+* `resources` folder includes resources such as images used in this repository 
 * `unit-labs` includes all the standalone labs meant to test specific P4 features
 * `<USE-CASE>-labs` include the whole set of labs organized in layer meant to elaborate the use case. These labs are organized in layers. Each layer[n] is built on top of layer [n-1]`
 
