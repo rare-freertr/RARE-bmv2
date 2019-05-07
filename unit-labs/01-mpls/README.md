@@ -1,6 +1,6 @@
 # Lab diagram
 
-![Lab diagram](https://github.com/frederic-loui/RARE/blob/master/labs/01-mpls/mpls.png)
+![Lab diagram](https://github.com/frederic-loui/RARE/raw/master/unit-labs/01-mpls/mpls.png)
 
 # TL;DR
 
