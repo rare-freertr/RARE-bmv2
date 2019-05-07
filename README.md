@@ -12,13 +12,24 @@ hat allows data plane programmability. P4 is also inherently independent from th
 Using P4 language leverages several existing software components. A feature rich dataplane software switch written in P4 is already available; communication between th
 e control plane and data plane is also already part of the specification standard.
 
-# Repository structure
+# Repository structure (Work in progress ...)
 ```
-RARE/  
-├── labs  
-└── utils  
+RARE/
+├── DC-labs
+├── IX-labs
+├── PE-labs
+├── P-labs
+├── SR-labs
+├── unit-labs
+└── utils
 ```
-`
+
+* `utils` folder includes tools derived from [P4Lang/tutorial](https://github.com/p4lang/tutorials)
+* `unit-labs` includes all the standalone labs meant to test specific P4 features
+* `<USE-CASE>-labs` include the whole set of labs organized in layer meant to elaborate the use case. These labs are organized in layers. Each layer[n] is built on top of layer [n-1]`
+
+These `<USE-CASE>-labs` are work in progress and each project participant can indepently tackle the use case of their interest.  
+
 # Credits
 All materials here inherit from several P4Lang public resources:
 *	[P4Lang project resources](https://p4.org/) 
