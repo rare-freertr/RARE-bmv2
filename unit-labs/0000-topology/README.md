@@ -21,7 +21,7 @@ The role of each components are:
 The addressing rules are:    
 * `router loopback IP` = 10.`pod_id`.`pod_id`.`pod_id` 
 * `router interconnect IP` = 10.0.`pod_id`.`pod_id`
-* `hw-mac` = 0000.<0xIP> 
+* `hw-mac` = 0000.`<0xIP>` 
 
 Example: 
 * `cpe1` `pod_id`=1 : 
