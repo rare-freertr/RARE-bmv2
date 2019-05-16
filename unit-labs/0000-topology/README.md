@@ -19,12 +19,12 @@ The role of each components are:
 * `core1-eth1` - `p4-core1-cpu2` are veth peers and are control plane link end points
 
 The addressing rules are:    
-* `router loopback IP` = 10.<pod_id>.<pod_id>.<pod_id> 
-* `router interconnect IP` = 10.0.<pod_id>.<pod_id> 
+* `router loopback IP` = 10.`pod_id`.`pod_id`.`pod_id` 
+* `router interconnect IP` = 10.0.`pod_id`.`pod_id`
 * `hw-mac` = 0000.<0xIP> 
 
 Example: 
-* `cpe1` <pod_id>=1 : 
+* `cpe1` `pod_id`=1 : 
 * `cpe1 loopback IP` = 10.1.1.1  
 * `cpe1 interconnect IP` = 10.0.1.1 
 * `cpe1-eth0 hw-mac` = 0000.0A00.0101 
