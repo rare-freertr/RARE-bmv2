@@ -12,7 +12,7 @@ The role of each components are:
 * `core1` is a FreeRTR control plane that is using P4Lang BMV2 `simple_switch` or `simple_switch_grpc` as P4 dataplane. 
 * `cpe1` runs in its own linux namespace `cpe1` and is attached via `cpe1-eth0` in to `core1-p4-switch` via `p4-core1-dp1` 
 * `cpe2` runs in its own linux namespace `cpe2` and is attached via `cpe2-eth0` in to `core1-p4-switch` via `p4-core1-dp2` 
-* `core1-freertr-controller` is connected respectively via `core1-eth0` & `core1-eth1` to `core1-p4-switch` `p4-core1-cpu1` & `p4-core1-cpu2`
+* `core1-freertr-controller` is connected respectively via `core1-eth0` & `core1-eth1` to `core1-p4-switch` via `p4-core1-cpu1` & `p4-core1-cpu2`
 * `cpe1-eth0` - `p4-core1-dp1` are veth peers and are dataplane link end points
 * `cpe2-eth0` - `p4-core1-dp2` are veth peers and are dataplane link end points
 * `core1-eth0` - `p4-core1-cpu1` are veth peers and are control plane link end points
