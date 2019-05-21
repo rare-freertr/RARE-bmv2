@@ -78,10 +78,10 @@ By design choice and considering FreeRTR existing architecture (this can be chan
 in our case `simple_switch` has:
 * 2 `dataplane` ports 
     * `p4-core1-dp1`
-    *  p4-core1-dp2`
+    *  `p4-core1-dp2`
 * 2 `cpu` ports 
     * `p4-core1-cpu1` 
-    *  p4-core1-cpu2`
+    * `p4-core1-cpu2`
 # Clean topology
 ```
 make clean
