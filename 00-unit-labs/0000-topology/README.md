@@ -48,7 +48,7 @@ The instructions above:
     * `cpe2-eth0`-`p4-core1-dp2`
     * `core1-eth0`-`p4-core1-cpu1`
     * `core1-eth1`-`p4-core1-cpu2`
-* It set each control plane to the relevant namespace:
+* It set each control plane `veth` to the relevant namespace:
     * `cpe1-eth0` to namespace `cpe1` and set it `up`
     * `cpe2-eth0` to namespace `cpe2` and set it `up`
     * `core1-eth0` to namespace `core1` and set it `up`
