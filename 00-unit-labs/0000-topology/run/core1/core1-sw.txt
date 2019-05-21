@@ -1,0 +1,73 @@
+hostname core1
+buggy
+!
+logging buffered debug 10240
+logging file debug core1.log
+!
+vrf definition v1
+ rd 1:1
+ rt-import 1:1
+ rt-export 1:1
+ label-mode per-prefix
+ exit
+!
+interface loopback0
+ no description
+ macaddr 0000.0afe.fefe
+ vrf forwarding v1
+ ipv4 address 10.254.254.254 255.255.255.255
+ no shutdown
+ no log-link-change
+ exit
+!
+interface ethernet0
+ no description
+ macaddr 0000.0a00.01fe
+ vrf forwarding v1
+ ipv4 address 10.0.1.254 255.255.255.0
+ ipv4 host-static 10.0.1.1 0000.0a00.0101
+ no shutdown
+ no log-link-change
+ exit
+!
+interface ethernet1
+ no description
+ macaddr 0000.0a00.02fe
+ vrf forwarding v1
+ ipv4 address 10.0.2.254 255.255.255.0
+ ipv4 host-static 10.0.2.2 0000.0a00.0202
+ no shutdown
+ no log-link-change
+ exit
+!
+!
+ipv4 route v1 10.1.1.1 255.255.255.255 10.0.1.1
+ipv4 route v1 10.2.2.2 255.255.255.255 10.0.2.2
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+alias test bash description 
+alias test bash parameter optional
+!
+server telnet tel
+ security protocol telnet
+ exec width 130
+ exec height 25
+ no login authentication
+ vrf v1
+ exit
+!
+client name-server 8.8.8.8
+client config-save
+client time-zone CET
+!
+end

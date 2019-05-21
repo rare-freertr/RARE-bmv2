@@ -11,14 +11,14 @@ Using P4 language leverages several existing software components. A feature rich
 
 # Repository structure (Work in progress ...)
 ```
-RARE/
-├── DC-labs
-├── IX-labs
-├── PE-labs
-├── P-labs
+RARE
+├── 00-unit-labs
+├── 01-P-labs
+├── 02-PE-labs
+├── 03-IX-labs
+├── 04-DC-labs
+├── 05-SR-labs
 ├── resources
-├── SR-labs
-├── unit-labs
 └── utils
 ```
 
