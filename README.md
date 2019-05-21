@@ -1,6 +1,6 @@
 # Introduction
 
-_**RARE (Router for Academic, Research & Education)**_ focus is on determining if a routing software platform  solution can fit R&E use cases. The project aims to integrate different pieces of software related to these building blocks:
+_**RARE (Router for Academia, Research & Education)**_ focus is on determining if a routing software platform  solution can fit R&E use cases. The project aims to integrate different pieces of software related to these building blocks:
 
 * control plane
 * data plane
