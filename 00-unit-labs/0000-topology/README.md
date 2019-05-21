@@ -4,7 +4,7 @@
 
 # Unit test topology
 The topology depicted in the diagram above is the topology used in all unit tests.    
-Each unit test is meant to validate a precise features in this setup.  
+Each unit test is meant to validate a precise feature in this setup.  
 
 The role of each components are:
 
