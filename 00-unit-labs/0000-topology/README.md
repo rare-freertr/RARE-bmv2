@@ -14,7 +14,9 @@ The role of each components are:
     * **core1 block** data plane is called `p4-core1` dataplane 
 * `cpe1` runs in its own linux namespace `cpe1` and is attached via `cpe1-eth0` to `p4-core1` via `p4-core1-dp1` 
 * `cpe2` runs in its own linux namespace `cpe2` and is attached via `cpe2-eth0` to `p4-core1` via `p4-core1-dp2` 
-* `core1` FreeRTR with p4runtime capability is connected respectively via `core1-eth0` & `core1-eth1` to `p4-core1` via `p4-core1-cpu1` & `p4-core1-cpu2`
+* `core1` FreeRTR with p4runtime capability is connected respectively 
+    * via `core1-eth0` & `core1-eth1` 
+    * to `p4-core1` via `p4-core1-cpu1` & `p4-core1-cpu2`
 * `cpe1-eth0` - `p4-core1-dp1` are veth peers and are dataplane link end points
 * `cpe2-eth0` - `p4-core1-dp2` are veth peers and are dataplane link end points
 * `core1-eth0` - `p4-core1-cpu1` are veth peers and are control plane link end points
@@ -39,13 +41,24 @@ git clone https://github.com/frederic-loui/RARE.git
 cd RARE/00-unit-labs/0000-topology
 make
 ```
-The instructions above run `cpe1`, `cpe2`, in their respective linux namespace     
-and run `core1` FreeRTR control plane in the global linux namespace.    
-It creates all veth pairs and set `cpe1-eth0`,`cpe2-eth0`,`core1-eth0`,`core1-eth1` into `cpe1`,`cpe2,`core1` namespace.        
-`p4-core1-dp1`,`p4-core1-dp2`,`p4-core1-cpu1`,`p4-core1-cpu2` veth(s) stay in the global namespace.   
-It is not creating the P4 switch. `p4-core1` will be run in subsequent labs.   
+The instructions above:
+* Create `cpe1`,`cpe2` and `core1` linux namespaces
+* It creates all veth pairs:
+    * `cpe1-eth0`-`p4-core1-dp1`
+    * `cpe2-eth0`-`p4-core1-dp2`
+    * `core1-eth0`-`p4-core1-cpu1`
+    * `core1-eth1`-`p4-core1-cpu2`
+* It set each control plane to the relevant namespaces:
+    * `cpe1-eth0` to namespace `cpe1` and set it `up`
+    * `cpe2-eth0` to namespace `cpe2` and set it `up`
+    * `core1-eth0` to namespace `core1` and set it `up`
+    * `core1-eth1` to namespace `core1` anf set it `up`
+* P4 switch `p4-core1` has its interface (`p4-core1-dp1`,`p4-core1-dp2`,`p4-core1-cpu1`,`p4-core1-cpu2`) in the global namespace
+
+* Note that `p4-core1` switch is not created by these set up script, it will be run in subsequent labs.   
+
 Let's assume we want to test basic ipv4 forwarding lab and the p4 programe would be `basic-ipv4-forwarding.p4`.     
-After compilation the switch config is: `basic-ipv4-forwarding.json`.   
+After compilation the switch config is: `basic-ipv4-forwarding.json`.    
 The command to run simple_switch for example will be:    
 ```
 sudo simple_switch --log-file p4-core1 -i 1@p4-core1-dp1 -i 2@p4-core1-dp2 \
@@ -57,8 +70,9 @@ In order to access `simple_switch` P4 switch via CLI:
 ```
 simple_switch_CLI --thrift-port 9090
 ```
-Please note that we run `simple_switch` and not `simple_switch_grpc` as the objective of the lab is to validate the list of table and related rules.
-This can be easily done with `simple_switch_CLI`. `simple_switch_grpc` will be used when we will start writing the rules via FreeRTR controller with GRPC client API.
+Please note that we run `simple_switch` and not `simple_switch_grpc` as the objective of the lab is to validate the list of table and related rules.   
+All these tables can be simply altered with `simple_switch_CLI`.     
+`simple_switch_grpc` will be used when we will start writing the rules via FreeRTR controller with GRPC client API.
 
 # Clean topology
 ```
