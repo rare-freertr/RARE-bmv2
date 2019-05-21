@@ -11,7 +11,7 @@ The role of each components are:
 * `cpe1` & `cpe2` are both FreeRTR router control plane that is using linux raw socket dataplane. 
 * **core1 block** is a FreeRTR control plane that is using P4Lang BMV2 `simple_switch` or `simple_switch_grpc` as P4 dataplane. 
     * **core1 block** control plane is called `core1`
-    * **core1 block** data plane is called p4-core1 dataplane 
+    * **core1 block** data plane is called `p4-core1` dataplane 
 * `cpe1` runs in its own linux namespace `cpe1` and is attached via `cpe1-eth0` to `p4-core1` via `p4-core1-dp1` 
 * `cpe2` runs in its own linux namespace `cpe2` and is attached via `cpe2-eth0` to `p4-core1` via `p4-core1-dp2` 
 * `core1` FreeRTR with p4runtime capability is connected respectively via `core1-eth0` & `core1-eth1` to `p4-core1` via `p4-core1-cpu1` & `p4-core1-cpu2`
@@ -41,8 +41,8 @@ make
 ```
 The instructions above run `cpe1`, `cpe2`, in their respective linux namespace     
 and run `core1` FreeRTR control plane in the global linux namespace.    
-It creates all veth pairs and set `cpe1-eth0`,`cpe2-eth0`, `core1-eth0`, `core1-eth1` into `cpe1`,`cpe2,`core1` namespace.        
-`p4-core1-dp1`,`p4-core1-dp2`,`p4-core1-cpu1`,`p4-core1-cpu2` stays in the global namespace.   
+It creates all veth pairs and set `cpe1-eth0`,`cpe2-eth0`,`core1-eth0`,`core1-eth1` into `cpe1`,`cpe2,`core1` namespace.        
+`p4-core1-dp1`,`p4-core1-dp2`,`p4-core1-cpu1`,`p4-core1-cpu2` veth(s) stay in the global namespace.   
 It is not creating the P4 switch. `p4-core1` will be run in subsequent labs.   
 Let's assume we want to test basic ipv4 forwarding lab and the p4 programe would be `basic-ipv4-forwarding.p4`.     
 After compilation the switch config is: `basic-ipv4-forwarding.json`.   
