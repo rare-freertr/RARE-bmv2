@@ -48,18 +48,18 @@ The instructions above:
     * `cpe2-eth0`-`p4-core1-dp2`
     * `core1-eth0`-`p4-core1-cpu1`
     * `core1-eth1`-`p4-core1-cpu2`
-* It set each control plane to the relevant namespaces:
+* It set each control plane to the relevant namespace:
     * `cpe1-eth0` to namespace `cpe1` and set it `up`
     * `cpe2-eth0` to namespace `cpe2` and set it `up`
     * `core1-eth0` to namespace `core1` and set it `up`
     * `core1-eth1` to namespace `core1` anf set it `up`
-* P4 switch `p4-core1` has its interface (`p4-core1-dp1`,`p4-core1-dp2`,`p4-core1-cpu1`,`p4-core1-cpu2`) in the global namespace
+* `p4-core1` has its interface (`p4-core1-dp1`,`p4-core1-dp2`,`p4-core1-cpu1`,`p4-core1-cpu2`) in the global namespace
 
-* Note that `p4-core1` switch is not created by these set up script, it will be run in subsequent labs.   
+* Note that `p4-core1` switch is not created by the Makefile, it will be created/run in subsequent labs.   
 
-Let's assume we want to test basic ipv4 forwarding lab and the p4 programe would be `basic-ipv4-forwarding.p4`.     
-After compilation the switch config is: `basic-ipv4-forwarding.json`.    
-The command to run simple_switch for example will be:    
+Let's assume we want to test basic ipv4 forwarding lab and the p4 programe would be `basic-ipv4-forwarding.p4`     
+After compilation the switch config is: `basic-ipv4-forwarding.json`    
+The command to run `simple_switch` for example will be:    
 ```
 sudo simple_switch --log-file p4-core1 -i 1@p4-core1-dp1 -i 2@p4-core1-dp2 \
 			-i 255@p4-core1-cpu1 -i 254@p4-core1-cpu2 \
@@ -74,6 +74,14 @@ Please note that we run `simple_switch` and not `simple_switch_grpc` as the obje
 All these tables can be simply altered with `simple_switch_CLI`.     
 `simple_switch_grpc` will be used when we will start writing the rules via FreeRTR controller with GRPC client API.
 
+By design choice and considering FreeRTR existing architecture (this can be changed) , we have one `cpu` port per `dataplane` port.    
+in our case `simple_switch` has:
+* 2 `dataplane` ports 
+    * `p4-core1-dp1`
+    *  p4-core1-dp2`
+* 2 `cpu` ports 
+    * `p4-core1-cpu1` 
+    *  p4-core1-cpu2`
 # Clean topology
 ```
 make clean
