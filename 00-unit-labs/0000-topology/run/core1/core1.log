@@ -75,3 +75,17 @@
 2019-05-21 08:26:34 info cfg.cfgInit.doInit:cfgInit.java:674 applying defaults
 2019-05-21 08:26:34 info cfg.cfgInit.doInit:cfgInit.java:682 applying configuration
 2019-05-21 10:26:35 info cfg.cfgInit.doInit:cfgInit.java:708 done
+2019-05-21 12:47:15 info cfg.cfgInit.doInit:cfgInit.java:545 booting
+2019-05-21 12:47:15 info cfg.cfgInit.doInit:cfgInit.java:667 initializing hardware
+2019-05-21 12:47:16 info cfg.cfgInit.executeHWcommands:cfgInit.java:458 5:!line tty1 127.0.0.1 21003 127.0.0.1 21003
+2019-05-21 12:47:16 info cfg.cfgInit.executeHWcommands:cfgInit.java:458 7:!tcp2vrf 8080 v1 80
+2019-05-21 12:47:16 info cfg.cfgInit.doInit:cfgInit.java:674 applying defaults
+2019-05-21 12:47:16 info cfg.cfgInit.doInit:cfgInit.java:682 applying configuration
+2019-05-21 14:47:16 info cfg.cfgInit.doInit:cfgInit.java:708 done
+2019-05-21 13:45:44 info cfg.cfgInit.doInit:cfgInit.java:545 booting
+2019-05-21 13:45:44 info cfg.cfgInit.doInit:cfgInit.java:667 initializing hardware
+2019-05-21 13:45:44 info cfg.cfgInit.executeHWcommands:cfgInit.java:458 5:!line tty1 127.0.0.1 21003 127.0.0.1 21003
+2019-05-21 13:45:44 info cfg.cfgInit.executeHWcommands:cfgInit.java:458 7:!tcp2vrf 8080 v1 80
+2019-05-21 13:45:44 info cfg.cfgInit.doInit:cfgInit.java:674 applying defaults
+2019-05-21 13:45:45 info cfg.cfgInit.doInit:cfgInit.java:682 applying configuration
+2019-05-21 15:45:45 info cfg.cfgInit.doInit:cfgInit.java:708 done

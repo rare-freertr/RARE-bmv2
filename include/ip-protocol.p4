@@ -1,0 +1,158 @@
+/*
+ * Copyright 2019-present GÉANT RARE project
+ *
+ * Licensed under the Apache License, VersiOn 2.0 (the "License");
+ * yOu may nOt use this file except in cOmpliance with the License.
+ * YOu may Obtain a cOpy Of the License at
+ *
+ *     http://www.apache.Org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law Or agreed tO in writing, sOftware
+ * distributed under the License is distributed On an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express Or implied.
+ * See the License fOr the specific language gOverning permissiOns and
+ * limitatiOns under the License.
+ */
+
+// source here: 
+// https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml
+
+#define	IP_PROTOCOL_HOPOPT	0
+#define	IP_PROTOCOL_ICMP	1
+#define	IP_PROTOCOL_IGMP	2
+#define	IP_PROTOCOL_GGP		3
+#define	IP_PROTOCOL_IPV4	4
+#define	IP_PROTOCOL_ST		5
+#define	IP_PROTOCOL_TCP		6
+#define	IP_PROTOCOL_CBT		7
+#define	IP_PROTOCOL_EGP		8
+#define	IP_PROTOCOL_IGP		9
+#define	IP_PROTOCOL_BBN_RCC_MON	10
+#define	IP_PROTOCOL_NVP_II	11
+#define	IP_PROTOCOL_PUP		12
+#define	IP_PROTOCOL_ARGUS	13
+#define	IP_PROTOCOL_EMCON	14
+#define IP_PROTOCOL_XNET	15
+#define	IP_PROTOCOL_CHAOS	16
+#define	IP_PROTOCOL_UDP		17
+#define	IP_PROTOCOL_MUX		18
+#define	IP_PROTOCOL_DCN_MEAS	19
+#define	IP_PROTOCOL_HMP		20
+#define	IP_PROTOCOL_PRM		21
+#define	IP_PROTOCOL_XNS_IDP	22
+#define	IP_PROTOCOL_TRUNK_1	23
+#define	IP_PROTOCOL_TRUNK_2	24
+#define	IP_PROTOCOL_LEAF_1	25
+#define	IP_PROTOCOL_LEAF_2	26
+#define	IP_PROTOCOL_RDP		27
+#define	IP_PROTOCOL_IRTP	28
+#define	IP_PROTOCOL_ISO_TP4	29
+#define	IP_PROTOCOL_NETBLT	30
+#define	IP_PROTOCOL_MFE_NSP	31
+#define	IP_PROTOCOL_MERIT_INP	32
+#define	IP_PROTOCOL_DCCP	33
+#define	IP_PROTOCOL_3PC		34
+#define	IP_PROTOCOL_IDPR	35
+#define	IP_PROTOCOL_XTP		36
+#define	IP_PROTOCOL_DDP		37
+#define	IP_PROTOCOL_IDPR_CMTP	38
+#define	IP_PROTOCOL_TP++	39
+#define	IP_PROTOCOL_IL		40
+#define	IP_PROTOCOL_IPV6	41
+#define	IP_PROTOCOL_SDRP	42
+#define	IP_PROTOCOL_IPV6_ROUTE	43
+#define	IP_PROTOCOL_IPV6_FRAG	44
+#define	IP_PROTOCOL_IDRP	45
+#define	IP_PROTOCOL_RSVP	46
+#define	IP_PROTOCOL_GRE		47
+#define	IP_PROTOCOL_DSR		48
+#define	IP_PROTOCOL_BNA		49
+#define	IP_PROTOCOL_ESP		50
+#define	IP_PROTOCOL_AH		51
+#define	IP_PROTOCOL_I_NLSP	52
+#define	IP_PROTOCOL_SWIPE	53
+#define	IP_PROTOCOL_NARP	54
+#define	IP_PROTOCOL_MOBILE	55
+#define	IP_PROTOCOL_TLSP	56
+#define	IP_PROTOCOL_SKIP	57
+#define	IP_PROTOCOL_IPV6_ICMP	58
+#define	IP_PROTOCOL_IPV6_NONXT	59
+#define	IP_PROTOCOL_IPV6_OPTS	60
+#define	IP_PROTOCOL_CFTP	62
+#define	IP_PROTOCOL_SAT_EXPAK	64
+#define	IP_PROTOCOL_KRYPTOLAN	65
+#define	IP_PROTOCOL_RVD		66
+#define	IP_PROTOCOL_IPPC	67
+#define	IP_PROTOCOL_SAT_MON	69
+#define	IP_PROTOCOL_VISA	70
+#define	IP_PROTOCOL_IPCV	71
+#define	IP_PROTOCOL_CPNX	72
+#define	IP_PROTOCOL_CPHB	73
+#define	IP_PROTOCOL_WSN		74
+#define	IP_PROTOCOL_PVP		75
+#define	IP_PROTOCOL_BR_SAT_MON	76
+#define	IP_PROTOCOL_SUN_ND	77
+#define	IP_PROTOCOL_WB_MON	78
+#define	IP_PROTOCOL_WB_EXPAK	79
+#define	IP_PROTOCOL_ISO_IP	80
+#define	IP_PROTOCOL_VMTP	81
+#define	IP_PROTOCOL_SECURE_VMTP	82
+#define	IP_PROTOCOL_VINES	83
+#define	IP_PROTOCOL_TTP  	84
+#define	IP_PROTOCOL_IPTM	84
+#define	IP_PROTOCOL_NSFNET_IGP	85
+#define	IP_PROTOCOL_DGP 	86
+#define	IP_PROTOCOL_TCF	        87
+#define	IP_PROTOCOL_EIGRP	88
+#define	IP_PROTOCOL_OSPFIGP	89
+#define	IP_PROTOCOL_SPRITE_RPC	90
+#define	IP_PROTOCOL_LARP	91
+#define	IP_PROTOCOL_MTP	        92
+#define	IP_PROTOCOL_AX25	93
+#define	IP_PROTOCOL_IPIP	94
+#define	IP_PROTOCOL_MICP	95
+#define	IP_PROTOCOL_SCC_SP	96
+#define	IP_PROTOCOL_ETHERIP	97
+#define	IP_PROTOCOL_ENCAP	98
+#define	IP_PROTOCOL_GMTP	100
+#define	IP_PROTOCOL_IFMP	101
+#define	IP_PROTOCOL_PNNI	102
+#define	IP_PROTOCOL_PIM		103
+#define	IP_PROTOCOL_ARIS	104
+#define	IP_PROTOCOL_SCPS	105
+#define	IP_PROTOCOL_QNX		106
+#define	IP_PROTOCOL_A_N		107
+#define	IP_PROTOCOL_IPCOMP	108
+#define	IP_PROTOCOL_SNP		109
+#define	IP_PROTOCOL_COMPAQ_PEER	110
+#define	IP_PROTOCOL_IPX_IN_IP	111
+#define	IP_PROTOCOL_VRRP	112
+#define	IP_PROTOCOL_PGM		113
+#define	IP_PROTOCOL_L2TP	115
+#define	IP_PROTOCOL_DDX		116
+#define	IP_PROTOCOL_IATP	117
+#define	IP_PROTOCOL_STP		118
+#define	IP_PROTOCOL_SRP		119
+#define	IP_PROTOCOL_UTI		120
+#define	IP_PROTOCOL_SMP		121
+#define	IP_PROTOCOL_SM		122
+#define	IP_PROTOCOL_PTP		123
+#define	IP_PROTOCOL_ISISoIPV4	124
+#define	IP_PROTOCOL_FIRE	125
+#define	IP_PROTOCOL_CRTP	126
+#define	IP_PROTOCOL_CRUDP	127
+#define	IP_PROTOCOL_SSCOPMCE	128
+#define	IP_PROTOCOL_IPLT	129
+#define	IP_PROTOCOL_SPS	        130
+#define	IP_PROTOCOL_PIPE	131
+#define	IP_PROTOCOL_SCTP	132
+#define	IP_PROTOCOL_FC  	133
+#define	IP_PROTOCOL_RSVP_E2E_IGNORE	134
+#define	IP_PROTOCOL_MOBILITY HEADER	135
+#define	IP_PROTOCOL_UDPLITE	136
+#define	IP_PROTOCOL_MPLS_IN_IP	137
+#define	IP_PROTOCOL_MANET	138
+#define	IP_PROTOCOL_HIP 	139
+#define	IP_PROTOCOL_SHIM6	140
+#define	IP_PROTOCOL_WESP	141
+#define	IP_PROTOCOL_ROHC	142

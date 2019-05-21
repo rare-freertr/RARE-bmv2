@@ -22,10 +22,9 @@ interface loopback0
 !
 interface ethernet0
  no description
- macaddr 0242.ac12.0002
+ macaddr 0000.0a00.0101
  vrf forwarding v1
  ipv4 address 10.0.1.1 255.255.255.0
- ipv4 host-static 10.0.1.254 0000.0a00.01fe
  no shutdown
  no log-link-change
  exit
