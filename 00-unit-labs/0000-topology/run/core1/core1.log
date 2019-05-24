@@ -89,3 +89,26 @@
 2019-05-21 13:45:44 info cfg.cfgInit.doInit:cfgInit.java:674 applying defaults
 2019-05-21 13:45:45 info cfg.cfgInit.doInit:cfgInit.java:682 applying configuration
 2019-05-21 15:45:45 info cfg.cfgInit.doInit:cfgInit.java:708 done
+2019-05-22 12:10:27 info cfg.cfgInit.doInit:cfgInit.java:545 booting
+2019-05-22 12:10:28 info cfg.cfgInit.doInit:cfgInit.java:667 initializing hardware
+2019-05-22 12:10:28 info cfg.cfgInit.executeHWcommands:cfgInit.java:458 5:!line tty1 127.0.0.1 21003 127.0.0.1 21003
+2019-05-22 12:10:28 info cfg.cfgInit.executeHWcommands:cfgInit.java:458 7:!tcp2vrf 8080 v1 80
+2019-05-22 12:10:28 info cfg.cfgInit.doInit:cfgInit.java:674 applying defaults
+2019-05-22 12:10:28 info cfg.cfgInit.doInit:cfgInit.java:682 applying configuration
+2019-05-22 14:10:29 info cfg.cfgInit.doInit:cfgInit.java:708 done
+2019-05-23 05:55:11 info cfg.cfgInit.doInit:cfgInit.java:545 booting
+2019-05-23 05:55:11 info cfg.cfgInit.doInit:cfgInit.java:667 initializing hardware
+2019-05-23 05:55:11 info cfg.cfgInit.executeHWcommands:cfgInit.java:458 5:!line tty1 127.0.0.1 21003 127.0.0.1 21003
+2019-05-23 05:55:11 info cfg.cfgInit.executeHWcommands:cfgInit.java:458 7:!tcp2vrf 8080 v1 80
+2019-05-23 05:55:11 info cfg.cfgInit.doInit:cfgInit.java:674 applying defaults
+2019-05-23 05:55:12 info cfg.cfgInit.doInit:cfgInit.java:682 applying configuration
+2019-05-23 07:55:12 info cfg.cfgInit.doInit:cfgInit.java:708 done
+2019-05-24 12:05:09 info cfg.cfgInit.doInit:cfgInit.java:545 booting
+2019-05-24 12:05:09 info cfg.cfgInit.doInit:cfgInit.java:667 initializing hardware
+2019-05-24 12:05:09 info cfg.cfgInit.executeHWcommands:cfgInit.java:458 5:!line tty1 127.0.0.1 21003 127.0.0.1 21003
+2019-05-24 12:05:09 info cfg.cfgInit.executeHWcommands:cfgInit.java:458 7:!tcp2vrf 8080 v1 80
+2019-05-24 12:05:09 info cfg.cfgInit.doInit:cfgInit.java:674 applying defaults
+2019-05-24 12:05:10 info cfg.cfgInit.doInit:cfgInit.java:682 applying configuration
+2019-05-24 14:05:10 info cfg.cfgInit.doInit:cfgInit.java:708 done
+2019-05-24 14:34:56 warning user.userLineHandler.doExec:userLine.java:509 <nobody> configuring from local:telnet #-1 23 -> 127.0.0.1 45986
+2019-05-24 14:41:08 warning user.userLineHandler.doExec:userLine.java:543 <nobody> configured from local:telnet #-1 23 -> 127.0.0.1 45986
