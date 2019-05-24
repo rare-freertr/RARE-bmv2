@@ -29,6 +29,10 @@ RARE
 
 These `<USE-CASE>-labs` are work in progress and each project participant can indepently tackle the use case of their interest.  
 
+# Dependencies
+Dependencies for various Ubuntu versions can be found along with a ppa repos at [Frederic Loui Launchpad](https://launchpad.net/~frederic-loui)
+
+
 # Credits
 All materials here inherit from several P4Lang public resources:
 *	[P4Lang project resources](https://p4.org/) 
