@@ -20,6 +20,14 @@ interface loopback0
  no log-link-change
  exit
 !
+interface loopback1
+ no description
+ vrf forwarding v1
+ ipv4 address 1.1.1.1 255.255.255.0
+ no shutdown
+ no log-link-change
+ exit
+!
 interface ethernet0
  no description
  macaddr 0000.0a00.0101
@@ -31,6 +39,7 @@ interface ethernet0
  exit
 !
 !
+ipv4 route v1 2.2.2.2 255.255.255.0 10.0.1.254
 ipv4 route v1 10.0.2.2 255.255.255.0 10.0.1.254
 ipv4 route v1 10.2.2.2 255.255.255.255 10.0.1.254
 ipv4 route v1 10.254.254.254 255.255.255.255 10.0.1.254
