@@ -1,6 +1,6 @@
 # Lab topology
 The topology used is common to all unit labs defined [here](https://github.com/frederic-loui/RARE/tree/master/00-unit-labs/0000-topology).
-# Lab title:
+# Lab title
 **Unoptimized IPv4 forwarding**
 # Lab objective
 This lab demonstrates basic IPv4 forwarding.
