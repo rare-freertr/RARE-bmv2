@@ -1,8 +1,8 @@
 # Lab topology
 The topology used is common to all unit labs defined [here](https://github.com/frederic-loui/RARE/tree/master/00-unit-labs/0000-topology).
-# Lab title:
+# Lab title
 **Static routing - IPv4 forwarding**
-# Lab objective:
+# Lab objective
 This lab demonstrates basic IPv4 forwarding between disjoint subnetworks. (The previous lab was testing IPv4 forwarding directly  connected interface between `cpe1` and `core1`)
 * The same P4 program as [previous lab](https://github.com/frederic-loui/RARE/tree/master/00-unit-labs/0001-unoptimized-ipv4-forwarding/p4src) is used.
 * Connectivity to a disjoint subnetwork (`10.254.254.254/32`) on `core1` is tested from `cpe1`.
