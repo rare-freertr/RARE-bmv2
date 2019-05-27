@@ -127,11 +127,12 @@ result=100%, recv/sent/lost=5/5/0, rtt min/avg/max/total=1/1/2/7
 cpe1#                                                                                  
 ```
 # Key take-away
-* In this 2nd Lab, we tested IPv4 forwarding via non directly connected subnetwork.
+* In this 2nd Lab, we tested IPv4 forwarding via non directly connected subnetworks.
 * In addition to `tbl_ipv4_fib_host`, `tbl_ipv4_fib_lpm` table is also used in order to match network route.
 * Reachability information is provided by `static routing`.
 On `core1`, configuring `10.254.254.254/32`@`loopback0` must trigger `entry` creation on `p4-core1` that point to the right hardware nexthop, here `p4-core1-cpu1`. Note that it could have been any of the `core1-cpu<x>` port.
 * On `core1`, configuring `stating route` must trigger `entry` creation on `p4-core1` that point to the right hardware nexthop via the dataplane port (here `p4-core1-dp2`).
+* Last but not least, regarding the `2.2.2.0/24` reachability test, if you `tcpdump` `core1` interface you should see no packet transition from `cpe1` to `core1`. This is normal as `core1` in this case is just a transit node. All the packets are switched by `p4-core1` P4 Swicth directly to `cpe2`. (which is what we expected)
 
 # Follow-ups
 * This lab inherit from the [previous lab](https://github.com/frederic-loui/RARE/tree/master/00-unit-labs/0001-unoptimized-ipv4-forwarding/p4src) called: `Unoptimized IPv4 forwarding`. Therefore in the current state, this program still needs to be optimized in a subsequent Lab.
