@@ -173,7 +173,7 @@ control ctl_ingress(inout headers hdr,
          act_ipv4_fib_hit;
          act_ipv4_fib_miss;
       }
-      size = IPV4_LPM_TABLE_SIZE;
+      size = IPV4_HOST_TABLE_SIZE;
       default_action = act_ipv4_fib_miss();
    }
 
