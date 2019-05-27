@@ -1,2 +1,4 @@
 ._README.md
 *.py[oc]
+.DS_Store
+._.DS_Store
