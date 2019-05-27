@@ -40,7 +40,7 @@ table_add tbl_ipv4_fib_host act_ipv4_fib_hit 10.0.1.1  => 00:00:0a:00:01:01 1
    * P4 object: TABLE[`tbl_ipv4_fib_host`], ACT_ID[`act_ipv4_fib_hit`], PARAM[`cpe1-eth0@hw_macaddr`,`cpe1-eth0@port_id`].
    * Trigger: When FreeRTR ARP cache is updated or create/remove this rule.
 
-# Lab check
+# Lab verification
 * On `cpe1`:
 ```
 sudo ip netns exec cpe1 telnet 127.0.0.1 2323
