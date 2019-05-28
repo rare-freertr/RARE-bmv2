@@ -1,8 +1,8 @@
 # Lab topology
 The topology used is common to all unit labs defined [here](https://github.com/frederic-loui/RARE/tree/master/00-unit-labs/0000-topology).
-# Lab title:
+# Lab title
 **Unoptimized IPv4 forwarding**
-# Lab objective:
+# Lab objective
 This lab demonstrates basic IPv4 forwarding.
 * The `parser` matches only `ipv4` packets.
 * Subsequently the `ingress` control apply one **IPv4 host** table that perform `exact` match against host(`/32`) routes.
