@@ -11,7 +11,8 @@ This lab is an optimized version of basic IPv4 forwarding P4 program described i
    * table_add `tbl_ipv4_fib_lpm` `act_ipv4_fib_hit` `<network-id-#2>` `10.0.1.1` => `00:00:0a:00:01:01 1`  
    * ...
    * table_add `tbl_ipv4_fib_lpm` `act_ipv4_fib_hit` `<network-id-#8M>` `10.0.1.1` => `00:00:0a:00:01:01 1`  
-* Notice that table `tbl_ipv4_fib_lpm` contains redundant information that is wasting memory resources: [`10.0.1.1` => `00:00:0a:00:01:01 1`] x 8M entries
+* Notice that table `tbl_ipv4_fib_lpm` contains redundant information that is wasting memory resources:
+   * [`10.0.1.1` => `00:00:0a:00:01:01 1`] x 8M entries
 * Solution: use an additional level of indirection by instantiating a 2nd table: `tbl_nexthop` table
 
 # Lab operation
@@ -37,7 +38,7 @@ RuntimeCmd:
 # P4 Object: tbl_ipv4_fib_host
 # Table key: 10.0.1.1
 # Action id: act_ipv4_fib_hit
-# Action params: {00:00:0a:00:01:01,1}
+# Action params: {1}
 # Trigger: when core1 FreeRTR arp cache is updated afer L2 learning
 table_add tbl_ipv4_fib_host act_ipv4_set_nexthop 10.0.1.1 => 1
 #
@@ -45,7 +46,7 @@ table_add tbl_ipv4_fib_host act_ipv4_set_nexthop 10.0.1.1 => 1
 # P4 Object: tbl_ipv4_fib_host
 # Table key: 10.0.1.254
 # Action id: act_ipv4_fib_hit
-# Action params: {00:00:0a:00:01:fe,254}
+# Action params: {254}
 # Trigger: when the subnetwork is configured on core1 on core1-eth0 interface   
 table_add tbl_ipv4_fib_host act_ipv4_set_nexthop 10.0.1.254 => 254
 #
@@ -53,7 +54,7 @@ table_add tbl_ipv4_fib_host act_ipv4_set_nexthop 10.0.1.254 => 254
 # P4 Object: tbl_ipv4_fib_host
 # Table key: 10.254.254.254
 # Action id: act_ipv4_fib_hit
-# Action params: {00:00:0a:00:01:fe,254}
+# Action params: {254}
 # Trigger: when the subnetwork is configured on core1 on loopback0 interface   
 table_add tbl_ipv4_fib_host act_ipv4_set_nexthop 10.254.254.254 => 254
 ```
@@ -63,7 +64,7 @@ table_add tbl_ipv4_fib_host act_ipv4_set_nexthop 10.254.254.254 => 254
 # P4 Object: tbl_ipv4_fib_lpm
 # Action id: act_ipv4_fib_hit
 # Table key: 2.2.2.0/24
-# Action params: {00:00:0a:00:02:02,2}
+# Action params: {2}
 # Trigger: when the static route toward 2.2.2.0/24 is configured on `core1`
 table_add tbl_ipv4_fib_lpm act_ipv4_set_nexthop 2.2.2.0/24 => 2
 ```
