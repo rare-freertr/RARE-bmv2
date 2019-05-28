@@ -2,7 +2,7 @@
 The topology used is common to all unit labs defined [here](https://github.com/frederic-loui/RARE/tree/master/00-unit-labs/0000-topology).
 # Lab title:
 **Optimized IPv4 forwarding**
-# Lab objective:
+# Lab objective
 This lab is an optimized version of basic IPv4 forwarding P4 program described in a [previous lab](https://github.com/frederic-loui/RARE/tree/master/00-unit-labs/0002-static-routing-ipv4-forwarding/p4src). the same reachability tests are kept. (same configuration on `cpe1`, `core1` and `cpe2` FreeRTR for `10.0.1.254`, `10.254.254.254/32` behind `core1` and `2.2.2.0/24` behind `cpe2`).
 * **Problem statement:** assume that `core1` is learning from `cpe1` the full routing table. (~ 8M of IPv4 prefixes as of May 2019: https://www.cidr-report.org/as2.0/)
 * `core1` would have `cpe1-eth0` with `IP:10.0.1.1` with `hw-address:0000.0a00.0101` at `port:1` via `p4-core1-dp1` as BGP nexthop.
