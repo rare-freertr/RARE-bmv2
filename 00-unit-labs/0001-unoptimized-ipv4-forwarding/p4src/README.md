@@ -114,7 +114,7 @@ interface ethernet0
 ```
 # Follow-ups
 * As we were testing only IPv4 interconnect reachability we had only to use `tbl_ipv4_fib_host` table.
-  * For indirect reachability (`static routing`) we will use `tbl_ipv4_fib_lpm` in a subsequent Lab.
+  * For indirect reachability (`static routing`) we will use `tbl_ipv4_fib_lpm` in a [subsequent Lab](https://github.com/frederic-loui/RARE/tree/master/00-unit-labs/0002-static-routing-ipv4-forwarding/p4src).
 * This Lab is called: `Unoptimized IPv4 forwarding` simply because the `tbl_ipv4_fib_[host|lpm]` has a `lookup key` that can resolve in the same `nexthop`. (i.e several network can have the same netxhop egress port) Therefore `tbl_ipv4_fib_[host|lpm]` is containing multiple occurrence of the same nexthop information which is a waste of TCAM resource. A rule of thumb is to minimise the number of fields used by the key lookup operation.
   * `Optimized IPv4 forwarding` will be the object of a subsequent lab.
 * Considering the previous section, this `arp` mapping must be dynamic especially in production environment.   
