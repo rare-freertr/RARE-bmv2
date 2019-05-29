@@ -1,0 +1,1203 @@
+[08:38:41.155] [bmv2] [D] [thread 2182] Set default default entry for table 'ctl_ingress.tbl_ipv4_fib_host': NoAction - 
+[08:38:41.155] [bmv2] [D] [thread 2182] Set default default entry for table 'tbl_act': act - 
+[08:38:41.155] [bmv2] [D] [thread 2182] Set default default entry for table 'tbl_act_0': act_0 - 
+[08:38:41.155] [bmv2] [D] [thread 2182] Set default default entry for table 'ctl_ingress.tbl_ipv4_fib_lpm': NoAction - 
+[08:38:41.155] [bmv2] [D] [thread 2182] Set default default entry for table 'ctl_ingress.tbl_nexthop': ctl_ingress.act_ipv4_fib_discard - 
+[08:38:41.156] [bmv2] [D] [thread 2182] Adding interface p4-core1-dp1 as port 1
+[08:38:41.156] [bmv2] [D] [thread 2182] Adding interface p4-core1-dp2 as port 2
+[08:38:41.157] [bmv2] [D] [thread 2182] Adding interface p4-core1-cpu2 as port 254
+[08:38:41.157] [bmv2] [D] [thread 2182] Adding interface p4-core1-cpu1 as port 255
+[08:38:41.158] [bmv2] [I] [thread 2182] Starting Thrift server on port 9090
+[08:38:41.159] [bmv2] [I] [thread 2182] Thrift server was started
+[08:38:59.621] [bmv2] [D] [thread 2188] [0.0] [cxt 0] Processing packet received on port 1
+[08:38:59.621] [bmv2] [D] [thread 2188] [0.0] [cxt 0] Parser 'parser': start
+[08:38:59.621] [bmv2] [D] [thread 2188] [0.0] [cxt 0] Parser 'parser' entering state 'start'
+[08:38:59.621] [bmv2] [D] [thread 2188] [0.0] [cxt 0] Extracting header 'ethernet'
+[08:38:59.621] [bmv2] [D] [thread 2188] [0.0] [cxt 0] Parser state 'start': key is 0800
+[08:38:59.621] [bmv2] [T] [thread 2188] [0.0] [cxt 0] Bytes parsed: 14
+[08:38:59.621] [bmv2] [D] [thread 2188] [0.0] [cxt 0] Parser 'parser' entering state 'prs_ipv4'
+[08:38:59.621] [bmv2] [D] [thread 2188] [0.0] [cxt 0] Extracting header 'ipv4'
+[08:38:59.621] [bmv2] [D] [thread 2188] [0.0] [cxt 0] Parser state 'prs_ipv4' has no switch, going to default next state
+[08:38:59.621] [bmv2] [T] [thread 2188] [0.0] [cxt 0] Bytes parsed: 34
+[08:38:59.621] [bmv2] [D] [thread 2188] [0.0] [cxt 0] Parser 'parser': end
+[08:38:59.621] [bmv2] [D] [thread 2188] [0.0] [cxt 0] Pipeline 'ingress': start
+[08:38:59.621] [bmv2] [T] [thread 2188] [0.0] [cxt 0] optimized-ipv4-forwarding.p4(228) Condition "hdr.ipv4.isValid()" (node_2) is true
+[08:38:59.621] [bmv2] [T] [thread 2188] [0.0] [cxt 0] Applying table 'ctl_ingress.tbl_ipv4_fib_host'
+[08:38:59.621] [bmv2] [D] [thread 2188] [0.0] [cxt 0] Looking up key:
+* hdr.ipv4.dst_ipv4_addr: 02020202
+
+[08:38:59.621] [bmv2] [D] [thread 2188] [0.0] [cxt 0] Table 'ctl_ingress.tbl_ipv4_fib_host': miss
+[08:38:59.621] [bmv2] [D] [thread 2188] [0.0] [cxt 0] Action entry is NoAction - 
+[08:38:59.621] [bmv2] [T] [thread 2188] [0.0] [cxt 0] Action NoAction
+[08:38:59.621] [bmv2] [T] [thread 2188] [0.0] [cxt 0] Applying table 'tbl_act_0'
+[08:38:59.621] [bmv2] [D] [thread 2188] [0.0] [cxt 0] Looking up key:
+
+[08:38:59.621] [bmv2] [D] [thread 2188] [0.0] [cxt 0] Table 'tbl_act_0': miss
+[08:38:59.621] [bmv2] [D] [thread 2188] [0.0] [cxt 0] Action entry is act_0 - 
+[08:38:59.621] [bmv2] [T] [thread 2188] [0.0] [cxt 0] Action act_0
+[08:38:59.621] [bmv2] [T] [thread 2188] [0.0] [cxt 0] Primitive (no source info)
+[08:38:59.621] [bmv2] [T] [thread 2188] [0.0] [cxt 0] optimized-ipv4-forwarding.p4(232) Condition "!tbl_ipv4_fib_host.apply().hit" (node_6) is true
+[08:38:59.621] [bmv2] [T] [thread 2188] [0.0] [cxt 0] Applying table 'ctl_ingress.tbl_ipv4_fib_lpm'
+[08:38:59.621] [bmv2] [D] [thread 2188] [0.0] [cxt 0] Looking up key:
+* hdr.ipv4.dst_ipv4_addr: 02020202
+
+[08:38:59.621] [bmv2] [D] [thread 2188] [0.0] [cxt 0] Table 'ctl_ingress.tbl_ipv4_fib_lpm': miss
+[08:38:59.621] [bmv2] [D] [thread 2188] [0.0] [cxt 0] Action entry is NoAction - 
+[08:38:59.621] [bmv2] [T] [thread 2188] [0.0] [cxt 0] Action NoAction
+[08:38:59.621] [bmv2] [T] [thread 2188] [0.0] [cxt 0] Applying table 'ctl_ingress.tbl_nexthop'
+[08:38:59.621] [bmv2] [D] [thread 2188] [0.0] [cxt 0] Looking up key:
+* metadata.nexthop_id : 0000
+
+[08:38:59.622] [bmv2] [D] [thread 2188] [0.0] [cxt 0] Table 'ctl_ingress.tbl_nexthop': miss
+[08:38:59.622] [bmv2] [D] [thread 2188] [0.0] [cxt 0] Action entry is ctl_ingress.act_ipv4_fib_discard - 
+[08:38:59.622] [bmv2] [T] [thread 2188] [0.0] [cxt 0] Action ctl_ingress.act_ipv4_fib_discard
+[08:38:59.622] [bmv2] [T] [thread 2188] [0.0] [cxt 0] optimized-ipv4-forwarding.p4(136) Primitive mark_to_drop(standard_metadata)
+[08:38:59.622] [bmv2] [D] [thread 2188] [0.0] [cxt 0] Pipeline 'ingress': end
+[08:38:59.622] [bmv2] [D] [thread 2188] [0.0] [cxt 0] Egress port is 511
+[08:38:59.622] [bmv2] [D] [thread 2188] [0.0] [cxt 0] Dropping packet at the end of ingress
+[08:39:00.623] [bmv2] [D] [thread 2188] [1.0] [cxt 0] Processing packet received on port 1
+[08:39:00.623] [bmv2] [D] [thread 2188] [1.0] [cxt 0] Parser 'parser': start
+[08:39:00.623] [bmv2] [D] [thread 2188] [1.0] [cxt 0] Parser 'parser' entering state 'start'
+[08:39:00.623] [bmv2] [D] [thread 2188] [1.0] [cxt 0] Extracting header 'ethernet'
+[08:39:00.623] [bmv2] [D] [thread 2188] [1.0] [cxt 0] Parser state 'start': key is 0800
+[08:39:00.623] [bmv2] [T] [thread 2188] [1.0] [cxt 0] Bytes parsed: 14
+[08:39:00.623] [bmv2] [D] [thread 2188] [1.0] [cxt 0] Parser 'parser' entering state 'prs_ipv4'
+[08:39:00.623] [bmv2] [D] [thread 2188] [1.0] [cxt 0] Extracting header 'ipv4'
+[08:39:00.623] [bmv2] [D] [thread 2188] [1.0] [cxt 0] Parser state 'prs_ipv4' has no switch, going to default next state
+[08:39:00.623] [bmv2] [T] [thread 2188] [1.0] [cxt 0] Bytes parsed: 34
+[08:39:00.623] [bmv2] [D] [thread 2188] [1.0] [cxt 0] Parser 'parser': end
+[08:39:00.623] [bmv2] [D] [thread 2188] [1.0] [cxt 0] Pipeline 'ingress': start
+[08:39:00.623] [bmv2] [T] [thread 2188] [1.0] [cxt 0] optimized-ipv4-forwarding.p4(228) Condition "hdr.ipv4.isValid()" (node_2) is true
+[08:39:00.623] [bmv2] [T] [thread 2188] [1.0] [cxt 0] Applying table 'ctl_ingress.tbl_ipv4_fib_host'
+[08:39:00.624] [bmv2] [D] [thread 2188] [1.0] [cxt 0] Looking up key:
+* hdr.ipv4.dst_ipv4_addr: 02020202
+
+[08:39:00.624] [bmv2] [D] [thread 2188] [1.0] [cxt 0] Table 'ctl_ingress.tbl_ipv4_fib_host': miss
+[08:39:00.624] [bmv2] [D] [thread 2188] [1.0] [cxt 0] Action entry is NoAction - 
+[08:39:00.624] [bmv2] [T] [thread 2188] [1.0] [cxt 0] Action NoAction
+[08:39:00.624] [bmv2] [T] [thread 2188] [1.0] [cxt 0] Applying table 'tbl_act_0'
+[08:39:00.624] [bmv2] [D] [thread 2188] [1.0] [cxt 0] Looking up key:
+
+[08:39:00.624] [bmv2] [D] [thread 2188] [1.0] [cxt 0] Table 'tbl_act_0': miss
+[08:39:00.624] [bmv2] [D] [thread 2188] [1.0] [cxt 0] Action entry is act_0 - 
+[08:39:00.624] [bmv2] [T] [thread 2188] [1.0] [cxt 0] Action act_0
+[08:39:00.624] [bmv2] [T] [thread 2188] [1.0] [cxt 0] Primitive (no source info)
+[08:39:00.624] [bmv2] [T] [thread 2188] [1.0] [cxt 0] optimized-ipv4-forwarding.p4(232) Condition "!tbl_ipv4_fib_host.apply().hit" (node_6) is true
+[08:39:00.624] [bmv2] [T] [thread 2188] [1.0] [cxt 0] Applying table 'ctl_ingress.tbl_ipv4_fib_lpm'
+[08:39:00.624] [bmv2] [D] [thread 2188] [1.0] [cxt 0] Looking up key:
+* hdr.ipv4.dst_ipv4_addr: 02020202
+
+[08:39:00.624] [bmv2] [D] [thread 2188] [1.0] [cxt 0] Table 'ctl_ingress.tbl_ipv4_fib_lpm': miss
+[08:39:00.624] [bmv2] [D] [thread 2188] [1.0] [cxt 0] Action entry is NoAction - 
+[08:39:00.624] [bmv2] [T] [thread 2188] [1.0] [cxt 0] Action NoAction
+[08:39:00.624] [bmv2] [T] [thread 2188] [1.0] [cxt 0] Applying table 'ctl_ingress.tbl_nexthop'
+[08:39:00.624] [bmv2] [D] [thread 2188] [1.0] [cxt 0] Looking up key:
+* metadata.nexthop_id : 0000
+
+[08:39:00.624] [bmv2] [D] [thread 2188] [1.0] [cxt 0] Table 'ctl_ingress.tbl_nexthop': miss
+[08:39:00.624] [bmv2] [D] [thread 2188] [1.0] [cxt 0] Action entry is ctl_ingress.act_ipv4_fib_discard - 
+[08:39:00.624] [bmv2] [T] [thread 2188] [1.0] [cxt 0] Action ctl_ingress.act_ipv4_fib_discard
+[08:39:00.624] [bmv2] [T] [thread 2188] [1.0] [cxt 0] optimized-ipv4-forwarding.p4(136) Primitive mark_to_drop(standard_metadata)
+[08:39:00.624] [bmv2] [D] [thread 2188] [1.0] [cxt 0] Pipeline 'ingress': end
+[08:39:00.624] [bmv2] [D] [thread 2188] [1.0] [cxt 0] Egress port is 511
+[08:39:00.624] [bmv2] [D] [thread 2188] [1.0] [cxt 0] Dropping packet at the end of ingress
+[08:39:01.625] [bmv2] [D] [thread 2188] [2.0] [cxt 0] Processing packet received on port 1
+[08:39:01.625] [bmv2] [D] [thread 2188] [2.0] [cxt 0] Parser 'parser': start
+[08:39:01.625] [bmv2] [D] [thread 2188] [2.0] [cxt 0] Parser 'parser' entering state 'start'
+[08:39:01.625] [bmv2] [D] [thread 2188] [2.0] [cxt 0] Extracting header 'ethernet'
+[08:39:01.625] [bmv2] [D] [thread 2188] [2.0] [cxt 0] Parser state 'start': key is 0800
+[08:39:01.625] [bmv2] [T] [thread 2188] [2.0] [cxt 0] Bytes parsed: 14
+[08:39:01.625] [bmv2] [D] [thread 2188] [2.0] [cxt 0] Parser 'parser' entering state 'prs_ipv4'
+[08:39:01.625] [bmv2] [D] [thread 2188] [2.0] [cxt 0] Extracting header 'ipv4'
+[08:39:01.625] [bmv2] [D] [thread 2188] [2.0] [cxt 0] Parser state 'prs_ipv4' has no switch, going to default next state
+[08:39:01.625] [bmv2] [T] [thread 2188] [2.0] [cxt 0] Bytes parsed: 34
+[08:39:01.625] [bmv2] [D] [thread 2188] [2.0] [cxt 0] Parser 'parser': end
+[08:39:01.625] [bmv2] [D] [thread 2188] [2.0] [cxt 0] Pipeline 'ingress': start
+[08:39:01.626] [bmv2] [T] [thread 2188] [2.0] [cxt 0] optimized-ipv4-forwarding.p4(228) Condition "hdr.ipv4.isValid()" (node_2) is true
+[08:39:01.626] [bmv2] [T] [thread 2188] [2.0] [cxt 0] Applying table 'ctl_ingress.tbl_ipv4_fib_host'
+[08:39:01.626] [bmv2] [D] [thread 2188] [2.0] [cxt 0] Looking up key:
+* hdr.ipv4.dst_ipv4_addr: 02020202
+
+[08:39:01.626] [bmv2] [D] [thread 2188] [2.0] [cxt 0] Table 'ctl_ingress.tbl_ipv4_fib_host': miss
+[08:39:01.626] [bmv2] [D] [thread 2188] [2.0] [cxt 0] Action entry is NoAction - 
+[08:39:01.626] [bmv2] [T] [thread 2188] [2.0] [cxt 0] Action NoAction
+[08:39:01.626] [bmv2] [T] [thread 2188] [2.0] [cxt 0] Applying table 'tbl_act_0'
+[08:39:01.626] [bmv2] [D] [thread 2188] [2.0] [cxt 0] Looking up key:
+
+[08:39:01.626] [bmv2] [D] [thread 2188] [2.0] [cxt 0] Table 'tbl_act_0': miss
+[08:39:01.626] [bmv2] [D] [thread 2188] [2.0] [cxt 0] Action entry is act_0 - 
+[08:39:01.626] [bmv2] [T] [thread 2188] [2.0] [cxt 0] Action act_0
+[08:39:01.626] [bmv2] [T] [thread 2188] [2.0] [cxt 0] Primitive (no source info)
+[08:39:01.626] [bmv2] [T] [thread 2188] [2.0] [cxt 0] optimized-ipv4-forwarding.p4(232) Condition "!tbl_ipv4_fib_host.apply().hit" (node_6) is true
+[08:39:01.626] [bmv2] [T] [thread 2188] [2.0] [cxt 0] Applying table 'ctl_ingress.tbl_ipv4_fib_lpm'
+[08:39:01.626] [bmv2] [D] [thread 2188] [2.0] [cxt 0] Looking up key:
+* hdr.ipv4.dst_ipv4_addr: 02020202
+
+[08:39:01.626] [bmv2] [D] [thread 2188] [2.0] [cxt 0] Table 'ctl_ingress.tbl_ipv4_fib_lpm': miss
+[08:39:01.626] [bmv2] [D] [thread 2188] [2.0] [cxt 0] Action entry is NoAction - 
+[08:39:01.626] [bmv2] [T] [thread 2188] [2.0] [cxt 0] Action NoAction
+[08:39:01.626] [bmv2] [T] [thread 2188] [2.0] [cxt 0] Applying table 'ctl_ingress.tbl_nexthop'
+[08:39:01.626] [bmv2] [D] [thread 2188] [2.0] [cxt 0] Looking up key:
+* metadata.nexthop_id : 0000
+
+[08:39:01.626] [bmv2] [D] [thread 2188] [2.0] [cxt 0] Table 'ctl_ingress.tbl_nexthop': miss
+[08:39:01.626] [bmv2] [D] [thread 2188] [2.0] [cxt 0] Action entry is ctl_ingress.act_ipv4_fib_discard - 
+[08:39:01.626] [bmv2] [T] [thread 2188] [2.0] [cxt 0] Action ctl_ingress.act_ipv4_fib_discard
+[08:39:01.626] [bmv2] [T] [thread 2188] [2.0] [cxt 0] optimized-ipv4-forwarding.p4(136) Primitive mark_to_drop(standard_metadata)
+[08:39:01.626] [bmv2] [D] [thread 2188] [2.0] [cxt 0] Pipeline 'ingress': end
+[08:39:01.626] [bmv2] [D] [thread 2188] [2.0] [cxt 0] Egress port is 511
+[08:39:01.626] [bmv2] [D] [thread 2188] [2.0] [cxt 0] Dropping packet at the end of ingress
+[08:39:02.627] [bmv2] [D] [thread 2188] [3.0] [cxt 0] Processing packet received on port 1
+[08:39:02.627] [bmv2] [D] [thread 2188] [3.0] [cxt 0] Parser 'parser': start
+[08:39:02.627] [bmv2] [D] [thread 2188] [3.0] [cxt 0] Parser 'parser' entering state 'start'
+[08:39:02.627] [bmv2] [D] [thread 2188] [3.0] [cxt 0] Extracting header 'ethernet'
+[08:39:02.628] [bmv2] [D] [thread 2188] [3.0] [cxt 0] Parser state 'start': key is 0800
+[08:39:02.628] [bmv2] [T] [thread 2188] [3.0] [cxt 0] Bytes parsed: 14
+[08:39:02.628] [bmv2] [D] [thread 2188] [3.0] [cxt 0] Parser 'parser' entering state 'prs_ipv4'
+[08:39:02.628] [bmv2] [D] [thread 2188] [3.0] [cxt 0] Extracting header 'ipv4'
+[08:39:02.628] [bmv2] [D] [thread 2188] [3.0] [cxt 0] Parser state 'prs_ipv4' has no switch, going to default next state
+[08:39:02.628] [bmv2] [T] [thread 2188] [3.0] [cxt 0] Bytes parsed: 34
+[08:39:02.628] [bmv2] [D] [thread 2188] [3.0] [cxt 0] Parser 'parser': end
+[08:39:02.628] [bmv2] [D] [thread 2188] [3.0] [cxt 0] Pipeline 'ingress': start
+[08:39:02.628] [bmv2] [T] [thread 2188] [3.0] [cxt 0] optimized-ipv4-forwarding.p4(228) Condition "hdr.ipv4.isValid()" (node_2) is true
+[08:39:02.628] [bmv2] [T] [thread 2188] [3.0] [cxt 0] Applying table 'ctl_ingress.tbl_ipv4_fib_host'
+[08:39:02.628] [bmv2] [D] [thread 2188] [3.0] [cxt 0] Looking up key:
+* hdr.ipv4.dst_ipv4_addr: 02020202
+
+[08:39:02.628] [bmv2] [D] [thread 2188] [3.0] [cxt 0] Table 'ctl_ingress.tbl_ipv4_fib_host': miss
+[08:39:02.628] [bmv2] [D] [thread 2188] [3.0] [cxt 0] Action entry is NoAction - 
+[08:39:02.628] [bmv2] [T] [thread 2188] [3.0] [cxt 0] Action NoAction
+[08:39:02.628] [bmv2] [T] [thread 2188] [3.0] [cxt 0] Applying table 'tbl_act_0'
+[08:39:02.628] [bmv2] [D] [thread 2188] [3.0] [cxt 0] Looking up key:
+
+[08:39:02.628] [bmv2] [D] [thread 2188] [3.0] [cxt 0] Table 'tbl_act_0': miss
+[08:39:02.628] [bmv2] [D] [thread 2188] [3.0] [cxt 0] Action entry is act_0 - 
+[08:39:02.628] [bmv2] [T] [thread 2188] [3.0] [cxt 0] Action act_0
+[08:39:02.628] [bmv2] [T] [thread 2188] [3.0] [cxt 0] Primitive (no source info)
+[08:39:02.628] [bmv2] [T] [thread 2188] [3.0] [cxt 0] optimized-ipv4-forwarding.p4(232) Condition "!tbl_ipv4_fib_host.apply().hit" (node_6) is true
+[08:39:02.628] [bmv2] [T] [thread 2188] [3.0] [cxt 0] Applying table 'ctl_ingress.tbl_ipv4_fib_lpm'
+[08:39:02.628] [bmv2] [D] [thread 2188] [3.0] [cxt 0] Looking up key:
+* hdr.ipv4.dst_ipv4_addr: 02020202
+
+[08:39:02.628] [bmv2] [D] [thread 2188] [3.0] [cxt 0] Table 'ctl_ingress.tbl_ipv4_fib_lpm': miss
+[08:39:02.628] [bmv2] [D] [thread 2188] [3.0] [cxt 0] Action entry is NoAction - 
+[08:39:02.628] [bmv2] [T] [thread 2188] [3.0] [cxt 0] Action NoAction
+[08:39:02.628] [bmv2] [T] [thread 2188] [3.0] [cxt 0] Applying table 'ctl_ingress.tbl_nexthop'
+[08:39:02.628] [bmv2] [D] [thread 2188] [3.0] [cxt 0] Looking up key:
+* metadata.nexthop_id : 0000
+
+[08:39:02.628] [bmv2] [D] [thread 2188] [3.0] [cxt 0] Table 'ctl_ingress.tbl_nexthop': miss
+[08:39:02.628] [bmv2] [D] [thread 2188] [3.0] [cxt 0] Action entry is ctl_ingress.act_ipv4_fib_discard - 
+[08:39:02.628] [bmv2] [T] [thread 2188] [3.0] [cxt 0] Action ctl_ingress.act_ipv4_fib_discard
+[08:39:02.628] [bmv2] [T] [thread 2188] [3.0] [cxt 0] optimized-ipv4-forwarding.p4(136) Primitive mark_to_drop(standard_metadata)
+[08:39:02.628] [bmv2] [D] [thread 2188] [3.0] [cxt 0] Pipeline 'ingress': end
+[08:39:02.628] [bmv2] [D] [thread 2188] [3.0] [cxt 0] Egress port is 511
+[08:39:02.628] [bmv2] [D] [thread 2188] [3.0] [cxt 0] Dropping packet at the end of ingress
+[08:39:03.631] [bmv2] [D] [thread 2188] [4.0] [cxt 0] Processing packet received on port 1
+[08:39:03.631] [bmv2] [D] [thread 2188] [4.0] [cxt 0] Parser 'parser': start
+[08:39:03.631] [bmv2] [D] [thread 2188] [4.0] [cxt 0] Parser 'parser' entering state 'start'
+[08:39:03.631] [bmv2] [D] [thread 2188] [4.0] [cxt 0] Extracting header 'ethernet'
+[08:39:03.631] [bmv2] [D] [thread 2188] [4.0] [cxt 0] Parser state 'start': key is 0800
+[08:39:03.631] [bmv2] [T] [thread 2188] [4.0] [cxt 0] Bytes parsed: 14
+[08:39:03.631] [bmv2] [D] [thread 2188] [4.0] [cxt 0] Parser 'parser' entering state 'prs_ipv4'
+[08:39:03.631] [bmv2] [D] [thread 2188] [4.0] [cxt 0] Extracting header 'ipv4'
+[08:39:03.631] [bmv2] [D] [thread 2188] [4.0] [cxt 0] Parser state 'prs_ipv4' has no switch, going to default next state
+[08:39:03.631] [bmv2] [T] [thread 2188] [4.0] [cxt 0] Bytes parsed: 34
+[08:39:03.631] [bmv2] [D] [thread 2188] [4.0] [cxt 0] Parser 'parser': end
+[08:39:03.631] [bmv2] [D] [thread 2188] [4.0] [cxt 0] Pipeline 'ingress': start
+[08:39:03.631] [bmv2] [T] [thread 2188] [4.0] [cxt 0] optimized-ipv4-forwarding.p4(228) Condition "hdr.ipv4.isValid()" (node_2) is true
+[08:39:03.631] [bmv2] [T] [thread 2188] [4.0] [cxt 0] Applying table 'ctl_ingress.tbl_ipv4_fib_host'
+[08:39:03.631] [bmv2] [D] [thread 2188] [4.0] [cxt 0] Looking up key:
+* hdr.ipv4.dst_ipv4_addr: 02020202
+
+[08:39:03.631] [bmv2] [D] [thread 2188] [4.0] [cxt 0] Table 'ctl_ingress.tbl_ipv4_fib_host': miss
+[08:39:03.631] [bmv2] [D] [thread 2188] [4.0] [cxt 0] Action entry is NoAction - 
+[08:39:03.631] [bmv2] [T] [thread 2188] [4.0] [cxt 0] Action NoAction
+[08:39:03.631] [bmv2] [T] [thread 2188] [4.0] [cxt 0] Applying table 'tbl_act_0'
+[08:39:03.631] [bmv2] [D] [thread 2188] [4.0] [cxt 0] Looking up key:
+
+[08:39:03.631] [bmv2] [D] [thread 2188] [4.0] [cxt 0] Table 'tbl_act_0': miss
+[08:39:03.631] [bmv2] [D] [thread 2188] [4.0] [cxt 0] Action entry is act_0 - 
+[08:39:03.631] [bmv2] [T] [thread 2188] [4.0] [cxt 0] Action act_0
+[08:39:03.631] [bmv2] [T] [thread 2188] [4.0] [cxt 0] Primitive (no source info)
+[08:39:03.631] [bmv2] [T] [thread 2188] [4.0] [cxt 0] optimized-ipv4-forwarding.p4(232) Condition "!tbl_ipv4_fib_host.apply().hit" (node_6) is true
+[08:39:03.631] [bmv2] [T] [thread 2188] [4.0] [cxt 0] Applying table 'ctl_ingress.tbl_ipv4_fib_lpm'
+[08:39:03.631] [bmv2] [D] [thread 2188] [4.0] [cxt 0] Looking up key:
+* hdr.ipv4.dst_ipv4_addr: 02020202
+
+[08:39:03.631] [bmv2] [D] [thread 2188] [4.0] [cxt 0] Table 'ctl_ingress.tbl_ipv4_fib_lpm': miss
+[08:39:03.631] [bmv2] [D] [thread 2188] [4.0] [cxt 0] Action entry is NoAction - 
+[08:39:03.631] [bmv2] [T] [thread 2188] [4.0] [cxt 0] Action NoAction
+[08:39:03.631] [bmv2] [T] [thread 2188] [4.0] [cxt 0] Applying table 'ctl_ingress.tbl_nexthop'
+[08:39:03.631] [bmv2] [D] [thread 2188] [4.0] [cxt 0] Looking up key:
+* metadata.nexthop_id : 0000
+
+[08:39:03.631] [bmv2] [D] [thread 2188] [4.0] [cxt 0] Table 'ctl_ingress.tbl_nexthop': miss
+[08:39:03.631] [bmv2] [D] [thread 2188] [4.0] [cxt 0] Action entry is ctl_ingress.act_ipv4_fib_discard - 
+[08:39:03.631] [bmv2] [T] [thread 2188] [4.0] [cxt 0] Action ctl_ingress.act_ipv4_fib_discard
+[08:39:03.631] [bmv2] [T] [thread 2188] [4.0] [cxt 0] optimized-ipv4-forwarding.p4(136) Primitive mark_to_drop(standard_metadata)
+[08:39:03.631] [bmv2] [D] [thread 2188] [4.0] [cxt 0] Pipeline 'ingress': end
+[08:39:03.631] [bmv2] [D] [thread 2188] [4.0] [cxt 0] Egress port is 511
+[08:39:03.631] [bmv2] [D] [thread 2188] [4.0] [cxt 0] Dropping packet at the end of ingress
+[08:39:09.070] [bmv2] [T] [thread 2238] bm_get_config
+[08:39:14.849] [bmv2] [D] [thread 2188] [5.0] [cxt 0] Processing packet received on port 2
+[08:39:14.849] [bmv2] [D] [thread 2188] [5.0] [cxt 0] Parser 'parser': start
+[08:39:14.849] [bmv2] [D] [thread 2188] [5.0] [cxt 0] Parser 'parser' entering state 'start'
+[08:39:14.849] [bmv2] [D] [thread 2188] [5.0] [cxt 0] Extracting header 'ethernet'
+[08:39:14.849] [bmv2] [D] [thread 2188] [5.0] [cxt 0] Parser state 'start': key is 0806
+[08:39:14.849] [bmv2] [T] [thread 2188] [5.0] [cxt 0] Bytes parsed: 14
+[08:39:14.849] [bmv2] [D] [thread 2188] [5.0] [cxt 0] Parser 'parser': end
+[08:39:14.849] [bmv2] [D] [thread 2188] [5.0] [cxt 0] Pipeline 'ingress': start
+[08:39:14.849] [bmv2] [T] [thread 2188] [5.0] [cxt 0] optimized-ipv4-forwarding.p4(228) Condition "hdr.ipv4.isValid()" (node_2) is false
+[08:39:14.849] [bmv2] [D] [thread 2188] [5.0] [cxt 0] Pipeline 'ingress': end
+[08:39:14.849] [bmv2] [D] [thread 2188] [5.0] [cxt 0] Egress port is 0
+[08:39:14.849] [bmv2] [D] [thread 2189] [5.0] [cxt 0] Pipeline 'egress': start
+[08:39:14.849] [bmv2] [D] [thread 2189] [5.0] [cxt 0] Pipeline 'egress': end
+[08:39:14.849] [bmv2] [D] [thread 2189] [5.0] [cxt 0] Deparser 'deparser': start
+[08:39:14.849] [bmv2] [T] [thread 2189] [5.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[08:39:14.849] [bmv2] [D] [thread 2189] [5.0] [cxt 0] Deparsing header 'ethernet'
+[08:39:14.849] [bmv2] [D] [thread 2189] [5.0] [cxt 0] Deparser 'deparser': end
+[08:39:14.849] [bmv2] [D] [thread 2193] [5.0] [cxt 0] Transmitting packet of size 48 out of port 0
+[08:39:14.851] [bmv2] [D] [thread 2188] [6.0] [cxt 0] Processing packet received on port 1
+[08:39:14.851] [bmv2] [D] [thread 2188] [6.0] [cxt 0] Parser 'parser': start
+[08:39:14.851] [bmv2] [D] [thread 2188] [6.0] [cxt 0] Parser 'parser' entering state 'start'
+[08:39:14.851] [bmv2] [D] [thread 2188] [6.0] [cxt 0] Extracting header 'ethernet'
+[08:39:14.851] [bmv2] [D] [thread 2188] [6.0] [cxt 0] Parser state 'start': key is 0806
+[08:39:14.851] [bmv2] [T] [thread 2188] [6.0] [cxt 0] Bytes parsed: 14
+[08:39:14.851] [bmv2] [D] [thread 2188] [6.0] [cxt 0] Parser 'parser': end
+[08:39:14.851] [bmv2] [D] [thread 2188] [6.0] [cxt 0] Pipeline 'ingress': start
+[08:39:14.851] [bmv2] [T] [thread 2188] [6.0] [cxt 0] optimized-ipv4-forwarding.p4(228) Condition "hdr.ipv4.isValid()" (node_2) is false
+[08:39:14.851] [bmv2] [D] [thread 2188] [6.0] [cxt 0] Pipeline 'ingress': end
+[08:39:14.851] [bmv2] [D] [thread 2188] [6.0] [cxt 0] Egress port is 0
+[08:39:14.851] [bmv2] [D] [thread 2189] [6.0] [cxt 0] Pipeline 'egress': start
+[08:39:14.851] [bmv2] [D] [thread 2189] [6.0] [cxt 0] Pipeline 'egress': end
+[08:39:14.851] [bmv2] [D] [thread 2189] [6.0] [cxt 0] Deparser 'deparser': start
+[08:39:14.851] [bmv2] [T] [thread 2189] [6.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[08:39:14.851] [bmv2] [D] [thread 2189] [6.0] [cxt 0] Deparsing header 'ethernet'
+[08:39:14.851] [bmv2] [D] [thread 2189] [6.0] [cxt 0] Deparser 'deparser': end
+[08:39:14.851] [bmv2] [D] [thread 2193] [6.0] [cxt 0] Transmitting packet of size 48 out of port 0
+[08:39:15.148] [bmv2] [D] [thread 2188] [7.0] [cxt 0] Processing packet received on port 255
+[08:39:15.148] [bmv2] [D] [thread 2188] [7.0] [cxt 0] Parser 'parser': start
+[08:39:15.148] [bmv2] [D] [thread 2188] [7.0] [cxt 0] Parser 'parser' entering state 'start'
+[08:39:15.148] [bmv2] [D] [thread 2188] [7.0] [cxt 0] Extracting header 'ethernet'
+[08:39:15.148] [bmv2] [D] [thread 2188] [7.0] [cxt 0] Parser state 'start': key is 0806
+[08:39:15.148] [bmv2] [T] [thread 2188] [7.0] [cxt 0] Bytes parsed: 14
+[08:39:15.148] [bmv2] [D] [thread 2188] [7.0] [cxt 0] Parser 'parser': end
+[08:39:15.148] [bmv2] [D] [thread 2188] [7.0] [cxt 0] Pipeline 'ingress': start
+[08:39:15.148] [bmv2] [T] [thread 2188] [7.0] [cxt 0] optimized-ipv4-forwarding.p4(228) Condition "hdr.ipv4.isValid()" (node_2) is false
+[08:39:15.148] [bmv2] [D] [thread 2188] [7.0] [cxt 0] Pipeline 'ingress': end
+[08:39:15.148] [bmv2] [D] [thread 2188] [7.0] [cxt 0] Egress port is 0
+[08:39:15.148] [bmv2] [D] [thread 2189] [7.0] [cxt 0] Pipeline 'egress': start
+[08:39:15.148] [bmv2] [D] [thread 2189] [7.0] [cxt 0] Pipeline 'egress': end
+[08:39:15.148] [bmv2] [D] [thread 2189] [7.0] [cxt 0] Deparser 'deparser': start
+[08:39:15.148] [bmv2] [T] [thread 2189] [7.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[08:39:15.148] [bmv2] [D] [thread 2189] [7.0] [cxt 0] Deparsing header 'ethernet'
+[08:39:15.148] [bmv2] [D] [thread 2189] [7.0] [cxt 0] Deparser 'deparser': end
+[08:39:15.148] [bmv2] [D] [thread 2193] [7.0] [cxt 0] Transmitting packet of size 48 out of port 0
+[08:39:15.188] [bmv2] [D] [thread 2188] [8.0] [cxt 0] Processing packet received on port 254
+[08:39:15.188] [bmv2] [D] [thread 2188] [8.0] [cxt 0] Parser 'parser': start
+[08:39:15.188] [bmv2] [D] [thread 2188] [8.0] [cxt 0] Parser 'parser' entering state 'start'
+[08:39:15.188] [bmv2] [D] [thread 2188] [8.0] [cxt 0] Extracting header 'ethernet'
+[08:39:15.188] [bmv2] [D] [thread 2188] [8.0] [cxt 0] Parser state 'start': key is 0806
+[08:39:15.188] [bmv2] [T] [thread 2188] [8.0] [cxt 0] Bytes parsed: 14
+[08:39:15.188] [bmv2] [D] [thread 2188] [8.0] [cxt 0] Parser 'parser': end
+[08:39:15.188] [bmv2] [D] [thread 2188] [8.0] [cxt 0] Pipeline 'ingress': start
+[08:39:15.188] [bmv2] [T] [thread 2188] [8.0] [cxt 0] optimized-ipv4-forwarding.p4(228) Condition "hdr.ipv4.isValid()" (node_2) is false
+[08:39:15.188] [bmv2] [D] [thread 2188] [8.0] [cxt 0] Pipeline 'ingress': end
+[08:39:15.188] [bmv2] [D] [thread 2188] [8.0] [cxt 0] Egress port is 0
+[08:39:15.188] [bmv2] [D] [thread 2189] [8.0] [cxt 0] Pipeline 'egress': start
+[08:39:15.188] [bmv2] [D] [thread 2189] [8.0] [cxt 0] Pipeline 'egress': end
+[08:39:15.188] [bmv2] [D] [thread 2189] [8.0] [cxt 0] Deparser 'deparser': start
+[08:39:15.188] [bmv2] [T] [thread 2189] [8.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[08:39:15.188] [bmv2] [D] [thread 2189] [8.0] [cxt 0] Deparsing header 'ethernet'
+[08:39:15.188] [bmv2] [D] [thread 2189] [8.0] [cxt 0] Deparser 'deparser': end
+[08:39:15.188] [bmv2] [D] [thread 2193] [8.0] [cxt 0] Transmitting packet of size 48 out of port 0
+[08:42:01.158] [bmv2] [T] [thread 2238] bm_table_add_entry
+[08:42:01.164] [bmv2] [D] [thread 2238] Entry 0 added to table 'ctl_ingress.tbl_ipv4_fib_host'
+[08:42:01.164] [bmv2] [D] [thread 2238] Dumping entry 0
+Match key:
+* hdr.ipv4.dst_ipv4_addr: EXACT     0a000101
+Action entry: ctl_ingress.act_ipv4_set_nexthop - 1,
+
+[08:42:09.788] [bmv2] [T] [thread 2238] bm_table_add_entry
+[08:42:09.794] [bmv2] [D] [thread 2238] Entry 1 added to table 'ctl_ingress.tbl_ipv4_fib_host'
+[08:42:09.794] [bmv2] [D] [thread 2238] Dumping entry 1
+Match key:
+* hdr.ipv4.dst_ipv4_addr: EXACT     0a0001fe
+Action entry: ctl_ingress.act_ipv4_set_nexthop - fe,
+
+[08:42:14.850] [bmv2] [D] [thread 2188] [9.0] [cxt 0] Processing packet received on port 2
+[08:42:14.850] [bmv2] [D] [thread 2188] [9.0] [cxt 0] Parser 'parser': start
+[08:42:14.850] [bmv2] [D] [thread 2188] [9.0] [cxt 0] Parser 'parser' entering state 'start'
+[08:42:14.850] [bmv2] [D] [thread 2188] [9.0] [cxt 0] Extracting header 'ethernet'
+[08:42:14.850] [bmv2] [D] [thread 2188] [9.0] [cxt 0] Parser state 'start': key is 0806
+[08:42:14.850] [bmv2] [T] [thread 2188] [9.0] [cxt 0] Bytes parsed: 14
+[08:42:14.850] [bmv2] [D] [thread 2188] [9.0] [cxt 0] Parser 'parser': end
+[08:42:14.850] [bmv2] [D] [thread 2188] [9.0] [cxt 0] Pipeline 'ingress': start
+[08:42:14.850] [bmv2] [T] [thread 2188] [9.0] [cxt 0] optimized-ipv4-forwarding.p4(228) Condition "hdr.ipv4.isValid()" (node_2) is false
+[08:42:14.850] [bmv2] [D] [thread 2188] [9.0] [cxt 0] Pipeline 'ingress': end
+[08:42:14.850] [bmv2] [D] [thread 2188] [9.0] [cxt 0] Egress port is 0
+[08:42:14.850] [bmv2] [D] [thread 2189] [9.0] [cxt 0] Pipeline 'egress': start
+[08:42:14.850] [bmv2] [D] [thread 2189] [9.0] [cxt 0] Pipeline 'egress': end
+[08:42:14.850] [bmv2] [D] [thread 2189] [9.0] [cxt 0] Deparser 'deparser': start
+[08:42:14.850] [bmv2] [T] [thread 2189] [9.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[08:42:14.850] [bmv2] [D] [thread 2189] [9.0] [cxt 0] Deparsing header 'ethernet'
+[08:42:14.850] [bmv2] [D] [thread 2189] [9.0] [cxt 0] Deparser 'deparser': end
+[08:42:14.850] [bmv2] [D] [thread 2193] [9.0] [cxt 0] Transmitting packet of size 48 out of port 0
+[08:42:14.852] [bmv2] [D] [thread 2188] [10.0] [cxt 0] Processing packet received on port 1
+[08:42:14.852] [bmv2] [D] [thread 2188] [10.0] [cxt 0] Parser 'parser': start
+[08:42:14.852] [bmv2] [D] [thread 2188] [10.0] [cxt 0] Parser 'parser' entering state 'start'
+[08:42:14.852] [bmv2] [D] [thread 2188] [10.0] [cxt 0] Extracting header 'ethernet'
+[08:42:14.852] [bmv2] [D] [thread 2188] [10.0] [cxt 0] Parser state 'start': key is 0806
+[08:42:14.852] [bmv2] [T] [thread 2188] [10.0] [cxt 0] Bytes parsed: 14
+[08:42:14.852] [bmv2] [D] [thread 2188] [10.0] [cxt 0] Parser 'parser': end
+[08:42:14.852] [bmv2] [D] [thread 2188] [10.0] [cxt 0] Pipeline 'ingress': start
+[08:42:14.852] [bmv2] [T] [thread 2188] [10.0] [cxt 0] optimized-ipv4-forwarding.p4(228) Condition "hdr.ipv4.isValid()" (node_2) is false
+[08:42:14.852] [bmv2] [D] [thread 2188] [10.0] [cxt 0] Pipeline 'ingress': end
+[08:42:14.852] [bmv2] [D] [thread 2188] [10.0] [cxt 0] Egress port is 0
+[08:42:14.852] [bmv2] [D] [thread 2189] [10.0] [cxt 0] Pipeline 'egress': start
+[08:42:14.852] [bmv2] [D] [thread 2189] [10.0] [cxt 0] Pipeline 'egress': end
+[08:42:14.852] [bmv2] [D] [thread 2189] [10.0] [cxt 0] Deparser 'deparser': start
+[08:42:14.852] [bmv2] [T] [thread 2189] [10.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[08:42:14.852] [bmv2] [D] [thread 2189] [10.0] [cxt 0] Deparsing header 'ethernet'
+[08:42:14.852] [bmv2] [D] [thread 2189] [10.0] [cxt 0] Deparser 'deparser': end
+[08:42:14.852] [bmv2] [D] [thread 2193] [10.0] [cxt 0] Transmitting packet of size 48 out of port 0
+[08:42:15.148] [bmv2] [D] [thread 2188] [11.0] [cxt 0] Processing packet received on port 255
+[08:42:15.148] [bmv2] [D] [thread 2188] [11.0] [cxt 0] Parser 'parser': start
+[08:42:15.148] [bmv2] [D] [thread 2188] [11.0] [cxt 0] Parser 'parser' entering state 'start'
+[08:42:15.148] [bmv2] [D] [thread 2188] [11.0] [cxt 0] Extracting header 'ethernet'
+[08:42:15.148] [bmv2] [D] [thread 2188] [11.0] [cxt 0] Parser state 'start': key is 0806
+[08:42:15.148] [bmv2] [T] [thread 2188] [11.0] [cxt 0] Bytes parsed: 14
+[08:42:15.148] [bmv2] [D] [thread 2188] [11.0] [cxt 0] Parser 'parser': end
+[08:42:15.148] [bmv2] [D] [thread 2188] [11.0] [cxt 0] Pipeline 'ingress': start
+[08:42:15.148] [bmv2] [T] [thread 2188] [11.0] [cxt 0] optimized-ipv4-forwarding.p4(228) Condition "hdr.ipv4.isValid()" (node_2) is false
+[08:42:15.148] [bmv2] [D] [thread 2188] [11.0] [cxt 0] Pipeline 'ingress': end
+[08:42:15.148] [bmv2] [D] [thread 2188] [11.0] [cxt 0] Egress port is 0
+[08:42:15.148] [bmv2] [D] [thread 2189] [11.0] [cxt 0] Pipeline 'egress': start
+[08:42:15.148] [bmv2] [D] [thread 2189] [11.0] [cxt 0] Pipeline 'egress': end
+[08:42:15.148] [bmv2] [D] [thread 2189] [11.0] [cxt 0] Deparser 'deparser': start
+[08:42:15.148] [bmv2] [T] [thread 2189] [11.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[08:42:15.148] [bmv2] [D] [thread 2189] [11.0] [cxt 0] Deparsing header 'ethernet'
+[08:42:15.148] [bmv2] [D] [thread 2189] [11.0] [cxt 0] Deparser 'deparser': end
+[08:42:15.148] [bmv2] [D] [thread 2193] [11.0] [cxt 0] Transmitting packet of size 48 out of port 0
+[08:42:15.190] [bmv2] [D] [thread 2188] [12.0] [cxt 0] Processing packet received on port 254
+[08:42:15.191] [bmv2] [D] [thread 2188] [12.0] [cxt 0] Parser 'parser': start
+[08:42:15.191] [bmv2] [D] [thread 2188] [12.0] [cxt 0] Parser 'parser' entering state 'start'
+[08:42:15.191] [bmv2] [D] [thread 2188] [12.0] [cxt 0] Extracting header 'ethernet'
+[08:42:15.191] [bmv2] [D] [thread 2188] [12.0] [cxt 0] Parser state 'start': key is 0806
+[08:42:15.191] [bmv2] [T] [thread 2188] [12.0] [cxt 0] Bytes parsed: 14
+[08:42:15.191] [bmv2] [D] [thread 2188] [12.0] [cxt 0] Parser 'parser': end
+[08:42:15.191] [bmv2] [D] [thread 2188] [12.0] [cxt 0] Pipeline 'ingress': start
+[08:42:15.191] [bmv2] [T] [thread 2188] [12.0] [cxt 0] optimized-ipv4-forwarding.p4(228) Condition "hdr.ipv4.isValid()" (node_2) is false
+[08:42:15.191] [bmv2] [D] [thread 2188] [12.0] [cxt 0] Pipeline 'ingress': end
+[08:42:15.191] [bmv2] [D] [thread 2188] [12.0] [cxt 0] Egress port is 0
+[08:42:15.191] [bmv2] [D] [thread 2189] [12.0] [cxt 0] Pipeline 'egress': start
+[08:42:15.191] [bmv2] [D] [thread 2189] [12.0] [cxt 0] Pipeline 'egress': end
+[08:42:15.191] [bmv2] [D] [thread 2189] [12.0] [cxt 0] Deparser 'deparser': start
+[08:42:15.191] [bmv2] [T] [thread 2189] [12.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[08:42:15.191] [bmv2] [D] [thread 2189] [12.0] [cxt 0] Deparsing header 'ethernet'
+[08:42:15.191] [bmv2] [D] [thread 2189] [12.0] [cxt 0] Deparser 'deparser': end
+[08:42:15.191] [bmv2] [D] [thread 2193] [12.0] [cxt 0] Transmitting packet of size 48 out of port 0
+[08:42:20.227] [bmv2] [T] [thread 2238] bm_table_add_entry
+[08:42:20.227] [bmv2] [D] [thread 2238] Entry 2 added to table 'ctl_ingress.tbl_ipv4_fib_host'
+[08:42:20.227] [bmv2] [D] [thread 2238] Dumping entry 2
+Match key:
+* hdr.ipv4.dst_ipv4_addr: EXACT     0afefefe
+Action entry: ctl_ingress.act_ipv4_set_nexthop - fe,
+
+[08:42:30.161] [bmv2] [T] [thread 2238] bm_table_add_entry
+[08:42:30.161] [bmv2] [D] [thread 2238] Entry 0 added to table 'ctl_ingress.tbl_ipv4_fib_lpm'
+[08:42:30.161] [bmv2] [D] [thread 2238] Dumping entry 0
+Match key:
+* hdr.ipv4.dst_ipv4_addr: LPM       02020200/24
+Action entry: ctl_ingress.act_ipv4_set_nexthop - 2,
+
+[08:42:45.811] [bmv2] [T] [thread 2238] bm_table_add_entry
+[08:42:45.811] [bmv2] [D] [thread 2238] Entry 0 added to table 'ctl_ingress.tbl_nexthop'
+[08:42:45.811] [bmv2] [D] [thread 2238] Dumping entry 0
+Match key:
+* metadata.nexthop_id : EXACT     0001
+Action entry: ctl_ingress.act_ipv4_fib_hit - a000101,1,
+
+[08:42:53.944] [bmv2] [T] [thread 2238] bm_table_add_entry
+[08:42:53.944] [bmv2] [D] [thread 2238] Entry 1 added to table 'ctl_ingress.tbl_nexthop'
+[08:42:53.944] [bmv2] [D] [thread 2238] Dumping entry 1
+Match key:
+* metadata.nexthop_id : EXACT     0002
+Action entry: ctl_ingress.act_ipv4_fib_hit - a000202,2,
+
+[08:43:02.764] [bmv2] [T] [thread 2238] bm_table_add_entry
+[08:43:02.764] [bmv2] [D] [thread 2238] Entry 2 added to table 'ctl_ingress.tbl_nexthop'
+[08:43:02.764] [bmv2] [D] [thread 2238] Dumping entry 2
+Match key:
+* metadata.nexthop_id : EXACT     00fe
+Action entry: ctl_ingress.act_ipv4_fib_hit - a0001fe,fe,
+
+[08:43:11.522] [bmv2] [D] [thread 2188] [13.0] [cxt 0] Processing packet received on port 1
+[08:43:11.522] [bmv2] [D] [thread 2188] [13.0] [cxt 0] Parser 'parser': start
+[08:43:11.522] [bmv2] [D] [thread 2188] [13.0] [cxt 0] Parser 'parser' entering state 'start'
+[08:43:11.522] [bmv2] [D] [thread 2188] [13.0] [cxt 0] Extracting header 'ethernet'
+[08:43:11.522] [bmv2] [D] [thread 2188] [13.0] [cxt 0] Parser state 'start': key is 0800
+[08:43:11.522] [bmv2] [T] [thread 2188] [13.0] [cxt 0] Bytes parsed: 14
+[08:43:11.522] [bmv2] [D] [thread 2188] [13.0] [cxt 0] Parser 'parser' entering state 'prs_ipv4'
+[08:43:11.522] [bmv2] [D] [thread 2188] [13.0] [cxt 0] Extracting header 'ipv4'
+[08:43:11.522] [bmv2] [D] [thread 2188] [13.0] [cxt 0] Parser state 'prs_ipv4' has no switch, going to default next state
+[08:43:11.522] [bmv2] [T] [thread 2188] [13.0] [cxt 0] Bytes parsed: 34
+[08:43:11.522] [bmv2] [D] [thread 2188] [13.0] [cxt 0] Parser 'parser': end
+[08:43:11.522] [bmv2] [D] [thread 2188] [13.0] [cxt 0] Pipeline 'ingress': start
+[08:43:11.522] [bmv2] [T] [thread 2188] [13.0] [cxt 0] optimized-ipv4-forwarding.p4(228) Condition "hdr.ipv4.isValid()" (node_2) is true
+[08:43:11.522] [bmv2] [T] [thread 2188] [13.0] [cxt 0] Applying table 'ctl_ingress.tbl_ipv4_fib_host'
+[08:43:11.522] [bmv2] [D] [thread 2188] [13.0] [cxt 0] Looking up key:
+* hdr.ipv4.dst_ipv4_addr: 02020202
+
+[08:43:11.522] [bmv2] [D] [thread 2188] [13.0] [cxt 0] Table 'ctl_ingress.tbl_ipv4_fib_host': miss
+[08:43:11.522] [bmv2] [D] [thread 2188] [13.0] [cxt 0] Action entry is NoAction - 
+[08:43:11.522] [bmv2] [T] [thread 2188] [13.0] [cxt 0] Action NoAction
+[08:43:11.522] [bmv2] [T] [thread 2188] [13.0] [cxt 0] Applying table 'tbl_act_0'
+[08:43:11.522] [bmv2] [D] [thread 2188] [13.0] [cxt 0] Looking up key:
+
+[08:43:11.522] [bmv2] [D] [thread 2188] [13.0] [cxt 0] Table 'tbl_act_0': miss
+[08:43:11.522] [bmv2] [D] [thread 2188] [13.0] [cxt 0] Action entry is act_0 - 
+[08:43:11.522] [bmv2] [T] [thread 2188] [13.0] [cxt 0] Action act_0
+[08:43:11.522] [bmv2] [T] [thread 2188] [13.0] [cxt 0] Primitive (no source info)
+[08:43:11.522] [bmv2] [T] [thread 2188] [13.0] [cxt 0] optimized-ipv4-forwarding.p4(232) Condition "!tbl_ipv4_fib_host.apply().hit" (node_6) is true
+[08:43:11.522] [bmv2] [T] [thread 2188] [13.0] [cxt 0] Applying table 'ctl_ingress.tbl_ipv4_fib_lpm'
+[08:43:11.522] [bmv2] [D] [thread 2188] [13.0] [cxt 0] Looking up key:
+* hdr.ipv4.dst_ipv4_addr: 02020202
+
+[08:43:11.522] [bmv2] [D] [thread 2188] [13.0] [cxt 0] Table 'ctl_ingress.tbl_ipv4_fib_lpm': hit with handle 0
+[08:43:11.523] [bmv2] [D] [thread 2188] [13.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ipv4.dst_ipv4_addr: LPM       02020200/24
+Action entry: ctl_ingress.act_ipv4_set_nexthop - 2,
+
+[08:43:11.523] [bmv2] [D] [thread 2188] [13.0] [cxt 0] Action entry is ctl_ingress.act_ipv4_set_nexthop - 2,
+[08:43:11.523] [bmv2] [T] [thread 2188] [13.0] [cxt 0] Action ctl_ingress.act_ipv4_set_nexthop
+[08:43:11.523] [bmv2] [T] [thread 2188] [13.0] [cxt 0] optimized-ipv4-forwarding.p4(175) Primitive metadata.nexthop_id = nexthop_id
+[08:43:11.523] [bmv2] [T] [thread 2188] [13.0] [cxt 0] Applying table 'ctl_ingress.tbl_nexthop'
+[08:43:11.523] [bmv2] [D] [thread 2188] [13.0] [cxt 0] Looking up key:
+* metadata.nexthop_id : 0002
+
+[08:43:11.523] [bmv2] [D] [thread 2188] [13.0] [cxt 0] Table 'ctl_ingress.tbl_nexthop': hit with handle 1
+[08:43:11.523] [bmv2] [D] [thread 2188] [13.0] [cxt 0] Dumping entry 1
+Match key:
+* metadata.nexthop_id : EXACT     0002
+Action entry: ctl_ingress.act_ipv4_fib_hit - a000202,2,
+
+[08:43:11.523] [bmv2] [D] [thread 2188] [13.0] [cxt 0] Action entry is ctl_ingress.act_ipv4_fib_hit - a000202,2,
+[08:43:11.523] [bmv2] [T] [thread 2188] [13.0] [cxt 0] Action ctl_ingress.act_ipv4_fib_hit
+[08:43:11.523] [bmv2] [T] [thread 2188] [13.0] [cxt 0] optimized-ipv4-forwarding.p4(147) Primitive hdr.ethernet.src_mac_addr = hdr.ethernet.dst_mac_addr
+[08:43:11.523] [bmv2] [T] [thread 2188] [13.0] [cxt 0] optimized-ipv4-forwarding.p4(153) Primitive hdr.ethernet.dst_mac_addr = dst_mac_addr
+[08:43:11.523] [bmv2] [T] [thread 2188] [13.0] [cxt 0] optimized-ipv4-forwarding.p4(159) Primitive standard_metadata.egress_spec = egress_port
+[08:43:11.523] [bmv2] [T] [thread 2188] [13.0] [cxt 0] optimized-ipv4-forwarding.p4(164) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl -1
+[08:43:11.523] [bmv2] [D] [thread 2188] [13.0] [cxt 0] Pipeline 'ingress': end
+[08:43:11.523] [bmv2] [D] [thread 2188] [13.0] [cxt 0] Egress port is 2
+[08:43:11.523] [bmv2] [D] [thread 2191] [13.0] [cxt 0] Pipeline 'egress': start
+[08:43:11.523] [bmv2] [D] [thread 2191] [13.0] [cxt 0] Pipeline 'egress': end
+[08:43:11.523] [bmv2] [D] [thread 2191] [13.0] [cxt 0] Deparser 'deparser': start
+[08:43:11.523] [bmv2] [D] [thread 2191] [13.0] [cxt 0] Updating checksum 'cksum'
+[08:43:11.523] [bmv2] [D] [thread 2191] [13.0] [cxt 0] Deparsing header 'ethernet'
+[08:43:11.523] [bmv2] [D] [thread 2191] [13.0] [cxt 0] Deparsing header 'ipv4'
+[08:43:11.523] [bmv2] [D] [thread 2191] [13.0] [cxt 0] Deparser 'deparser': end
+[08:43:11.523] [bmv2] [D] [thread 2193] [13.0] [cxt 0] Transmitting packet of size 106 out of port 2
+[08:43:11.526] [bmv2] [D] [thread 2188] [14.0] [cxt 0] Processing packet received on port 2
+[08:43:11.526] [bmv2] [D] [thread 2188] [14.0] [cxt 0] Parser 'parser': start
+[08:43:11.526] [bmv2] [D] [thread 2188] [14.0] [cxt 0] Parser 'parser' entering state 'start'
+[08:43:11.526] [bmv2] [D] [thread 2188] [14.0] [cxt 0] Extracting header 'ethernet'
+[08:43:11.526] [bmv2] [D] [thread 2188] [14.0] [cxt 0] Parser state 'start': key is 0800
+[08:43:11.526] [bmv2] [T] [thread 2188] [14.0] [cxt 0] Bytes parsed: 14
+[08:43:11.526] [bmv2] [D] [thread 2188] [14.0] [cxt 0] Parser 'parser' entering state 'prs_ipv4'
+[08:43:11.526] [bmv2] [D] [thread 2188] [14.0] [cxt 0] Extracting header 'ipv4'
+[08:43:11.526] [bmv2] [D] [thread 2188] [14.0] [cxt 0] Parser state 'prs_ipv4' has no switch, going to default next state
+[08:43:11.526] [bmv2] [T] [thread 2188] [14.0] [cxt 0] Bytes parsed: 34
+[08:43:11.526] [bmv2] [D] [thread 2188] [14.0] [cxt 0] Parser 'parser': end
+[08:43:11.526] [bmv2] [D] [thread 2188] [14.0] [cxt 0] Pipeline 'ingress': start
+[08:43:11.526] [bmv2] [T] [thread 2188] [14.0] [cxt 0] optimized-ipv4-forwarding.p4(228) Condition "hdr.ipv4.isValid()" (node_2) is true
+[08:43:11.526] [bmv2] [T] [thread 2188] [14.0] [cxt 0] Applying table 'ctl_ingress.tbl_ipv4_fib_host'
+[08:43:11.526] [bmv2] [D] [thread 2188] [14.0] [cxt 0] Looking up key:
+* hdr.ipv4.dst_ipv4_addr: 0a000101
+
+[08:43:11.526] [bmv2] [D] [thread 2188] [14.0] [cxt 0] Table 'ctl_ingress.tbl_ipv4_fib_host': hit with handle 0
+[08:43:11.526] [bmv2] [D] [thread 2188] [14.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ipv4.dst_ipv4_addr: EXACT     0a000101
+Action entry: ctl_ingress.act_ipv4_set_nexthop - 1,
+
+[08:43:11.526] [bmv2] [D] [thread 2188] [14.0] [cxt 0] Action entry is ctl_ingress.act_ipv4_set_nexthop - 1,
+[08:43:11.526] [bmv2] [T] [thread 2188] [14.0] [cxt 0] Action ctl_ingress.act_ipv4_set_nexthop
+[08:43:11.526] [bmv2] [T] [thread 2188] [14.0] [cxt 0] optimized-ipv4-forwarding.p4(175) Primitive metadata.nexthop_id = nexthop_id
+[08:43:11.526] [bmv2] [T] [thread 2188] [14.0] [cxt 0] Applying table 'tbl_act'
+[08:43:11.526] [bmv2] [D] [thread 2188] [14.0] [cxt 0] Looking up key:
+
+[08:43:11.526] [bmv2] [D] [thread 2188] [14.0] [cxt 0] Table 'tbl_act': miss
+[08:43:11.526] [bmv2] [D] [thread 2188] [14.0] [cxt 0] Action entry is act - 
+[08:43:11.526] [bmv2] [T] [thread 2188] [14.0] [cxt 0] Action act
+[08:43:11.526] [bmv2] [T] [thread 2188] [14.0] [cxt 0] Primitive (no source info)
+[08:43:11.526] [bmv2] [T] [thread 2188] [14.0] [cxt 0] optimized-ipv4-forwarding.p4(232) Condition "!tbl_ipv4_fib_host.apply().hit" (node_6) is false
+[08:43:11.526] [bmv2] [T] [thread 2188] [14.0] [cxt 0] Applying table 'ctl_ingress.tbl_nexthop'
+[08:43:11.526] [bmv2] [D] [thread 2188] [14.0] [cxt 0] Looking up key:
+* metadata.nexthop_id : 0001
+
+[08:43:11.526] [bmv2] [D] [thread 2188] [14.0] [cxt 0] Table 'ctl_ingress.tbl_nexthop': hit with handle 0
+[08:43:11.526] [bmv2] [D] [thread 2188] [14.0] [cxt 0] Dumping entry 0
+Match key:
+* metadata.nexthop_id : EXACT     0001
+Action entry: ctl_ingress.act_ipv4_fib_hit - a000101,1,
+
+[08:43:11.526] [bmv2] [D] [thread 2188] [14.0] [cxt 0] Action entry is ctl_ingress.act_ipv4_fib_hit - a000101,1,
+[08:43:11.526] [bmv2] [T] [thread 2188] [14.0] [cxt 0] Action ctl_ingress.act_ipv4_fib_hit
+[08:43:11.526] [bmv2] [T] [thread 2188] [14.0] [cxt 0] optimized-ipv4-forwarding.p4(147) Primitive hdr.ethernet.src_mac_addr = hdr.ethernet.dst_mac_addr
+[08:43:11.526] [bmv2] [T] [thread 2188] [14.0] [cxt 0] optimized-ipv4-forwarding.p4(153) Primitive hdr.ethernet.dst_mac_addr = dst_mac_addr
+[08:43:11.526] [bmv2] [T] [thread 2188] [14.0] [cxt 0] optimized-ipv4-forwarding.p4(159) Primitive standard_metadata.egress_spec = egress_port
+[08:43:11.526] [bmv2] [T] [thread 2188] [14.0] [cxt 0] optimized-ipv4-forwarding.p4(164) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl -1
+[08:43:11.526] [bmv2] [D] [thread 2188] [14.0] [cxt 0] Pipeline 'ingress': end
+[08:43:11.526] [bmv2] [D] [thread 2188] [14.0] [cxt 0] Egress port is 1
+[08:43:11.526] [bmv2] [D] [thread 2190] [14.0] [cxt 0] Pipeline 'egress': start
+[08:43:11.526] [bmv2] [D] [thread 2190] [14.0] [cxt 0] Pipeline 'egress': end
+[08:43:11.526] [bmv2] [D] [thread 2190] [14.0] [cxt 0] Deparser 'deparser': start
+[08:43:11.526] [bmv2] [D] [thread 2190] [14.0] [cxt 0] Updating checksum 'cksum'
+[08:43:11.526] [bmv2] [D] [thread 2190] [14.0] [cxt 0] Deparsing header 'ethernet'
+[08:43:11.526] [bmv2] [D] [thread 2190] [14.0] [cxt 0] Deparsing header 'ipv4'
+[08:43:11.526] [bmv2] [D] [thread 2190] [14.0] [cxt 0] Deparser 'deparser': end
+[08:43:11.526] [bmv2] [D] [thread 2193] [14.0] [cxt 0] Transmitting packet of size 106 out of port 1
+[08:43:11.527] [bmv2] [D] [thread 2188] [15.0] [cxt 0] Processing packet received on port 1
+[08:43:11.527] [bmv2] [D] [thread 2188] [15.0] [cxt 0] Parser 'parser': start
+[08:43:11.527] [bmv2] [D] [thread 2188] [15.0] [cxt 0] Parser 'parser' entering state 'start'
+[08:43:11.527] [bmv2] [D] [thread 2188] [15.0] [cxt 0] Extracting header 'ethernet'
+[08:43:11.527] [bmv2] [D] [thread 2188] [15.0] [cxt 0] Parser state 'start': key is 0800
+[08:43:11.527] [bmv2] [T] [thread 2188] [15.0] [cxt 0] Bytes parsed: 14
+[08:43:11.527] [bmv2] [D] [thread 2188] [15.0] [cxt 0] Parser 'parser' entering state 'prs_ipv4'
+[08:43:11.527] [bmv2] [D] [thread 2188] [15.0] [cxt 0] Extracting header 'ipv4'
+[08:43:11.527] [bmv2] [D] [thread 2188] [15.0] [cxt 0] Parser state 'prs_ipv4' has no switch, going to default next state
+[08:43:11.527] [bmv2] [T] [thread 2188] [15.0] [cxt 0] Bytes parsed: 34
+[08:43:11.527] [bmv2] [D] [thread 2188] [15.0] [cxt 0] Parser 'parser': end
+[08:43:11.527] [bmv2] [D] [thread 2188] [15.0] [cxt 0] Pipeline 'ingress': start
+[08:43:11.527] [bmv2] [T] [thread 2188] [15.0] [cxt 0] optimized-ipv4-forwarding.p4(228) Condition "hdr.ipv4.isValid()" (node_2) is true
+[08:43:11.527] [bmv2] [T] [thread 2188] [15.0] [cxt 0] Applying table 'ctl_ingress.tbl_ipv4_fib_host'
+[08:43:11.527] [bmv2] [D] [thread 2188] [15.0] [cxt 0] Looking up key:
+* hdr.ipv4.dst_ipv4_addr: 02020202
+
+[08:43:11.527] [bmv2] [D] [thread 2188] [15.0] [cxt 0] Table 'ctl_ingress.tbl_ipv4_fib_host': miss
+[08:43:11.527] [bmv2] [D] [thread 2188] [15.0] [cxt 0] Action entry is NoAction - 
+[08:43:11.527] [bmv2] [T] [thread 2188] [15.0] [cxt 0] Action NoAction
+[08:43:11.527] [bmv2] [T] [thread 2188] [15.0] [cxt 0] Applying table 'tbl_act_0'
+[08:43:11.527] [bmv2] [D] [thread 2188] [15.0] [cxt 0] Looking up key:
+
+[08:43:11.527] [bmv2] [D] [thread 2188] [15.0] [cxt 0] Table 'tbl_act_0': miss
+[08:43:11.527] [bmv2] [D] [thread 2188] [15.0] [cxt 0] Action entry is act_0 - 
+[08:43:11.527] [bmv2] [T] [thread 2188] [15.0] [cxt 0] Action act_0
+[08:43:11.527] [bmv2] [T] [thread 2188] [15.0] [cxt 0] Primitive (no source info)
+[08:43:11.527] [bmv2] [T] [thread 2188] [15.0] [cxt 0] optimized-ipv4-forwarding.p4(232) Condition "!tbl_ipv4_fib_host.apply().hit" (node_6) is true
+[08:43:11.527] [bmv2] [T] [thread 2188] [15.0] [cxt 0] Applying table 'ctl_ingress.tbl_ipv4_fib_lpm'
+[08:43:11.527] [bmv2] [D] [thread 2188] [15.0] [cxt 0] Looking up key:
+* hdr.ipv4.dst_ipv4_addr: 02020202
+
+[08:43:11.527] [bmv2] [D] [thread 2188] [15.0] [cxt 0] Table 'ctl_ingress.tbl_ipv4_fib_lpm': hit with handle 0
+[08:43:11.527] [bmv2] [D] [thread 2188] [15.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ipv4.dst_ipv4_addr: LPM       02020200/24
+Action entry: ctl_ingress.act_ipv4_set_nexthop - 2,
+
+[08:43:11.527] [bmv2] [D] [thread 2188] [15.0] [cxt 0] Action entry is ctl_ingress.act_ipv4_set_nexthop - 2,
+[08:43:11.527] [bmv2] [T] [thread 2188] [15.0] [cxt 0] Action ctl_ingress.act_ipv4_set_nexthop
+[08:43:11.527] [bmv2] [T] [thread 2188] [15.0] [cxt 0] optimized-ipv4-forwarding.p4(175) Primitive metadata.nexthop_id = nexthop_id
+[08:43:11.527] [bmv2] [T] [thread 2188] [15.0] [cxt 0] Applying table 'ctl_ingress.tbl_nexthop'
+[08:43:11.527] [bmv2] [D] [thread 2188] [15.0] [cxt 0] Looking up key:
+* metadata.nexthop_id : 0002
+
+[08:43:11.527] [bmv2] [D] [thread 2188] [15.0] [cxt 0] Table 'ctl_ingress.tbl_nexthop': hit with handle 1
+[08:43:11.527] [bmv2] [D] [thread 2188] [15.0] [cxt 0] Dumping entry 1
+Match key:
+* metadata.nexthop_id : EXACT     0002
+Action entry: ctl_ingress.act_ipv4_fib_hit - a000202,2,
+
+[08:43:11.527] [bmv2] [D] [thread 2188] [15.0] [cxt 0] Action entry is ctl_ingress.act_ipv4_fib_hit - a000202,2,
+[08:43:11.528] [bmv2] [T] [thread 2188] [15.0] [cxt 0] Action ctl_ingress.act_ipv4_fib_hit
+[08:43:11.528] [bmv2] [T] [thread 2188] [15.0] [cxt 0] optimized-ipv4-forwarding.p4(147) Primitive hdr.ethernet.src_mac_addr = hdr.ethernet.dst_mac_addr
+[08:43:11.528] [bmv2] [T] [thread 2188] [15.0] [cxt 0] optimized-ipv4-forwarding.p4(153) Primitive hdr.ethernet.dst_mac_addr = dst_mac_addr
+[08:43:11.528] [bmv2] [T] [thread 2188] [15.0] [cxt 0] optimized-ipv4-forwarding.p4(159) Primitive standard_metadata.egress_spec = egress_port
+[08:43:11.528] [bmv2] [T] [thread 2188] [15.0] [cxt 0] optimized-ipv4-forwarding.p4(164) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl -1
+[08:43:11.528] [bmv2] [D] [thread 2188] [15.0] [cxt 0] Pipeline 'ingress': end
+[08:43:11.528] [bmv2] [D] [thread 2188] [15.0] [cxt 0] Egress port is 2
+[08:43:11.528] [bmv2] [D] [thread 2191] [15.0] [cxt 0] Pipeline 'egress': start
+[08:43:11.528] [bmv2] [D] [thread 2191] [15.0] [cxt 0] Pipeline 'egress': end
+[08:43:11.528] [bmv2] [D] [thread 2191] [15.0] [cxt 0] Deparser 'deparser': start
+[08:43:11.528] [bmv2] [D] [thread 2191] [15.0] [cxt 0] Updating checksum 'cksum'
+[08:43:11.528] [bmv2] [D] [thread 2191] [15.0] [cxt 0] Deparsing header 'ethernet'
+[08:43:11.528] [bmv2] [D] [thread 2191] [15.0] [cxt 0] Deparsing header 'ipv4'
+[08:43:11.528] [bmv2] [D] [thread 2191] [15.0] [cxt 0] Deparser 'deparser': end
+[08:43:11.528] [bmv2] [D] [thread 2193] [15.0] [cxt 0] Transmitting packet of size 106 out of port 2
+[08:43:11.529] [bmv2] [D] [thread 2188] [16.0] [cxt 0] Processing packet received on port 2
+[08:43:11.529] [bmv2] [D] [thread 2188] [16.0] [cxt 0] Parser 'parser': start
+[08:43:11.529] [bmv2] [D] [thread 2188] [16.0] [cxt 0] Parser 'parser' entering state 'start'
+[08:43:11.529] [bmv2] [D] [thread 2188] [16.0] [cxt 0] Extracting header 'ethernet'
+[08:43:11.529] [bmv2] [D] [thread 2188] [16.0] [cxt 0] Parser state 'start': key is 0800
+[08:43:11.529] [bmv2] [T] [thread 2188] [16.0] [cxt 0] Bytes parsed: 14
+[08:43:11.529] [bmv2] [D] [thread 2188] [16.0] [cxt 0] Parser 'parser' entering state 'prs_ipv4'
+[08:43:11.529] [bmv2] [D] [thread 2188] [16.0] [cxt 0] Extracting header 'ipv4'
+[08:43:11.529] [bmv2] [D] [thread 2188] [16.0] [cxt 0] Parser state 'prs_ipv4' has no switch, going to default next state
+[08:43:11.529] [bmv2] [T] [thread 2188] [16.0] [cxt 0] Bytes parsed: 34
+[08:43:11.529] [bmv2] [D] [thread 2188] [16.0] [cxt 0] Parser 'parser': end
+[08:43:11.529] [bmv2] [D] [thread 2188] [16.0] [cxt 0] Pipeline 'ingress': start
+[08:43:11.529] [bmv2] [T] [thread 2188] [16.0] [cxt 0] optimized-ipv4-forwarding.p4(228) Condition "hdr.ipv4.isValid()" (node_2) is true
+[08:43:11.529] [bmv2] [T] [thread 2188] [16.0] [cxt 0] Applying table 'ctl_ingress.tbl_ipv4_fib_host'
+[08:43:11.529] [bmv2] [D] [thread 2188] [16.0] [cxt 0] Looking up key:
+* hdr.ipv4.dst_ipv4_addr: 0a000101
+
+[08:43:11.529] [bmv2] [D] [thread 2188] [16.0] [cxt 0] Table 'ctl_ingress.tbl_ipv4_fib_host': hit with handle 0
+[08:43:11.529] [bmv2] [D] [thread 2188] [16.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ipv4.dst_ipv4_addr: EXACT     0a000101
+Action entry: ctl_ingress.act_ipv4_set_nexthop - 1,
+
+[08:43:11.529] [bmv2] [D] [thread 2188] [16.0] [cxt 0] Action entry is ctl_ingress.act_ipv4_set_nexthop - 1,
+[08:43:11.529] [bmv2] [T] [thread 2188] [16.0] [cxt 0] Action ctl_ingress.act_ipv4_set_nexthop
+[08:43:11.529] [bmv2] [T] [thread 2188] [16.0] [cxt 0] optimized-ipv4-forwarding.p4(175) Primitive metadata.nexthop_id = nexthop_id
+[08:43:11.529] [bmv2] [T] [thread 2188] [16.0] [cxt 0] Applying table 'tbl_act'
+[08:43:11.529] [bmv2] [D] [thread 2188] [16.0] [cxt 0] Looking up key:
+
+[08:43:11.529] [bmv2] [D] [thread 2188] [16.0] [cxt 0] Table 'tbl_act': miss
+[08:43:11.529] [bmv2] [D] [thread 2188] [16.0] [cxt 0] Action entry is act - 
+[08:43:11.529] [bmv2] [T] [thread 2188] [16.0] [cxt 0] Action act
+[08:43:11.529] [bmv2] [T] [thread 2188] [16.0] [cxt 0] Primitive (no source info)
+[08:43:11.529] [bmv2] [T] [thread 2188] [16.0] [cxt 0] optimized-ipv4-forwarding.p4(232) Condition "!tbl_ipv4_fib_host.apply().hit" (node_6) is false
+[08:43:11.529] [bmv2] [T] [thread 2188] [16.0] [cxt 0] Applying table 'ctl_ingress.tbl_nexthop'
+[08:43:11.529] [bmv2] [D] [thread 2188] [16.0] [cxt 0] Looking up key:
+* metadata.nexthop_id : 0001
+
+[08:43:11.529] [bmv2] [D] [thread 2188] [16.0] [cxt 0] Table 'ctl_ingress.tbl_nexthop': hit with handle 0
+[08:43:11.529] [bmv2] [D] [thread 2188] [16.0] [cxt 0] Dumping entry 0
+Match key:
+* metadata.nexthop_id : EXACT     0001
+Action entry: ctl_ingress.act_ipv4_fib_hit - a000101,1,
+
+[08:43:11.529] [bmv2] [D] [thread 2188] [16.0] [cxt 0] Action entry is ctl_ingress.act_ipv4_fib_hit - a000101,1,
+[08:43:11.529] [bmv2] [T] [thread 2188] [16.0] [cxt 0] Action ctl_ingress.act_ipv4_fib_hit
+[08:43:11.529] [bmv2] [T] [thread 2188] [16.0] [cxt 0] optimized-ipv4-forwarding.p4(147) Primitive hdr.ethernet.src_mac_addr = hdr.ethernet.dst_mac_addr
+[08:43:11.529] [bmv2] [T] [thread 2188] [16.0] [cxt 0] optimized-ipv4-forwarding.p4(153) Primitive hdr.ethernet.dst_mac_addr = dst_mac_addr
+[08:43:11.529] [bmv2] [T] [thread 2188] [16.0] [cxt 0] optimized-ipv4-forwarding.p4(159) Primitive standard_metadata.egress_spec = egress_port
+[08:43:11.529] [bmv2] [T] [thread 2188] [16.0] [cxt 0] optimized-ipv4-forwarding.p4(164) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl -1
+[08:43:11.529] [bmv2] [D] [thread 2188] [16.0] [cxt 0] Pipeline 'ingress': end
+[08:43:11.529] [bmv2] [D] [thread 2188] [16.0] [cxt 0] Egress port is 1
+[08:43:11.529] [bmv2] [D] [thread 2190] [16.0] [cxt 0] Pipeline 'egress': start
+[08:43:11.529] [bmv2] [D] [thread 2190] [16.0] [cxt 0] Pipeline 'egress': end
+[08:43:11.529] [bmv2] [D] [thread 2190] [16.0] [cxt 0] Deparser 'deparser': start
+[08:43:11.529] [bmv2] [D] [thread 2190] [16.0] [cxt 0] Updating checksum 'cksum'
+[08:43:11.529] [bmv2] [D] [thread 2190] [16.0] [cxt 0] Deparsing header 'ethernet'
+[08:43:11.529] [bmv2] [D] [thread 2190] [16.0] [cxt 0] Deparsing header 'ipv4'
+[08:43:11.529] [bmv2] [D] [thread 2190] [16.0] [cxt 0] Deparser 'deparser': end
+[08:43:11.529] [bmv2] [D] [thread 2193] [16.0] [cxt 0] Transmitting packet of size 106 out of port 1
+[08:43:11.530] [bmv2] [D] [thread 2188] [17.0] [cxt 0] Processing packet received on port 1
+[08:43:11.530] [bmv2] [D] [thread 2188] [17.0] [cxt 0] Parser 'parser': start
+[08:43:11.530] [bmv2] [D] [thread 2188] [17.0] [cxt 0] Parser 'parser' entering state 'start'
+[08:43:11.530] [bmv2] [D] [thread 2188] [17.0] [cxt 0] Extracting header 'ethernet'
+[08:43:11.530] [bmv2] [D] [thread 2188] [17.0] [cxt 0] Parser state 'start': key is 0800
+[08:43:11.530] [bmv2] [T] [thread 2188] [17.0] [cxt 0] Bytes parsed: 14
+[08:43:11.530] [bmv2] [D] [thread 2188] [17.0] [cxt 0] Parser 'parser' entering state 'prs_ipv4'
+[08:43:11.530] [bmv2] [D] [thread 2188] [17.0] [cxt 0] Extracting header 'ipv4'
+[08:43:11.530] [bmv2] [D] [thread 2188] [17.0] [cxt 0] Parser state 'prs_ipv4' has no switch, going to default next state
+[08:43:11.530] [bmv2] [T] [thread 2188] [17.0] [cxt 0] Bytes parsed: 34
+[08:43:11.530] [bmv2] [D] [thread 2188] [17.0] [cxt 0] Parser 'parser': end
+[08:43:11.530] [bmv2] [D] [thread 2188] [17.0] [cxt 0] Pipeline 'ingress': start
+[08:43:11.530] [bmv2] [T] [thread 2188] [17.0] [cxt 0] optimized-ipv4-forwarding.p4(228) Condition "hdr.ipv4.isValid()" (node_2) is true
+[08:43:11.530] [bmv2] [T] [thread 2188] [17.0] [cxt 0] Applying table 'ctl_ingress.tbl_ipv4_fib_host'
+[08:43:11.530] [bmv2] [D] [thread 2188] [17.0] [cxt 0] Looking up key:
+* hdr.ipv4.dst_ipv4_addr: 02020202
+
+[08:43:11.530] [bmv2] [D] [thread 2188] [17.0] [cxt 0] Table 'ctl_ingress.tbl_ipv4_fib_host': miss
+[08:43:11.530] [bmv2] [D] [thread 2188] [17.0] [cxt 0] Action entry is NoAction - 
+[08:43:11.530] [bmv2] [T] [thread 2188] [17.0] [cxt 0] Action NoAction
+[08:43:11.530] [bmv2] [T] [thread 2188] [17.0] [cxt 0] Applying table 'tbl_act_0'
+[08:43:11.530] [bmv2] [D] [thread 2188] [17.0] [cxt 0] Looking up key:
+
+[08:43:11.530] [bmv2] [D] [thread 2188] [17.0] [cxt 0] Table 'tbl_act_0': miss
+[08:43:11.530] [bmv2] [D] [thread 2188] [17.0] [cxt 0] Action entry is act_0 - 
+[08:43:11.530] [bmv2] [T] [thread 2188] [17.0] [cxt 0] Action act_0
+[08:43:11.530] [bmv2] [T] [thread 2188] [17.0] [cxt 0] Primitive (no source info)
+[08:43:11.530] [bmv2] [T] [thread 2188] [17.0] [cxt 0] optimized-ipv4-forwarding.p4(232) Condition "!tbl_ipv4_fib_host.apply().hit" (node_6) is true
+[08:43:11.530] [bmv2] [T] [thread 2188] [17.0] [cxt 0] Applying table 'ctl_ingress.tbl_ipv4_fib_lpm'
+[08:43:11.530] [bmv2] [D] [thread 2188] [17.0] [cxt 0] Looking up key:
+* hdr.ipv4.dst_ipv4_addr: 02020202
+
+[08:43:11.530] [bmv2] [D] [thread 2188] [17.0] [cxt 0] Table 'ctl_ingress.tbl_ipv4_fib_lpm': hit with handle 0
+[08:43:11.530] [bmv2] [D] [thread 2188] [17.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ipv4.dst_ipv4_addr: LPM       02020200/24
+Action entry: ctl_ingress.act_ipv4_set_nexthop - 2,
+
+[08:43:11.530] [bmv2] [D] [thread 2188] [17.0] [cxt 0] Action entry is ctl_ingress.act_ipv4_set_nexthop - 2,
+[08:43:11.530] [bmv2] [T] [thread 2188] [17.0] [cxt 0] Action ctl_ingress.act_ipv4_set_nexthop
+[08:43:11.530] [bmv2] [T] [thread 2188] [17.0] [cxt 0] optimized-ipv4-forwarding.p4(175) Primitive metadata.nexthop_id = nexthop_id
+[08:43:11.530] [bmv2] [T] [thread 2188] [17.0] [cxt 0] Applying table 'ctl_ingress.tbl_nexthop'
+[08:43:11.530] [bmv2] [D] [thread 2188] [17.0] [cxt 0] Looking up key:
+* metadata.nexthop_id : 0002
+
+[08:43:11.530] [bmv2] [D] [thread 2188] [17.0] [cxt 0] Table 'ctl_ingress.tbl_nexthop': hit with handle 1
+[08:43:11.530] [bmv2] [D] [thread 2188] [17.0] [cxt 0] Dumping entry 1
+Match key:
+* metadata.nexthop_id : EXACT     0002
+Action entry: ctl_ingress.act_ipv4_fib_hit - a000202,2,
+
+[08:43:11.530] [bmv2] [D] [thread 2188] [17.0] [cxt 0] Action entry is ctl_ingress.act_ipv4_fib_hit - a000202,2,
+[08:43:11.530] [bmv2] [T] [thread 2188] [17.0] [cxt 0] Action ctl_ingress.act_ipv4_fib_hit
+[08:43:11.530] [bmv2] [T] [thread 2188] [17.0] [cxt 0] optimized-ipv4-forwarding.p4(147) Primitive hdr.ethernet.src_mac_addr = hdr.ethernet.dst_mac_addr
+[08:43:11.530] [bmv2] [T] [thread 2188] [17.0] [cxt 0] optimized-ipv4-forwarding.p4(153) Primitive hdr.ethernet.dst_mac_addr = dst_mac_addr
+[08:43:11.530] [bmv2] [T] [thread 2188] [17.0] [cxt 0] optimized-ipv4-forwarding.p4(159) Primitive standard_metadata.egress_spec = egress_port
+[08:43:11.530] [bmv2] [T] [thread 2188] [17.0] [cxt 0] optimized-ipv4-forwarding.p4(164) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl -1
+[08:43:11.530] [bmv2] [D] [thread 2188] [17.0] [cxt 0] Pipeline 'ingress': end
+[08:43:11.530] [bmv2] [D] [thread 2188] [17.0] [cxt 0] Egress port is 2
+[08:43:11.530] [bmv2] [D] [thread 2191] [17.0] [cxt 0] Pipeline 'egress': start
+[08:43:11.530] [bmv2] [D] [thread 2191] [17.0] [cxt 0] Pipeline 'egress': end
+[08:43:11.530] [bmv2] [D] [thread 2191] [17.0] [cxt 0] Deparser 'deparser': start
+[08:43:11.530] [bmv2] [D] [thread 2191] [17.0] [cxt 0] Updating checksum 'cksum'
+[08:43:11.530] [bmv2] [D] [thread 2191] [17.0] [cxt 0] Deparsing header 'ethernet'
+[08:43:11.530] [bmv2] [D] [thread 2191] [17.0] [cxt 0] Deparsing header 'ipv4'
+[08:43:11.530] [bmv2] [D] [thread 2191] [17.0] [cxt 0] Deparser 'deparser': end
+[08:43:11.531] [bmv2] [D] [thread 2193] [17.0] [cxt 0] Transmitting packet of size 106 out of port 2
+[08:43:11.531] [bmv2] [D] [thread 2188] [18.0] [cxt 0] Processing packet received on port 2
+[08:43:11.531] [bmv2] [D] [thread 2188] [18.0] [cxt 0] Parser 'parser': start
+[08:43:11.531] [bmv2] [D] [thread 2188] [18.0] [cxt 0] Parser 'parser' entering state 'start'
+[08:43:11.531] [bmv2] [D] [thread 2188] [18.0] [cxt 0] Extracting header 'ethernet'
+[08:43:11.531] [bmv2] [D] [thread 2188] [18.0] [cxt 0] Parser state 'start': key is 0800
+[08:43:11.531] [bmv2] [T] [thread 2188] [18.0] [cxt 0] Bytes parsed: 14
+[08:43:11.531] [bmv2] [D] [thread 2188] [18.0] [cxt 0] Parser 'parser' entering state 'prs_ipv4'
+[08:43:11.531] [bmv2] [D] [thread 2188] [18.0] [cxt 0] Extracting header 'ipv4'
+[08:43:11.531] [bmv2] [D] [thread 2188] [18.0] [cxt 0] Parser state 'prs_ipv4' has no switch, going to default next state
+[08:43:11.531] [bmv2] [T] [thread 2188] [18.0] [cxt 0] Bytes parsed: 34
+[08:43:11.531] [bmv2] [D] [thread 2188] [18.0] [cxt 0] Parser 'parser': end
+[08:43:11.531] [bmv2] [D] [thread 2188] [18.0] [cxt 0] Pipeline 'ingress': start
+[08:43:11.531] [bmv2] [T] [thread 2188] [18.0] [cxt 0] optimized-ipv4-forwarding.p4(228) Condition "hdr.ipv4.isValid()" (node_2) is true
+[08:43:11.531] [bmv2] [T] [thread 2188] [18.0] [cxt 0] Applying table 'ctl_ingress.tbl_ipv4_fib_host'
+[08:43:11.531] [bmv2] [D] [thread 2188] [18.0] [cxt 0] Looking up key:
+* hdr.ipv4.dst_ipv4_addr: 0a000101
+
+[08:43:11.531] [bmv2] [D] [thread 2188] [18.0] [cxt 0] Table 'ctl_ingress.tbl_ipv4_fib_host': hit with handle 0
+[08:43:11.531] [bmv2] [D] [thread 2188] [18.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ipv4.dst_ipv4_addr: EXACT     0a000101
+Action entry: ctl_ingress.act_ipv4_set_nexthop - 1,
+
+[08:43:11.531] [bmv2] [D] [thread 2188] [18.0] [cxt 0] Action entry is ctl_ingress.act_ipv4_set_nexthop - 1,
+[08:43:11.531] [bmv2] [T] [thread 2188] [18.0] [cxt 0] Action ctl_ingress.act_ipv4_set_nexthop
+[08:43:11.531] [bmv2] [T] [thread 2188] [18.0] [cxt 0] optimized-ipv4-forwarding.p4(175) Primitive metadata.nexthop_id = nexthop_id
+[08:43:11.531] [bmv2] [T] [thread 2188] [18.0] [cxt 0] Applying table 'tbl_act'
+[08:43:11.531] [bmv2] [D] [thread 2188] [18.0] [cxt 0] Looking up key:
+
+[08:43:11.531] [bmv2] [D] [thread 2188] [18.0] [cxt 0] Table 'tbl_act': miss
+[08:43:11.531] [bmv2] [D] [thread 2188] [18.0] [cxt 0] Action entry is act - 
+[08:43:11.531] [bmv2] [T] [thread 2188] [18.0] [cxt 0] Action act
+[08:43:11.531] [bmv2] [T] [thread 2188] [18.0] [cxt 0] Primitive (no source info)
+[08:43:11.531] [bmv2] [T] [thread 2188] [18.0] [cxt 0] optimized-ipv4-forwarding.p4(232) Condition "!tbl_ipv4_fib_host.apply().hit" (node_6) is false
+[08:43:11.531] [bmv2] [T] [thread 2188] [18.0] [cxt 0] Applying table 'ctl_ingress.tbl_nexthop'
+[08:43:11.531] [bmv2] [D] [thread 2188] [18.0] [cxt 0] Looking up key:
+* metadata.nexthop_id : 0001
+
+[08:43:11.531] [bmv2] [D] [thread 2188] [18.0] [cxt 0] Table 'ctl_ingress.tbl_nexthop': hit with handle 0
+[08:43:11.531] [bmv2] [D] [thread 2188] [18.0] [cxt 0] Dumping entry 0
+Match key:
+* metadata.nexthop_id : EXACT     0001
+Action entry: ctl_ingress.act_ipv4_fib_hit - a000101,1,
+
+[08:43:11.531] [bmv2] [D] [thread 2188] [18.0] [cxt 0] Action entry is ctl_ingress.act_ipv4_fib_hit - a000101,1,
+[08:43:11.531] [bmv2] [T] [thread 2188] [18.0] [cxt 0] Action ctl_ingress.act_ipv4_fib_hit
+[08:43:11.531] [bmv2] [T] [thread 2188] [18.0] [cxt 0] optimized-ipv4-forwarding.p4(147) Primitive hdr.ethernet.src_mac_addr = hdr.ethernet.dst_mac_addr
+[08:43:11.531] [bmv2] [T] [thread 2188] [18.0] [cxt 0] optimized-ipv4-forwarding.p4(153) Primitive hdr.ethernet.dst_mac_addr = dst_mac_addr
+[08:43:11.531] [bmv2] [T] [thread 2188] [18.0] [cxt 0] optimized-ipv4-forwarding.p4(159) Primitive standard_metadata.egress_spec = egress_port
+[08:43:11.531] [bmv2] [T] [thread 2188] [18.0] [cxt 0] optimized-ipv4-forwarding.p4(164) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl -1
+[08:43:11.531] [bmv2] [D] [thread 2188] [18.0] [cxt 0] Pipeline 'ingress': end
+[08:43:11.531] [bmv2] [D] [thread 2188] [18.0] [cxt 0] Egress port is 1
+[08:43:11.532] [bmv2] [D] [thread 2190] [18.0] [cxt 0] Pipeline 'egress': start
+[08:43:11.532] [bmv2] [D] [thread 2190] [18.0] [cxt 0] Pipeline 'egress': end
+[08:43:11.532] [bmv2] [D] [thread 2190] [18.0] [cxt 0] Deparser 'deparser': start
+[08:43:11.532] [bmv2] [D] [thread 2190] [18.0] [cxt 0] Updating checksum 'cksum'
+[08:43:11.532] [bmv2] [D] [thread 2190] [18.0] [cxt 0] Deparsing header 'ethernet'
+[08:43:11.532] [bmv2] [D] [thread 2190] [18.0] [cxt 0] Deparsing header 'ipv4'
+[08:43:11.532] [bmv2] [D] [thread 2190] [18.0] [cxt 0] Deparser 'deparser': end
+[08:43:11.532] [bmv2] [D] [thread 2193] [18.0] [cxt 0] Transmitting packet of size 106 out of port 1
+[08:43:11.533] [bmv2] [D] [thread 2188] [19.0] [cxt 0] Processing packet received on port 1
+[08:43:11.533] [bmv2] [D] [thread 2188] [19.0] [cxt 0] Parser 'parser': start
+[08:43:11.533] [bmv2] [D] [thread 2188] [19.0] [cxt 0] Parser 'parser' entering state 'start'
+[08:43:11.533] [bmv2] [D] [thread 2188] [19.0] [cxt 0] Extracting header 'ethernet'
+[08:43:11.533] [bmv2] [D] [thread 2188] [19.0] [cxt 0] Parser state 'start': key is 0800
+[08:43:11.533] [bmv2] [T] [thread 2188] [19.0] [cxt 0] Bytes parsed: 14
+[08:43:11.533] [bmv2] [D] [thread 2188] [19.0] [cxt 0] Parser 'parser' entering state 'prs_ipv4'
+[08:43:11.533] [bmv2] [D] [thread 2188] [19.0] [cxt 0] Extracting header 'ipv4'
+[08:43:11.533] [bmv2] [D] [thread 2188] [19.0] [cxt 0] Parser state 'prs_ipv4' has no switch, going to default next state
+[08:43:11.533] [bmv2] [T] [thread 2188] [19.0] [cxt 0] Bytes parsed: 34
+[08:43:11.533] [bmv2] [D] [thread 2188] [19.0] [cxt 0] Parser 'parser': end
+[08:43:11.533] [bmv2] [D] [thread 2188] [19.0] [cxt 0] Pipeline 'ingress': start
+[08:43:11.533] [bmv2] [T] [thread 2188] [19.0] [cxt 0] optimized-ipv4-forwarding.p4(228) Condition "hdr.ipv4.isValid()" (node_2) is true
+[08:43:11.533] [bmv2] [T] [thread 2188] [19.0] [cxt 0] Applying table 'ctl_ingress.tbl_ipv4_fib_host'
+[08:43:11.533] [bmv2] [D] [thread 2188] [19.0] [cxt 0] Looking up key:
+* hdr.ipv4.dst_ipv4_addr: 02020202
+
+[08:43:11.533] [bmv2] [D] [thread 2188] [19.0] [cxt 0] Table 'ctl_ingress.tbl_ipv4_fib_host': miss
+[08:43:11.533] [bmv2] [D] [thread 2188] [19.0] [cxt 0] Action entry is NoAction - 
+[08:43:11.533] [bmv2] [T] [thread 2188] [19.0] [cxt 0] Action NoAction
+[08:43:11.533] [bmv2] [T] [thread 2188] [19.0] [cxt 0] Applying table 'tbl_act_0'
+[08:43:11.533] [bmv2] [D] [thread 2188] [19.0] [cxt 0] Looking up key:
+
+[08:43:11.533] [bmv2] [D] [thread 2188] [19.0] [cxt 0] Table 'tbl_act_0': miss
+[08:43:11.533] [bmv2] [D] [thread 2188] [19.0] [cxt 0] Action entry is act_0 - 
+[08:43:11.533] [bmv2] [T] [thread 2188] [19.0] [cxt 0] Action act_0
+[08:43:11.533] [bmv2] [T] [thread 2188] [19.0] [cxt 0] Primitive (no source info)
+[08:43:11.533] [bmv2] [T] [thread 2188] [19.0] [cxt 0] optimized-ipv4-forwarding.p4(232) Condition "!tbl_ipv4_fib_host.apply().hit" (node_6) is true
+[08:43:11.533] [bmv2] [T] [thread 2188] [19.0] [cxt 0] Applying table 'ctl_ingress.tbl_ipv4_fib_lpm'
+[08:43:11.533] [bmv2] [D] [thread 2188] [19.0] [cxt 0] Looking up key:
+* hdr.ipv4.dst_ipv4_addr: 02020202
+
+[08:43:11.533] [bmv2] [D] [thread 2188] [19.0] [cxt 0] Table 'ctl_ingress.tbl_ipv4_fib_lpm': hit with handle 0
+[08:43:11.533] [bmv2] [D] [thread 2188] [19.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ipv4.dst_ipv4_addr: LPM       02020200/24
+Action entry: ctl_ingress.act_ipv4_set_nexthop - 2,
+
+[08:43:11.533] [bmv2] [D] [thread 2188] [19.0] [cxt 0] Action entry is ctl_ingress.act_ipv4_set_nexthop - 2,
+[08:43:11.533] [bmv2] [T] [thread 2188] [19.0] [cxt 0] Action ctl_ingress.act_ipv4_set_nexthop
+[08:43:11.533] [bmv2] [T] [thread 2188] [19.0] [cxt 0] optimized-ipv4-forwarding.p4(175) Primitive metadata.nexthop_id = nexthop_id
+[08:43:11.533] [bmv2] [T] [thread 2188] [19.0] [cxt 0] Applying table 'ctl_ingress.tbl_nexthop'
+[08:43:11.533] [bmv2] [D] [thread 2188] [19.0] [cxt 0] Looking up key:
+* metadata.nexthop_id : 0002
+
+[08:43:11.533] [bmv2] [D] [thread 2188] [19.0] [cxt 0] Table 'ctl_ingress.tbl_nexthop': hit with handle 1
+[08:43:11.533] [bmv2] [D] [thread 2188] [19.0] [cxt 0] Dumping entry 1
+Match key:
+* metadata.nexthop_id : EXACT     0002
+Action entry: ctl_ingress.act_ipv4_fib_hit - a000202,2,
+
+[08:43:11.533] [bmv2] [D] [thread 2188] [19.0] [cxt 0] Action entry is ctl_ingress.act_ipv4_fib_hit - a000202,2,
+[08:43:11.533] [bmv2] [T] [thread 2188] [19.0] [cxt 0] Action ctl_ingress.act_ipv4_fib_hit
+[08:43:11.533] [bmv2] [T] [thread 2188] [19.0] [cxt 0] optimized-ipv4-forwarding.p4(147) Primitive hdr.ethernet.src_mac_addr = hdr.ethernet.dst_mac_addr
+[08:43:11.533] [bmv2] [T] [thread 2188] [19.0] [cxt 0] optimized-ipv4-forwarding.p4(153) Primitive hdr.ethernet.dst_mac_addr = dst_mac_addr
+[08:43:11.533] [bmv2] [T] [thread 2188] [19.0] [cxt 0] optimized-ipv4-forwarding.p4(159) Primitive standard_metadata.egress_spec = egress_port
+[08:43:11.533] [bmv2] [T] [thread 2188] [19.0] [cxt 0] optimized-ipv4-forwarding.p4(164) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl -1
+[08:43:11.533] [bmv2] [D] [thread 2188] [19.0] [cxt 0] Pipeline 'ingress': end
+[08:43:11.533] [bmv2] [D] [thread 2188] [19.0] [cxt 0] Egress port is 2
+[08:43:11.533] [bmv2] [D] [thread 2191] [19.0] [cxt 0] Pipeline 'egress': start
+[08:43:11.533] [bmv2] [D] [thread 2191] [19.0] [cxt 0] Pipeline 'egress': end
+[08:43:11.533] [bmv2] [D] [thread 2191] [19.0] [cxt 0] Deparser 'deparser': start
+[08:43:11.533] [bmv2] [D] [thread 2191] [19.0] [cxt 0] Updating checksum 'cksum'
+[08:43:11.533] [bmv2] [D] [thread 2191] [19.0] [cxt 0] Deparsing header 'ethernet'
+[08:43:11.533] [bmv2] [D] [thread 2191] [19.0] [cxt 0] Deparsing header 'ipv4'
+[08:43:11.533] [bmv2] [D] [thread 2191] [19.0] [cxt 0] Deparser 'deparser': end
+[08:43:11.533] [bmv2] [D] [thread 2193] [19.0] [cxt 0] Transmitting packet of size 106 out of port 2
+[08:43:11.534] [bmv2] [D] [thread 2188] [20.0] [cxt 0] Processing packet received on port 2
+[08:43:11.534] [bmv2] [D] [thread 2188] [20.0] [cxt 0] Parser 'parser': start
+[08:43:11.534] [bmv2] [D] [thread 2188] [20.0] [cxt 0] Parser 'parser' entering state 'start'
+[08:43:11.534] [bmv2] [D] [thread 2188] [20.0] [cxt 0] Extracting header 'ethernet'
+[08:43:11.534] [bmv2] [D] [thread 2188] [20.0] [cxt 0] Parser state 'start': key is 0800
+[08:43:11.534] [bmv2] [T] [thread 2188] [20.0] [cxt 0] Bytes parsed: 14
+[08:43:11.534] [bmv2] [D] [thread 2188] [20.0] [cxt 0] Parser 'parser' entering state 'prs_ipv4'
+[08:43:11.534] [bmv2] [D] [thread 2188] [20.0] [cxt 0] Extracting header 'ipv4'
+[08:43:11.534] [bmv2] [D] [thread 2188] [20.0] [cxt 0] Parser state 'prs_ipv4' has no switch, going to default next state
+[08:43:11.534] [bmv2] [T] [thread 2188] [20.0] [cxt 0] Bytes parsed: 34
+[08:43:11.534] [bmv2] [D] [thread 2188] [20.0] [cxt 0] Parser 'parser': end
+[08:43:11.534] [bmv2] [D] [thread 2188] [20.0] [cxt 0] Pipeline 'ingress': start
+[08:43:11.534] [bmv2] [T] [thread 2188] [20.0] [cxt 0] optimized-ipv4-forwarding.p4(228) Condition "hdr.ipv4.isValid()" (node_2) is true
+[08:43:11.534] [bmv2] [T] [thread 2188] [20.0] [cxt 0] Applying table 'ctl_ingress.tbl_ipv4_fib_host'
+[08:43:11.534] [bmv2] [D] [thread 2188] [20.0] [cxt 0] Looking up key:
+* hdr.ipv4.dst_ipv4_addr: 0a000101
+
+[08:43:11.534] [bmv2] [D] [thread 2188] [20.0] [cxt 0] Table 'ctl_ingress.tbl_ipv4_fib_host': hit with handle 0
+[08:43:11.534] [bmv2] [D] [thread 2188] [20.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ipv4.dst_ipv4_addr: EXACT     0a000101
+Action entry: ctl_ingress.act_ipv4_set_nexthop - 1,
+
+[08:43:11.534] [bmv2] [D] [thread 2188] [20.0] [cxt 0] Action entry is ctl_ingress.act_ipv4_set_nexthop - 1,
+[08:43:11.534] [bmv2] [T] [thread 2188] [20.0] [cxt 0] Action ctl_ingress.act_ipv4_set_nexthop
+[08:43:11.534] [bmv2] [T] [thread 2188] [20.0] [cxt 0] optimized-ipv4-forwarding.p4(175) Primitive metadata.nexthop_id = nexthop_id
+[08:43:11.534] [bmv2] [T] [thread 2188] [20.0] [cxt 0] Applying table 'tbl_act'
+[08:43:11.534] [bmv2] [D] [thread 2188] [20.0] [cxt 0] Looking up key:
+
+[08:43:11.534] [bmv2] [D] [thread 2188] [20.0] [cxt 0] Table 'tbl_act': miss
+[08:43:11.534] [bmv2] [D] [thread 2188] [20.0] [cxt 0] Action entry is act - 
+[08:43:11.534] [bmv2] [T] [thread 2188] [20.0] [cxt 0] Action act
+[08:43:11.534] [bmv2] [T] [thread 2188] [20.0] [cxt 0] Primitive (no source info)
+[08:43:11.534] [bmv2] [T] [thread 2188] [20.0] [cxt 0] optimized-ipv4-forwarding.p4(232) Condition "!tbl_ipv4_fib_host.apply().hit" (node_6) is false
+[08:43:11.535] [bmv2] [T] [thread 2188] [20.0] [cxt 0] Applying table 'ctl_ingress.tbl_nexthop'
+[08:43:11.535] [bmv2] [D] [thread 2188] [20.0] [cxt 0] Looking up key:
+* metadata.nexthop_id : 0001
+
+[08:43:11.535] [bmv2] [D] [thread 2188] [20.0] [cxt 0] Table 'ctl_ingress.tbl_nexthop': hit with handle 0
+[08:43:11.535] [bmv2] [D] [thread 2188] [20.0] [cxt 0] Dumping entry 0
+Match key:
+* metadata.nexthop_id : EXACT     0001
+Action entry: ctl_ingress.act_ipv4_fib_hit - a000101,1,
+
+[08:43:11.535] [bmv2] [D] [thread 2188] [20.0] [cxt 0] Action entry is ctl_ingress.act_ipv4_fib_hit - a000101,1,
+[08:43:11.535] [bmv2] [T] [thread 2188] [20.0] [cxt 0] Action ctl_ingress.act_ipv4_fib_hit
+[08:43:11.535] [bmv2] [T] [thread 2188] [20.0] [cxt 0] optimized-ipv4-forwarding.p4(147) Primitive hdr.ethernet.src_mac_addr = hdr.ethernet.dst_mac_addr
+[08:43:11.535] [bmv2] [T] [thread 2188] [20.0] [cxt 0] optimized-ipv4-forwarding.p4(153) Primitive hdr.ethernet.dst_mac_addr = dst_mac_addr
+[08:43:11.535] [bmv2] [T] [thread 2188] [20.0] [cxt 0] optimized-ipv4-forwarding.p4(159) Primitive standard_metadata.egress_spec = egress_port
+[08:43:11.535] [bmv2] [T] [thread 2188] [20.0] [cxt 0] optimized-ipv4-forwarding.p4(164) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl -1
+[08:43:11.535] [bmv2] [D] [thread 2188] [20.0] [cxt 0] Pipeline 'ingress': end
+[08:43:11.535] [bmv2] [D] [thread 2188] [20.0] [cxt 0] Egress port is 1
+[08:43:11.535] [bmv2] [D] [thread 2190] [20.0] [cxt 0] Pipeline 'egress': start
+[08:43:11.535] [bmv2] [D] [thread 2190] [20.0] [cxt 0] Pipeline 'egress': end
+[08:43:11.535] [bmv2] [D] [thread 2190] [20.0] [cxt 0] Deparser 'deparser': start
+[08:43:11.535] [bmv2] [D] [thread 2190] [20.0] [cxt 0] Updating checksum 'cksum'
+[08:43:11.535] [bmv2] [D] [thread 2190] [20.0] [cxt 0] Deparsing header 'ethernet'
+[08:43:11.535] [bmv2] [D] [thread 2190] [20.0] [cxt 0] Deparsing header 'ipv4'
+[08:43:11.535] [bmv2] [D] [thread 2190] [20.0] [cxt 0] Deparser 'deparser': end
+[08:43:11.535] [bmv2] [D] [thread 2193] [20.0] [cxt 0] Transmitting packet of size 106 out of port 1
+[08:43:11.536] [bmv2] [D] [thread 2188] [21.0] [cxt 0] Processing packet received on port 1
+[08:43:11.536] [bmv2] [D] [thread 2188] [21.0] [cxt 0] Parser 'parser': start
+[08:43:11.536] [bmv2] [D] [thread 2188] [21.0] [cxt 0] Parser 'parser' entering state 'start'
+[08:43:11.536] [bmv2] [D] [thread 2188] [21.0] [cxt 0] Extracting header 'ethernet'
+[08:43:11.536] [bmv2] [D] [thread 2188] [21.0] [cxt 0] Parser state 'start': key is 0800
+[08:43:11.536] [bmv2] [T] [thread 2188] [21.0] [cxt 0] Bytes parsed: 14
+[08:43:11.536] [bmv2] [D] [thread 2188] [21.0] [cxt 0] Parser 'parser' entering state 'prs_ipv4'
+[08:43:11.536] [bmv2] [D] [thread 2188] [21.0] [cxt 0] Extracting header 'ipv4'
+[08:43:11.536] [bmv2] [D] [thread 2188] [21.0] [cxt 0] Parser state 'prs_ipv4' has no switch, going to default next state
+[08:43:11.536] [bmv2] [T] [thread 2188] [21.0] [cxt 0] Bytes parsed: 34
+[08:43:11.536] [bmv2] [D] [thread 2188] [21.0] [cxt 0] Parser 'parser': end
+[08:43:11.536] [bmv2] [D] [thread 2188] [21.0] [cxt 0] Pipeline 'ingress': start
+[08:43:11.536] [bmv2] [T] [thread 2188] [21.0] [cxt 0] optimized-ipv4-forwarding.p4(228) Condition "hdr.ipv4.isValid()" (node_2) is true
+[08:43:11.536] [bmv2] [T] [thread 2188] [21.0] [cxt 0] Applying table 'ctl_ingress.tbl_ipv4_fib_host'
+[08:43:11.536] [bmv2] [D] [thread 2188] [21.0] [cxt 0] Looking up key:
+* hdr.ipv4.dst_ipv4_addr: 02020202
+
+[08:43:11.536] [bmv2] [D] [thread 2188] [21.0] [cxt 0] Table 'ctl_ingress.tbl_ipv4_fib_host': miss
+[08:43:11.536] [bmv2] [D] [thread 2188] [21.0] [cxt 0] Action entry is NoAction - 
+[08:43:11.537] [bmv2] [T] [thread 2188] [21.0] [cxt 0] Action NoAction
+[08:43:11.537] [bmv2] [T] [thread 2188] [21.0] [cxt 0] Applying table 'tbl_act_0'
+[08:43:11.537] [bmv2] [D] [thread 2188] [21.0] [cxt 0] Looking up key:
+
+[08:43:11.537] [bmv2] [D] [thread 2188] [21.0] [cxt 0] Table 'tbl_act_0': miss
+[08:43:11.537] [bmv2] [D] [thread 2188] [21.0] [cxt 0] Action entry is act_0 - 
+[08:43:11.537] [bmv2] [T] [thread 2188] [21.0] [cxt 0] Action act_0
+[08:43:11.537] [bmv2] [T] [thread 2188] [21.0] [cxt 0] Primitive (no source info)
+[08:43:11.537] [bmv2] [T] [thread 2188] [21.0] [cxt 0] optimized-ipv4-forwarding.p4(232) Condition "!tbl_ipv4_fib_host.apply().hit" (node_6) is true
+[08:43:11.537] [bmv2] [T] [thread 2188] [21.0] [cxt 0] Applying table 'ctl_ingress.tbl_ipv4_fib_lpm'
+[08:43:11.537] [bmv2] [D] [thread 2188] [21.0] [cxt 0] Looking up key:
+* hdr.ipv4.dst_ipv4_addr: 02020202
+
+[08:43:11.537] [bmv2] [D] [thread 2188] [21.0] [cxt 0] Table 'ctl_ingress.tbl_ipv4_fib_lpm': hit with handle 0
+[08:43:11.537] [bmv2] [D] [thread 2188] [21.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ipv4.dst_ipv4_addr: LPM       02020200/24
+Action entry: ctl_ingress.act_ipv4_set_nexthop - 2,
+
+[08:43:11.537] [bmv2] [D] [thread 2188] [21.0] [cxt 0] Action entry is ctl_ingress.act_ipv4_set_nexthop - 2,
+[08:43:11.537] [bmv2] [T] [thread 2188] [21.0] [cxt 0] Action ctl_ingress.act_ipv4_set_nexthop
+[08:43:11.537] [bmv2] [T] [thread 2188] [21.0] [cxt 0] optimized-ipv4-forwarding.p4(175) Primitive metadata.nexthop_id = nexthop_id
+[08:43:11.537] [bmv2] [T] [thread 2188] [21.0] [cxt 0] Applying table 'ctl_ingress.tbl_nexthop'
+[08:43:11.537] [bmv2] [D] [thread 2188] [21.0] [cxt 0] Looking up key:
+* metadata.nexthop_id : 0002
+
+[08:43:11.537] [bmv2] [D] [thread 2188] [21.0] [cxt 0] Table 'ctl_ingress.tbl_nexthop': hit with handle 1
+[08:43:11.537] [bmv2] [D] [thread 2188] [21.0] [cxt 0] Dumping entry 1
+Match key:
+* metadata.nexthop_id : EXACT     0002
+Action entry: ctl_ingress.act_ipv4_fib_hit - a000202,2,
+
+[08:43:11.537] [bmv2] [D] [thread 2188] [21.0] [cxt 0] Action entry is ctl_ingress.act_ipv4_fib_hit - a000202,2,
+[08:43:11.537] [bmv2] [T] [thread 2188] [21.0] [cxt 0] Action ctl_ingress.act_ipv4_fib_hit
+[08:43:11.537] [bmv2] [T] [thread 2188] [21.0] [cxt 0] optimized-ipv4-forwarding.p4(147) Primitive hdr.ethernet.src_mac_addr = hdr.ethernet.dst_mac_addr
+[08:43:11.537] [bmv2] [T] [thread 2188] [21.0] [cxt 0] optimized-ipv4-forwarding.p4(153) Primitive hdr.ethernet.dst_mac_addr = dst_mac_addr
+[08:43:11.537] [bmv2] [T] [thread 2188] [21.0] [cxt 0] optimized-ipv4-forwarding.p4(159) Primitive standard_metadata.egress_spec = egress_port
+[08:43:11.537] [bmv2] [T] [thread 2188] [21.0] [cxt 0] optimized-ipv4-forwarding.p4(164) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl -1
+[08:43:11.537] [bmv2] [D] [thread 2188] [21.0] [cxt 0] Pipeline 'ingress': end
+[08:43:11.537] [bmv2] [D] [thread 2188] [21.0] [cxt 0] Egress port is 2
+[08:43:11.537] [bmv2] [D] [thread 2191] [21.0] [cxt 0] Pipeline 'egress': start
+[08:43:11.537] [bmv2] [D] [thread 2191] [21.0] [cxt 0] Pipeline 'egress': end
+[08:43:11.537] [bmv2] [D] [thread 2191] [21.0] [cxt 0] Deparser 'deparser': start
+[08:43:11.537] [bmv2] [D] [thread 2191] [21.0] [cxt 0] Updating checksum 'cksum'
+[08:43:11.537] [bmv2] [D] [thread 2191] [21.0] [cxt 0] Deparsing header 'ethernet'
+[08:43:11.537] [bmv2] [D] [thread 2191] [21.0] [cxt 0] Deparsing header 'ipv4'
+[08:43:11.537] [bmv2] [D] [thread 2191] [21.0] [cxt 0] Deparser 'deparser': end
+[08:43:11.537] [bmv2] [D] [thread 2193] [21.0] [cxt 0] Transmitting packet of size 106 out of port 2
+[08:43:11.537] [bmv2] [D] [thread 2188] [22.0] [cxt 0] Processing packet received on port 2
+[08:43:11.537] [bmv2] [D] [thread 2188] [22.0] [cxt 0] Parser 'parser': start
+[08:43:11.537] [bmv2] [D] [thread 2188] [22.0] [cxt 0] Parser 'parser' entering state 'start'
+[08:43:11.537] [bmv2] [D] [thread 2188] [22.0] [cxt 0] Extracting header 'ethernet'
+[08:43:11.537] [bmv2] [D] [thread 2188] [22.0] [cxt 0] Parser state 'start': key is 0800
+[08:43:11.537] [bmv2] [T] [thread 2188] [22.0] [cxt 0] Bytes parsed: 14
+[08:43:11.537] [bmv2] [D] [thread 2188] [22.0] [cxt 0] Parser 'parser' entering state 'prs_ipv4'
+[08:43:11.537] [bmv2] [D] [thread 2188] [22.0] [cxt 0] Extracting header 'ipv4'
+[08:43:11.537] [bmv2] [D] [thread 2188] [22.0] [cxt 0] Parser state 'prs_ipv4' has no switch, going to default next state
+[08:43:11.537] [bmv2] [T] [thread 2188] [22.0] [cxt 0] Bytes parsed: 34
+[08:43:11.537] [bmv2] [D] [thread 2188] [22.0] [cxt 0] Parser 'parser': end
+[08:43:11.537] [bmv2] [D] [thread 2188] [22.0] [cxt 0] Pipeline 'ingress': start
+[08:43:11.537] [bmv2] [T] [thread 2188] [22.0] [cxt 0] optimized-ipv4-forwarding.p4(228) Condition "hdr.ipv4.isValid()" (node_2) is true
+[08:43:11.537] [bmv2] [T] [thread 2188] [22.0] [cxt 0] Applying table 'ctl_ingress.tbl_ipv4_fib_host'
+[08:43:11.537] [bmv2] [D] [thread 2188] [22.0] [cxt 0] Looking up key:
+* hdr.ipv4.dst_ipv4_addr: 0a000101
+
+[08:43:11.537] [bmv2] [D] [thread 2188] [22.0] [cxt 0] Table 'ctl_ingress.tbl_ipv4_fib_host': hit with handle 0
+[08:43:11.538] [bmv2] [D] [thread 2188] [22.0] [cxt 0] Dumping entry 0
+Match key:
+* hdr.ipv4.dst_ipv4_addr: EXACT     0a000101
+Action entry: ctl_ingress.act_ipv4_set_nexthop - 1,
+
+[08:43:11.538] [bmv2] [D] [thread 2188] [22.0] [cxt 0] Action entry is ctl_ingress.act_ipv4_set_nexthop - 1,
+[08:43:11.538] [bmv2] [T] [thread 2188] [22.0] [cxt 0] Action ctl_ingress.act_ipv4_set_nexthop
+[08:43:11.538] [bmv2] [T] [thread 2188] [22.0] [cxt 0] optimized-ipv4-forwarding.p4(175) Primitive metadata.nexthop_id = nexthop_id
+[08:43:11.538] [bmv2] [T] [thread 2188] [22.0] [cxt 0] Applying table 'tbl_act'
+[08:43:11.538] [bmv2] [D] [thread 2188] [22.0] [cxt 0] Looking up key:
+
+[08:43:11.538] [bmv2] [D] [thread 2188] [22.0] [cxt 0] Table 'tbl_act': miss
+[08:43:11.538] [bmv2] [D] [thread 2188] [22.0] [cxt 0] Action entry is act - 
+[08:43:11.538] [bmv2] [T] [thread 2188] [22.0] [cxt 0] Action act
+[08:43:11.538] [bmv2] [T] [thread 2188] [22.0] [cxt 0] Primitive (no source info)
+[08:43:11.538] [bmv2] [T] [thread 2188] [22.0] [cxt 0] optimized-ipv4-forwarding.p4(232) Condition "!tbl_ipv4_fib_host.apply().hit" (node_6) is false
+[08:43:11.538] [bmv2] [T] [thread 2188] [22.0] [cxt 0] Applying table 'ctl_ingress.tbl_nexthop'
+[08:43:11.538] [bmv2] [D] [thread 2188] [22.0] [cxt 0] Looking up key:
+* metadata.nexthop_id : 0001
+
+[08:43:11.538] [bmv2] [D] [thread 2188] [22.0] [cxt 0] Table 'ctl_ingress.tbl_nexthop': hit with handle 0
+[08:43:11.538] [bmv2] [D] [thread 2188] [22.0] [cxt 0] Dumping entry 0
+Match key:
+* metadata.nexthop_id : EXACT     0001
+Action entry: ctl_ingress.act_ipv4_fib_hit - a000101,1,
+
+[08:43:11.538] [bmv2] [D] [thread 2188] [22.0] [cxt 0] Action entry is ctl_ingress.act_ipv4_fib_hit - a000101,1,
+[08:43:11.538] [bmv2] [T] [thread 2188] [22.0] [cxt 0] Action ctl_ingress.act_ipv4_fib_hit
+[08:43:11.538] [bmv2] [T] [thread 2188] [22.0] [cxt 0] optimized-ipv4-forwarding.p4(147) Primitive hdr.ethernet.src_mac_addr = hdr.ethernet.dst_mac_addr
+[08:43:11.538] [bmv2] [T] [thread 2188] [22.0] [cxt 0] optimized-ipv4-forwarding.p4(153) Primitive hdr.ethernet.dst_mac_addr = dst_mac_addr
+[08:43:11.538] [bmv2] [T] [thread 2188] [22.0] [cxt 0] optimized-ipv4-forwarding.p4(159) Primitive standard_metadata.egress_spec = egress_port
+[08:43:11.538] [bmv2] [T] [thread 2188] [22.0] [cxt 0] optimized-ipv4-forwarding.p4(164) Primitive hdr.ipv4.ttl = hdr.ipv4.ttl -1
+[08:43:11.538] [bmv2] [D] [thread 2188] [22.0] [cxt 0] Pipeline 'ingress': end
+[08:43:11.538] [bmv2] [D] [thread 2188] [22.0] [cxt 0] Egress port is 1
+[08:43:11.544] [bmv2] [D] [thread 2190] [22.0] [cxt 0] Pipeline 'egress': start
+[08:43:11.544] [bmv2] [D] [thread 2190] [22.0] [cxt 0] Pipeline 'egress': end
+[08:43:11.544] [bmv2] [D] [thread 2190] [22.0] [cxt 0] Deparser 'deparser': start
+[08:43:11.544] [bmv2] [D] [thread 2190] [22.0] [cxt 0] Updating checksum 'cksum'
+[08:43:11.544] [bmv2] [D] [thread 2190] [22.0] [cxt 0] Deparsing header 'ethernet'
+[08:43:11.544] [bmv2] [D] [thread 2190] [22.0] [cxt 0] Deparsing header 'ipv4'
+[08:43:11.544] [bmv2] [D] [thread 2190] [22.0] [cxt 0] Deparser 'deparser': end
+[08:43:11.544] [bmv2] [D] [thread 2193] [22.0] [cxt 0] Transmitting packet of size 106 out of port 1
+[08:45:14.852] [bmv2] [D] [thread 2188] [23.0] [cxt 0] Processing packet received on port 2
+[08:45:14.852] [bmv2] [D] [thread 2188] [23.0] [cxt 0] Parser 'parser': start
+[08:45:14.852] [bmv2] [D] [thread 2188] [23.0] [cxt 0] Parser 'parser' entering state 'start'
+[08:45:14.852] [bmv2] [D] [thread 2188] [23.0] [cxt 0] Extracting header 'ethernet'
+[08:45:14.852] [bmv2] [D] [thread 2188] [23.0] [cxt 0] Parser state 'start': key is 0806
+[08:45:14.852] [bmv2] [T] [thread 2188] [23.0] [cxt 0] Bytes parsed: 14
+[08:45:14.852] [bmv2] [D] [thread 2188] [23.0] [cxt 0] Parser 'parser': end
+[08:45:14.852] [bmv2] [D] [thread 2188] [23.0] [cxt 0] Pipeline 'ingress': start
+[08:45:14.852] [bmv2] [T] [thread 2188] [23.0] [cxt 0] optimized-ipv4-forwarding.p4(228) Condition "hdr.ipv4.isValid()" (node_2) is false
+[08:45:14.852] [bmv2] [D] [thread 2188] [23.0] [cxt 0] Pipeline 'ingress': end
+[08:45:14.852] [bmv2] [D] [thread 2188] [23.0] [cxt 0] Egress port is 0
+[08:45:14.852] [bmv2] [D] [thread 2189] [23.0] [cxt 0] Pipeline 'egress': start
+[08:45:14.852] [bmv2] [D] [thread 2189] [23.0] [cxt 0] Pipeline 'egress': end
+[08:45:14.852] [bmv2] [D] [thread 2189] [23.0] [cxt 0] Deparser 'deparser': start
+[08:45:14.852] [bmv2] [T] [thread 2189] [23.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[08:45:14.852] [bmv2] [D] [thread 2189] [23.0] [cxt 0] Deparsing header 'ethernet'
+[08:45:14.852] [bmv2] [D] [thread 2189] [23.0] [cxt 0] Deparser 'deparser': end
+[08:45:14.852] [bmv2] [D] [thread 2193] [23.0] [cxt 0] Transmitting packet of size 48 out of port 0
+[08:45:14.853] [bmv2] [D] [thread 2188] [24.0] [cxt 0] Processing packet received on port 1
+[08:45:14.853] [bmv2] [D] [thread 2188] [24.0] [cxt 0] Parser 'parser': start
+[08:45:14.853] [bmv2] [D] [thread 2188] [24.0] [cxt 0] Parser 'parser' entering state 'start'
+[08:45:14.853] [bmv2] [D] [thread 2188] [24.0] [cxt 0] Extracting header 'ethernet'
+[08:45:14.853] [bmv2] [D] [thread 2188] [24.0] [cxt 0] Parser state 'start': key is 0806
+[08:45:14.853] [bmv2] [T] [thread 2188] [24.0] [cxt 0] Bytes parsed: 14
+[08:45:14.853] [bmv2] [D] [thread 2188] [24.0] [cxt 0] Parser 'parser': end
+[08:45:14.853] [bmv2] [D] [thread 2188] [24.0] [cxt 0] Pipeline 'ingress': start
+[08:45:14.853] [bmv2] [T] [thread 2188] [24.0] [cxt 0] optimized-ipv4-forwarding.p4(228) Condition "hdr.ipv4.isValid()" (node_2) is false
+[08:45:14.853] [bmv2] [D] [thread 2188] [24.0] [cxt 0] Pipeline 'ingress': end
+[08:45:14.853] [bmv2] [D] [thread 2188] [24.0] [cxt 0] Egress port is 0
+[08:45:14.853] [bmv2] [D] [thread 2189] [24.0] [cxt 0] Pipeline 'egress': start
+[08:45:14.853] [bmv2] [D] [thread 2189] [24.0] [cxt 0] Pipeline 'egress': end
+[08:45:14.853] [bmv2] [D] [thread 2189] [24.0] [cxt 0] Deparser 'deparser': start
+[08:45:14.853] [bmv2] [T] [thread 2189] [24.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[08:45:14.853] [bmv2] [D] [thread 2189] [24.0] [cxt 0] Deparsing header 'ethernet'
+[08:45:14.853] [bmv2] [D] [thread 2189] [24.0] [cxt 0] Deparser 'deparser': end
+[08:45:14.853] [bmv2] [D] [thread 2193] [24.0] [cxt 0] Transmitting packet of size 48 out of port 0
+[08:45:15.150] [bmv2] [D] [thread 2188] [25.0] [cxt 0] Processing packet received on port 255
+[08:45:15.150] [bmv2] [D] [thread 2188] [25.0] [cxt 0] Parser 'parser': start
+[08:45:15.150] [bmv2] [D] [thread 2188] [25.0] [cxt 0] Parser 'parser' entering state 'start'
+[08:45:15.150] [bmv2] [D] [thread 2188] [25.0] [cxt 0] Extracting header 'ethernet'
+[08:45:15.150] [bmv2] [D] [thread 2188] [25.0] [cxt 0] Parser state 'start': key is 0806
+[08:45:15.150] [bmv2] [T] [thread 2188] [25.0] [cxt 0] Bytes parsed: 14
+[08:45:15.150] [bmv2] [D] [thread 2188] [25.0] [cxt 0] Parser 'parser': end
+[08:45:15.150] [bmv2] [D] [thread 2188] [25.0] [cxt 0] Pipeline 'ingress': start
+[08:45:15.150] [bmv2] [T] [thread 2188] [25.0] [cxt 0] optimized-ipv4-forwarding.p4(228) Condition "hdr.ipv4.isValid()" (node_2) is false
+[08:45:15.150] [bmv2] [D] [thread 2188] [25.0] [cxt 0] Pipeline 'ingress': end
+[08:45:15.150] [bmv2] [D] [thread 2188] [25.0] [cxt 0] Egress port is 0
+[08:45:15.150] [bmv2] [D] [thread 2189] [25.0] [cxt 0] Pipeline 'egress': start
+[08:45:15.150] [bmv2] [D] [thread 2189] [25.0] [cxt 0] Pipeline 'egress': end
+[08:45:15.150] [bmv2] [D] [thread 2189] [25.0] [cxt 0] Deparser 'deparser': start
+[08:45:15.150] [bmv2] [T] [thread 2189] [25.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[08:45:15.150] [bmv2] [D] [thread 2189] [25.0] [cxt 0] Deparsing header 'ethernet'
+[08:45:15.150] [bmv2] [D] [thread 2189] [25.0] [cxt 0] Deparser 'deparser': end
+[08:45:15.150] [bmv2] [D] [thread 2193] [25.0] [cxt 0] Transmitting packet of size 48 out of port 0
+[08:45:15.192] [bmv2] [D] [thread 2188] [26.0] [cxt 0] Processing packet received on port 254
+[08:45:15.192] [bmv2] [D] [thread 2188] [26.0] [cxt 0] Parser 'parser': start
+[08:45:15.192] [bmv2] [D] [thread 2188] [26.0] [cxt 0] Parser 'parser' entering state 'start'
+[08:45:15.192] [bmv2] [D] [thread 2188] [26.0] [cxt 0] Extracting header 'ethernet'
+[08:45:15.193] [bmv2] [D] [thread 2188] [26.0] [cxt 0] Parser state 'start': key is 0806
+[08:45:15.193] [bmv2] [T] [thread 2188] [26.0] [cxt 0] Bytes parsed: 14
+[08:45:15.193] [bmv2] [D] [thread 2188] [26.0] [cxt 0] Parser 'parser': end
+[08:45:15.193] [bmv2] [D] [thread 2188] [26.0] [cxt 0] Pipeline 'ingress': start
+[08:45:15.193] [bmv2] [T] [thread 2188] [26.0] [cxt 0] optimized-ipv4-forwarding.p4(228) Condition "hdr.ipv4.isValid()" (node_2) is false
+[08:45:15.193] [bmv2] [D] [thread 2188] [26.0] [cxt 0] Pipeline 'ingress': end
+[08:45:15.193] [bmv2] [D] [thread 2188] [26.0] [cxt 0] Egress port is 0
+[08:45:15.193] [bmv2] [D] [thread 2189] [26.0] [cxt 0] Pipeline 'egress': start
+[08:45:15.193] [bmv2] [D] [thread 2189] [26.0] [cxt 0] Pipeline 'egress': end
+[08:45:15.193] [bmv2] [D] [thread 2189] [26.0] [cxt 0] Deparser 'deparser': start
+[08:45:15.193] [bmv2] [T] [thread 2189] [26.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[08:45:15.193] [bmv2] [D] [thread 2189] [26.0] [cxt 0] Deparsing header 'ethernet'
+[08:45:15.193] [bmv2] [D] [thread 2189] [26.0] [cxt 0] Deparser 'deparser': end
+[08:45:15.193] [bmv2] [D] [thread 2193] [26.0] [cxt 0] Transmitting packet of size 48 out of port 0
+[08:48:14.853] [bmv2] [D] [thread 2188] [27.0] [cxt 0] Processing packet received on port 2
+[08:48:14.853] [bmv2] [D] [thread 2188] [27.0] [cxt 0] Parser 'parser': start
+[08:48:14.853] [bmv2] [D] [thread 2188] [27.0] [cxt 0] Parser 'parser' entering state 'start'
+[08:48:14.853] [bmv2] [D] [thread 2188] [27.0] [cxt 0] Extracting header 'ethernet'
+[08:48:14.853] [bmv2] [D] [thread 2188] [27.0] [cxt 0] Parser state 'start': key is 0806
+[08:48:14.853] [bmv2] [T] [thread 2188] [27.0] [cxt 0] Bytes parsed: 14
+[08:48:14.853] [bmv2] [D] [thread 2188] [27.0] [cxt 0] Parser 'parser': end
+[08:48:14.853] [bmv2] [D] [thread 2188] [27.0] [cxt 0] Pipeline 'ingress': start
+[08:48:14.853] [bmv2] [T] [thread 2188] [27.0] [cxt 0] optimized-ipv4-forwarding.p4(228) Condition "hdr.ipv4.isValid()" (node_2) is false
+[08:48:14.853] [bmv2] [D] [thread 2188] [27.0] [cxt 0] Pipeline 'ingress': end
+[08:48:14.853] [bmv2] [D] [thread 2188] [27.0] [cxt 0] Egress port is 0
+[08:48:14.853] [bmv2] [D] [thread 2189] [27.0] [cxt 0] Pipeline 'egress': start
+[08:48:14.854] [bmv2] [D] [thread 2189] [27.0] [cxt 0] Pipeline 'egress': end
+[08:48:14.854] [bmv2] [D] [thread 2189] [27.0] [cxt 0] Deparser 'deparser': start
+[08:48:14.854] [bmv2] [T] [thread 2189] [27.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[08:48:14.854] [bmv2] [D] [thread 2189] [27.0] [cxt 0] Deparsing header 'ethernet'
+[08:48:14.854] [bmv2] [D] [thread 2189] [27.0] [cxt 0] Deparser 'deparser': end
+[08:48:14.854] [bmv2] [D] [thread 2193] [27.0] [cxt 0] Transmitting packet of size 48 out of port 0
+[08:48:14.854] [bmv2] [D] [thread 2188] [28.0] [cxt 0] Processing packet received on port 1
+[08:48:14.854] [bmv2] [D] [thread 2188] [28.0] [cxt 0] Parser 'parser': start
+[08:48:14.854] [bmv2] [D] [thread 2188] [28.0] [cxt 0] Parser 'parser' entering state 'start'
+[08:48:14.854] [bmv2] [D] [thread 2188] [28.0] [cxt 0] Extracting header 'ethernet'
+[08:48:14.854] [bmv2] [D] [thread 2188] [28.0] [cxt 0] Parser state 'start': key is 0806
+[08:48:14.854] [bmv2] [T] [thread 2188] [28.0] [cxt 0] Bytes parsed: 14
+[08:48:14.854] [bmv2] [D] [thread 2188] [28.0] [cxt 0] Parser 'parser': end
+[08:48:14.854] [bmv2] [D] [thread 2188] [28.0] [cxt 0] Pipeline 'ingress': start
+[08:48:14.854] [bmv2] [T] [thread 2188] [28.0] [cxt 0] optimized-ipv4-forwarding.p4(228) Condition "hdr.ipv4.isValid()" (node_2) is false
+[08:48:14.854] [bmv2] [D] [thread 2188] [28.0] [cxt 0] Pipeline 'ingress': end
+[08:48:14.854] [bmv2] [D] [thread 2188] [28.0] [cxt 0] Egress port is 0
+[08:48:14.854] [bmv2] [D] [thread 2189] [28.0] [cxt 0] Pipeline 'egress': start
+[08:48:14.854] [bmv2] [D] [thread 2189] [28.0] [cxt 0] Pipeline 'egress': end
+[08:48:14.854] [bmv2] [D] [thread 2189] [28.0] [cxt 0] Deparser 'deparser': start
+[08:48:14.854] [bmv2] [T] [thread 2189] [28.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[08:48:14.854] [bmv2] [D] [thread 2189] [28.0] [cxt 0] Deparsing header 'ethernet'
+[08:48:14.854] [bmv2] [D] [thread 2189] [28.0] [cxt 0] Deparser 'deparser': end
+[08:48:14.854] [bmv2] [D] [thread 2193] [28.0] [cxt 0] Transmitting packet of size 48 out of port 0
+[08:48:15.151] [bmv2] [D] [thread 2188] [29.0] [cxt 0] Processing packet received on port 255
+[08:48:15.151] [bmv2] [D] [thread 2188] [29.0] [cxt 0] Parser 'parser': start
+[08:48:15.151] [bmv2] [D] [thread 2188] [29.0] [cxt 0] Parser 'parser' entering state 'start'
+[08:48:15.151] [bmv2] [D] [thread 2188] [29.0] [cxt 0] Extracting header 'ethernet'
+[08:48:15.151] [bmv2] [D] [thread 2188] [29.0] [cxt 0] Parser state 'start': key is 0806
+[08:48:15.151] [bmv2] [T] [thread 2188] [29.0] [cxt 0] Bytes parsed: 14
+[08:48:15.151] [bmv2] [D] [thread 2188] [29.0] [cxt 0] Parser 'parser': end
+[08:48:15.151] [bmv2] [D] [thread 2188] [29.0] [cxt 0] Pipeline 'ingress': start
+[08:48:15.151] [bmv2] [T] [thread 2188] [29.0] [cxt 0] optimized-ipv4-forwarding.p4(228) Condition "hdr.ipv4.isValid()" (node_2) is false
+[08:48:15.151] [bmv2] [D] [thread 2188] [29.0] [cxt 0] Pipeline 'ingress': end
+[08:48:15.151] [bmv2] [D] [thread 2188] [29.0] [cxt 0] Egress port is 0
+[08:48:15.151] [bmv2] [D] [thread 2189] [29.0] [cxt 0] Pipeline 'egress': start
+[08:48:15.151] [bmv2] [D] [thread 2189] [29.0] [cxt 0] Pipeline 'egress': end
+[08:48:15.151] [bmv2] [D] [thread 2189] [29.0] [cxt 0] Deparser 'deparser': start
+[08:48:15.151] [bmv2] [T] [thread 2189] [29.0] [cxt 0] Skipping checksum 'cksum' update because condition not met
+[08:48:15.151] [bmv2] [D] [thread 2189] [29.0] [cxt 0] Deparsing header 'ethernet'
+[08:48:15.151] [bmv2] [D] [thread 2189] [29.0] [cxt 0] Deparser 'deparser': end
+[08:48:15.151] [bmv2] [D] [thread 2193] [29.0] [cxt 0] Transmitting packet of size 48 out of port 0
+[08:48:15.194] [bmv2] [D] [thread 2188] [30.0] [cxt 0] Processing packet received on port 254
+[08:48:15.194] [bmv2] [D] [thread 2188] [30.0] [cxt 0] Parser 'parser': start
+[08:48:15.194] [bmv2] [D] [thread 2188] [30.0] [cxt 0] Parser 'parser' entering state 'start'
+[08:48:15.194] [bmv2] [D] [thread 2188] [30.0] [cxt 0] Extracting header 'ethernet'
+[08:48:15.194] [bmv2] [D] [thread 2188] [30.0] [cxt 0] Parser state 'start': key is 0806
+[08:48:15.194] [bmv2] [T] [thread 2188] [30.0] [cxt 0] Bytes parsed: 14
+[08:48:15.194] [bmv2] [D]

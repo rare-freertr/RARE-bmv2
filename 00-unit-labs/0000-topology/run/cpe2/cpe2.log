@@ -126,3 +126,10 @@
 2019-05-28 12:11:19 info cfg.cfgInit.doInit:cfgInit.java:674 applying defaults
 2019-05-28 12:11:20 info cfg.cfgInit.doInit:cfgInit.java:682 applying configuration
 2019-05-28 14:11:20 info cfg.cfgInit.doInit:cfgInit.java:708 done
+2019-05-29 06:37:13 info cfg.cfgInit.doInit:cfgInit.java:545 booting
+2019-05-29 06:37:13 info cfg.cfgInit.doInit:cfgInit.java:667 initializing hardware
+2019-05-29 06:37:13 info cfg.cfgInit.executeHWcommands:cfgInit.java:458 4:!line tty1 127.0.0.1 21003 127.0.0.1 21003
+2019-05-29 06:37:13 info cfg.cfgInit.executeHWcommands:cfgInit.java:458 6:!tcp2vrf 8080 v1 80
+2019-05-29 06:37:13 info cfg.cfgInit.doInit:cfgInit.java:674 applying defaults
+2019-05-29 06:37:14 info cfg.cfgInit.doInit:cfgInit.java:682 applying configuration
+2019-05-29 08:37:14 info cfg.cfgInit.doInit:cfgInit.java:708 done
