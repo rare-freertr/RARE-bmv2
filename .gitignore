@@ -1,3 +1,4 @@
 *.py[oc]
 ._*
 .DS_Store
+*.log
