@@ -11,11 +11,21 @@ vrf definition v1
  label-mode per-prefix
  exit
 !
+router isis4 1
+ vrf v1
+ net-id 49.0001.0000.0a00.0101.00
+ traffeng-id ::
+ is-type both
+ exit
+!
 interface loopback0
  no description
  macaddr 0000.0a01.0101
  vrf forwarding v1
  ipv4 address 10.1.1.1 255.255.255.255
+ router isis4 1 enable
+ router isis4 1 passive
+ router isis4 1 circuit both
  no shutdown
  no log-link-change
  exit
@@ -34,6 +44,8 @@ interface ethernet0
  vrf forwarding v1
  ipv4 address 10.0.1.1 255.255.255.0
  ipv4 host-static 10.0.1.254 0000.0a00.01fe
+ router isis4 1 enable
+ router isis4 1 circuit both
  no shutdown
  no log-link-change
  exit

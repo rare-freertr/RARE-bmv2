@@ -143,3 +143,17 @@
 2019-05-29 06:37:13 info cfg.cfgInit.doInit:cfgInit.java:674 applying defaults
 2019-05-29 06:37:14 info cfg.cfgInit.doInit:cfgInit.java:682 applying configuration
 2019-05-29 08:37:14 info cfg.cfgInit.doInit:cfgInit.java:708 done
+2019-05-29 08:57:26 warning user.userLineHandler.doExec:userLine.java:509 <nobody> configuring from local:telnet #-1 23 -> 127.0.0.1 35552
+2019-05-29 09:04:36 warning user.userLineHandler.doExec:userLine.java:543 <nobody> configured from local:telnet #-1 23 -> 127.0.0.1 35552
+2019-05-29 09:04:49 warning user.userLineHandler.doExec:userLine.java:509 <nobody> configuring from local:telnet #-1 23 -> 127.0.0.1 35554
+2019-05-29 09:06:55 warning user.userLineHandler.doExec:userLine.java:543 <nobody> configured from local:telnet #-1 23 -> 127.0.0.1 35554
+2019-05-29 09:07:06 warning user.userLineHandler.doExec:userLine.java:509 <nobody> configuring from local:telnet #-1 23 -> 127.0.0.1 35556
+2019-05-29 09:07:38 warning user.userLineHandler.doExec:userLine.java:543 <nobody> configured from local:telnet #-1 23 -> 127.0.0.1 35556
+2019-05-29 09:12:41 warning user.userLineHandler.doExec:userLine.java:509 <nobody> configuring from local:telnet #-1 23 -> 127.0.0.1 35556
+2019-05-29 09:18:14 warning user.userLineHandler.doExec:userLine.java:543 <nobody> configured from local:telnet #-1 23 -> 127.0.0.1 35556
+2019-05-29 09:41:19 warning user.userLineHandler.doExec:userLine.java:509 <nobody> configuring from local:telnet #-1 23 -> 127.0.0.1 35558
+2019-05-29 09:45:51 warning user.userLineHandler.doExec:userLine.java:543 <nobody> configured from local:telnet #-1 23 -> 127.0.0.1 35558
+2019-05-29 10:00:00 warning user.userLineHandler.doExec:userLine.java:509 <nobody> configuring from local:telnet #-1 23 -> 127.0.0.1 35564
+2019-05-29 10:05:38 warning user.userLineHandler.doExec:userLine.java:543 <nobody> configured from local:telnet #-1 23 -> 127.0.0.1 35564
+2019-05-29 10:14:52 warning user.userLineHandler.doExec:userLine.java:509 <nobody> configuring from local:telnet #-1 23 -> 127.0.0.1 35566
+2019-05-29 10:16:40 warning user.userLineHandler.doExec:userLine.java:543 <nobody> configured from local:telnet #-1 23 -> 127.0.0.1 35566
