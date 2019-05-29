@@ -1,4 +1,4 @@
-!#/bin/bash
+#!/bin/bash
 
 FREERTR_HOME=$(pwd)
 FREERTR_HOSTNAME=core1
