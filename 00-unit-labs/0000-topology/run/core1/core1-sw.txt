@@ -11,19 +11,21 @@ vrf definition v1
  label-mode per-prefix
  exit
 !
+router isis4 1
+ vrf v1
+ net-id 49.0001.0000.0afe.fefe.00
+ traffeng-id ::
+ is-type both
+ exit
+!
 interface loopback0
  no description
  macaddr 0000.0afe.fefe
  vrf forwarding v1
  ipv4 address 10.254.254.254 255.255.255.255
- no shutdown
- no log-link-change
- exit
-!
-interface loopback1
- no description
- vrf forwarding v1
- ipv4 address 10.6.66.254 255.255.255.0
+ router isis4 1 enable
+ router isis4 1 passive
+ router isis4 1 circuit both
  no shutdown
  no log-link-change
  exit
@@ -34,6 +36,8 @@ interface ethernet0
  vrf forwarding v1
  ipv4 address 10.0.1.254 255.255.255.0
  ipv4 host-static 10.0.1.1 0000.0a00.0101
+ router isis4 1 enable
+ router isis4 1 circuit both
  no shutdown
  no log-link-change
  exit
@@ -44,14 +48,13 @@ interface ethernet1
  vrf forwarding v1
  ipv4 address 10.0.2.254 255.255.255.0
  ipv4 host-static 10.0.2.2 0000.0a00.0202
+ router isis4 1 enable
+ router isis4 1 circuit both
  no shutdown
  no log-link-change
  exit
 !
 !
-ipv4 route v1 2.2.2.0 255.255.255.0 10.0.2.2
-ipv4 route v1 10.1.1.1 255.255.255.255 10.0.1.1
-ipv4 route v1 10.2.2.2 255.255.255.255 10.0.2.2
 !
 !
 !
