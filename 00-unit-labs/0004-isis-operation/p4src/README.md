@@ -63,6 +63,7 @@ make
          exit
         !           
   * `cpe2`
+
         cpe2#sh run router isis                                                                                                           
         router isis4 1
          vrf v1
@@ -100,6 +101,7 @@ make
 
         cpe2#                            
   * `core1`
+
         core1#sh run router isis                                                                                                          
         router isis4 1
          vrf v1
@@ -163,6 +165,7 @@ Control utility for runtime P4 table manipulation
 RuntimeCmd:
 ```
 * Program the entries in `tbl_nexthop` table
+
       # Entry corresponding to nexthop reachability via port p4-core1-dp1
       # P4 Object: tbl_nexthop
       # Table key: 1
@@ -197,6 +200,7 @@ RuntimeCmd:
 
 
 * Program the mac entries in `tbl_rmac_fib` table used in `isis` operation
+
       # Entry corresponding to router control plane hw-mac address
       # P4 Object: tbl_rmac_fib
       # Table key: 09:00:2b:00:00:05
@@ -222,7 +226,9 @@ RuntimeCmd:
       table_add tbl_rmac_fib act_rmac_set_nexthop 01:80:c2:00:00:14 =>
 
 At this point isis operation is enabled:
+
 * `cpe1`
+
       cpe1#sh ipv4 isis 1 nei                                                                                                           
       interface  mac address     level  routerid        ip address  uptime
       ethernet0  0000.0000.0000  1      0000.0afe.fefe  10.0.1.254  00:08:19
@@ -231,12 +237,14 @@ At this point isis operation is enabled:
       cpe1#                      
 
 * `cpe2`
+
       cpe2#sh ipv4 isis 1 nei                                                                                                           
       interface  mac address     level  routerid        ip address  uptime
       ethernet0  0000.0000.0000  1      0000.0afe.fefe  10.0.2.254  00:09:11
       ethernet0  0000.0000.0000  2      0000.0afe.fefe  10.0.2.254  00:09:11
 
 * `core1`
+
       core1#sh ipv4 isis 1 nei                                                                                                          
       interface  mac address     level  routerid        ip address  uptime
       ethernet0  0000.0000.0000  1      0000.0a01.0101  10.0.1.1    00:09:36
@@ -304,7 +312,8 @@ You identify by looking at `core1` ipv4 route table that 4 `isis` routes have to
 
 
 # Lab verification
-* On `cpe1`:
+* On `cpe1`
+
       cpe1#ping 10.2.2.2 /vrf v1 /interface lo0                                                                                         
       pinging 10.2.2.2, src=10.1.1.1, cnt=5, len=64, tim=1000, ttl=255, tos=0, sweep=false
       !!!!!
@@ -315,7 +324,8 @@ You identify by looking at `core1` ipv4 route table that 4 `isis` routes have to
       result=100%, recv/sent/lost=5/5/0, rtt min/avg/max/total=2/2/4/16
       cpe1#
 
-* On `cpe2`:
+* On `cpe2`
+
       cpe2#ping 10.1.1.1 /vrf v1 /interface lo0                                                                                         
       pinging 10.1.1.1, src=10.2.2.2, cnt=5, len=64, tim=1000, ttl=255, tos=0, sweep=false
       !!!!!
