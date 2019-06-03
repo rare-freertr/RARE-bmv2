@@ -1,56 +1,88 @@
-# Entry corresponding to 10.0.1.1 reachability
-# P4 Object: tbl_ipv4_fib_host
-# Table key: 10.0.1.1
-# Action id: act_ipv4_fib_hit
-# Action params: {1}
-# Trigger: when core1 FreeRTR arp cache is updated afer L2 learning
-table_add tbl_ipv4_fib_host act_ipv4_set_nexthop 10.0.1.1 => 1
-#
-# Entry corresponding to 10.0.1.254 reachability
-# P4 Object: tbl_ipv4_fib_host
-# Table key: 10.0.1.254
-# Action id: act_ipv4_fib_hit
-# Action params: {254}
-# Trigger: when the subnetwork is configured on core1 on core1-eth0 interface   
-table_add tbl_ipv4_fib_host act_ipv4_set_nexthop 10.0.1.254 => 254
-#
-# Entry corresponding to 10.254.254.254 reachability
-# P4 Object: tbl_ipv4_fib_host
-# Table key: 10.254.254.254
-# Action id: act_ipv4_fib_hit
-# Action params: {254}
-# Trigger: when the subnetwork is configured on core1 on loopback0 interface   
-table_add tbl_ipv4_fib_host act_ipv4_set_nexthop 10.254.254.254 => 254
-
-# entry corresponding to 2.2.2.0/24 reachability
-# P4 Object: tbl_ipv4_fib_lpm
-# Action id: act_ipv4_fib_hit
-# Table key: 2.2.2.0/24
-# Action params: {2}
-# Trigger: when the static route toward 2.2.2.0/24 is configured on `core1`
-table_add tbl_ipv4_fib_lpm act_ipv4_set_nexthop 2.2.2.0/24 => 2
-
-# Entry corresponding to nexthop reachability 10.0.1.1 via via 00:00:0a:00:01:01 port 1
+# Entry corresponding to nexthop reachability via port p4-core1-dp1
 # P4 Object: tbl_nexthop
 # Table key: 1
-# Action id: act_ipv4_fib_hit
-# Action params: {00:00:0a:00:01:01,1}
-# Trigger: when core1 FreeRTR arp cache is updated afer L2 learning
-table_add tbl_nexthop act_ipv4_fib_hit 1 => 00:00:0a:00:01:01 1
-#
-# Entry corresponding to nexthop reachability 10.0.2.2 via via 00:00:0a:00:02:02 port 2
+# Action id: act_cpl_opr_fib_hit
+# Action params: {1}
+# Trigger: when core1 FreeRTR is booting up
+table_add tbl_nexthop act_cpl_opr_fib_hit 1 => 1
+
+# Entry corresponding to nexthop reachability via port p4-core1-dp2
 # P4 Object: tbl_nexthop
 # Table key: 2
-# Action id: act_ipv4_fib_hit
-# Action params: {00:00:0a:00:02:02,2}
-# Trigger: when core1 FreeRTR arp cache is updated afer L2 learning
-table_add tbl_nexthop act_ipv4_fib_hit 2 => 00:00:0a:00:02:02 2
-#
-# Entry corresponding to nexthop reachability 10.0.1.254 via via 00:00:0a:00:01:fe port 254
+# Action id: act_cpl_opr_fib_hit
+# Action params: {2}
+# Trigger: when core1 FreeRTR is booting up
+table_add tbl_nexthop act_cpl_opr_fib_hit 2 => 2
+
+# Entry corresponding to nexthop reachability via port p4-core1-cpu1
+# P4 Object: tbl_nexthop
+# Table key: 255
+# Action id: act_cpl_opr_fib_hit
+# Action params: {255}
+# Trigger: when core1 FreeRTR is booting up
+table_add tbl_nexthop act_cpl_opr_fib_hit 255 => 255
+
+# Entry corresponding to nexthop reachability via port p4-core1-cpu2
 # P4 Object: tbl_nexthop
 # Table key: 254
-# Action id: act_ipv4_fib_hit
-# Action params: {00:00:0a:00:01:fe,254}
-# Trigger: when core1 FreeRTR core1-eth0 is configured
-table_add tbl_nexthop act_ipv4_fib_hit 254 => 00:00:0a:00:01:fe 254
+# Action id: act_cpl_opr_fib_hit
+# Action params: {254}
+# Trigger: when core1 FreeRTR is booting up
+table_add tbl_nexthop act_cpl_opr_fib_hit 254 => 254
+
+# Entry corresponding to router control plane hw-mac address
+# P4 Object: tbl_rmac_fib
+# Table key: 09:00:2b:00:00:05
+# Action id: act_rmac_set_nexthop
+# Action params: {}
+# Trigger: when core1 FreeRTR is enabling 1st isis adjacency
+table_add tbl_rmac_fib act_rmac_set_nexthop 09:00:2b:00:00:05 =>
+
+# Entry corresponding to router control plane hw-mac address
+# P4 Object: tbl_rmac_fib
+# Table key: 01:80:c2:00:00:15
+# Action id: act_rmac_set_nexthop
+# Action params: {}
+# Trigger: when core1 FreeRTR is enabling 1st isis adjacency
+table_add tbl_rmac_fib act_rmac_set_nexthop 01:80:c2:00:00:15 =>
+
+# Entry corresponding to router control plane hw-mac address
+# P4 Object: tbl_rmac_fib
+# Table key: 01:80:c2:00:00:14
+# Action id: act_rmac_set_nexthop
+# Action params: {}
+# Trigger: when core1 FreeRTR is enabling 1st isis adjacency
+table_add tbl_rmac_fib act_rmac_set_nexthop 01:80:c2:00:00:14 =>
+
+# Entry corresponding to router control plane hw-mac address
+# P4 Object: tbl_ipv4_fib_host
+# Table key: 10.1.1.1
+# Action id: act_rmac_set_nexthop
+# Action params: {1}
+# Trigger: when core1 FreeRTR isis route is inserted into ipv4 table
+table_add tbl_ipv4_fib_host act_ipv4_set_nexthop 10.1.1.1 => 1
+
+# Entry corresponding to router control plane hw-mac address
+# P4 Object: tbl_ipv4_fib_host
+# Table key: 10.2.2.2
+# Action id: act_rmac_set_nexthop
+# Action params: {2}
+# Trigger: when core1 FreeRTR isis route is inserted into ipv4 table
+table_add tbl_ipv4_fib_host act_ipv4_set_nexthop 10.2.2.2 => 2
+
+# Entry corresponding to router control plane hw-mac address
+# P4 Object: tbl_ipv4_fib_host
+# Table key: 1.1.1.0/24
+# Action id: act_rmac_set_nexthop
+# Action params: {1}
+# Trigger: when core1 FreeRTR isis route is inserted into ipv4 table    
+table_add tbl_ipv4_fib_lpm act_ipv4_set_nexthop 1.1.1.0/24 => 1
+
+# Entry corresponding to router control plane hw-mac address
+# P4 Object: tbl_ipv4_fib_host
+# Table key: 2.2.2.0/24
+# Action id: act_rmac_set_nexthop
+# Action params: {2}
+# Trigger: when core1 FreeRTR isis route is inserted into ipv4 table
+table_add tbl_ipv4_fib_lpm act_ipv4_set_nexthop 2.2.2.0/24 => 2
 
