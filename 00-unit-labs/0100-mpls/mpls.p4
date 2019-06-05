@@ -74,7 +74,7 @@ control Basic_ingress(
     inout standard_metadata_t standard_metadata
 ){
     action drop() {
-        mark_to_drop();
+        mark_to_drop(standard_metadata);
     }
 
     // ipv4 forward table
