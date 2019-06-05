@@ -6,7 +6,7 @@
 
 ```
 # Build topology & compile p4 program
-./build
+./build.sh
 ```
 
 ```
@@ -62,6 +62,6 @@ mininet>
 ```
 # Last but not least ! Clean lab 
 # otherwise it will conflict with other examples 
-./clean
+./clean.sh
 
 ```
