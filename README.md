@@ -11,13 +11,14 @@ Using P4 language leverages several existing software components. A feature rich
 
 # Repository structure (Work in progress ...)
 ```
-RARE
+./RARE/
 ├── 00-unit-labs
 ├── 01-P-labs
 ├── 02-PE-labs
 ├── 03-IX-labs
 ├── 04-DC-labs
 ├── 05-SR-labs
+├── include
 ├── resources
 └── utils
 ```
@@ -30,7 +31,7 @@ RARE
 These `<USE-CASE>-labs` are work in progress and each project participant can indepently tackle the use case of their interest.  
 
 # Dependencies
-Dependencies for various Ubuntu versions can be found along with a ppa repos at [Frederic Loui Launchpad](https://launchpad.net/~frederic-loui)
+Dependencies for various Ubuntu versions can be found along with a ppa repos at [Launchpad](https://launchpad.net/~frederic-loui)
 
 
 # Credits
