@@ -6,7 +6,7 @@ _**RARE (Router for Academia, Research & Education)**_ focus is on determining i
 * data plane
 * and communication between the control plane and data plane
 
-A key part of the work consists in enabling a control plane software to pilot a data plane via a programmatic interface. P4 is such a language proposing an interface that allows data plane programmability. P4 is also inherently independent from the target or NPU processor architecture.
+A key part of the work consists in enabling a control plane software to pilot a data plane via a programmatic interface. P4 is such a language proposing an interface that allows data plane programmability. P4 core language try to be as much as possibble independent from the target or NPU processor architecture. Though architecture dependance is still prominent.  
 Using P4 language leverages several existing software components. A feature rich dataplane software switch written in P4 is already available; communication between the control plane and data plane is also already part of the specification standard.
 
 # Repository structure (Work in progress ...)
