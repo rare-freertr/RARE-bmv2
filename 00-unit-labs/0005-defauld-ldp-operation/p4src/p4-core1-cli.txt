@@ -1,0 +1,39 @@
+table_add tbl_nexthop act_cpl_opr_fib_hit 1 3 => 1
+table_add tbl_nexthop act_cpl_opr_fib_hit 2 3 => 2
+table_add tbl_nexthop act_cpl_opr_fib_hit 255 3 => 255
+table_add tbl_nexthop act_cpl_opr_fib_hit 254 3 => 254
+
+table_add tbl_nexthop act_ipv4_fib_hit 1 0 =>  00:00:0a:00:01:01 1 
+table_add tbl_nexthop act_ipv4_fib_hit 255 0 =>  00:00:0a:00:01:fe 255
+
+table_add tbl_nexthop act_ipv4_fib_hit 254 0 =>  00:00:0a:00:02:fe 254
+table_add tbl_nexthop act_ipv4_fib_hit 2 0 =>  00:00:0a:00:02:02 2 
+
+
+table_add tbl_rmac_fib act_rmac_set_nexthop 09:00:2b:00:00:05 =>
+table_add tbl_rmac_fib act_rmac_set_nexthop 01:80:c2:00:00:15 =>
+table_add tbl_rmac_fib act_rmac_set_nexthop 01:80:c2:00:00:14 =>
+
+table_add tbl_ipv4_fib_host act_ipv4_set_nexthop 10.1.1.1 => 1
+table_add tbl_ipv4_fib_host act_ipv4_set_nexthop 10.0.1.1 => 1
+
+table_add tbl_ipv4_fib_host act_ipv4_set_nexthop 10.254.254.254 => 255
+table_add tbl_ipv4_fib_host act_ipv4_set_nexthop 10.0.1.254 => 255
+table_add tbl_ipv4_fib_host act_ipv4_set_nexthop 10.0.2.254 => 254
+
+table_add tbl_ipv4_fib_host act_ipv4_set_nexthop 10.2.2.2 => 2
+table_add tbl_ipv4_fib_host act_ipv4_set_nexthop 10.0.2.2 => 2
+  
+
+
+table_add tbl_ipv4_fib_lpm act_ipv4_set_nexthop 1.1.1.0/24 => 1 
+table_add tbl_ipv4_fib_lpm act_ipv4_set_nexthop 2.2.2.0/24 => 2
+table_add tbl_ipv4_fib_lpm act_ipv4_set_nexthop 6.6.6.0/24 => 255 
+
+
+table_add  tbl_ipv4_fib_host act_ipv4_cpl_set_nexthop 224.0.0.2 =>
+
+
+# After that you need to check LDP bindings at cpe1, cpe2 but most of all core1
+# show ipv4 ldp v1 database
+# And write the corresponding rules as per the README

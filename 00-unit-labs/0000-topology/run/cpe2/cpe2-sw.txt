@@ -47,6 +47,8 @@ interface ethernet0
  vrf forwarding v1
  ipv4 address 10.0.2.2 255.255.255.0
  ipv4 host-static 10.0.2.254 0000.0a00.02fe
+ mpls enable
+ mpls ldp4
  router isis4 1 enable
  router isis4 1 circuit both
  no shutdown

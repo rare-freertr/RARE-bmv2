@@ -37,9 +37,9 @@ controller: p4_controller.py
 		--bmv2-json $(compiled_json)
 
 stop:
-	sudo mn -c
+	-sudo mn -c
 
 clean: stop
-	rm -f *.pcap
-	rm -rf $(BUILD_DIR) $(PCAP_DIR) $(LOG_DIR)
+	-rm -f *.pcap
+	-rm -rf $(BUILD_DIR) $(PCAP_DIR) $(LOG_DIR)
 

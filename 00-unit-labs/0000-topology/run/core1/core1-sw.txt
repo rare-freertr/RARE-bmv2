@@ -30,12 +30,25 @@ interface loopback0
  no log-link-change
  exit
 !
+interface loopback1
+ no description
+ vrf forwarding v1
+ ipv4 address 6.6.6.6 255.255.255.0
+ router isis4 1 enable
+ router isis4 1 passive
+ router isis4 1 circuit both
+ no shutdown
+ no log-link-change
+ exit
+!
 interface ethernet0
  no description
  macaddr 0000.0a00.01fe
  vrf forwarding v1
  ipv4 address 10.0.1.254 255.255.255.0
  ipv4 host-static 10.0.1.1 0000.0a00.0101
+ mpls enable
+ mpls ldp4
  router isis4 1 enable
  router isis4 1 circuit both
  no shutdown
@@ -48,6 +61,8 @@ interface ethernet1
  vrf forwarding v1
  ipv4 address 10.0.2.254 255.255.255.0
  ipv4 host-static 10.0.2.2 0000.0a00.0202
+ mpls enable
+ mpls ldp4
  router isis4 1 enable
  router isis4 1 circuit both
  no shutdown
