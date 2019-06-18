@@ -36,6 +36,7 @@ Dependencies for various Ubuntu versions can be found along with a ppa repos at 
 
 # Credits
 All materials here inherit from several P4Lang public resources:
+* [Csaba Mate](http://mc36.nop.hu/) for his excellent [FreeRTR](http://freerouter.nop.hu/)
 *	[P4Lang project resources](https://p4.org/) 
 *	[Andy Fingerhut P4 guides](https://github.com/jafingerhut/p4-guide)
 *	[P4Lang material from ETH Zurich / Advanced Topics in Communication Networks lecture](https://github.com/kevinbird61/p4-researching.git)
