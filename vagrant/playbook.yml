@@ -9,9 +9,12 @@
     - name: Install mininet
       apt:
         name: mininet
-    - name: Install p4lang
+    - name: Install p4lang-3rd-party-xenial
       apt:
-        name: p4lang
+        name: p4lang-3rd-party-xenial
+    - name: Install p4lang-p4c
+      apt:
+        name: p4lang-p4c
     - name: Install python-psutil
       apt:
         name: python-psutil
