@@ -1,0 +1,26 @@
+- hosts: all
+  tasks:
+    - name: Install git
+      apt:
+        name: git
+    - name: Install build-essential
+      apt:
+        name: build-essential
+    - name: Install mininet
+      apt:
+        name: mininet
+    - name: Install p4lang
+      apt:
+        name: p4lang
+    - name: Install python-psutil
+      apt:
+        name: python-psutil
+    - name: Install emacs-nox
+      apt:
+        name: emacs-nox
+    - name: Clone RARE software
+      git:
+        repo: 'https://github.com/frederic-loui/RARE.git'
+        dest: /home/vagrant/RARE/
+        force: yes
+        version: HEAD
