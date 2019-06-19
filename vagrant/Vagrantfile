@@ -79,7 +79,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "shell", inline: <<-SHELL
    sudo add-apt-repository ppa:frederic-loui/p4lang-master-xenial-nightly  
-  # sudo add-apt-repository ppa:frederic-loui/p4lang-xenial
+   sudo add-apt-repository ppa:frederic-loui/p4lang-xenial
      apt update
   #    apt install -y git
   #    apt install -y p4lang
