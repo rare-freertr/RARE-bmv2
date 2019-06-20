@@ -33,7 +33,7 @@ These `<USE-CASE>-labs` are work in progress and each project participant can in
 # Dependencies
 Dependencies for various Ubuntu versions can be found along with a ppa repos at [Launchpad](https://launchpad.net/~frederic-loui)
 
-# project partners
+# Project partners
 RARE is a GÉANT project with the following [partners](https://github.com/frederic-loui/RARE/blob/master/resources/rare-partners.md)
 
 # Credits
