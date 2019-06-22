@@ -471,25 +471,6 @@ In this lab we extended our `tbl_nexthop` by adding a key field that set the tra
 
  * `core1`
 
-        core1#show ipv4 ldp v1 summary                                                                                                    
-        learn  advert  l2learn  l2advert  mplearn  mpadvert  neighbor  uptime
-        10     11      0        0         0        0         10.0.1.1  04:12:18
-        10     11      0        0         0        0         10.0.2.2  02:11:34
-
-        core1#show ipv4 ldp v1 database                                                                                                   
-        prefix             local   remote  hop
-        1.1.1.0/24         403802  239026  10.0.1.1
-        2.2.2.0/24         805394  150848  10.0.2.2
-        6.6.6.0/24         259412          null
-        6.6.6.6/32         259412          null
-        10.0.1.0/24        259412          null
-        10.0.1.254/32      259412          null
-        10.0.2.0/24        259412          null
-        10.0.2.254/32      259412          null
-        10.1.1.1/32        232728  239026  10.0.1.1
-        10.2.2.2/32        949257  150848  10.0.2.2
-        10.254.254.254/32  259412          null
-
         core1#show mpls forwarding                                   
         label   vrf   iface      hop       label       targets  bytes
         45097   v1:4  ethernet1  10.0.2.2  930982               0    
