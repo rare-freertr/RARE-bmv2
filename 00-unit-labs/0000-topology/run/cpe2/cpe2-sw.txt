@@ -4,6 +4,12 @@ buggy
 logging buffered debug 10240
 logging file debug cpe2.log
 !
+vrf definition c1
+ rd 1:2
+ rt-import 1:2
+ rt-export 1:2
+ exit
+!
 vrf definition v1
  rd 1:1
  rt-import 1:1
@@ -24,7 +30,7 @@ interface loopback0
  no description
  macaddr 0000.0a02.0202
  vrf forwarding v1
- ipv4 address 10.2.2.2 255.255.255.255
+ ipv4 address 10.2.2.2 255.255.255.0
  router isis4 1 enable
  router isis4 1 circuit level1
  router isis4 1 segrout index 3
@@ -44,6 +50,14 @@ interface loopback1
  no log-link-change
  exit
 !
+interface loopback2
+ no description
+ vrf forwarding c1
+ ipv4 address 10.100.200.2 255.255.255.0
+ no shutdown
+ no log-link-change
+ exit
+!
 interface ethernet0
  no description
  macaddr 0000.0a00.0202
@@ -56,6 +70,35 @@ interface ethernet0
  no shutdown
  no log-link-change
  exit
+!
+router bgp4 1
+ vrf v1
+ local-as 1
+ router-id 10.2.2.2
+ address-family vpnuni
+ neighbor 10.1.1.1 remote-as 1
+ neighbor 10.1.1.1 description lo0@cpe2 <--> lo0@cpe1
+ neighbor 10.1.1.1 local-as 1
+ neighbor 10.1.1.1 address-family vpnuni
+ neighbor 10.1.1.1 distance 200
+ neighbor 10.1.1.1 update-source loopback0
+ neighbor 10.1.1.1 send-community standard extended
+ afi-vrf c1 enable
+ afi-vrf c1 redistribute connected
+ exit
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
 !
 !
 !

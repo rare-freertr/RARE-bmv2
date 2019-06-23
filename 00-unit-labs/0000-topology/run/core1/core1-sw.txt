@@ -4,6 +4,12 @@ buggy
 logging buffered debug 10240
 logging file debug core1.log
 !
+vrf definition c1
+ rd 1:2
+ rt-import 1:2
+ rt-export 1:2
+ exit
+!
 vrf definition v1
  rd 1:1
  rt-import 1:1
@@ -70,6 +76,19 @@ interface ethernet1
  no shutdown
  no log-link-change
  exit
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
 !
 !
 !
