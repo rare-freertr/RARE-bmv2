@@ -34,7 +34,7 @@ make
 ```
 
 # Control Plane operation
-* Enable `MPLS forwarding` and `LDP` on `cpe1`, `core1`,`cpe2` routers
+* Enable `MPLS forwarding` and `ISIS-SR` on `cpe1`, `core1`,`cpe2` routers
   * `cpe1`
 
         cpe1#sh run router isis4 1
@@ -536,7 +536,7 @@ Let's write some P4 rules based on `core1` MPLS forwarding and SR information:
     # Table key: 972512
     # Action id: act_mpls_swap_set_nexthop
     # Action params: {972512 255}
-    # Trigger: when core1 FreeRTR LDP has converged    
+    # Trigger: when core1 FreeRTR ISIS-SR has converged    
     table_add tbl_mpls_fib act_mpls_swap_set_nexthop 972512 => 972512 255
 
     # Entry corresponding to Label imposition from core1
@@ -546,7 +546,7 @@ Let's write some P4 rules based on `core1` MPLS forwarding and SR information:
     # Table key: 930982
     # Action id: act_mpls_swap_set_nexthop
     # Action params: {930982 2}
-    # Trigger: when core1 FreeRTR LDP has converged        
+    # Trigger: when core1 FreeRTR ISIS-SR has converged        
     table_add tbl_mpls_fib act_mpls_swap_set_nexthop 930982 => 930982 2
 
     # Entry corresponding to Label swap operation from core1
@@ -556,7 +556,7 @@ Let's write some P4 rules based on `core1` MPLS forwarding and SR information:
     # Table key: 972513
     # Action id: act_mpls_swap_set_nexthop
     # Action params: {930982 2}
-    # Trigger: when core1 FreeRTR LDP has converged             
+    # Trigger: when core1 FreeRTR ISIS-SR has converged             
     table_add tbl_mpls_fib act_mpls_swap_set_nexthop 972513 => 930982 2
 
     # Entry corresponding to Label swap operation from core1
@@ -566,7 +566,7 @@ Let's write some P4 rules based on `core1` MPLS forwarding and SR information:
     # Table key: 972511
     # Action id: act_mpls_swap_set_nexthop
     # Action params: {662376 1}
-    # Trigger: when core1 FreeRTR LDP has converged                 
+    # Trigger: when core1 FreeRTR ISIS-SR has converged                 
     table_add tbl_mpls_fib act_mpls_swap_set_nexthop 972511 => 662376 1
 
 # Lab verification
