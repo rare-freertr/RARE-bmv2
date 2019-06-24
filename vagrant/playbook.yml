@@ -12,6 +12,9 @@
     - name: Install p4lang-3rd-party-xenial
       apt:
         name: p4lang-3rd-party-xenial
+    - name: Install java jdk
+      apt:
+        name: default-jdk
     - name: Install p4lang-p4c
       apt:
         name: p4lang-p4c
