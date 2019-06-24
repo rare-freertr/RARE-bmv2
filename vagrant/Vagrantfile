@@ -60,10 +60,17 @@ Vagrant.configure("2") do |config|
   # View the documentation for the provider you are using for more
   # information on available options.
 
-  config.vm.define :geantrare do |geantrare|
+  config.vm.define :lvgeantrare, primary: true do |libvrtgeantrare|
     config.vm.provider :libvirt do |libvirt|
       libvirt.memory = 8192
       libvirt.cpus = 4
+    end
+  end
+
+  config.vm.define :vbgeantrare do |vboxgeantrare|
+    config.vm.provider :virtualbox do |vb|
+      vb.memory = 8192
+      vb.cpus = 4
     end
   end
 
