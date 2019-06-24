@@ -210,6 +210,7 @@ In this lab we extended our `tbl_nexthop` by adding a key field that set the tra
 
 * Ensure IGP peers reachability from `p4-core1` perspective:
    * `tbl_ipv4_fib_host` rules
+   
          # Entry corresponding to router IPv4 address
          # P4 Object: tbl_ipv4_fib_host
          # Table key: 10.1.1.1
@@ -267,6 +268,7 @@ In this lab we extended our `tbl_nexthop` by adding a key field that set the tra
          table_add tbl_ipv4_fib_host act_ipv4_set_nexthop 10.0.2.2 => 2
 
   * `tbl_ipv4_fib_lpm` rules
+  
          # Entry corresponding to router IPv4 subnet prefix
          # P4 Object: tbl_ipv4_fib_lpm
          # Table key: 1.1.1.0/24
@@ -295,6 +297,7 @@ In this lab we extended our `tbl_nexthop` by adding a key field that set the tra
 * At this point ISIS-SR operation is enabled:
 
  * `cpe1`
+ 
         cpe1#sh mpls for                                                                                                                  
         label    vrf   iface      hop         label       targets  bytes
         105839   v1:4  ethernet0  10.0.1.254  158476               0
@@ -400,6 +403,7 @@ If you notice just right after ISIS convergence, `ping` tests were successful. A
 However, there is one big difference between LDP. In SR case, MPLS encapsulation include only the NODE SID. (i.e `10.1.1.1`, `10.254.254.254`,`10.2.2.2`) While LDP was allocation for each IPv4 FEC.
 
 Let's write some P4 rules based on `core1` MPLS forwarding and SR information in order to enable `bgp` VPNv4 establishment:
+
     # Entry corresponding to Label swap operation from core1
     # at P4 level (label swap) for FEC to cpe1.
     # This is a the case as FreeRTR is performing label swap at the p4-core1 level
