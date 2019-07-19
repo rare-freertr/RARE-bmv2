@@ -31,6 +31,7 @@ interface loopback0
  macaddr 0000.0a02.0202
  vrf forwarding v1
  ipv4 address 10.2.2.2 255.255.255.0
+ ipv6 address fd00::2 ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
  router isis4 1 enable
  router isis4 1 circuit level1
  router isis4 1 segrout index 3
@@ -43,6 +44,7 @@ interface loopback1
  no description
  vrf forwarding v1
  ipv4 address 2.2.2.2 255.255.255.0
+ ipv6 address fd00:0:2:2::2 ffff:ffff:ffff:ffff::
  router isis4 1 enable
  router isis4 1 passive
  router isis4 1 circuit level1
@@ -64,6 +66,8 @@ interface ethernet0
  vrf forwarding v1
  ipv4 address 10.0.2.2 255.255.255.0
  ipv4 host-static 10.0.2.254 0000.0a00.02fe
+ ipv6 address fd00:0:0:2::2 ffff:ffff:ffff:ffff::
+ ipv6 host-static fd00:0:0:2::fe 0000.0a00.02fe
  mpls enable
  router isis4 1 enable
  router isis4 1 circuit level1
@@ -102,6 +106,11 @@ router bgp4 1
 !
 !
 !
+ipv6 route v1 fd00::fe ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff fd00:0:0:2::fe
+ipv6 route v1 fd00::1 ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff fd00:0:0:2::fe
+ipv6 route v1 fd00:0:0:1:: ffff:ffff:ffff:ffff:: fd00:0:0:2::fe
+ipv6 route v1 fd00:0:1:1:: ffff:ffff:ffff:ffff:: fd00:0:0:2::fe
+ipv6 route v1 fd00:0:6:6:: ffff:ffff:ffff:ffff:: fd00:0:0:2::fe
 !
 !
 !
