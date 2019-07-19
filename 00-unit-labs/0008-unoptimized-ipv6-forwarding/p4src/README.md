@@ -123,6 +123,5 @@ result=100%, recv/sent/lost=5/5/0, rtt min/avg/max/total=2/2/3/14
 * This program handles all types of forwarding, i.e. local addresses, directly connected networks and routed networks
 * The tables have been designed such that the router's FIB entries can be programmed in a natural manner
 * All static routes and IPv6 neighbors are part of the base topology
-```
 # Follow-ups
 * A subsequent lab will introduce indirection for the next-hop of routed networks to reduce the size of tables and make to make updates to a particular next-hop more efficient
