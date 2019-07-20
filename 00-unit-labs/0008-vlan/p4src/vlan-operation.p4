@@ -141,7 +141,7 @@ control ctl_ingress(inout headers hdr,
         standard_metadata.egress_spec = egress_port;
     }
 
-    table tbl_ipv4_fib_lpm {
+    table tbl_vlan {
         key = {
             hdr.vlan.vid: exact;
         }
