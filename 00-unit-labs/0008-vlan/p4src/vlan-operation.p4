@@ -61,7 +61,7 @@ struct metadata {
 }
 
 /*
-* Our P4 program header structure 
+* Our P4 program header structure
 */
 struct headers {
     ethernet_t   ethernet;
@@ -91,7 +91,7 @@ parser prs_main(packet_in packet,
 }
 
 /*
- * V1Model CHECKSUM VERIFICATION 
+ * V1Model CHECKSUM VERIFICATION
  */
 control ctl_verify_checksum(inout headers hdr, inout metadata meta) {
     apply {
