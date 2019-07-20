@@ -105,7 +105,63 @@ control ctl_verify_checksum(inout headers hdr, inout metadata meta) {
 control ctl_ingress(inout headers hdr,
     inout metadata meta,
     inout standard_metadata_t standard_metadata) {
-    
+
+    /*
+    * Discard via V1Model mark_to_drop()
+    */
+    action act_vlan_discard() {
+        mark_to_drop();
+    }
+
+    /*
+    * Access mode VLAN forwarding
+    */
+    action act_vlan_access_hit(egress_spec_t egress_port) {
+        /*
+        * the egress_spec port is set now the egress_port
+        * set by the control plane entry
+        */
+        standard_metadata.egress_spec = egress_port;
+
+        /*
+        * Remove the VLAN tag
+        */
+        hdr.ethernet.ethertype = hdr.vlan.etherType;
+        hdr.vlan.setInvalid();
+    }
+
+    /*
+    * Trunk mode VLAN forwarding
+    */
+    action act_vlan_trunk_hit(egress_spec_t egress_port) {
+        /*
+        * the egress_spec port is set now the egress_port
+        * set by the control plane entry
+        */
+        standard_metadata.egress_spec = egress_port;
+    }
+
+    table tbl_ipv4_fib_lpm {
+        key = {
+            hdr.vlan.vid: exact;
+        }
+        actions = {
+            act_vlan_access_hit;
+            act_vlan_trunk_hit;
+            act_vlan_discard;
+        }
+        size = EGRESS_VLAN_XLATE_TABLE_SIZE;
+        default_action = act_vlan_discard();
+    }
+
+    apply {
+        /*
+        * if the packet is not valid we don't process it
+        */
+        if (hdr.vlan.isValid()) {
+            tbl_vlan.apply();
+        }
+    }
 }
 
 
