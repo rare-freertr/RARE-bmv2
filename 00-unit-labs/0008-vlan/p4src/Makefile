@@ -23,7 +23,7 @@ all: run
 run: build
 	sudo $(BMV2_SWITCH_EXE)  --log-file $(LOG_DIR)/$(LOG_FILE) \
 			-i 1@p4-core1-dp1 -i 2@p4-core1-dp2 \
-			-i 1@p4-core1-dp3 -i 2@p4-core1-dp4 \
+			-i 3@p4-core1-dp3 -i 4@p4-core1-dp4 \
 			-i 255@p4-core1-cpu1 -i 254@p4-core1-cpu2 \
 			--thrift-port 9090 --nanolog ipc://$(RUN_DIR)/bm-0-log.ipc --device-id 0 $(compiled_json) > $(LOG_DIR)/$(LOG_FILE).out 2>&1 &
 
