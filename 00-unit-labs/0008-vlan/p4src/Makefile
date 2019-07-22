@@ -18,10 +18,15 @@ compiled_p4info := $(BUILD_DIR)/$(p4info_outfile)
 #   run_args += -b $(BMV2_SWITCH_EXE)
 #endif
 
+# Set DEBUGGER to enable DEBUG on the switch
+#ifdef DEBUGGER
+DEBUGGER = --debugger
+#endif
+
 all: run
 
 run: build
-	sudo $(BMV2_SWITCH_EXE)  --log-file $(LOG_DIR)/$(LOG_FILE) \
+	sudo $(BMV2_SWITCH_EXE) $(DEBUGGER)  --log-file $(LOG_DIR)/$(LOG_FILE) \
 			-i 1@p4-core1-dp1 -i 2@p4-core1-dp2 \
 			-i 3@p4-core1-dp3 -i 4@p4-core1-dp4 \
 			-i 255@p4-core1-cpu1 -i 254@p4-core1-cpu2 \
