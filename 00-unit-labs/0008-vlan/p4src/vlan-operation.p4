@@ -116,12 +116,12 @@ control ctl_ingress(inout headers hdr,
     /*
     * Access mode VLAN forwarding
     */
-    action act_vlan_access_hit(egress_spec_t egress_port) {
+    action act_vlan_access_hit(bit<32> cloningsession) {
         /*
-        * the egress_spec port is set now the egress_port
-        * set by the control plane entry
+        * Clone the packet on the INGRESS. The session parameter (ports)
+        * must be specified by control plane
         */
-        standard_metadata.egress_spec = egress_port;
+        clone3(CloneType.I2E, cloningsession, {});
 
         /*
         * Remove the VLAN tag
@@ -133,12 +133,12 @@ control ctl_ingress(inout headers hdr,
     /*
     * Trunk mode VLAN forwarding
     */
-    action act_vlan_trunk_hit(egress_spec_t egress_port) {
+    action act_vlan_trunk_hit(bit<32> cloningsession) {
         /*
-        * the egress_spec port is set now the egress_port
-        * set by the control plane entry
+        * Clone the packet on the INGRESS. The session parameter (ports)
+        * must be specified by control plane
         */
-        standard_metadata.egress_spec = egress_port;
+        clone3(CloneType.I2E, cloningsession, {});
     }
 
     table tbl_vlan {
