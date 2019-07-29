@@ -17,6 +17,9 @@
 // source here: 
 // https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml
 
+#ifndef _IP_PROTOCOL_P4_
+#define _IP_PROTOCOL_P4_
+
 const bit<8> IP_PROTOCOL_HOPOPT = 0;
 const bit<8> IP_PROTOCOL_ICMP = 1;
 const bit<8> IP_PROTOCOL_IGMP = 2;
@@ -156,3 +159,5 @@ const bit<8> IP_PROTOCOL_HIP  = 139;
 const bit<8> IP_PROTOCOL_SHIM6 = 140;
 const bit<8> IP_PROTOCOL_WESP = 141;
 const bit<8> IP_PROTOCOL_ROHC = 142;
+
+#endif // _IP_PROTOCOL_P4_

@@ -1,7 +1,8 @@
-/*
- * IPv4 address encoded using 32 bits
- */
-typedef bit<32> ipv4_addr_t;
+
+#ifndef _IPV4_P4_
+#define _IPV4_P4_
+
+#include <include/types.p4>
 
 /*
  * IPv4 header: as a header type, order matters
@@ -20,3 +21,5 @@ header ipv4_t {
    ipv4_addr_t src_ipv4_addr;
    ipv4_addr_t dst_ipv4_addr;
 }
+
+#endif // _IPV4_P4_

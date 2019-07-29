@@ -14,6 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+#ifndef _P4_TABLE_P4_
+#define _P4_TABLE_P4_
 
 #define MIN_SRAM_TABLE_SIZE                    1024
 #define MIN_TCAM_TABLE_SIZE                    512
@@ -117,3 +119,5 @@ limitations under the License.
 #define COPP_TABLE_SIZE                        128
 
 #define EGRESS_PORT_LKP_FIELD_SIZE             4
+
+#endif // _P4_TABLE_P4_

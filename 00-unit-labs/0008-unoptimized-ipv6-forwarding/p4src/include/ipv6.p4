@@ -1,7 +1,8 @@
-/*
- * IPv6 address encoded using 128 bits
- */
-typedef bit<128> ipv6_addr_t;
+
+#ifndef _IPV6_P4_
+#define_IPV6_P4_
+
+#include <include/types.p4>
 
 /*
  * IPv6 header: as a header type
@@ -16,3 +17,5 @@ header ipv6_t {
     ipv6_addr_t src_ipv6_addr;
     ipv6_addr_t dst_ipv6_addr;
 }
+
+#endif // _IPV6_P4_

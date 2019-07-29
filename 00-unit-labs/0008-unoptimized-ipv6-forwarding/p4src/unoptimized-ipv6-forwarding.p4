@@ -2,68 +2,24 @@
 * P4 language version: P4_16 
 */
 
-/*
-* include P4 core library 
-*/
 #include <core.p4>
-
-/* 
-* include P4 v1model library implemented by simple_switch 
-*/
 #include <v1model.p4>
-
-/*
-* include Ethertype mapping 
-*/
 #include <include/ethertype.p4>
-
-/* 
-* include IP protocol mapping 
-*/
 #include <include/ip-protocol.p4>
-
-/* 
-* include Ethernet types and protocol headers
-*/
 #include <include/ethernet.p4>
-
-/* 
-* include IPv4 types and protocol headers
-*/
 #include <include/ipv4.p4>
-
-/* 
-* include IPv6 types and protocol headers
-*/
 #include <include/ipv6.p4>
-
-/* 
-* include P4 table size declaration 
-*/
 #include <include/p4-table.p4>
+#include <include/types.p4>
+#include <include/headers.p4>
+#include <include/validate_ipv6.p4>
+#include <include/l3_ipv6.p4>
 
 /*
-* egress_spec port encoded using 9 bits
-*/ 
-typedef bit<9>  egress_spec_t;
-
-/*
-* empty struct but still need to be declared as it is used in parser
+* User-defined metadata
 */
 struct metadata {
 }
-
-/*
-* Our P4 program header structure 
-*/
-struct headers {
-    ethernet_t   ethernet;
-    ipv6_t       ipv6;
-}
-
-/* Must come after declarations above */
-#include <include/validate_ipv6.p4>
-#include <include/l3_ipv6.p4>
 
 /*
 * V1Model PARSER

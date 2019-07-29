@@ -1,3 +1,6 @@
+#ifndef _L3_IPV6_P4_
+#define _L3_IPV6_P4_
+
 control ctl_l3_ipv6(inout headers hdr,
 inout standard_metadata_t standard_metadata) {
 
@@ -106,3 +109,5 @@ inout standard_metadata_t standard_metadata) {
         }
     }
 }          
+
+#endif // _L3_IPV6_P4_

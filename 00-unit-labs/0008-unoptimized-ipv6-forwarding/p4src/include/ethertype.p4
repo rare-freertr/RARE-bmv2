@@ -17,6 +17,9 @@
 // source here: 
 // https://www.iana.org/assignments/ieee-802-numbers/ieee-802-numbers.xhtml 
 
+#ifndef _ETHERTYPE_P4_
+#define _ETHERTYPE_P4_
+
 const bit<16> ETHERTYPE_IPV4              = 0x0800;
 const bit<16> ETHERTYPE_ARP               = 0x0806;
 const bit<16> ETHERTYPE_WOL               = 0x0842;
@@ -75,4 +78,4 @@ const bit<16> ETHERTYPE_ETHERNET_CTP      = 0x9000;
 const bit<16> ETHERTYPE_QINQ              = 0x9100;
 const bit<16> ETHERTYPE_VERITAS_LLT       = 0xCAFE;
 
-
+#endif // _ETHERTYPE_P4_
