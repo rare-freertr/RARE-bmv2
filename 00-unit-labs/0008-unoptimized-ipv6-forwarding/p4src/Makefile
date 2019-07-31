@@ -5,6 +5,7 @@ LOG_DIR = $(RUN_DIR)/log
 LOG_FILE = p4-core1
 P4C = p4c
 BMV2_SWITCH_EXE = simple_switch
+BMV2_SWITCH_CLI = $(BMV2_SWITCH_EXE)_CLI
 
 source := $(wildcard *.p4)
 json_outfile := $(source:.p4=.json)
@@ -37,3 +38,5 @@ clean:
 dirs:
 	mkdir -p $(BUILD_DIR) $(LOG_DIR)
 
+tables: tables.in
+	$(BMV2_SWITCH_CLI) --thrift-port 9090 <$?

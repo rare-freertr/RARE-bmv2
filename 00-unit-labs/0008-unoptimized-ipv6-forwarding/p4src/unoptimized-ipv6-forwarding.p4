@@ -94,13 +94,8 @@ control ctl_compute_checksum(inout headers hdr, inout metadata meta) {
 */
 control ctl_deprs(packet_out packet, in headers hdr) {
     apply {
-        /* parsed headers that have been modified
-        * in ctl_ingress and ctl_ingress
-        * have to be added again into the packet.
-        * for emission in the wire
-        */
-        packet.emit(hdr.ethernet);
-        packet.emit(hdr.ipv6);
+        /* Emit all valid headers */
+        packet.emit(hdr);
 
     }
 }
