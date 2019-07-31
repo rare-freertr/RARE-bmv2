@@ -1,0 +1,13 @@
+table_add ctl_ingress.l3.tbl_ipv6_fib_lpm ctl_ingress.l3.act_ipv6_fib_forward fd00::1/128 => 00:00:0a:00:01:fe 00:00:0a:00:01:01 1
+table_add ctl_ingress.l3.tbl_ipv6_fib_lpm ctl_ingress.l3.act_ipv6_fib_forward fd00::2/128 => 00:00:0a:00:02:fe 00:00:0a:00:02:02 2
+table_add ctl_ingress.l3.tbl_ipv6_fib_host ctl_ingress.l3.act_ipv6_fib_local fd00::fe => 255
+table_add ctl_ingress.l3.tbl_ipv6_fib_lpm ctl_ingress.l3.act_ipv6_fib_glean fd00:0:0:1::/64
+table_add ctl_ingress.l3.tbl_ipv6_fib_host ctl_ingress.l3.act_ipv6_fib_local fd00:0:0:1::fe => 255
+table_add ctl_ingress.l3.tbl_ipv6_fib_lpm ctl_ingress.l3.act_ipv6_fib_glean fd00:0:0:2::/64 =>
+table_add ctl_ingress.l3.tbl_ipv6_fib_host ctl_ingress.l3.act_ipv6_fib_local fd00:0:0:2::fe => 254
+table_add ctl_ingress.l3.tbl_ipv6_fib_lpm ctl_ingress.l3.act_ipv6_fib_forward fd00:0:1:1::/64 => 00:00:0a:00:01:fe 00:00:0a:00:01:01 1
+table_add ctl_ingress.l3.tbl_ipv6_fib_lpm ctl_ingress.l3.act_ipv6_fib_forward fd00:0:2:2::/64 => 00:00:0a:00:02:fe 00:00:0a:00:02:02 2
+table_add ctl_ingress.l3.tbl_ipv6_fib_lpm ctl_ingress.l3.act_ipv6_fib_glean fd00:0:6:6::/64  =>
+table_add ctl_ingress.l3.tbl_ipv6_fib_host ctl_ingress.l3.act_ipv6_fib_local fd00:0:6:6::6 => 255
+table_add ctl_ingress.l3.tbl_ipv6_fib_host ctl_ingress.l3.act_ipv6_fib_forward fd00:0:0:1::1 => 00:00:0a:00:01:fe 00:00:0a:00:01:01 1
+table_add ctl_ingress.l3.tbl_ipv6_fib_host ctl_ingress.l3.act_ipv6_fib_forward fd00:0:0:2::2 => 00:00:0a:00:02:fe 00:00:0a:00:02:02 2
