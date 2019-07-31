@@ -1,6 +1,6 @@
 
 #ifndef _IPV6_P4_
-#define_IPV6_P4_
+#define _IPV6_P4_
 
 #include <include/types.p4>
 

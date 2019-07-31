@@ -4,6 +4,7 @@ check for multicast in the source address, for example */
 #ifndef _VALIDATE_IPV6_P4_
 #define _VALIDATE_IPV6_P4_
 
+#include <v1model.p4>
 #include <include/headers.p4>
 
 control ctl_validate_ipv6(inout headers hdr,

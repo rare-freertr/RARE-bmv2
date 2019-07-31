@@ -1,6 +1,10 @@
 #ifndef _L3_IPV6_P4_
 #define _L3_IPV6_P4_
 
+#include <v1model.p4>
+#include <include/p4-table.p4>
+#include <include/headers.p4>
+
 control ctl_l3_ipv6(inout headers hdr,
 inout standard_metadata_t standard_metadata) {
 

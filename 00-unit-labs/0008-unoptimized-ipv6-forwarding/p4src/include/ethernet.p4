@@ -2,6 +2,7 @@
 #define _ETHERNET_P4_
 
 #include <include/types.p4>
+
 /*
  * Ethernet header: as a header type, order matters
  */
