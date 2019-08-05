@@ -19,6 +19,24 @@ make
 ```
 
 # Control Plane operation
+* P4 tables
+   * `tbl_ipv6_fib_host`
+      * Key: `<ipv6 address>`
+      * Action id: `act_ipv6_fib_local`
+        * Action params: {CPU port}
+        * Trigger: when the router adds an address that belongs to itself (either a route marked `LOCAL` or a route marked `CONNECTED` with a prefix length of 128)
+      * Action id: `act_ipv6_fib_forward`
+        * Action params: {source MAC address, destination MAC address, egress port}
+        * Trigger: when address resolution for a directly connected neighbor complets
+   * `tbl_ipv6_fib_lpm`
+      * Key: `<ipv6 prefix>`
+      * Action id: `act_ipv6_fib_forward`
+        * Action params: {source MAC address, destination MAC address, egress port}
+        * Trigger: when address resolution for the next-hop complets
+      * Action id: `act_ipv6_fib_glean`
+        * Action params: {TBD}
+        * Trigger: when a `CONNECTED` prefix is configured
+        
 * connect to `core1` and display the IPv6 routing table for VRF `v1`
 ```
 $ sudo ip netns exec core1 telnet 127.0.0.1 2323
@@ -43,42 +61,39 @@ LOC  fd00:0:6:6::6/128   0/1     loopback1  null           01:11:28
 
 core1# 
 ```
-* Connect `p4-core1` via CLI:
+* Check the programming of the p4 tables based on the routing table and (fictitious) ARP requests for directly connected systems
 ```
-simple_switch_CLI --thrift-port 9090
-Obtaining JSON from switch...
-Done
-Control utility for runtime P4 table manipulation
-RuntimeCmd:
-```
-* Insert the FIB entries from `core1` into the proper tables of the data-plane
-```
-# S    fd00::1/128         1/0     ethernet0  fd00:0:0:1::1
+$ cat tables.in 
+# S    fd00::1/128         1/0     ethernet0  fd00:0:0:1::1  01:11:28
 table_add ctl_ingress.l3.tbl_ipv6_fib_lpm ctl_ingress.l3.act_ipv6_fib_forward fd00::1/128 => 00:00:0a:00:01:fe 00:00:0a:00:01:01 1
-# S    fd00::2/128         1/0     ethernet1  fd00:0:0:2::2
+# S    fd00::2/128         1/0     ethernet1  fd00:0:0:2::2  01:11:28
 table_add ctl_ingress.l3.tbl_ipv6_fib_lpm ctl_ingress.l3.act_ipv6_fib_forward fd00::2/128 => 00:00:0a:00:02:fe 00:00:0a:00:02:02 2
-# C    fd00::fe/128        0/0     loopback0  null
+# C    fd00::fe/128        0/0     loopback0  null           01:11:28
 table_add ctl_ingress.l3.tbl_ipv6_fib_host ctl_ingress.l3.act_ipv6_fib_local fd00::fe => 255
-# C    fd00:0:0:1::/64     0/0     ethernet0  null
+# C    fd00:0:0:1::/64     0/0     ethernet0  null           01:11:28
 table_add ctl_ingress.l3.tbl_ipv6_fib_lpm ctl_ingress.l3.act_ipv6_fib_glean fd00:0:0:1::/64
-# LOC  fd00:0:0:1::fe/128  0/1     ethernet0  null
+# LOC  fd00:0:0:1::fe/128  0/1     ethernet0  null           01:11:28
 table_add ctl_ingress.l3.tbl_ipv6_fib_host ctl_ingress.l3.act_ipv6_fib_local fd00:0:0:1::fe => 255
-# C    fd00:0:0:2::/64     0/0     ethernet1  null
+# C    fd00:0:0:2::/64     0/0     ethernet1  null           01:11:28
 table_add ctl_ingress.l3.tbl_ipv6_fib_lpm ctl_ingress.l3.act_ipv6_fib_glean fd00:0:0:2::/64 =>
-# LOC  fd00:0:0:2::fe/128  0/1     ethernet1  null
+# LOC  fd00:0:0:2::fe/128  0/1     ethernet1  null           01:11:28
 table_add ctl_ingress.l3.tbl_ipv6_fib_host ctl_ingress.l3.act_ipv6_fib_local fd00:0:0:2::fe => 254
-# S    fd00:0:1:1::/64     1/0     ethernet0  fd00:0:0:1::1
+# S    fd00:0:1:1::/64     1/0     ethernet0  fd00:0:0:1::1  01:11:28
 table_add ctl_ingress.l3.tbl_ipv6_fib_lpm ctl_ingress.l3.act_ipv6_fib_forward fd00:0:1:1::/64 => 00:00:0a:00:01:fe 00:00:0a:00:01:01 1
-# S    fd00:0:2:2::/64     1/0     ethernet1  fd00:0:0:2::2
+# S    fd00:0:2:2::/64     1/0     ethernet1  fd00:0:0:2::2  01:11:28
 table_add ctl_ingress.l3.tbl_ipv6_fib_lpm ctl_ingress.l3.act_ipv6_fib_forward fd00:0:2:2::/64 => 00:00:0a:00:02:fe 00:00:0a:00:02:02 2
-# C    fd00:0:6:6::/64     0/0     loopback1  null
+# C    fd00:0:6:6::/64     0/0     loopback1  null           01:11:28
 table_add ctl_ingress.l3.tbl_ipv6_fib_lpm ctl_ingress.l3.act_ipv6_fib_glean fd00:0:6:6::/64  =>
-# LOC  fd00:0:6:6::6/128   0/1     loopback1  null
+# LOC  fd00:0:6:6::6/128   0/1     loopback1  null           01:11:28
 table_add ctl_ingress.l3.tbl_ipv6_fib_host ctl_ingress.l3.act_ipv6_fib_local fd00:0:6:6::6 => 255
 # Neighbor entry for fd00:0:0:1::1
 table_add ctl_ingress.l3.tbl_ipv6_fib_host ctl_ingress.l3.act_ipv6_fib_forward fd00:0:0:1::1 => 00:00:0a:00:01:fe 00:00:0a:00:01:01 1
 # Neighbor entry for fd00:0:0:2::2
 table_add ctl_ingress.l3.tbl_ipv6_fib_host ctl_ingress.l3.act_ipv6_fib_forward fd00:0:0:2::2 => 00:00:0a:00:02:fe 00:00:0a:00:02:02 2
+```
+* Program the tables
+```
+$ make tables
 ```
 
 # Lab verification
