@@ -48,7 +48,7 @@ Address assignments for `core1`:
 * `interconnect IPv4` = 10.0.`pod_id`.254/24
 * `interconnect IPv6` = FD00:0:0:`pod_id`::FE/64
 
-FIXME: document IPv6 subnets and static routes
+Static routes are added on each device for complete reachabilty of all remote loopbacks and subnets.
 
 This setup is meant to minimise additional developement at FreeRTR control plane level in order to support a P4 dataplane.
 
