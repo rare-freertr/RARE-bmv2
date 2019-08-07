@@ -107,6 +107,11 @@ router bgp4 1
 !
 !
 !
+ipv4 route v1 10.254.254.254 255.255.255.255 10.0.1.254
+ipv4 route v1 10.2.2.2 255.255.255.255 10.0.1.254
+ipv4 route v1 10.0.2.0 255.255.255.0 10.0.1.254
+ipv4 route v1 2.2.2.0 255.255.255.0 10.0.1.254
+ipv4 route v1 6.6.6.6 255.255.255.0 10.0.1.254
 ipv6 route v1 fd00::fe ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff fd00:0:0:1::fe
 ipv6 route v1 fd00::2 ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff fd00:0:0:1::fe
 ipv6 route v1 fd00:0:0:2:: ffff:ffff:ffff:ffff:: fd00:0:0:1::fe

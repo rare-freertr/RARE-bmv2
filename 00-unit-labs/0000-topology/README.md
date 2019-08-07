@@ -1,6 +1,6 @@
 # Lab topology
 
-![Lab diagram](https://github.com/frederic-loui/RARE/raw/master/resources/0000-topology.png)
+![Lab diagram](../../resources/0000-topology.png)
 
 # Unit test topology
 The topology depicted in the diagram above is the topology used in all unit tests.    
@@ -27,17 +27,28 @@ The addressing rules are:
 * `router loopback IPv6` = FD00::`pod_id`/128
 * `router interconnect IPv4` = 10.0.`pod_id`.`pod_id`/24
 * `router interconnect IPv6` = FD00:0:0:`pod_id`::`pod_id`/64
+* `connected subnet IPv4` = `pod_id`.`pod_id`.`pod_id`.`pod_id`/24
+* `connected subnet IPv6` = `FD00:0:`pod_id`:`pod_id`::`pod_id`/64
 * `hw-mac` = 0000.`<0xIP>` 
 
 Example: 
-* `cpe1` `pod_id`=1 : 
+* `cpe1` `pod_id` = 1
 * `cpe1 loopback IPv4` = 10.1.1.1/32
 * `cpe1 loopback IPv6` = FD00::1/128
 * `cpe1 interconnect IPv4` = 10.0.1.1/24
 * `cpe1 interconnect IPv6` = FD00:0:0:1::1/64
+* `cpe1 connected subnet IPv4` = FD00:0:1:1::1/64
 * `cpe1-eth0 hw-mac` = 0000.0A00.0101 
 
-FIXME: document IPv6 subnets and static routes
+Address assignments for `core1`:
+* `loopback IPv4` = 10.254.254.254
+* `loopback IPv6` = FD00::FE
+* `connected subnet IPv4` = 6.6.6.6/24
+* `connected subnet IPv6` = FD00:0:6:6::6/64
+* `interconnect IPv4` = 10.0.`pod_id`.254/24
+* `interconnect IPv6` = FD00:0:0:`pod_id`::FE/64
+
+Static routes are added on each device for complete reachabilty of all remote loopbacks and subnets.
 
 This setup is meant to minimise additional developement at FreeRTR control plane level in order to support a P4 dataplane.
 
