@@ -1,6 +1,6 @@
 # Lab topology
 
-![Lab diagram](https://github.com/frederic-loui/RARE/raw/master/resources/0000-topology.png)
+![Lab diagram](../../resources/0000-topology.png)
 
 # Unit test topology
 The topology depicted in the diagram above is the topology used in all unit tests.    
