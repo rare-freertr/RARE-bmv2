@@ -31,7 +31,7 @@ build: dirs
 		-I ./ -o $(BUILD_DIR) --p4runtime-files $(compiled_p4info) $(P4_PROGRAM) 
 
 clean: 
-	-sudo killall simple_switch
+	-sudo killall $(BMV2_SWITCH_EXE)
 	-rm -rf $(BUILD_DIR) $(LOG_DIR) $(RUN_DIR)
 
 dirs:
