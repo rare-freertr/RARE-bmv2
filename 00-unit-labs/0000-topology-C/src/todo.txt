@@ -1,0 +1,55 @@
+looking glass rfc8522
+reapplying the same address to interface as noop
+reapplying the same vrf to interface as noop
+entering ipvX address should remove dhcpX, slaac, gateway-*, and every related...
+http conditional redirect with route-map, prefix-list or route-policy
+bridge security from dhcp, slaac, whatever server
+padup ethertype config option
+lsrp, ospf, isis must list lsas/lsps as reachable or not
+hwdet default to binary in installation, rework rtr.bin support to binjar if needed
+interactive switch for traceroute to mimic mtr with class util.dampening, similar to mtr - display traceroute with the same parameters or so
+client domain-name to resolve internally first
+http server should honor no in the beginning for host commands
+http host upload optional different authentication
+tls1.3
+http2.0
+route-map/policy to match private-as origination/transit, then show, ignore, etc
+terminal mode resolve
+hostwatch to execute script on acl match
+protocol traceroute
+optimal route reflection
+bgp vpns with sr-policy
+recursive static route
+pipeline properties, terminal autoresize
+temper: web access log
+clean up javadoc errors
+changelog converter for https://manpages.debian.org/testing/dpkg-dev/deb-changelog.5.en.html format with notodo lines
+yang over netconf, proto over grpc
+interface range command
+reenable which elliptic courves? sure? why that?
+https://tools.ietf.org/html/draft-ietf-tn3270e-telnet-tls-06
+parse privilege levels from radius and tacacs
+ldap client, server
+bgp compare should write out that which attributes changed
+bfd need to send with ttl=255
+trustpoint for certificates
+vdc name tabbing
+interface name tabbing
+int eth1/int eth2
+dhcp relay support
+tcp selective ack
+xot, x75 switching
+preallocate qos buffers
+ilnp (rfc6740)
+lisp4, lisp6
+l2vpn for isis
+hip (rfc4423)
+ttl handling follow the selected forwarder, reconfigurable if more
+more show commands
+more clear commands
+more interactive tools
+more features with clean implementation
+igmp4/6 snoop, pim4/6 snoop for bridging
+multilink ppp, fr
+x25
+default vrf for show commands
