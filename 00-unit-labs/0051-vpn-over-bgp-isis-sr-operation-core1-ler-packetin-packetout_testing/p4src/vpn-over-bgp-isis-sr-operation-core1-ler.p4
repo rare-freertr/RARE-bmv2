@@ -27,6 +27,11 @@
  */
 #include <include/p4-table.p4>
 
+/* 
+ * include P4 switch port information 
+ */
+#include <include/p4-switch-port.p4>
+
 /*
  * egress_spec port encoded using 9 bits
  */ 
@@ -52,12 +57,6 @@ typedef bit<9> nexthop_id_t;
  */
 typedef bit<20> label_t;
 
-
-/*
- * IPv4 address encoded using 32 bits
- */
-typedef bit<32> stack_index_t;
-
 typedef bit<9> port_t;
 const port_t CPU_PORT = 64;
 
@@ -70,7 +69,6 @@ header packet_out_header_t {
     port_t egress_port;
     bit<7> _padding;
 }
-
 
 /*
  * Ethernet header: as a header type, order matters
@@ -193,7 +191,6 @@ struct l3_metadata_t {
     bit<16> lkp_outer_l4_sport;
     bit<16> lkp_outer_l4_dport;
     bit<16> vrf;
-    stack_index_t stack_cur_idx;
     bit<10> rmac_group;
     bit<1>  rmac_hit;
     bit<2>  urpf_mode;
@@ -292,18 +289,6 @@ parser prs_main(packet_in packet,
                 inout standard_metadata_t std_md) {
 
    state start {
-      transition select(std_md.ingress_port) {
-      CPU_PORT: prs_packet_out;
-      default: prs_ethernet;
-      }
-   }
-
-   state prs_packet_out {
-      packet.extract(hdr.packet_out);
-      transition prs_ethernet;
-   }
-
-   state prs_ethernet {
       packet.extract(hdr.ethernet);
       md.intrinsic_metadata.priority = 0;
       transition select(hdr.ethernet.ethertype) {
@@ -326,13 +311,16 @@ parser prs_main(packet_in packet,
 
    state prs_mpls_bos {
       transition select((packet.lookahead<bit<4>>())[3:0]) {
+         //4w0x4: prs_ipv4;
+         //4w0x6: parse_ipv6;
          default: accept;
       }
    }
 
    state prs_ipv4 {
       packet.extract(hdr.ipv4);
-      md.l3_metadata.lkp_ip_ttl = hdr.ipv4.ttl;
+      md.ipv4_metadata.lkp_ipv4_da = hdr.ipv4.dst_addr;
+      md.l3_metadata.lkp_ip_ttl = hdr.ipv4.ttl ;
       transition select(hdr.ipv4.frag_offset, hdr.ipv4.ihl, hdr.ipv4.protocol) {
          (13w0x0, 4w0x5, 8w0x6): prs_tcp;
          (13w0x0, 4w0x5, 8w0x11): prs_udp;
@@ -413,14 +401,6 @@ control ctl_ingress(inout headers hdr,
         hdr.packet_in.ingress_port = std_md.ingress_port;
    }
 
-   action set_out_port(port_t port) {
-       // Specifies the output port for this packet by setting the
-       // corresponding metadata.
-       //std_md.egress_spec = port;
-       md.nexthop_id = CPU_PORT;
-   }
-
-   //action act_rmac_set_nexthop(nexthop_id_t nexthop_id) {
    action act_rmac_set_nexthop() {
       /*
        *  send to CPU 
@@ -538,7 +518,8 @@ control ctl_ingress(inout headers hdr,
       md.nexthop_id = nexthop_id;
    }
 
-   action act_mpls_decap_set_nexthop(nexthop_id_t nexthop_id) {
+   //action act_mpls_decap_set_nexthop(nexthop_id_t nexthop_id) {
+   action act_mpls_decap_ipv4_l3vpn() {
       /*
        * Egress packet is back now an IPv4 packet
        * (LABEL PHP )
@@ -549,15 +530,15 @@ control ctl_ingress(inout headers hdr,
        */
       hdr.mpls[0].setInvalid();
       hdr.mpls[1].setInvalid();
+      hdr.ipv4.setValid();
       /*
        * Indicate nexthop_id
        */
-      md.nexthop_id = nexthop_id;
+      //md.nexthop_id = nexthop_id;
    }
 
    table tbl_mpls_fib {
       key = {
-         hdr.mpls[0].label: exact;
          md.tunnel_metadata.mpls_label: exact;
       }
       actions = {
@@ -569,7 +550,7 @@ control ctl_ingress(inout headers hdr,
          /*
           * mpls decapsulation if PHP  
           */
-         act_mpls_decap_set_nexthop;
+         act_mpls_decap_ipv4_l3vpn;
 
          /* 
           * Default action;
@@ -651,34 +632,32 @@ control ctl_ingress(inout headers hdr,
             hdr.packet_out.setInvalid();
       } else {
          // Packet received from data plane port.
-
-         if (hdr.llc_header.isValid()) {
-            tbl_rmac_fib.apply();
-         } else if (hdr.mpls[0].isValid()) {
+         if (hdr.llc_header.isValid()) { 
+            tbl_rmac_fib.apply(); 
+         } else if (hdr.mpls[0].isValid()) {     
             if (!hdr.mpls[1].isValid()) {
                md.tunnel_metadata.mpls_label = hdr.mpls[0].label;
                //md.tunnel_metadata.ingress_tunnel_type = 0;       
-            } else {
+            } else { 
                md.tunnel_metadata.mpls_label = hdr.mpls[1].label;
                //md.tunnel_metadata.ingress_tunnel_type = 4; /* IPv4 for now */
             }
             tbl_mpls_fib.apply();
          }
 
-         if (hdr.ipv4.isValid() ) {
+         if (hdr.ipv4.isValid() ) {               
             /*                                    
-             * we first consider host routes
-             */
-            if (!tbl_ipv4_fib_host.apply().hit) {
+             * we first consider host routes      
+             */                                   
+            if (!tbl_ipv4_fib_host.apply().hit) { 
                /*                                 
-                * if no match consider LPM table
-                */
-                tbl_ipv4_fib_lpm.apply();
-            }
-         }
-
-      }
-
+                * if no match consider LPM table  
+                */                                
+                tbl_ipv4_fib_lpm.apply();         
+            }                                      
+         }                                            
+      }  
+         
       /*
        * nexthop value is now identified 
        * and stored in custom nexthop_id used for the lookup
@@ -727,7 +706,7 @@ control ctl_compute_checksum(inout headers hdr, inout metadata_t md) {
 control ctl_deprs(packet_out packet, in headers hdr) {
     apply {
         /* parsed headers that have been modified
-         * in ctl_ingress and in ctl_egress 
+         * in ctl_ingress and ctl_ingress
 	 * have to be added again into the packet.
          * for emission in the wire
          */
