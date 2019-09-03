@@ -27,11 +27,6 @@
  */
 #include <include/p4-table.p4>
 
-/* 
- * include P4 switch port information 
- */
-// #include <include/p4-switch-port.p4>
-
 /*
  * egress_spec port encoded using 9 bits
  */ 
@@ -197,7 +192,7 @@ struct l3_metadata_t {
     bit<16> lkp_l4_dport;
     bit<16> lkp_outer_l4_sport;
     bit<16> lkp_outer_l4_dport;
-    label_t vrf;
+    bit<16> vrf;
     stack_index_t stack_cur_idx;
     bit<10> rmac_group;
     bit<1>  rmac_hit;
@@ -277,11 +272,6 @@ struct metadata_t {
  * Our P4 program header structure 
  */
 struct headers {
-   /*icmp_t       inner_icmp;
-   ipv4_t       inner_ipv4;
-   ipv6_t       inner_ipv6;
-   tcp_t        inner_tcp;
-   udp_t        inner_udp;*/
    ethernet_t   ethernet;
    mpls_t[3]    mpls;
    ipv4_t       ipv4;
@@ -316,7 +306,6 @@ parser prs_main(packet_in packet,
    state prs_ethernet {
       packet.extract(hdr.ethernet);
       md.intrinsic_metadata.priority = 0;
-      md.l3_metadata.vrf = 0;
       transition select(hdr.ethernet.ethertype) {
          0 &&& 0xfe00: prs_llc_header; /* LLC SAP frame */
          0 &&& 0xfa00: prs_llc_header; /* LLC SAP frame */
@@ -328,7 +317,6 @@ parser prs_main(packet_in packet,
 
    state prs_mpls {
       packet.extract(hdr.mpls.next);
-      //md.l3_metadata.stack_cur_idx = hdr.mpls.lastIndex;
       transition select(hdr.mpls.last.bos) {
           1w0: prs_mpls;
           1w1: prs_mpls_bos;
@@ -341,13 +329,6 @@ parser prs_main(packet_in packet,
          default: accept;
       }
    }
-
-/*
-   state prs_mpls_vpn {
-      md.l3_metadata.vrf =  hdr.mpls.last.label;
-      transition accept;
-   }
-*/
 
    state prs_ipv4 {
       packet.extract(hdr.ipv4);
@@ -446,11 +427,6 @@ control ctl_ingress(inout headers hdr,
        *  CPU_PORT => 64 
        */
       send_to_cpu();
-      /*
-      md.nexthop_id = CPU_PORT;
-      hdr.packet_in.setValid();
-      hdr.packet_in.ingress_port = std_md.ingress_port;
-      */
    } 
 
    /*
@@ -474,11 +450,6 @@ control ctl_ingress(inout headers hdr,
        * CPU => 64 
        */
       send_to_cpu();
-      /*
-      md.nexthop_id = CPU_PORT;
-      hdr.packet_in.setValid();
-      hdr.packet_in.ingress_port = std_md.ingress_port;
-      */
    } 
 
    /*
@@ -527,7 +498,7 @@ control ctl_ingress(inout headers hdr,
           * we match /32 host route
           */
          hdr.ipv4.dst_addr: exact;
-         std_md.ingress_port: exact;
+         md.l3_metadata.vrf: exact;
       }
       actions = {
          act_ipv4_cpl_set_nexthop;
@@ -545,7 +516,7 @@ control ctl_ingress(inout headers hdr,
           * we match network route via Long Prefix Match kind operation
           */
          hdr.ipv4.dst_addr: lpm;
-         std_md.ingress_port: exact;
+         md.l3_metadata.vrf: exact;
       }
       actions = {
          act_ipv4_set_nexthop;
@@ -587,7 +558,7 @@ control ctl_ingress(inout headers hdr,
    table tbl_mpls_fib {
       key = {
          hdr.mpls[0].label: exact;
-         md.l3_metadata.vrf: exact;
+         md.tunnel_metadata.mpls_label: exact;
       }
       actions = {
          /*
@@ -756,30 +727,15 @@ control ctl_compute_checksum(inout headers hdr, inout metadata_t md) {
 control ctl_deprs(packet_out packet, in headers hdr) {
     apply {
         /* parsed headers that have been modified
-         * in ctl_ingress and ctl_ingress
+         * in ctl_ingress and in ctl_egress 
 	 * have to be added again into the packet.
          * for emission in the wire
          */
-        /*
-        packet.emit(hdr.ethernet);
-        packet.emit(hdr.llc_header);
-        packet.emit(hdr.ipv4);
-        packet.emit(hdr.tcp);
-        packet.emit(hdr.udp);
-        */
+
         /*
          * emit hdr
          */
         packet.emit(hdr);
-        /*
-        packet.emit(hdr.ethernet);
-        packet.emit(hdr.ipv4);
-        packet.emit(hdr.ipv6);
-        packet.emit(hdr.llc_header);
-        packet.emit(hdr.tcp);
-        packet.emit(hdr.udp);
-        packet.emit(hdr.mpls);
-        */
     }
 }
 
