@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ip netns exec cpe2 ip link set cpe2-eth0 down
 ip netns exec cpe2 ip link set cpe2-eth0 netns 1
