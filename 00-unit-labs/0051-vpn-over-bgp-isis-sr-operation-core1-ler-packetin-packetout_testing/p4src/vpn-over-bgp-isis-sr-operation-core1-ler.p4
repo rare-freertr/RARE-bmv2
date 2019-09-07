@@ -106,6 +106,21 @@ header mpls_t {
 /*
  * ICMP header: as a header type, order matters
  */
+header arp_t {
+    bit<16> hrd;
+    bit<16> pro;
+    bit<8> hln;
+    bit<8> pln;
+    bit<16> op;
+    mac_addr_t sha;
+    ipv4_addr_t tpa;
+    mac_addr_t tha;
+    ipv4_addr_t spa;
+}
+
+/*
+ * ICMP header: as a header type, order matters
+ */
 header icmp_t {
     bit<16> type_code;
     bit<16> hdr_checksum;
@@ -281,6 +296,7 @@ struct headers {
    packet_in_header_t packet_in;
    ethernet_t   ethernet;
    mpls_t[3]    mpls;
+   arp_t        arp;
    ipv4_t       ipv4;
    ipv6_t       ipv6;
    llc_header_t llc_header;
@@ -316,6 +332,7 @@ parser prs_main(packet_in packet,
          0 &&& 0xfa00: prs_llc_header; /* LLC SAP frame */
          ETHERTYPE_MPLS_UCAST : prs_mpls;
          ETHERTYPE_IPV4: prs_ipv4;
+         ETHERTYPE_ARP: prs_arp;
          default: accept;
       }
    }
@@ -332,6 +349,13 @@ parser prs_main(packet_in packet,
    state prs_mpls_bos {
       transition prs_ipv4;
    }
+
+
+   state prs_arp {
+      packet.extract(hdr.arp);
+      transition accept;
+   }
+
 
    state prs_ipv4 {
       packet.extract(hdr.ipv4);
@@ -739,6 +763,8 @@ control ctl_ingress(inout headers hdr,
          // Packet received from data plane port.
          if (hdr.llc_header.isValid()) { 
             tbl_rmac_fib.apply(); 
+         } else if (hdr.arp.isValid()) {
+            send_to_cpu();
          } else if (hdr.mpls[0].isValid()) {     
             md.tunnel_metadata.mpls_label = hdr.mpls[0].label;
             tbl_mpls_fib.apply();

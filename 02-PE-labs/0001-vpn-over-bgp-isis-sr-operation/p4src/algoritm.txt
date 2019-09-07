@@ -1,0 +1,18 @@
+
+ping core1 (10.0.1.254) --> cpe3  (10.10.30.3) working
+ping cpe3  (10.10.30.3) -->  core1 (10.0.1.254) not working 
+
+so it decapsulates everything immediately in the table action. tbl_mpls_fib,
+
+instead:
+ - it should set a metadata flag -
+ - &&  check this flag value in the main loop 
+ - && decapsulate mpls headers only if CPU_PORT is NOT the target.
+
+  tbl_mpls_svc_type (value of mpls[1] the packet) key: <label1> => param#1:[<mpls_svc_type>] {4,6,2}
+
+  tbl_mpls_fib <label1> =>  swap, decap,
+
+ingress packet
+
+

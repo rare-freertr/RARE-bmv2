@@ -72,7 +72,6 @@ interface sdn1
  macaddr 0000.0a00.01fe
  vrf forwarding c1
  ipv4 address 10.0.1.254 255.255.255.0
- ipv4 host-static 10.0.1.1 0000.0a00.0101
  no shutdown
  no log-link-change
  exit
@@ -83,7 +82,19 @@ interface sdn2
  macaddr 0000.0a00.02fe
  vrf forwarding v1
  ipv4 address 10.0.2.254 255.255.255.0
- ipv4 host-static 10.0.2.2 0000.0a00.0202
+ mpls enable
+ router isis4 1 enable
+ router isis4 1 circuit level1
+ no shutdown
+ no log-link-change
+ exit
+!
+interface sdn4
+ no description
+ mtu 1500
+ macaddr 0044.5212.654a
+ vrf forwarding v1
+ ipv4 address 10.0.4.254 255.255.255.0
  mpls enable
  router isis4 1 enable
  router isis4 1 circuit level1
@@ -153,6 +164,7 @@ server p4lang p4
  export-vrf c1 2
  export-port sdn1 1
  export-port sdn2 2
+ export-port sdn4 4
  interconnect ethernet0
  vrf v1
  exit
