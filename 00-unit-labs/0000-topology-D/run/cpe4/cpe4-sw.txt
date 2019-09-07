@@ -1,8 +1,8 @@
-hostname cpe1
+hostname cpe4
 buggy
 !
 logging buffered debug 10240
-logging file debug cpe1.log
+logging file debug cpe4.log
 !
 vrf definition c1
  rd 1:2
@@ -31,7 +31,7 @@ interface loopback2
 !
 interface ethernet0
  no description
- macaddr 0000.0a00.0101
+ macaddr 0000.0a00.0404
  vrf forwarding v1
  ipv4 address 10.0.4.4 255.255.255.0
  no shutdown
@@ -39,7 +39,6 @@ interface ethernet0
  exit
 !
 !
-ipv4 route c1 0.0.0.0 0.0.0.0 10.0.4.254
 !
 !
 !

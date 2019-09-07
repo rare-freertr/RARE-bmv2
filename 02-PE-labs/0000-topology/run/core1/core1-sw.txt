@@ -92,7 +92,7 @@ interface sdn2
 interface sdn4
  no description
  mtu 1500
- macaddr 0044.5212.654a
+ macaddr 0000.0a00.04fe
  vrf forwarding v1
  ipv4 address 10.0.4.254 255.255.255.0
  mpls enable

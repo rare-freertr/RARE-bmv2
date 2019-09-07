@@ -76,13 +76,16 @@ router bgp4 1
  local-as 1
  router-id 10.3.3.3
  address-family vpnuni
- neighbor 10.254.254.254 remote-as 1
- neighbor 10.254.254.254 description lo0@cpe3 <--> lo0@core1
- neighbor 10.254.254.254 local-as 1
- neighbor 10.254.254.254 address-family vpnuni
- neighbor 10.254.254.254 distance 200
- neighbor 10.254.254.254 update-source loopback0
- neighbor 10.254.254.254 send-community standard extended
+ template r remote-as 1
+ no template r description
+ template r local-as 1
+ template r address-family vpnuni
+ template r distance 200
+ template r update-source loopback0
+ template r route-reflector-client
+ template r send-community standard extended
+ neighbor 10.4.4.4 template r
+ neighbor 10.254.254.254 template r
  afi-vrf c1 enable
  afi-vrf c1 redistribute connected
  exit
@@ -120,6 +123,7 @@ server telnet tel
  security protocol telnet
  exec width 130
  exec height 25
+ no exec authorization
  no login authentication
  vrf v1
  exit

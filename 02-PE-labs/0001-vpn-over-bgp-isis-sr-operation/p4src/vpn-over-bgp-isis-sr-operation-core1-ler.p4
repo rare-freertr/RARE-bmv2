@@ -333,6 +333,7 @@ parser prs_main(packet_in packet,
          ETHERTYPE_MPLS_UCAST : prs_mpls;
          ETHERTYPE_IPV4: prs_ipv4;
          ETHERTYPE_ARP: prs_arp;
+         ETHERTYPE_IPV6: prs_ipv6;
          default: accept;
       }
    }
@@ -353,7 +354,7 @@ parser prs_main(packet_in packet,
 
    state prs_arp {
       packet.extract(hdr.arp);
-      transition accept;
+      transition prs_set_prio_med;
    }
 
 
@@ -364,6 +365,17 @@ parser prs_main(packet_in packet,
       transition select(hdr.ipv4.frag_offset, hdr.ipv4.ihl, hdr.ipv4.protocol) {
          (13w0x0, 4w0x5, 8w0x6): prs_tcp;
          (13w0x0, 4w0x5, 8w0x11): prs_udp;
+         default: accept;
+      } 
+   }
+
+   state prs_ipv6 {
+      packet.extract(hdr.ipv6);
+      md.ipv6_metadata.lkp_ipv6_da = hdr.ipv6.dst_addr;
+      md.l3_metadata.lkp_ip_ttl = hdr.ipv6.hop_limit ;
+      transition select(hdr.ipv6.next_hdr) {
+         (8w0x6): prs_tcp;
+         (8w0x11): prs_udp;
          default: accept;
       } 
    }
@@ -545,6 +557,47 @@ control ctl_ingress(inout headers hdr,
       size = IPV4_LPM_TABLE_SIZE;
       default_action = NoAction();
    }
+
+
+
+   table tbl_ipv6_fib_host {
+      key = {
+         /*
+          * we match /32 host route
+          */
+         hdr.ipv6.dst_addr: exact;
+         md.l3_metadata.vrf: exact;
+      }
+      actions = {
+         act_ipv4_cpl_set_nexthop;
+         act_ipv4_set_nexthop;
+         act_ipv4_mpls_encap_set_nexthop;
+         NoAction;
+      }
+      size = IPV4_HOST_TABLE_SIZE;
+      default_action = NoAction();
+   }
+
+   table tbl_ipv6_fib_lpm {
+      key = {
+         /*
+          * we match network route via Long Prefix Match kind operation
+          */
+         hdr.ipv6.dst_addr: lpm;
+         md.l3_metadata.vrf: exact;
+      }
+      actions = {
+         act_ipv4_cpl_set_nexthop;
+         act_ipv4_set_nexthop;
+         act_ipv4_mpls_encap_set_nexthop;
+         NoAction;
+      }
+      size = IPV4_LPM_TABLE_SIZE;
+      default_action = NoAction();
+   }
+
+
+
 
    action act_mpls_swap_set_nexthop(label_t egress_label, nexthop_id_t nexthop_id) {
       /*
@@ -783,6 +836,18 @@ control ctl_ingress(inout headers hdr,
                 * if no match consider LPM table  
                 */                                
                 tbl_ipv4_fib_lpm.apply();         
+            }                                      
+         }                                            
+
+         if (hdr.ipv6.isValid() ) {
+            /*                                    
+             * we first consider host routes      
+             */                                   
+            if (!tbl_ipv6_fib_host.apply().hit) { 
+               /*                                 
+                * if no match consider LPM table  
+                */                                
+                tbl_ipv6_fib_lpm.apply();         
             }                                      
          }                                            
 
