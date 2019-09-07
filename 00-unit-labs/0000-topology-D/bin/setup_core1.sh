@@ -18,8 +18,8 @@ ip netns exec $FREERTR_HOSTNAME ip link set dev $FREERTR_ETH0 up
 ip netns exec $FREERTR_HOSTNAME ip link set dev $FREERTR_GRPC up
 ip netns exec $FREERTR_HOSTNAME ip link set dev lo up       
 
-ip netns exec $FREERTR_HOSTNAME ip addr add 66.66.66.2/24 dev $FREERTR_GRPC 
-ip addr add 66.66.66.1/24 dev p4-core1-grpc
+ip netns exec $FREERTR_HOSTNAME ip addr add 10.10.10.227/24 dev $FREERTR_GRPC 
+ip addr add 10.10.10.1/24 dev p4-core1-grpc
 
 
 #ip netns exec $FREERTR_HOSTNAME $FREERTR_HOME/bin/freertr.sh -i "$FREERTR_ETH0/22709/22710 $FREERTR_ETH1/22711/22712" -r "$FREERTR_HOSTNAME"

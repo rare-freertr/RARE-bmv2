@@ -85,10 +85,7 @@
         ["ingress_port", 9, false],
         ["egress_spec", 9, false],
         ["egress_port", 9, false],
-        ["clone_spec", 32, false],
         ["instance_type", 32, false],
-        ["drop", 1, false],
-        ["recirculate_port", 16, false],
         ["packet_length", 32, false],
         ["enq_timestamp", 32, false],
         ["enq_qdepth", 19, false],
@@ -96,15 +93,12 @@
         ["deq_qdepth", 19, false],
         ["ingress_global_timestamp", 48, false],
         ["egress_global_timestamp", 48, false],
-        ["lf_field_list", 32, false],
         ["mcast_grp", 16, false],
-        ["resubmit_flag", 32, false],
         ["egress_rid", 16, false],
-        ["recirculate_flag", 32, false],
         ["checksum_error", 1, false],
         ["parser_error", 32, false],
         ["priority", 3, false],
-        ["_padding_0", 2, false]
+        ["_padding_0", 3, false]
       ]
     },
     {
@@ -457,7 +451,7 @@
   "learn_lists" : [],
   "actions" : [
     {
-      "name" : "act",
+      "name" : "simplepacketinout350",
       "id" : 0,
       "runtime_data" : [],
       "primitives" : [
@@ -498,7 +492,7 @@
       ]
     },
     {
-      "name" : "act_0",
+      "name" : "simplepacketinout354",
       "id" : 1,
       "runtime_data" : [],
       "primitives" : [
@@ -571,7 +565,7 @@
       "init_table" : "node_2",
       "tables" : [
         {
-          "name" : "tbl_act",
+          "name" : "tbl_simplepacketinout350",
           "id" : 0,
           "source_info" : {
             "filename" : "simple-packet-inout.p4",
@@ -587,10 +581,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [0],
-          "actions" : ["act"],
+          "actions" : ["simplepacketinout350"],
           "base_default_next" : null,
           "next_tables" : {
-            "act" : null
+            "simplepacketinout350" : null
           },
           "default_entry" : {
             "action_id" : 0,
@@ -600,7 +594,7 @@
           }
         },
         {
-          "name" : "tbl_act_0",
+          "name" : "tbl_simplepacketinout354",
           "id" : 1,
           "source_info" : {
             "filename" : "simple-packet-inout.p4",
@@ -616,10 +610,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [1],
-          "actions" : ["act_0"],
+          "actions" : ["simplepacketinout354"],
           "base_default_next" : null,
           "next_tables" : {
-            "act_0" : null
+            "simplepacketinout354" : null
           },
           "default_entry" : {
             "action_id" : 1,
@@ -654,8 +648,8 @@
               }
             }
           },
-          "true_next" : "tbl_act",
-          "false_next" : "tbl_act_0"
+          "true_next" : "tbl_simplepacketinout350",
+          "false_next" : "tbl_simplepacketinout354"
         }
       ]
     },
@@ -703,24 +697,12 @@
       ["standard_metadata", "egress_global_timestamp"]
     ],
     [
-      "intrinsic_metadata.lf_field_list",
-      ["standard_metadata", "lf_field_list"]
-    ],
-    [
       "intrinsic_metadata.mcast_grp",
       ["standard_metadata", "mcast_grp"]
     ],
     [
-      "intrinsic_metadata.resubmit_flag",
-      ["standard_metadata", "resubmit_flag"]
-    ],
-    [
       "intrinsic_metadata.egress_rid",
       ["standard_metadata", "egress_rid"]
-    ],
-    [
-      "intrinsic_metadata.recirculate_flag",
-      ["standard_metadata", "recirculate_flag"]
     ],
     [
       "intrinsic_metadata.priority",

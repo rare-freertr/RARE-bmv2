@@ -1,0 +1,348 @@
+pkg_info {
+  arch: "v1model"
+}
+tables {
+  preamble {
+    id: 33574932
+    name: "ctl_ingress.tbl_rmac_fib"
+    alias: "tbl_rmac_fib"
+  }
+  match_fields {
+    id: 1
+    name: "hdr.ethernet.dst_mac_addr"
+    bitwidth: 48
+    match_type: EXACT
+  }
+  action_refs {
+    id: 16801419
+  }
+  action_refs {
+    id: 16800567
+  }
+  size: 1024
+}
+tables {
+  preamble {
+    id: 33608234
+    name: "ctl_ingress.tbl_ipv4_fib_host"
+    alias: "tbl_ipv4_fib_host"
+  }
+  match_fields {
+    id: 1
+    name: "hdr.ipv4.dst_addr"
+    bitwidth: 32
+    match_type: EXACT
+  }
+  match_fields {
+    id: 2
+    name: "md.l3_metadata.vrf"
+    bitwidth: 16
+    match_type: EXACT
+  }
+  action_refs {
+    id: 16828285
+  }
+  action_refs {
+    id: 16801748
+  }
+  action_refs {
+    id: 16836634
+  }
+  action_refs {
+    id: 16800567
+  }
+  size: 1024
+}
+tables {
+  preamble {
+    id: 33584085
+    name: "ctl_ingress.tbl_ipv4_fib_lpm"
+    alias: "tbl_ipv4_fib_lpm"
+  }
+  match_fields {
+    id: 1
+    name: "hdr.ipv4.dst_addr"
+    bitwidth: 32
+    match_type: LPM
+  }
+  match_fields {
+    id: 2
+    name: "md.l3_metadata.vrf"
+    bitwidth: 16
+    match_type: EXACT
+  }
+  action_refs {
+    id: 16828285
+  }
+  action_refs {
+    id: 16801748
+  }
+  action_refs {
+    id: 16836634
+  }
+  action_refs {
+    id: 16800567
+  }
+  size: 512
+}
+tables {
+  preamble {
+    id: 33605142
+    name: "ctl_ingress.tbl_mpls_fib"
+    alias: "tbl_mpls_fib"
+  }
+  match_fields {
+    id: 1
+    name: "md.tunnel_metadata.mpls_label"
+    bitwidth: 20
+    match_type: EXACT
+  }
+  action_refs {
+    id: 16779290
+  }
+  action_refs {
+    id: 16781842
+  }
+  action_refs {
+    id: 16809217
+  }
+  action_refs {
+    id: 16800567
+  }
+  size: 1024
+}
+tables {
+  preamble {
+    id: 33594777
+    name: "ctl_ingress.tbl_mpls_fib_decap"
+    alias: "tbl_mpls_fib_decap"
+  }
+  match_fields {
+    id: 1
+    name: "md.tunnel_metadata.mpls_label"
+    bitwidth: 20
+    match_type: EXACT
+  }
+  action_refs {
+    id: 16779290
+  }
+  action_refs {
+    id: 16781842
+  }
+  action_refs {
+    id: 16841440
+  }
+  action_refs {
+    id: 16800567
+  }
+  size: 1024
+}
+tables {
+  preamble {
+    id: 33586644
+    name: "ctl_ingress.tbl_nexthop"
+    alias: "tbl_nexthop"
+  }
+  match_fields {
+    id: 1
+    name: "md.nexthop_id"
+    bitwidth: 9
+    match_type: EXACT
+  }
+  match_fields {
+    id: 2
+    name: "md.intrinsic_metadata.priority"
+    bitwidth: 3
+    match_type: EXACT
+  }
+  action_refs {
+    id: 16823615
+  }
+  action_refs {
+    id: 16788651
+  }
+  action_refs {
+    id: 16783742
+  }
+  size: 1024
+}
+tables {
+  preamble {
+    id: 33615429
+    name: "ctl_ingress.tbl_vrf"
+    alias: "tbl_vrf"
+  }
+  match_fields {
+    id: 1
+    name: "std_md.ingress_port"
+    bitwidth: 9
+    match_type: EXACT
+  }
+  action_refs {
+    id: 16805185
+  }
+  action_refs {
+    id: 16782039
+  }
+  size: 1024
+}
+actions {
+  preamble {
+    id: 16800567
+    name: "NoAction"
+    alias: "NoAction"
+  }
+}
+actions {
+  preamble {
+    id: 16801419
+    name: "ctl_ingress.act_rmac_set_nexthop"
+    alias: "act_rmac_set_nexthop"
+  }
+}
+actions {
+  preamble {
+    id: 16828285
+    name: "ctl_ingress.act_ipv4_cpl_set_nexthop"
+    alias: "act_ipv4_cpl_set_nexthop"
+  }
+}
+actions {
+  preamble {
+    id: 16801748
+    name: "ctl_ingress.act_ipv4_set_nexthop"
+    alias: "act_ipv4_set_nexthop"
+  }
+  params {
+    id: 1
+    name: "nexthop_id"
+    bitwidth: 9
+  }
+}
+actions {
+  preamble {
+    id: 16836634
+    name: "ctl_ingress.act_ipv4_mpls_encap_set_nexthop"
+    alias: "act_ipv4_mpls_encap_set_nexthop"
+  }
+  params {
+    id: 1
+    name: "vpn_label"
+    bitwidth: 20
+  }
+  params {
+    id: 2
+    name: "egress_label"
+    bitwidth: 20
+  }
+  params {
+    id: 3
+    name: "nexthop_id"
+    bitwidth: 9
+  }
+}
+actions {
+  preamble {
+    id: 16779290
+    name: "ctl_ingress.act_mpls_swap_set_nexthop"
+    alias: "act_mpls_swap_set_nexthop"
+  }
+  params {
+    id: 1
+    name: "egress_label"
+    bitwidth: 20
+  }
+  params {
+    id: 2
+    name: "nexthop_id"
+    bitwidth: 9
+  }
+}
+actions {
+  preamble {
+    id: 16781842
+    name: "ctl_ingress.act_mpls_swap_cpl_set_nexthop"
+    alias: "act_mpls_swap_cpl_set_nexthop"
+  }
+}
+actions {
+  preamble {
+    id: 16809217
+    name: "ctl_ingress.act_mpls_decap_ipv4"
+    alias: "act_mpls_decap_ipv4"
+  }
+  params {
+    id: 1
+    name: "vrf"
+    bitwidth: 16
+  }
+}
+actions {
+  preamble {
+    id: 16841440
+    name: "ctl_ingress.act_mpls_decap_l3vpn"
+    alias: "act_mpls_decap_l3vpn"
+  }
+  params {
+    id: 1
+    name: "vrf"
+    bitwidth: 16
+  }
+}
+actions {
+  preamble {
+    id: 16823615
+    name: "ctl_ingress.act_cpl_opr_fib_hit"
+    alias: "act_cpl_opr_fib_hit"
+  }
+  params {
+    id: 1
+    name: "egress_port"
+    bitwidth: 9
+  }
+}
+actions {
+  preamble {
+    id: 16788651
+    name: "ctl_ingress.act_ipv4_fib_hit"
+    alias: "act_ipv4_fib_hit"
+  }
+  params {
+    id: 1
+    name: "dst_mac_addr"
+    bitwidth: 48
+  }
+  params {
+    id: 2
+    name: "egress_port"
+    bitwidth: 9
+  }
+}
+actions {
+  preamble {
+    id: 16783742
+    name: "ctl_ingress.act_ipv4_fib_discard"
+    alias: "act_ipv4_fib_discard"
+  }
+}
+actions {
+  preamble {
+    id: 16805185
+    name: "ctl_ingress.act_set_vrf"
+    alias: "act_set_vrf"
+  }
+  params {
+    id: 1
+    name: "vrf"
+    bitwidth: 16
+  }
+}
+actions {
+  preamble {
+    id: 16782039
+    name: "ctl_ingress.act_set_default_vrf"
+    alias: "act_set_default_vrf"
+  }
+}
+type_info {
+}

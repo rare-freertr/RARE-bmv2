@@ -89,6 +89,7 @@ server telnet tel
  security protocol telnet
  exec width 130
  exec height 25
+ no exec authorization
  no login authentication
  vrf v1
  exit

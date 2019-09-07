@@ -39,7 +39,7 @@ bindintf () {
         ethtool --set-eee $1 eee off
 
         #start-stop-daemon -S -b -x "${FREERTR_INSTALL_DIR}/rawInt.bin" $1 $3 127.0.0.1 $2 127.0.0.1;
-        start-stop-daemon -S -b --name $FREERTR_HOSTNAME -x "${FREERTR_INSTALL_DIR}/rawInt.bin" $1 $2 127.0.0.1 $3 127.0.0.1;
+        start-stop-daemon -S -b --name $FREERTR_HOSTNAME -x "${FREERTR_INSTALL_DIR}/pcapInt.bin" $1 $2 127.0.0.1 $3 127.0.0.1;
       done
 }
 

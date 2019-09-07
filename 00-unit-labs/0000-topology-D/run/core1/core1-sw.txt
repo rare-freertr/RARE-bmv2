@@ -59,7 +59,7 @@ interface loopback2
  no log-link-change
  exit
 !
-interface eth0
+interface ethernet0
  no description
  macaddr 0000.0a00.0040
  no shutdown
@@ -68,6 +68,7 @@ interface eth0
 !
 interface sdn1
  no description
+ mtu 1500
  macaddr 0000.0a00.01fe
  vrf forwarding c1
  ipv4 address 10.0.1.254 255.255.255.0
@@ -78,6 +79,7 @@ interface sdn1
 !
 interface sdn2
  no description
+ mtu 1500
  macaddr 0000.0a00.02fe
  vrf forwarding v1
  ipv4 address 10.0.2.254 255.255.255.0
@@ -141,20 +143,22 @@ server telnet tel
  security protocol telnet
  exec width 130
  exec height 25
+ no exec authorization
  no login authentication
+ vrf v1
+ exit
+!
+server p4lang p4
+ export-vrf v1 1
+ export-vrf c1 2
+ export-port sdn1 1
+ export-port sdn2 2
+ interconnect ethernet0
  vrf v1
  exit
 !
 client name-server 8.8.8.8
 client config-save
 client time-zone CET
-!
-server p4lang p4
- export-vrf v1
- export-port sdn1 1
- export-port sdn2 2
- interconnect eth0
- vrf v1
- exit
 !
 end
