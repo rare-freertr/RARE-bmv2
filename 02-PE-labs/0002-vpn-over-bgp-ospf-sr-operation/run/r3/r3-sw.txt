@@ -1,0 +1,147 @@
+hostname r3
+buggy
+!
+logging buffered debug 10240
+logging file debug r3.log
+!
+vrf definition c1
+ rd 1:2
+ rt-import 1:2
+ rt-export 1:2
+ exit
+!
+vrf definition v1
+ rd 1:1
+ rt-import 1:1
+ rt-export 1:1
+ label-mode per-prefix
+ exit
+!
+router ospf4 1
+ vrf v1
+ router-id 10.3.3.3
+ traffeng-id 0.0.0.0
+ segrout 10
+ area 0 enable
+ area 0 segrout
+ exit
+!
+router ospf6 1
+ vrf v1
+ router-id 10.3.3.3
+ traffeng-id ::
+ area 0 enable
+ exit
+!
+interface loopback0
+ no description
+ macaddr 0000.0a03.0303
+ vrf forwarding v1
+ ipv4 address 10.3.3.3 255.255.255.255
+ ipv6 address fd00::1003 ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+ router ospf4 1 enable
+ router ospf4 1 area 0
+ router ospf4 1 segrout index 3
+ router ospf6 1 enable
+ router ospf6 1 area 0
+ no shutdown
+ no log-link-change
+ exit
+!
+interface loopback1
+ no description
+ vrf forwarding v1
+ ipv4 address 3.3.3.3 255.255.255.0
+ no shutdown
+ no log-link-change
+ exit
+!
+interface loopback2
+ no description
+ vrf forwarding c1
+ ipv4 address 10.10.30.3 255.255.255.0
+ ipv6 address fd00::3 ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+ no shutdown
+ no log-link-change
+ exit
+!
+interface ethernet0
+ no description
+ macaddr 0000.0a00.1703
+ vrf forwarding v1
+ ipv4 address 10.0.23.3 255.255.255.0
+ ipv6 address fd00:0:0:23::3 ffff:ffff:ffff:ffff::
+ ipv6 enable
+ mpls enable
+ router ospf4 1 enable
+ router ospf4 1 area 0
+ router ospf6 1 enable
+ router ospf6 1 area 0
+ no shutdown
+ no log-link-change
+ exit
+!
+router bgp4 1
+ vrf v1
+ local-as 1
+ router-id 10.3.3.3
+ address-family vpnuni ovpnuni
+ template r remote-as 1
+ no template r description
+ template r local-as 1
+ template r address-family vpnuni ovpnuni
+ template r distance 200
+ template r update-source loopback0
+ template r route-reflector-client
+ template r send-community standard extended
+ neighbor 10.4.4.4 template r
+ neighbor 10.254.254.254 template r
+ afi-vrf c1 enable
+ afi-vrf c1 redistribute connected
+ afi-ovrf c1 enable
+ afi-ovrf c1 redistribute connected
+ exit
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+alias test bash description 
+alias test bash parameter optional
+!
+server telnet tel
+ security protocol telnet
+ exec width 130
+ exec height 25
+ no exec authorization
+ no login authentication
+ vrf v1
+ exit
+!
+client name-server 8.8.8.8
+client config-save
+client time-zone CET
+!
+end

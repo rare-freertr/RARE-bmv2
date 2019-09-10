@@ -1,0 +1,106 @@
+hostname r2
+buggy
+!
+logging buffered debug 10240
+logging file debug r2.log
+!
+vrf definition v1
+ rd 1:1
+ rt-import 1:1
+ rt-export 1:1
+ label-mode per-prefix
+ exit
+!
+router isis4 1
+ vrf v1
+ net-id 49.0001.0000.0a02.0202.00
+ traffeng-id ::
+ is-type level1
+ segrout 10
+ level1 segrout
+ exit
+!
+interface loopback0
+ no description
+ macaddr 0000.0a02.0202
+ vrf forwarding v1
+ ipv4 address 10.2.2.2 255.255.255.255
+ router isis4 1 enable
+ router isis4 1 circuit level1
+ router isis4 1 segrout index 2
+ router isis4 1 segrout node
+ no shutdown
+ no log-link-change
+ exit
+!
+interface loopback1
+ no description
+ vrf forwarding v1
+ ipv4 address 2.2.2.2 255.255.255.0
+ router isis4 1 enable
+ router isis4 1 passive
+ router isis4 1 circuit level1
+ no shutdown
+ no log-link-change
+ exit
+!
+interface ethernet0
+ no description
+ no shutdown
+ no log-link-change
+ exit
+!
+interface ethernet0.222
+ no description
+ macaddr 0000.0a00.0202
+ vrf forwarding v1
+ ipv4 address 10.0.2.2 255.255.255.0
+ mpls enable
+ router isis4 1 enable
+ router isis4 1 circuit level1
+ no shutdown
+ no log-link-change
+ exit
+!
+interface ethernet1
+ no description
+ macaddr 0000.0a00.1703
+ vrf forwarding v1
+ ipv4 address 10.0.23.2 255.255.255.0
+ mpls enable
+ router isis4 1 enable
+ router isis4 1 circuit level1
+ no shutdown
+ no log-link-change
+ exit
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+alias test bash description 
+alias test bash parameter optional
+!
+server telnet tel
+ security protocol telnet
+ exec width 130
+ exec height 25
+ no exec authorization
+ no login authentication
+ vrf v1
+ exit
+!
+client name-server 8.8.8.8
+client config-save
+client time-zone CET
+!
+end
