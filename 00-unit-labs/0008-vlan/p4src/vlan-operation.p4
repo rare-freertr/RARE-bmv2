@@ -135,10 +135,9 @@ control ctl_ingress(inout headers hdr,
     }
 
     /*
-
      * Ingress port always need to match, If not configured that port for vlan, just discard
      * vlan.isValid means that the vlan was configured as trunk
-     * the vid needs to match, of course 
+     * the vid needs to match, of course
      */
     table tbl_vlan_match {
         key = {
@@ -174,7 +173,7 @@ control ctl_ingress(inout headers hdr,
 control ctl_egress(inout headers hdr,
     inout metadata meta,
     inout standard_metadata_t standard_metadata) {
-    table tbl_vlan_out {
+
         /*
         * Discard via V1Model mark_to_drop()
         */
@@ -190,6 +189,8 @@ control ctl_egress(inout headers hdr,
             hdr.vlan.vid = vid;
             hdr.vlan.etherType = ETHERTYPE_VLAN;
         }
+
+    table tbl_vlan_out {
 
         key = {
             meta.outgroup: exact;
