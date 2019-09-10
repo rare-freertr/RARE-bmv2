@@ -55,6 +55,8 @@ header vlan_t {
 * empty struct but still need to be declared as it is used in parser
 */
 struct metadata {
+    bit<32> outgroup;
+    bit<9>  ingress_port;
 }
 
 /*
@@ -74,6 +76,7 @@ parser prs_main(packet_in packet,
                 inout standard_metadata_t standard_metadata) {
 
     state start {
+        meta.ingress_port = standard_metadata.ingress_port; // Save the ingress port for later
         packet.extract(hdr.ethernet);
         transition select(hdr.ethernet.ethertype) {
             ETHERTYPE_VLAN: prs_vlan;
@@ -113,7 +116,12 @@ control ctl_ingress(inout headers hdr,
     /*
     * Access mode VLAN forwarding
     */
-    action act_vlan_access_hit(bit<32> cloningsession) {
+    action act_vlan_hit(bit<32> cloningsession) {
+        /*
+        * Se the output group on the metadata field to match on the group table
+        */
+        meta.outgroup = cloningsession;
+
         /*
         * Clone the packet on the INGRESS. The session parameter (ports)
         * must be specified by control plane
@@ -121,43 +129,40 @@ control ctl_ingress(inout headers hdr,
         clone3(CloneType.I2E, cloningsession, {});
 
         /*
-        * Remove the VLAN tag
+        * Discard the packet so that it is not replicated in the ingress port
         */
-        hdr.ethernet.ethertype = hdr.vlan.etherType;
-        hdr.vlan.setInvalid();
+        mark_to_drop();
     }
 
     /*
-    * Trunk mode VLAN forwarding
-    */
-    action act_vlan_trunk_hit(bit<32> cloningsession) {
-        /*
-        * Clone the packet on the INGRESS. The session parameter (ports)
-        * must be specified by control plane
-        */
-        clone3(CloneType.I2E, cloningsession, {});
-    }
 
-    table tbl_vlan {
+     * Ingress port always need to match, If not configured that port for vlan, just discard
+     * vlan.isValid means that the vlan was configured as trunk
+     * the vid needs to match, of course 
+     */
+    table tbl_vlan_match {
         key = {
+            meta.ingress_port: exact;
+            hdr.vlan.isValid(): exact;
             hdr.vlan.vid: exact;
         }
         actions = {
-            act_vlan_access_hit;
-            act_vlan_trunk_hit;
+            act_vlan_hit;
             act_vlan_discard;
         }
         size = EGRESS_VLAN_XLATE_TABLE_SIZE;
         default_action = act_vlan_discard();
     }
 
+
+
     apply {
         /*
         * if the packet is not valid we don't process it
         */
-        if (hdr.vlan.isValid()) {
-            tbl_vlan.apply();
-        }
+        // if (hdr.vlan.isValid()) { // Always do since now, we use the key match to check
+        tbl_vlan_match.apply();
+        // }
     }
 }
 
