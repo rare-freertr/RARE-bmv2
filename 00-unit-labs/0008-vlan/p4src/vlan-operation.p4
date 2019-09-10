@@ -174,6 +174,34 @@ control ctl_ingress(inout headers hdr,
 control ctl_egress(inout headers hdr,
     inout metadata meta,
     inout standard_metadata_t standard_metadata) {
+    table tbl_vlan_out {
+        /*
+        * Discard via V1Model mark_to_drop()
+        */
+        action egr_vlan_discard() {
+            mark_to_drop();
+        }
+
+        action egress_no_tag() {
+        }
+
+        action egress_push_tag(bit<12> vid) {
+            hdr.vlan.setValid();
+            hdr.vlan.vid = vid;
+            hdr.vlan.etherType = ETHERTYPE_VLAN;
+        }
+
+        key = {
+            meta.outgroup: exact;
+            standard_metadata.egress_port: exact;
+            trunk: exact;
+            vid: exact;
+        }
+        size = EGRESS_VLAN_XLATE_TABLE_SIZE;
+        default_action = egr_vlan_discard();
+    }
+
+
     apply {
     }
 }
