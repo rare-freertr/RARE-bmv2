@@ -198,6 +198,11 @@ control ctl_egress(inout headers hdr,
             trunk: exact;
             vid: exact;
         }
+        actions = {
+            act_vlan_hit;
+            egress_no_tag;
+            egress_push_tag;
+        }
         size = EGRESS_VLAN_XLATE_TABLE_SIZE;
         default_action = egr_vlan_discard();
     }
