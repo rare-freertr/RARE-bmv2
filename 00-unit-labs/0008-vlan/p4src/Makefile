@@ -27,6 +27,7 @@ all: run
 
 run: build
 	sudo $(BMV2_SWITCH_EXE) $(DEBUGGER)  --log-file $(LOG_DIR)/$(LOG_FILE) \
+			--log-flush \
 			-i 1@p4-core1-dp1 -i 2@p4-core1-dp2 \
 			-i 3@p4-core1-dp3 -i 4@p4-core1-dp4 \
 			-i 255@p4-core1-cpu1 -i 254@p4-core1-cpu2 \
