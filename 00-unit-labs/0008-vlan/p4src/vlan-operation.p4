@@ -128,6 +128,10 @@ control ctl_ingress(inout headers hdr,
         */
         clone3(CloneType.I2E, cloningsession, {});
 
+        /*
+        * Discard the packet so that it is not replicated in the ingress port
+        */
+        mark_to_drop();
     }
 
     /*
