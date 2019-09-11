@@ -198,6 +198,7 @@ control ctl_egress(inout headers hdr,
 
 
     apply {
+      tbl_vlan_out.apply();
     }
 }
 
