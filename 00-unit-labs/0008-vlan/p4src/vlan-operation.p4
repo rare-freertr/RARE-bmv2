@@ -186,8 +186,6 @@ control ctl_egress(inout headers hdr,
         key = {
             meta.outgroup: exact;
             standard_metadata.egress_port: exact;
-            trunk: exact;
-            vid: exact;
         }
         actions = {
             act_vlan_hit;
