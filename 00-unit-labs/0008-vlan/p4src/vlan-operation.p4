@@ -188,7 +188,7 @@ control ctl_egress(inout headers hdr,
             standard_metadata.egress_port: exact;
         }
         actions = {
-            act_vlan_hit;
+            egr_vlan_discard;
             egress_no_tag;
             egress_push_tag;
         }
