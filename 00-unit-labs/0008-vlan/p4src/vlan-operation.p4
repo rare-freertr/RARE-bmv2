@@ -152,12 +152,7 @@ control ctl_ingress(inout headers hdr,
 
 
     apply {
-        /*
-        * if the packet is not valid we don't process it
-        */
-        // if (hdr.vlan.isValid()) { // Always do since now, we use the key match to check
         tbl_vlan_match.apply();
-        // }
     }
 }
 
