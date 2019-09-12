@@ -179,13 +179,17 @@ control ctl_egress(inout headers hdr,
         }
 
         action egress_no_tag() {
+	    hdr.ethernet.ethertype = hdr.vlan.etherType;
 	    hdr.vlan.setInvalid();
         }
 
         action egress_push_tag(bit<12> vid) {
             hdr.vlan.setValid();
+	    hdr.vlan.pcp = 0;
+	    hdr.vlan.dei = 0;
             hdr.vlan.vid = vid;
-            hdr.vlan.etherType = ETHERTYPE_VLAN;
+	    hdr.vlan.etherType = hdr.ethernet.ethertype;
+            hdr.ethernet.ethertype = ETHERTYPE_VLAN;
         }
 
     table tbl_vlan_out {
