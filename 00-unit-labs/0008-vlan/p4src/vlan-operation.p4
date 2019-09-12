@@ -33,14 +33,6 @@ typedef bit<9>  egress_spec_t;
 typedef bit<48> mac_addr_t;
 
 /*
- * Internal header to provide multicasted egress packets with information from the ingress
- */
-header multicast_ingress_metadata_t {
-    bit<32> outgroup;
-    bit<9> ingress_port;
-}
-
-/*
 * Ethernet header: as a header type, order matters
 */
 header ethernet_t {
@@ -71,7 +63,6 @@ struct metadata {
 * Our P4 program header structure
 */
 struct headers {
-    multicast_ingress_metadata_t inmeta;
     ethernet_t   ethernet;
     vlan_t       vlan;
 }
@@ -131,19 +122,6 @@ control ctl_ingress(inout headers hdr,
         */
         meta.outgroup = cloningsession;
 
-        /*
-         * Fill the information for egress control as internal header
-         */
-        hdr.inmeta.outgroup = cloningsession;
-        hdr.inmeta.ingress_port = standard_metadata.ingress_port;
-        hdr.inmeta.setValid();
-
-
-        /*
-        * Clone the packet on the INGRESS. The session parameter (ports)
-        * must be specified by control plane
-        */
-        clone3(CloneType.I2E, cloningsession, {});
 
         /*
         * Discard the packet so that it is not replicated in the ingress port
@@ -174,6 +152,13 @@ control ctl_ingress(inout headers hdr,
 
     apply {
         tbl_vlan_match.apply();
+
+	/*
+        * Clone the packet on the INGRESS. The session parameter (ports)
+        * must be specified by control plane.
+	* This needs to be done after populating metadata in table vlan match. If not metadata is not cloned.
+        */
+	clone3(CloneType.I2E, meta.outgroup, {meta.outgroup});
     }
 }
 
@@ -194,11 +179,10 @@ control ctl_egress(inout headers hdr,
         }
 
         action egress_no_tag() {
-            hdr.inmeta.setInvalid();
+	    hdr.vlan.setInvalid();
         }
 
         action egress_push_tag(bit<12> vid) {
-            hdr.inmeta.setInvalid();
             hdr.vlan.setValid();
             hdr.vlan.vid = vid;
             hdr.vlan.etherType = ETHERTYPE_VLAN;
@@ -207,7 +191,7 @@ control ctl_egress(inout headers hdr,
     table tbl_vlan_out {
 
         key = {
-            hdr.inmeta.outgroup: exact;
+            meta.outgroup: exact;
             standard_metadata.egress_port: exact;
         }
         actions = {
