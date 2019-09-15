@@ -4,6 +4,9 @@ buggy
 logging buffered debug 10240
 logging file debug r2.log
 !
+vrf definition c9
+ exit
+!
 vrf definition v1
  rd 1:1
  rt-import 1:1
@@ -73,6 +76,30 @@ interface ethernet1
  no shutdown
  no log-link-change
  exit
+!
+interface pwether1
+ no description
+ mtu 1500
+ macaddr 0035.6c6a.0869
+ vrf forwarding c9
+ ipv4 address 2.2.2.2 255.255.255.0
+ pseudowire v1 loopback0 pweompls 10.254.254.254 11
+ no shutdown
+ no log-link-change
+ exit
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
 !
 !
 !

@@ -75,6 +75,13 @@ interface sdn1
  no log-link-change
  exit
 !
+interface sdn1.11
+ no description
+ xconnect v1 loopback0 pweompls 10.2.2.2 11
+ no shutdown
+ no log-link-change
+ exit
+!
 interface sdn1.111
  no description
  mtu 1500
@@ -83,7 +90,6 @@ interface sdn1.111
  ipv4 address 10.0.1.254 255.255.255.0
  ipv6 address fd00:0:0:1::fe ffff:ffff:ffff:ffff::
  ipv6 enable
- ipv6 host-static fd00:0:0:1::1 0000.0a00.0101
  no shutdown
  no log-link-change
  exit
@@ -191,6 +197,7 @@ server p4lang p4
  export-port sdn4 4
  export-port sdn1.111 65
  export-port sdn2.222 66
+ export-port sdn1.11 67
  interconnect ethernet0
  vrf v1
  exit

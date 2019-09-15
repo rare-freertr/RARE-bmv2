@@ -80,6 +80,13 @@ interface sdn1
  no log-link-change
  exit
 !
+interface sdn1.11
+ no description
+ xconnect v1 loopback0 pweompls 10.2.2.2 11
+ no shutdown
+ no log-link-change
+ exit
+!
 interface sdn1.111
  no description
  mtu 1500
@@ -203,6 +210,7 @@ server p4lang p4
  export-port sdn4 4
  export-port sdn1.111 65
  export-port sdn2.222 66
+ export-port sdn1.11 67
  interconnect ethernet0
  vrf v1
  exit
