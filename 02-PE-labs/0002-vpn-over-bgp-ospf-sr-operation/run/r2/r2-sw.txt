@@ -4,6 +4,18 @@ buggy
 logging buffered debug 10240
 logging file debug r2.log
 !
+bridge 1
+ rd 1:1
+ rt-import 1:1
+ rt-export 1:1
+ exit
+!
+vrf definition c7
+ exit
+!
+vrf definition c8
+ exit
+!
 vrf definition c9
  exit
 !
@@ -53,6 +65,14 @@ interface loopback1
  no log-link-change
  exit
 !
+interface bvi1
+ no description
+ vrf forwarding c7
+ ipv4 address 2.2.2.22 255.255.255.0
+ no shutdown
+ no log-link-change
+ exit
+!
 interface ethernet0
  no description
  no shutdown
@@ -71,6 +91,14 @@ interface ethernet0.222
  router ospf4 1 area 0
  router ospf6 1 enable
  router ospf6 1 area 0
+ no shutdown
+ no log-link-change
+ exit
+!
+interface ethernet0.333
+ no description
+ vrf forwarding c8
+ ipv4 address 2.2.2.12 255.255.255.0
  no shutdown
  no log-link-change
  exit
@@ -101,6 +129,32 @@ interface pwether1
  no shutdown
  no log-link-change
  exit
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
 !
 !
 !

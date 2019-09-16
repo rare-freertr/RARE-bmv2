@@ -4,10 +4,22 @@ buggy
 logging buffered debug 10240
 logging file debug r4.log
 !
+bridge 1
+ rd 1:1
+ rt-import 1:1
+ rt-export 1:1
+ exit
+!
 vrf definition c1
  rd 1:2
  rt-import 1:2
  rt-export 1:2
+ exit
+!
+vrf definition c7
+ exit
+!
+vrf definition c8
  exit
 !
 vrf definition v1
@@ -42,9 +54,17 @@ interface loopback2
  no log-link-change
  exit
 !
+interface bvi1
+ no description
+ vrf forwarding c7
+ ipv4 address 2.2.2.24 255.255.255.0
+ no shutdown
+ no log-link-change
+ exit
+!
 interface ethernet0
  no description
- macaddr 0000.0a00.0101
+ macaddr 0000.0a00.0404
  vrf forwarding v1
  ipv4 address 10.0.4.4 255.255.255.0
  mpls enable
@@ -54,15 +74,23 @@ interface ethernet0
  no log-link-change
  exit
 !
+interface ethernet0.333
+ no description
+ vrf forwarding c8
+ ipv4 address 2.2.2.14 255.255.255.0
+ no shutdown
+ no log-link-change
+ exit
+!
 router bgp4 1
  vrf v1
  local-as 1
  router-id 10.4.4.4
- address-family vpnuni ovpnuni
+ address-family vpnuni ovpnuni vpls
  neighbor 10.3.3.3 remote-as 1
  neighbor 10.3.3.3 description lo0@core1 <--> lo0@r3
  neighbor 10.3.3.3 local-as 1
- neighbor 10.3.3.3 address-family vpnuni ovpnuni
+ neighbor 10.3.3.3 address-family vpnuni ovpnuni vpls
  neighbor 10.3.3.3 distance 200
  neighbor 10.3.3.3 update-source loopback0
  neighbor 10.3.3.3 send-community standard extended
@@ -72,7 +100,35 @@ router bgp4 1
  afi-ovrf c1 enable
  afi-ovrf c1 redistribute connected
  afi-ovrf c1 redistribute static
+ afi-vpls 1:1 bridge-group 1
+ afi-vpls 1:1 update-source loopback0
  exit
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
 !
 !
 !

@@ -4,10 +4,19 @@ buggy
 logging buffered debug 10240
 logging file debug r3.log
 !
+bridge 1
+ rd 1:1
+ rt-import 1:1
+ rt-export 1:1
+ exit
+!
 vrf definition c1
  rd 1:2
  rt-import 1:2
  rt-export 1:2
+ exit
+!
+vrf definition c7
  exit
 !
 vrf definition v1
@@ -60,6 +69,14 @@ interface loopback2
  no log-link-change
  exit
 !
+interface bvi1
+ no description
+ vrf forwarding c7
+ ipv4 address 2.2.2.23 255.255.255.0
+ no shutdown
+ no log-link-change
+ exit
+!
 interface ethernet0
  no description
  macaddr 0000.0a00.1703
@@ -76,11 +93,11 @@ router bgp4 1
  vrf v1
  local-as 1
  router-id 10.3.3.3
- address-family vpnuni ovpnuni
+ address-family vpnuni ovpnuni vpls
  template r remote-as 1
  no template r description
  template r local-as 1
- template r address-family vpnuni ovpnuni
+ template r address-family vpnuni ovpnuni vpls
  template r distance 200
  template r update-source loopback0
  template r route-reflector-client
@@ -91,7 +108,22 @@ router bgp4 1
  afi-vrf c1 redistribute connected
  afi-ovrf c1 enable
  afi-ovrf c1 redistribute connected
+ afi-vpls 1:1 bridge-group 1
+ afi-vpls 1:1 update-source loopback0
  exit
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
 !
 !
 !

@@ -4,6 +4,13 @@ buggy
 logging buffered debug 10240
 logging file debug core1.log
 !
+bridge 1
+ rd 1:1
+ rt-import 1:1
+ rt-export 1:1
+ mac-learn
+ exit
+!
 vrf definition c1
  rd 1:2
  rt-import 1:2
@@ -60,6 +67,12 @@ interface loopback2
  no log-link-change
  exit
 !
+interface bvi1
+ no description
+ no shutdown
+ no log-link-change
+ exit
+!
 interface ethernet0
  no description
  macaddr 0000.0a00.0040
@@ -94,6 +107,13 @@ interface sdn1.111
  no log-link-change
  exit
 !
+interface sdn1.333
+ no description
+ bridge-group 1
+ no shutdown
+ no log-link-change
+ exit
+!
 interface sdn2
  no description
  mtu 1500
@@ -115,6 +135,13 @@ interface sdn2.222
  no log-link-change
  exit
 !
+interface sdn2.333
+ no description
+ bridge-group 1
+ no shutdown
+ no log-link-change
+ exit
+!
 interface sdn4
  no description
  mtu 1500
@@ -128,15 +155,22 @@ interface sdn4
  no log-link-change
  exit
 !
+interface sdn4.333
+ no description
+ bridge-group 1
+ no shutdown
+ no log-link-change
+ exit
+!
 router bgp4 1
  vrf v1
  local-as 1
  router-id 10.254.254.254
- address-family vpnuni ovpnuni
+ address-family vpnuni ovpnuni vpls
  neighbor 10.3.3.3 remote-as 1
  neighbor 10.3.3.3 description lo0@core1 <--> lo0@cpe3
  neighbor 10.3.3.3 local-as 1
- neighbor 10.3.3.3 address-family vpnuni ovpnuni
+ neighbor 10.3.3.3 address-family vpnuni ovpnuni vpls
  neighbor 10.3.3.3 distance 200
  neighbor 10.3.3.3 update-source loopback0
  neighbor 10.3.3.3 send-community standard extended
@@ -146,6 +180,8 @@ router bgp4 1
  afi-ovrf c1 enable
  afi-ovrf c1 redistribute connected
  afi-ovrf c1 redistribute static
+ afi-vpls 1:1 bridge-group 1
+ afi-vpls 1:1 update-source loopback0
  exit
 !
 !
@@ -198,6 +234,10 @@ server p4lang p4
  export-port sdn1.111 65
  export-port sdn2.222 66
  export-port sdn1.11 67
+ export-port sdn1.333 68
+ export-port sdn2.333 69
+ export-port sdn4.333 70
+ export-bridge 1
  interconnect ethernet0
  vrf v1
  exit
