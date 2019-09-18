@@ -68,6 +68,14 @@ interface ethernet0.333
  no log-link-change
  exit
 !
+interface ethernet0.444
+ no description
+ vrf forwarding c8
+ ipv4 address 2.3.4.11 255.255.255.0
+ no shutdown
+ no log-link-change
+ exit
+!
 !
 ipv4 route c1 0.0.0.0 0.0.0.0 10.0.1.254
 !

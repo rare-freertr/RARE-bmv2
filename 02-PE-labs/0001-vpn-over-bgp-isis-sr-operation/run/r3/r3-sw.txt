@@ -10,6 +10,13 @@ bridge 1
  rt-export 1:1
  exit
 !
+bridge 2
+ rd 1:2
+ rt-import 1:2
+ rt-export 1:2
+ mac-learn
+ exit
+!
 vrf definition c1
  rd 1:2
  rt-import 1:2
@@ -77,6 +84,14 @@ interface bvi1
  no log-link-change
  exit
 !
+interface bvi2
+ no description
+ vrf forwarding c7
+ ipv4 address 2.3.4.23 255.255.255.0
+ no shutdown
+ no log-link-change
+ exit
+!
 interface ethernet0
  no description
  macaddr 0000.0a00.1703
@@ -93,13 +108,14 @@ router bgp4 1
  vrf v1
  local-as 1
  router-id 10.3.3.3
- address-family vpnuni ovpnuni vpls
+ address-family vpnuni ovpnuni vpls evpn
  template r remote-as 1
  no template r description
  template r local-as 1
- template r address-family vpnuni ovpnuni vpls
+ template r address-family vpnuni ovpnuni vpls evpn
  template r distance 200
  template r update-source loopback0
+ template r pmsitun
  template r route-reflector-client
  template r send-community standard extended
  neighbor 10.4.4.4 template r
@@ -110,6 +126,10 @@ router bgp4 1
  afi-ovrf c1 redistribute connected
  afi-vpls 1:1 bridge-group 1
  afi-vpls 1:1 update-source loopback0
+ afi-evpn 444 bridge-group 2
+ afi-evpn 444 bmac 003e.7a61.1021
+ afi-evpn 444 encapsulation cmac
+ afi-evpn 444 update-source loopback0
  exit
 !
 !
