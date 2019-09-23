@@ -1,0 +1,149 @@
+hostname r1
+buggy
+!
+logging buffered debug 10240
+logging file debug r1.log
+!
+vrf definition c1
+ rd 1:2
+ rt-import 1:2
+ rt-export 1:2
+ exit
+!
+vrf definition c8
+ exit
+!
+vrf definition c9
+ exit
+!
+vrf definition v1
+ exit
+!
+interface loopback0
+ no description
+ vrf forwarding c1
+ ipv4 address 10.1.1.1 255.255.255.255
+ no shutdown
+ no log-link-change
+ exit
+!
+interface loopback2
+ no description
+ vrf forwarding c1
+ ipv4 address 10.10.10.1 255.255.255.0
+ ipv6 address fd00::1 ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+ no shutdown
+ no log-link-change
+ exit
+!
+interface ethernet0
+ no description
+ no shutdown
+ no log-link-change
+ exit
+!
+interface ethernet0.11
+ no description
+ vrf forwarding c9
+ ipv4 address 2.2.2.1 255.255.255.0
+ no shutdown
+ no log-link-change
+ exit
+!
+interface ethernet0.111
+ no description
+ macaddr 0000.0a00.0101
+ vrf forwarding c1
+ ipv4 address 10.0.1.1 255.255.255.0
+ ipv6 address fd00:0:0:1::1 ffff:ffff:ffff:ffff::
+ no shutdown
+ no log-link-change
+ exit
+!
+interface ethernet0.333
+ no description
+ vrf forwarding c8
+ ipv4 address 2.2.2.11 255.255.255.0
+ no shutdown
+ no log-link-change
+ exit
+!
+interface ethernet0.444
+ no description
+ vrf forwarding c8
+ ipv4 address 2.3.4.11 255.255.255.0
+ no shutdown
+ no log-link-change
+ exit
+!
+!
+ipv4 route c1 0.0.0.0 0.0.0.0 10.0.1.254
+!
+ipv6 route c1 :: :: fd00:0:0:1::fe
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+alias test bash description 
+alias test bash parameter optional
+!
+server telnet tel
+ security protocol telnet
+ exec width 130
+ exec height 25
+ no exec authorization
+ no login authentication
+ vrf v1
+ exit
+!
+client name-server 8.8.8.8
+client config-save
+client time-zone CET
+!
+end
