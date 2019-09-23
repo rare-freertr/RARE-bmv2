@@ -59,11 +59,6 @@ typedef bit<20> label_t;
 
 
 /*
- * IPv4 address encoded using 32 bits
- */
-typedef bit<32> stack_index_t;
-
-/*
  * Ethernet header: as a header type, order matters
  */
 header ethernet_t {
@@ -183,8 +178,7 @@ struct l3_metadata_t {
     bit<16> lkp_l4_dport;
     bit<16> lkp_outer_l4_sport;
     bit<16> lkp_outer_l4_dport;
-    label_t vrf;
-    stack_index_t stack_cur_idx;
+    bit<20> vrf;
     bit<10> rmac_group;
     bit<1>  rmac_hit;
     bit<2>  urpf_mode;
@@ -263,11 +257,6 @@ struct metadata_t {
  * Our P4 program header structure 
  */
 struct headers {
-   /*icmp_t       inner_icmp;
-   ipv4_t       inner_ipv4;
-   ipv6_t       inner_ipv6;
-   tcp_t        inner_tcp;
-   udp_t        inner_udp;*/
    ethernet_t   ethernet;
    mpls_t[3]    mpls;
    ipv4_t       ipv4;
@@ -288,7 +277,6 @@ parser prs_main(packet_in packet,
    state start {
       packet.extract(hdr.ethernet);
       md.intrinsic_metadata.priority = 0;
-      md.l3_metadata.vrf = 0;
       transition select(hdr.ethernet.ethertype) {
          0 &&& 0xfe00: prs_llc_header; /* LLC SAP frame */
          0 &&& 0xfa00: prs_llc_header; /* LLC SAP frame */
@@ -300,27 +288,25 @@ parser prs_main(packet_in packet,
 
    state prs_mpls {
       packet.extract(hdr.mpls.next);
-      md.l3_metadata.stack_cur_idx = hdr.mpls.lastIndex;
-      transition select(hdr.mpls.last.bos,md.l3_metadata.stack_cur_idx) {
-          (1w0,32w0): prs_mpls;
-          (1w1,32w0): prs_mpls_bos;
-          (1w1,32w1): prs_mpls_vpn;
+      transition select(hdr.mpls.last.bos) {
+          1w0: prs_mpls;
+          1w1: prs_mpls_bos;
           default: accept;
       }
    }
 
    state prs_mpls_bos {
-      transition accept;
-   }
-
-   state prs_mpls_vpn {
-      md.l3_metadata.vrf =  hdr.mpls.last.label;
-      transition accept;
+      transition select((packet.lookahead<bit<4>>())[3:0]) {
+         4w0x4: prs_ipv4; /* IPv4 only for now */
+         //4w0x6: parse_ipv6; /* IPv6 is in next lab */
+         default: accept; /* EoMPLS is pausing problem if we don't resubmit() */
+      }
    }
 
    state prs_ipv4 {
       packet.extract(hdr.ipv4);
-      md.l3_metadata.lkp_ip_ttl = hdr.ipv4.ttl;
+      md.ipv4_metadata.lkp_ipv4_da = hdr.ipv4.dst_addr;
+      md.l3_metadata.lkp_ip_ttl = hdr.ipv4.ttl ;
       transition select(hdr.ipv4.frag_offset, hdr.ipv4.ihl, hdr.ipv4.protocol) {
          (13w0x0, 4w0x5, 8w0x6): prs_tcp;
          (13w0x0, 4w0x5, 8w0x11): prs_udp;
@@ -392,7 +378,6 @@ control ctl_ingress(inout headers hdr,
                   inout metadata_t md,
                   inout standard_metadata_t std_md) {
 
-   //action act_rmac_set_nexthop(nexthop_id_t nexthop_id) {
    action act_rmac_set_nexthop() {
       /*
        * Store nexthop value in nexthop_id
@@ -512,7 +497,7 @@ control ctl_ingress(inout headers hdr,
       md.nexthop_id = nexthop_id;
    }
 
-   action act_mpls_decap_set_nexthop(nexthop_id_t nexthop_id) {
+   action act_mpls_decap_ipv4_l3vpn() {
       /*
        * Egress packet is back now an IPv4 packet
        * (LABEL PHP )
@@ -526,13 +511,11 @@ control ctl_ingress(inout headers hdr,
       /*
        * Indicate nexthop_id
        */
-      md.nexthop_id = nexthop_id;
    }
 
    table tbl_mpls_fib {
       key = {
-         hdr.mpls[0].label: exact;
-         md.l3_metadata.vrf: exact;
+         md.tunnel_metadata.mpls_label: exact;
       }
       actions = {
          /*
@@ -543,7 +526,7 @@ control ctl_ingress(inout headers hdr,
          /*
           * mpls decapsulation if PHP  
           */
-         act_mpls_decap_set_nexthop;
+         act_mpls_decap_ipv4_l3vpn;
 
          /* 
           * Default action;
@@ -590,10 +573,10 @@ control ctl_ingress(inout headers hdr,
    }
 
    /*
-    * Discard via V1Model mark_to_drop(standard_metadata)
+    * Discard via V1Model mark_to_drop()
     */
    action act_ipv4_fib_discard() {
-      mark_to_drop(std_md);
+      mark_to_drop();
    }
 
 
@@ -615,26 +598,30 @@ control ctl_ingress(inout headers hdr,
    }
 
    apply {
-      /* 
-       * if the packet is not valid we don't process it
-       * proposed improvement: TTL check <> 0 
-       */
-      if (hdr.ipv4.isValid()) {
-         /*
-          * we first consider host routes
-          */
-         if (!tbl_ipv4_fib_host.apply().hit) {
-            /* 
-             * if no match consider LPM table
-             */
-             tbl_ipv4_fib_lpm.apply();
+      if (hdr.llc_header.isValid()) { 
+         tbl_rmac_fib.apply(); 
+      } else if (hdr.mpls[0].isValid()) {     
+         if (!hdr.mpls[1].isValid()) {
+            md.tunnel_metadata.mpls_label = hdr.mpls[0].label;
+         } else { 
+            md.tunnel_metadata.mpls_label = hdr.mpls[1].label;
          }
-      } 
-      else if (hdr.llc_header.isValid()) {
-         tbl_rmac_fib.apply();
-      } else if (hdr.mpls[0].isValid()) {
-           tbl_mpls_fib.apply();
+         tbl_mpls_fib.apply();
       }
+
+      if (hdr.ipv4.isValid() ) {               
+         /*                                    
+          * we first consider host routes      
+          */                                   
+         if (!tbl_ipv4_fib_host.apply().hit) { 
+            /*                                 
+             * if no match consider LPM table  
+             */                                
+             tbl_ipv4_fib_lpm.apply();         
+         }                                      
+      }                                            
+  
+         
       /*
        * nexthop value is now identified 
        * and stored in custom nexthop_id used for the lookup
@@ -686,27 +673,13 @@ control ctl_deprs(packet_out packet, in headers hdr) {
          * in ctl_ingress and ctl_ingress
 	 * have to be added again into the packet.
          * for emission in the wire
+         * Important: only headers that are valid() are re-emitted
          */
-        /*
-        packet.emit(hdr.ethernet);
-        packet.emit(hdr.llc_header);
-        packet.emit(hdr.ipv4);
-        packet.emit(hdr.tcp);
-        packet.emit(hdr.udp);
-        */
+
         /*
          * emit hdr
          */
         packet.emit(hdr);
-        /*
-        packet.emit(hdr.ethernet);
-        packet.emit(hdr.ipv4);
-        packet.emit(hdr.ipv6);
-        packet.emit(hdr.llc_header);
-        packet.emit(hdr.tcp);
-        packet.emit(hdr.udp);
-        packet.emit(hdr.mpls);
-        */
     }
 }
 
