@@ -1,0 +1,7133 @@
+{
+  "header_types" : [
+    {
+      "name" : "scalars_0",
+      "id" : 0,
+      "fields" : [
+        ["tmp", 4, false],
+        ["tmp_0", 4, false],
+        ["ig_ctl_ipv4_tmp", 1, false],
+        ["ig_ctl_ipv6_tmp", 1, false],
+        ["hasReturned", 1, false],
+        ["key_0", 20, false],
+        ["key_1", 20, false],
+        ["ingress_metadata_t.source_id", 9, false],
+        ["ingress_metadata_t.target_id", 9, false],
+        ["ingress_metadata_t.nexthop_id", 9, false],
+        ["ingress_metadata_t.bridge_id", 9, false],
+        ["ingress_metadata_t.bridge_src", 9, false],
+        ["ingress_metadata_t.bridge_trg", 9, false],
+        ["ingress_metadata_t.ethertype", 16, false],
+        ["ingress_metadata_t.vrf", 16, false],
+        ["ingress_metadata_t.mpls_label", 20, false],
+        ["ingress_metadata_t.mpls_op_type", 3, false],
+        ["ingress_metadata_t.mpls0_remove", 1, false],
+        ["ingress_metadata_t.mpls1_remove", 1, false],
+        ["ingress_metadata_t.mpls0_valid", 1, false],
+        ["ingress_metadata_t.mpls1_valid", 1, false],
+        ["ingress_metadata_t.llc_valid", 1, false],
+        ["ingress_metadata_t.arp_valid", 1, false],
+        ["ingress_metadata_t.ipv4_valid", 1, false],
+        ["ingress_metadata_t.ipv6_valid", 1, false]
+      ]
+    },
+    {
+      "name" : "standard_metadata",
+      "id" : 1,
+      "fields" : [
+        ["ingress_port", 9, false],
+        ["egress_spec", 9, false],
+        ["egress_port", 9, false],
+        ["instance_type", 32, false],
+        ["packet_length", 32, false],
+        ["enq_timestamp", 32, false],
+        ["enq_qdepth", 19, false],
+        ["deq_timedelta", 32, false],
+        ["deq_qdepth", 19, false],
+        ["ingress_global_timestamp", 48, false],
+        ["egress_global_timestamp", 48, false],
+        ["mcast_grp", 16, false],
+        ["egress_rid", 16, false],
+        ["checksum_error", 1, false],
+        ["parser_error", 32, false],
+        ["priority", 3, false],
+        ["_padding_0", 3, false]
+      ]
+    },
+    {
+      "name" : "pkt_out_header_t",
+      "id" : 2,
+      "fields" : [
+        ["egress_port", 9, false],
+        ["_padding", 7, false]
+      ]
+    },
+    {
+      "name" : "pkt_in_header_t",
+      "id" : 3,
+      "fields" : [
+        ["ingress_port", 9, false],
+        ["_padding", 7, false]
+      ]
+    },
+    {
+      "name" : "ethernet_t",
+      "id" : 4,
+      "fields" : [
+        ["dst_mac_addr", 48, false],
+        ["src_mac_addr", 48, false],
+        ["ethertype", 16, false]
+      ]
+    },
+    {
+      "name" : "vlan_t",
+      "id" : 5,
+      "fields" : [
+        ["pcp", 3, false],
+        ["cfi", 1, false],
+        ["vid", 12, false],
+        ["ethertype", 16, false]
+      ]
+    },
+    {
+      "name" : "arp_t",
+      "id" : 6,
+      "fields" : [
+        ["hrd", 16, false],
+        ["pro", 16, false],
+        ["hln", 8, false],
+        ["pln", 8, false],
+        ["op", 16, false],
+        ["sha", 48, false],
+        ["tpa", 32, false],
+        ["tha", 48, false],
+        ["spa", 32, false]
+      ]
+    },
+    {
+      "name" : "llc_t",
+      "id" : 7,
+      "fields" : [
+        ["dsap", 8, false],
+        ["ssap", 8, false],
+        ["control_", 8, false]
+      ]
+    },
+    {
+      "name" : "ipv4_t",
+      "id" : 8,
+      "fields" : [
+        ["version", 4, false],
+        ["ihl", 4, false],
+        ["diffserv", 8, false],
+        ["total_len", 16, false],
+        ["identification", 16, false],
+        ["flags", 3, false],
+        ["frag_offset", 13, false],
+        ["ttl", 8, false],
+        ["protocol", 8, false],
+        ["hdr_checksum", 16, false],
+        ["src_ipv4_addr", 32, false],
+        ["dst_ipv4_addr", 32, false]
+      ]
+    },
+    {
+      "name" : "ipv6_t",
+      "id" : 9,
+      "fields" : [
+        ["version", 4, false],
+        ["traffic_class", 8, false],
+        ["flow_label", 20, false],
+        ["payload_len", 16, false],
+        ["next_hdr", 8, false],
+        ["hop_limit", 8, false],
+        ["src_addr", 128, false],
+        ["dst_addr", 128, false]
+      ]
+    },
+    {
+      "name" : "mpls_t",
+      "id" : 10,
+      "fields" : [
+        ["label", 20, false],
+        ["exp", 3, false],
+        ["bos", 1, false],
+        ["ttl", 8, false]
+      ]
+    }
+  ],
+  "headers" : [
+    {
+      "name" : "scalars",
+      "id" : 0,
+      "header_type" : "scalars_0",
+      "metadata" : true,
+      "pi_omit" : true
+    },
+    {
+      "name" : "standard_metadata",
+      "id" : 1,
+      "header_type" : "standard_metadata",
+      "metadata" : true,
+      "pi_omit" : true
+    },
+    {
+      "name" : "pkt_out",
+      "id" : 2,
+      "header_type" : "pkt_out_header_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "pkt_in",
+      "id" : 3,
+      "header_type" : "pkt_in_header_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "ethernet",
+      "id" : 4,
+      "header_type" : "ethernet_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "vlan",
+      "id" : 5,
+      "header_type" : "vlan_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "eth2",
+      "id" : 6,
+      "header_type" : "ethernet_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "arp",
+      "id" : 7,
+      "header_type" : "arp_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "llc",
+      "id" : 8,
+      "header_type" : "llc_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "ipv4",
+      "id" : 9,
+      "header_type" : "ipv4_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "ipv6",
+      "id" : 10,
+      "header_type" : "ipv6_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "mpls[0]",
+      "id" : 11,
+      "header_type" : "mpls_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "mpls[1]",
+      "id" : 12,
+      "header_type" : "mpls_t",
+      "metadata" : false,
+      "pi_omit" : true
+    },
+    {
+      "name" : "mpls[2]",
+      "id" : 13,
+      "header_type" : "mpls_t",
+      "metadata" : false,
+      "pi_omit" : true
+    }
+  ],
+  "header_stacks" : [
+    {
+      "name" : "mpls",
+      "id" : 0,
+      "header_type" : "mpls_t",
+      "size" : 3,
+      "header_ids" : [11, 12, 13]
+    }
+  ],
+  "header_union_types" : [],
+  "header_unions" : [],
+  "header_union_stacks" : [],
+  "field_lists" : [],
+  "errors" : [
+    ["NoError", 1],
+    ["PacketTooShort", 2],
+    ["NoMatch", 3],
+    ["StackOutOfBounds", 4],
+    ["HeaderTooShort", 5],
+    ["ParserTimeout", 6],
+    ["ParserInvalidArgument", 7]
+  ],
+  "enums" : [],
+  "parsers" : [
+    {
+      "name" : "parser",
+      "id" : 0,
+      "init_state" : "start",
+      "parse_states" : [
+        {
+          "name" : "start",
+          "id" : 0,
+          "parser_ops" : [],
+          "transitions" : [
+            {
+              "type" : "hexstr",
+              "value" : "0x0040",
+              "mask" : null,
+              "next_state" : "prs_pkt_out"
+            },
+            {
+              "value" : "default",
+              "mask" : null,
+              "next_state" : "prs_ethernet"
+            }
+          ],
+          "transition_key" : [
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "ingress_port"]
+            }
+          ]
+        },
+        {
+          "name" : "prs_pkt_out",
+          "id" : 1,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "pkt_out"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "value" : "default",
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : []
+        },
+        {
+          "name" : "prs_ethernet",
+          "id" : 2,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "ethernet"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "type" : "hexstr",
+              "value" : "0x0000",
+              "mask" : "0xfe00",
+              "next_state" : "prs_llc"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0000",
+              "mask" : "0xfa00",
+              "next_state" : "prs_llc"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x8100",
+              "mask" : null,
+              "next_state" : "prs_vlan"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x8847",
+              "mask" : null,
+              "next_state" : "prs_mpls"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0800",
+              "mask" : null,
+              "next_state" : "prs_ipv4"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x86dd",
+              "mask" : null,
+              "next_state" : "prs_ipv6"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0806",
+              "mask" : null,
+              "next_state" : "prs_arp"
+            },
+            {
+              "value" : "default",
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : [
+            {
+              "type" : "field",
+              "value" : ["ethernet", "ethertype"]
+            }
+          ]
+        },
+        {
+          "name" : "prs_vlan",
+          "id" : 3,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "vlan"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "type" : "hexstr",
+              "value" : "0x0000",
+              "mask" : "0xfe00",
+              "next_state" : "prs_llc"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0000",
+              "mask" : "0xfa00",
+              "next_state" : "prs_llc"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x8847",
+              "mask" : null,
+              "next_state" : "prs_mpls"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0800",
+              "mask" : null,
+              "next_state" : "prs_ipv4"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x86dd",
+              "mask" : null,
+              "next_state" : "prs_ipv6"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0806",
+              "mask" : null,
+              "next_state" : "prs_arp"
+            },
+            {
+              "value" : "default",
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : [
+            {
+              "type" : "field",
+              "value" : ["vlan", "ethertype"]
+            }
+          ]
+        },
+        {
+          "name" : "prs_mpls",
+          "id" : 4,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "stack",
+                  "value" : "mpls"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "type" : "hexstr",
+              "value" : "0x00",
+              "mask" : null,
+              "next_state" : "prs_mpls"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x01",
+              "mask" : null,
+              "next_state" : "prs_mpls_bos"
+            },
+            {
+              "value" : "default",
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : [
+            {
+              "type" : "stack_field",
+              "value" : ["mpls", "bos"]
+            }
+          ]
+        },
+        {
+          "name" : "prs_mpls_bos",
+          "id" : 5,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "field",
+                  "value" : ["scalars", "tmp"]
+                },
+                {
+                  "type" : "lookahead",
+                  "value" : [0, 4]
+                }
+              ],
+              "op" : "set"
+            },
+            {
+              "parameters" : [
+                {
+                  "type" : "field",
+                  "value" : ["scalars", "tmp_0"]
+                },
+                {
+                  "type" : "expression",
+                  "value" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "&",
+                      "left" : {
+                        "type" : "expression",
+                        "value" : {
+                          "op" : "&",
+                          "left" : {
+                            "type" : "field",
+                            "value" : ["scalars", "tmp"]
+                          },
+                          "right" : {
+                            "type" : "hexstr",
+                            "value" : "0x0f"
+                          }
+                        }
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0x0f"
+                      }
+                    }
+                  }
+                }
+              ],
+              "op" : "set"
+            }
+          ],
+          "transitions" : [
+            {
+              "type" : "hexstr",
+              "value" : "0x04",
+              "mask" : null,
+              "next_state" : "prs_ipv4"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x06",
+              "mask" : null,
+              "next_state" : "prs_ipv6"
+            },
+            {
+              "value" : "default",
+              "mask" : null,
+              "next_state" : "prs_eth2"
+            }
+          ],
+          "transition_key" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "tmp_0"]
+            }
+          ]
+        },
+        {
+          "name" : "prs_eth2",
+          "id" : 6,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "eth2"
+                }
+              ],
+              "op" : "extract"
+            }
+          ],
+          "transitions" : [
+            {
+              "value" : "default",
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : []
+        },
+        {
+          "name" : "prs_ipv4",
+          "id" : 7,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "ipv4"
+                }
+              ],
+              "op" : "extract"
+            },
+            {
+              "parameters" : [
+                {
+                  "type" : "field",
+                  "value" : ["scalars", "ingress_metadata_t.ipv4_valid"]
+                },
+                {
+                  "type" : "hexstr",
+                  "value" : "0x01"
+                }
+              ],
+              "op" : "set"
+            }
+          ],
+          "transitions" : [
+            {
+              "value" : "default",
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : []
+        },
+        {
+          "name" : "prs_ipv6",
+          "id" : 8,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "ipv6"
+                }
+              ],
+              "op" : "extract"
+            },
+            {
+              "parameters" : [
+                {
+                  "type" : "field",
+                  "value" : ["scalars", "ingress_metadata_t.ipv6_valid"]
+                },
+                {
+                  "type" : "hexstr",
+                  "value" : "0x01"
+                }
+              ],
+              "op" : "set"
+            }
+          ],
+          "transitions" : [
+            {
+              "value" : "default",
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : []
+        },
+        {
+          "name" : "prs_arp",
+          "id" : 9,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "arp"
+                }
+              ],
+              "op" : "extract"
+            },
+            {
+              "parameters" : [
+                {
+                  "type" : "field",
+                  "value" : ["scalars", "ingress_metadata_t.arp_valid"]
+                },
+                {
+                  "type" : "hexstr",
+                  "value" : "0x01"
+                }
+              ],
+              "op" : "set"
+            }
+          ],
+          "transitions" : [
+            {
+              "value" : "default",
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : []
+        },
+        {
+          "name" : "prs_llc",
+          "id" : 10,
+          "parser_ops" : [
+            {
+              "parameters" : [
+                {
+                  "type" : "regular",
+                  "value" : "llc"
+                }
+              ],
+              "op" : "extract"
+            },
+            {
+              "parameters" : [
+                {
+                  "type" : "field",
+                  "value" : ["scalars", "ingress_metadata_t.llc_valid"]
+                },
+                {
+                  "type" : "hexstr",
+                  "value" : "0x01"
+                }
+              ],
+              "op" : "set"
+            }
+          ],
+          "transitions" : [
+            {
+              "type" : "hexstr",
+              "value" : "0xfefe",
+              "mask" : null,
+              "next_state" : null
+            },
+            {
+              "value" : "default",
+              "mask" : null,
+              "next_state" : null
+            }
+          ],
+          "transition_key" : [
+            {
+              "type" : "field",
+              "value" : ["llc", "dsap"]
+            },
+            {
+              "type" : "field",
+              "value" : ["llc", "ssap"]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "parse_vsets" : [],
+  "deparsers" : [
+    {
+      "name" : "deparser",
+      "id" : 0,
+      "source_info" : {
+        "filename" : "./include/ig_ctl_dprs.p4",
+        "line" : 6,
+        "column" : 8,
+        "source_fragment" : "ig_ctl_dprs"
+      },
+      "order" : ["pkt_out", "pkt_in", "ethernet", "vlan", "mpls[0]", "mpls[1]", "mpls[2]", "eth2", "arp", "llc", "ipv4", "ipv6"]
+    }
+  ],
+  "meter_arrays" : [],
+  "counter_arrays" : [],
+  "register_arrays" : [],
+  "calculations" : [
+    {
+      "name" : "calc",
+      "id" : 0,
+      "source_info" : {
+        "filename" : "./include/ig_ctl_compute_checksum.p4",
+        "line" : 6,
+        "column" : 6,
+        "source_fragment" : "update_checksum( ..."
+      },
+      "algo" : "csum16",
+      "input" : [
+        {
+          "type" : "field",
+          "value" : ["ipv4", "version"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "ihl"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "diffserv"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "total_len"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "identification"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "flags"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "frag_offset"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "ttl"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "protocol"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "src_ipv4_addr"]
+        },
+        {
+          "type" : "field",
+          "value" : ["ipv4", "dst_ipv4_addr"]
+        }
+      ]
+    }
+  ],
+  "learn_lists" : [],
+  "actions" : [
+    {
+      "name" : "NoAction",
+      "id" : 0,
+      "runtime_data" : [],
+      "primitives" : []
+    },
+    {
+      "name" : "NoAction",
+      "id" : 1,
+      "runtime_data" : [],
+      "primitives" : []
+    },
+    {
+      "name" : "NoAction",
+      "id" : 2,
+      "runtime_data" : [],
+      "primitives" : []
+    },
+    {
+      "name" : "NoAction",
+      "id" : 3,
+      "runtime_data" : [],
+      "primitives" : []
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_arp.send_to_cpu",
+      "id" : 4,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.nexthop_id"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0040"
+            }
+          ],
+          "source_info" : {
+            "filename" : "router.p4",
+            "line" : 5,
+            "column" : 26,
+            "source_fragment" : "64; ..."
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_mpls.act_mpls_swap_set_nexthop",
+      "id" : 5,
+      "runtime_data" : [
+        {
+          "name" : "egress_label",
+          "bitwidth" : 20
+        },
+        {
+          "name" : "nexthop_id",
+          "bitwidth" : 9
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["mpls[0]", "label"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 12,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[0].label = egress_label"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.nexthop_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 1
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 16,
+            "column" : 6,
+            "source_fragment" : "ig_md.nexthop_id = nexthop_id"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.mpls_op_type"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 17,
+            "column" : 6,
+            "source_fragment" : "ig_md.mpls_op_type = 0"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_mpls.act_mpls_swap_set_nexthop",
+      "id" : 6,
+      "runtime_data" : [
+        {
+          "name" : "egress_label",
+          "bitwidth" : 20
+        },
+        {
+          "name" : "nexthop_id",
+          "bitwidth" : 9
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["mpls[0]", "label"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 12,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[0].label = egress_label"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.nexthop_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 1
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 16,
+            "column" : 6,
+            "source_fragment" : "ig_md.nexthop_id = nexthop_id"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.mpls_op_type"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 17,
+            "column" : 6,
+            "source_fragment" : "ig_md.mpls_op_type = 0"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_mpls.act_mpls_decap_ipv4",
+      "id" : 7,
+      "runtime_data" : [
+        {
+          "name" : "vrf",
+          "bitwidth" : 16
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.vrf"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 34,
+            "column" : 6,
+            "source_fragment" : "ig_md.vrf = vrf"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.mpls_op_type"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x01"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 35,
+            "column" : 6,
+            "source_fragment" : "ig_md.mpls_op_type = 1"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.mpls0_remove"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x01"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 36,
+            "column" : 6,
+            "source_fragment" : "ig_md.mpls0_remove = 1"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_mpls.act_mpls_decap_l3vpn",
+      "id" : 8,
+      "runtime_data" : [
+        {
+          "name" : "vrf",
+          "bitwidth" : 16
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.vrf"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 54,
+            "column" : 6,
+            "source_fragment" : "ig_md.vrf = vrf"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.mpls_op_type"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x01"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 55,
+            "column" : 6,
+            "source_fragment" : "ig_md.mpls_op_type = 1"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.mpls1_remove"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x01"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 56,
+            "column" : 6,
+            "source_fragment" : "ig_md.mpls1_remove = 1"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_mpls.act_mpls_decap_l2vpn",
+      "id" : 9,
+      "runtime_data" : [
+        {
+          "name" : "port",
+          "bitwidth" : 9
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.ethertype"]
+            },
+            {
+              "type" : "field",
+              "value" : ["eth2", "ethertype"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 68,
+            "column" : 6,
+            "source_fragment" : "ig_md.ethertype = hdr.eth2.ethertype"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ethernet", "dst_mac_addr"]
+            },
+            {
+              "type" : "field",
+              "value" : ["eth2", "dst_mac_addr"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 69,
+            "column" : 6,
+            "source_fragment" : "hdr.ethernet.dst_mac_addr = hdr.eth2.dst_mac_addr"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ethernet", "src_mac_addr"]
+            },
+            {
+              "type" : "field",
+              "value" : ["eth2", "src_mac_addr"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 70,
+            "column" : 6,
+            "source_fragment" : "hdr.ethernet.src_mac_addr = hdr.eth2.src_mac_addr"
+          }
+        },
+        {
+          "op" : "remove_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "eth2"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 71,
+            "column" : 6,
+            "source_fragment" : "hdr.eth2.setInvalid()"
+          }
+        },
+        {
+          "op" : "remove_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "mpls[1]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 72,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[1].setInvalid()"
+          }
+        },
+        {
+          "op" : "remove_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "mpls[0]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 73,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[0].setInvalid()"
+          }
+        },
+        {
+          "op" : "remove_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "vlan"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 74,
+            "column" : 6,
+            "source_fragment" : "hdr.vlan.setInvalid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.target_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 75,
+            "column" : 6,
+            "source_fragment" : "ig_md.target_id = port"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.mpls0_remove"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 80,
+            "column" : 6,
+            "source_fragment" : "ig_md.mpls0_remove = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.mpls1_remove"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 81,
+            "column" : 6,
+            "source_fragment" : "ig_md.mpls1_remove = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.mpls_op_type"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x02"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 82,
+            "column" : 6,
+            "source_fragment" : "ig_md.mpls_op_type = 2"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_mpls.act_mpls_decap_l2vpn",
+      "id" : 10,
+      "runtime_data" : [
+        {
+          "name" : "port",
+          "bitwidth" : 9
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.ethertype"]
+            },
+            {
+              "type" : "field",
+              "value" : ["eth2", "ethertype"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 68,
+            "column" : 6,
+            "source_fragment" : "ig_md.ethertype = hdr.eth2.ethertype"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ethernet", "dst_mac_addr"]
+            },
+            {
+              "type" : "field",
+              "value" : ["eth2", "dst_mac_addr"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 69,
+            "column" : 6,
+            "source_fragment" : "hdr.ethernet.dst_mac_addr = hdr.eth2.dst_mac_addr"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ethernet", "src_mac_addr"]
+            },
+            {
+              "type" : "field",
+              "value" : ["eth2", "src_mac_addr"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 70,
+            "column" : 6,
+            "source_fragment" : "hdr.ethernet.src_mac_addr = hdr.eth2.src_mac_addr"
+          }
+        },
+        {
+          "op" : "remove_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "eth2"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 71,
+            "column" : 6,
+            "source_fragment" : "hdr.eth2.setInvalid()"
+          }
+        },
+        {
+          "op" : "remove_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "mpls[1]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 72,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[1].setInvalid()"
+          }
+        },
+        {
+          "op" : "remove_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "mpls[0]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 73,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[0].setInvalid()"
+          }
+        },
+        {
+          "op" : "remove_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "vlan"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 74,
+            "column" : 6,
+            "source_fragment" : "hdr.vlan.setInvalid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.target_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 75,
+            "column" : 6,
+            "source_fragment" : "ig_md.target_id = port"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.mpls0_remove"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 80,
+            "column" : 6,
+            "source_fragment" : "ig_md.mpls0_remove = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.mpls1_remove"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 81,
+            "column" : 6,
+            "source_fragment" : "ig_md.mpls1_remove = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.mpls_op_type"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x02"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 82,
+            "column" : 6,
+            "source_fragment" : "ig_md.mpls_op_type = 2"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_mpls.act_mpls_decap_vpls",
+      "id" : 11,
+      "runtime_data" : [
+        {
+          "name" : "bridge",
+          "bitwidth" : 9
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.bridge_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 90,
+            "column" : 6,
+            "source_fragment" : "ig_md.bridge_id = bridge"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.bridge_src"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 91,
+            "column" : 6,
+            "source_fragment" : "ig_md.bridge_src = bridge"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.ethertype"]
+            },
+            {
+              "type" : "field",
+              "value" : ["eth2", "ethertype"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 92,
+            "column" : 6,
+            "source_fragment" : "ig_md.ethertype = hdr.eth2.ethertype"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ethernet", "dst_mac_addr"]
+            },
+            {
+              "type" : "field",
+              "value" : ["eth2", "dst_mac_addr"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 93,
+            "column" : 6,
+            "source_fragment" : "hdr.ethernet.dst_mac_addr = hdr.eth2.dst_mac_addr"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ethernet", "src_mac_addr"]
+            },
+            {
+              "type" : "field",
+              "value" : ["eth2", "src_mac_addr"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 94,
+            "column" : 6,
+            "source_fragment" : "hdr.ethernet.src_mac_addr = hdr.eth2.src_mac_addr"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.mpls_op_type"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x02"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 99,
+            "column" : 6,
+            "source_fragment" : "ig_md.mpls_op_type = 2"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_mpls.act_mpls_decap_vpls",
+      "id" : 12,
+      "runtime_data" : [
+        {
+          "name" : "bridge",
+          "bitwidth" : 9
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.bridge_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 90,
+            "column" : 6,
+            "source_fragment" : "ig_md.bridge_id = bridge"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.bridge_src"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 91,
+            "column" : 6,
+            "source_fragment" : "ig_md.bridge_src = bridge"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.ethertype"]
+            },
+            {
+              "type" : "field",
+              "value" : ["eth2", "ethertype"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 92,
+            "column" : 6,
+            "source_fragment" : "ig_md.ethertype = hdr.eth2.ethertype"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ethernet", "dst_mac_addr"]
+            },
+            {
+              "type" : "field",
+              "value" : ["eth2", "dst_mac_addr"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 93,
+            "column" : 6,
+            "source_fragment" : "hdr.ethernet.dst_mac_addr = hdr.eth2.dst_mac_addr"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ethernet", "src_mac_addr"]
+            },
+            {
+              "type" : "field",
+              "value" : ["eth2", "src_mac_addr"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 94,
+            "column" : 6,
+            "source_fragment" : "hdr.ethernet.src_mac_addr = hdr.eth2.src_mac_addr"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.mpls_op_type"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x02"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 99,
+            "column" : 6,
+            "source_fragment" : "ig_md.mpls_op_type = 2"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_bridge.send_to_cpu",
+      "id" : 13,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.nexthop_id"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0040"
+            }
+          ],
+          "source_info" : {
+            "filename" : "router.p4",
+            "line" : 5,
+            "column" : 26,
+            "source_fragment" : "64; ..."
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_bridge.act_set_bridge_port",
+      "id" : 14,
+      "runtime_data" : [
+        {
+          "name" : "port",
+          "bitwidth" : 9
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.bridge_src"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 18,
+            "column" : 6,
+            "source_fragment" : "ig_md.bridge_src = port"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_bridge.act_bridge_miss",
+      "id" : 15,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.bridge_src"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 22,
+            "column" : 6,
+            "source_fragment" : "ig_md.bridge_src = 0"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_bridge.act_set_bridge_out",
+      "id" : 16,
+      "runtime_data" : [
+        {
+          "name" : "port",
+          "bitwidth" : 9
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.bridge_trg"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 40,
+            "column" : 6,
+            "source_fragment" : "ig_md.bridge_trg = port"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_bridge.act_set_bridge_vpls",
+      "id" : 17,
+      "runtime_data" : [
+        {
+          "name" : "port",
+          "bitwidth" : 9
+        },
+        {
+          "name" : "lab_tun",
+          "bitwidth" : 20
+        },
+        {
+          "name" : "lab_svc",
+          "bitwidth" : 20
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.bridge_trg"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 44,
+            "column" : 6,
+            "source_fragment" : "ig_md.bridge_trg = port"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.vrf"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 45,
+            "column" : 6,
+            "source_fragment" : "ig_md.vrf = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.mpls0_valid"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 46,
+            "column" : 6,
+            "source_fragment" : "ig_md.mpls0_valid = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.mpls1_valid"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 47,
+            "column" : 6,
+            "source_fragment" : "ig_md.mpls1_valid = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.arp_valid"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 48,
+            "column" : 6,
+            "source_fragment" : "ig_md.arp_valid = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.llc_valid"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 49,
+            "column" : 6,
+            "source_fragment" : "ig_md.llc_valid = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.ipv4_valid"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 50,
+            "column" : 6,
+            "source_fragment" : "ig_md.ipv4_valid = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.ipv6_valid"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 51,
+            "column" : 6,
+            "source_fragment" : "ig_md.ipv6_valid = 0"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "eth2"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 52,
+            "column" : 6,
+            "source_fragment" : "hdr.eth2.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["eth2", "dst_mac_addr"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ethernet", "dst_mac_addr"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 53,
+            "column" : 6,
+            "source_fragment" : "hdr.eth2.dst_mac_addr = hdr.ethernet.dst_mac_addr"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["eth2", "src_mac_addr"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ethernet", "src_mac_addr"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 54,
+            "column" : 6,
+            "source_fragment" : "hdr.eth2.src_mac_addr = hdr.ethernet.src_mac_addr"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["eth2", "ethertype"]
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.ethertype"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 55,
+            "column" : 6,
+            "source_fragment" : "hdr.eth2.ethertype = ig_md.ethertype"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.ethertype"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x8847"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/cst_ethertype.p4",
+            "line" : 27,
+            "column" : 37,
+            "source_fragment" : "0x8847; ..."
+          }
+        },
+        {
+          "op" : "push",
+          "parameters" : [
+            {
+              "type" : "header_stack",
+              "value" : "mpls"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x2"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 58,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls.push_front(2)"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "mpls[0]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 59,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[0].setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["mpls[0]", "label"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 1
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 60,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[0].label = lab_tun"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["mpls[0]", "ttl"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0xff"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 61,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[0].ttl = 255"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "mpls[1]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 62,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[1].setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["mpls[1]", "label"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 2
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 63,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[1].label = lab_svc"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["mpls[1]", "ttl"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0xff"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 64,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[1].ttl = 255"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["mpls[1]", "bos"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x01"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 65,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[1].bos = 1"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.mpls_op_type"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x03"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 66,
+            "column" : 6,
+            "source_fragment" : "ig_md.mpls_op_type = 3"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_bridge.act_bridge_punt",
+      "id" : 18,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.bridge_trg"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 70,
+            "column" : 6,
+            "source_fragment" : "ig_md.bridge_trg = 0"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_ipv4.act_ipv4_cpl_set_nexthop",
+      "id" : 19,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.nexthop_id"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0040"
+            }
+          ],
+          "source_info" : {
+            "filename" : "router.p4",
+            "line" : 5,
+            "column" : 26,
+            "source_fragment" : "64; ..."
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_ipv4.act_ipv4_cpl_set_nexthop",
+      "id" : 20,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.nexthop_id"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0040"
+            }
+          ],
+          "source_info" : {
+            "filename" : "router.p4",
+            "line" : 5,
+            "column" : 26,
+            "source_fragment" : "64; ..."
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_ipv4.act_ipv4_fib_discard",
+      "id" : 21,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "mark_to_drop",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "standard_metadata"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv4.p4",
+            "line" : 25,
+            "column" : 6,
+            "source_fragment" : "mark_to_drop(ig_intr_md)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_ipv4.act_ipv4_set_nexthop",
+      "id" : 22,
+      "runtime_data" : [
+        {
+          "name" : "nexthop_id",
+          "bitwidth" : 9
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.nexthop_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv4.p4",
+            "line" : 37,
+            "column" : 6,
+            "source_fragment" : "ig_md.nexthop_id = nexthop_id"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_ipv4.act_ipv4_set_nexthop",
+      "id" : 23,
+      "runtime_data" : [
+        {
+          "name" : "nexthop_id",
+          "bitwidth" : 9
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.nexthop_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv4.p4",
+            "line" : 37,
+            "column" : 6,
+            "source_fragment" : "ig_md.nexthop_id = nexthop_id"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_ipv4.act_ipv4_mpls_encap_set_nexthop",
+      "id" : 24,
+      "runtime_data" : [
+        {
+          "name" : "vpn_label",
+          "bitwidth" : 20
+        },
+        {
+          "name" : "egress_label",
+          "bitwidth" : 20
+        },
+        {
+          "name" : "nexthop_id",
+          "bitwidth" : 9
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.ethertype"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x8847"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/cst_ethertype.p4",
+            "line" : 27,
+            "column" : 37,
+            "source_fragment" : "0x8847; ..."
+          }
+        },
+        {
+          "op" : "push",
+          "parameters" : [
+            {
+              "type" : "header_stack",
+              "value" : "mpls"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x2"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv4.p4",
+            "line" : 51,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls.push_front(2)"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "mpls[0]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv4.p4",
+            "line" : 52,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[0].setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["mpls[0]", "label"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 1
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv4.p4",
+            "line" : 53,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[0].label = egress_label"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["mpls[0]", "ttl"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ipv4", "ttl"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv4.p4",
+            "line" : 54,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[0].ttl = hdr.ipv4.ttl"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "mpls[1]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv4.p4",
+            "line" : 59,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[1].setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["mpls[1]", "label"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv4.p4",
+            "line" : 60,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[1].label = vpn_label"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["mpls[1]", "ttl"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ipv4", "ttl"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv4.p4",
+            "line" : 61,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[1].ttl = hdr.ipv4.ttl"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["mpls[1]", "bos"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x01"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv4.p4",
+            "line" : 62,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[1].bos = 1"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.nexthop_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 2
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv4.p4",
+            "line" : 66,
+            "column" : 6,
+            "source_fragment" : "ig_md.nexthop_id = nexthop_id"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_ipv4.act_ipv4_mpls_encap_set_nexthop",
+      "id" : 25,
+      "runtime_data" : [
+        {
+          "name" : "vpn_label",
+          "bitwidth" : 20
+        },
+        {
+          "name" : "egress_label",
+          "bitwidth" : 20
+        },
+        {
+          "name" : "nexthop_id",
+          "bitwidth" : 9
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.ethertype"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x8847"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/cst_ethertype.p4",
+            "line" : 27,
+            "column" : 37,
+            "source_fragment" : "0x8847; ..."
+          }
+        },
+        {
+          "op" : "push",
+          "parameters" : [
+            {
+              "type" : "header_stack",
+              "value" : "mpls"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x2"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv4.p4",
+            "line" : 51,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls.push_front(2)"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "mpls[0]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv4.p4",
+            "line" : 52,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[0].setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["mpls[0]", "label"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 1
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv4.p4",
+            "line" : 53,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[0].label = egress_label"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["mpls[0]", "ttl"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ipv4", "ttl"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv4.p4",
+            "line" : 54,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[0].ttl = hdr.ipv4.ttl"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "mpls[1]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv4.p4",
+            "line" : 59,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[1].setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["mpls[1]", "label"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv4.p4",
+            "line" : 60,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[1].label = vpn_label"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["mpls[1]", "ttl"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ipv4", "ttl"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv4.p4",
+            "line" : 61,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[1].ttl = hdr.ipv4.ttl"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["mpls[1]", "bos"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x01"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv4.p4",
+            "line" : 62,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[1].bos = 1"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.nexthop_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 2
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv4.p4",
+            "line" : 66,
+            "column" : 6,
+            "source_fragment" : "ig_md.nexthop_id = nexthop_id"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_ipv6.act_ipv6_cpl_set_nexthop",
+      "id" : 26,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.nexthop_id"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0040"
+            }
+          ],
+          "source_info" : {
+            "filename" : "router.p4",
+            "line" : 5,
+            "column" : 26,
+            "source_fragment" : "64; ..."
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_ipv6.act_ipv6_cpl_set_nexthop",
+      "id" : 27,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.nexthop_id"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0040"
+            }
+          ],
+          "source_info" : {
+            "filename" : "router.p4",
+            "line" : 5,
+            "column" : 26,
+            "source_fragment" : "64; ..."
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_ipv6.act_ipv6_fib_discard",
+      "id" : 28,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "mark_to_drop",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "standard_metadata"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv6.p4",
+            "line" : 25,
+            "column" : 6,
+            "source_fragment" : "mark_to_drop(ig_intr_md)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_ipv6.act_ipv6_set_nexthop",
+      "id" : 29,
+      "runtime_data" : [
+        {
+          "name" : "nexthop_id",
+          "bitwidth" : 9
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.nexthop_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv6.p4",
+            "line" : 37,
+            "column" : 6,
+            "source_fragment" : "ig_md.nexthop_id = nexthop_id"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_ipv6.act_ipv6_set_nexthop",
+      "id" : 30,
+      "runtime_data" : [
+        {
+          "name" : "nexthop_id",
+          "bitwidth" : 9
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.nexthop_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv6.p4",
+            "line" : 37,
+            "column" : 6,
+            "source_fragment" : "ig_md.nexthop_id = nexthop_id"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_ipv6.act_ipv6_mpls_encap_set_nexthop",
+      "id" : 31,
+      "runtime_data" : [
+        {
+          "name" : "vpn_label",
+          "bitwidth" : 20
+        },
+        {
+          "name" : "egress_label",
+          "bitwidth" : 20
+        },
+        {
+          "name" : "nexthop_id",
+          "bitwidth" : 9
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.ethertype"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x8847"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/cst_ethertype.p4",
+            "line" : 27,
+            "column" : 37,
+            "source_fragment" : "0x8847; ..."
+          }
+        },
+        {
+          "op" : "push",
+          "parameters" : [
+            {
+              "type" : "header_stack",
+              "value" : "mpls"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x2"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv6.p4",
+            "line" : 51,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls.push_front(2)"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "mpls[0]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv6.p4",
+            "line" : 52,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[0].setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["mpls[0]", "label"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 1
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv6.p4",
+            "line" : 53,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[0].label = egress_label"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["mpls[0]", "ttl"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ipv6", "hop_limit"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv6.p4",
+            "line" : 54,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[0].ttl = hdr.ipv6.hop_limit"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "mpls[1]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv6.p4",
+            "line" : 59,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[1].setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["mpls[1]", "label"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv6.p4",
+            "line" : 60,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[1].label = vpn_label"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["mpls[1]", "ttl"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ipv6", "hop_limit"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv6.p4",
+            "line" : 61,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[1].ttl = hdr.ipv6.hop_limit"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["mpls[1]", "bos"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x01"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv6.p4",
+            "line" : 62,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[1].bos = 1"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.nexthop_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 2
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv6.p4",
+            "line" : 66,
+            "column" : 6,
+            "source_fragment" : "ig_md.nexthop_id = nexthop_id"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_ipv6.act_ipv6_mpls_encap_set_nexthop",
+      "id" : 32,
+      "runtime_data" : [
+        {
+          "name" : "vpn_label",
+          "bitwidth" : 20
+        },
+        {
+          "name" : "egress_label",
+          "bitwidth" : 20
+        },
+        {
+          "name" : "nexthop_id",
+          "bitwidth" : 9
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.ethertype"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x8847"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/cst_ethertype.p4",
+            "line" : 27,
+            "column" : 37,
+            "source_fragment" : "0x8847; ..."
+          }
+        },
+        {
+          "op" : "push",
+          "parameters" : [
+            {
+              "type" : "header_stack",
+              "value" : "mpls"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x2"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv6.p4",
+            "line" : 51,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls.push_front(2)"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "mpls[0]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv6.p4",
+            "line" : 52,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[0].setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["mpls[0]", "label"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 1
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv6.p4",
+            "line" : 53,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[0].label = egress_label"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["mpls[0]", "ttl"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ipv6", "hop_limit"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv6.p4",
+            "line" : 54,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[0].ttl = hdr.ipv6.hop_limit"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "mpls[1]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv6.p4",
+            "line" : 59,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[1].setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["mpls[1]", "label"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv6.p4",
+            "line" : 60,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[1].label = vpn_label"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["mpls[1]", "ttl"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ipv6", "hop_limit"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv6.p4",
+            "line" : 61,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[1].ttl = hdr.ipv6.hop_limit"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["mpls[1]", "bos"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x01"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv6.p4",
+            "line" : 62,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[1].bos = 1"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.nexthop_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 2
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv6.p4",
+            "line" : 66,
+            "column" : 6,
+            "source_fragment" : "ig_md.nexthop_id = nexthop_id"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_nexthop.act_ipv4_fib_hit",
+      "id" : 33,
+      "runtime_data" : [
+        {
+          "name" : "dst_mac_addr",
+          "bitwidth" : 48
+        },
+        {
+          "name" : "egress_port",
+          "bitwidth" : 9
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ethernet", "src_mac_addr"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ethernet", "dst_mac_addr"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_nexthop.p4",
+            "line" : 12,
+            "column" : 6,
+            "source_fragment" : "hdr.ethernet.src_mac_addr = hdr.ethernet.dst_mac_addr"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ethernet", "dst_mac_addr"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_nexthop.p4",
+            "line" : 18,
+            "column" : 6,
+            "source_fragment" : "hdr.ethernet.dst_mac_addr = dst_mac_addr"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.target_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 1
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_nexthop.p4",
+            "line" : 24,
+            "column" : 6,
+            "source_fragment" : "ig_md.target_id = egress_port"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv4", "ttl"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "&",
+                  "left" : {
+                    "type" : "expression",
+                    "value" : {
+                      "op" : "+",
+                      "left" : {
+                        "type" : "field",
+                        "value" : ["ipv4", "ttl"]
+                      },
+                      "right" : {
+                        "type" : "hexstr",
+                        "value" : "0xff"
+                      }
+                    }
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0xff"
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_nexthop.p4",
+            "line" : 29,
+            "column" : 6,
+            "source_fragment" : "hdr.ipv4.ttl = hdr.ipv4.ttl -1"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_nexthop.act_ipv4_fib_discard",
+      "id" : 34,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "mark_to_drop",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "standard_metadata"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_nexthop.p4",
+            "line" : 33,
+            "column" : 6,
+            "source_fragment" : "mark_to_drop(ig_intr_md)"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_vlan_in.act_set_iface",
+      "id" : 35,
+      "runtime_data" : [
+        {
+          "name" : "src",
+          "bitwidth" : 9
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.source_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_vlan_in.p4",
+            "line" : 9,
+            "column" : 6,
+            "source_fragment" : "ig_md.source_id = src"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.ethertype"]
+            },
+            {
+              "type" : "field",
+              "value" : ["vlan", "ethertype"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_vlan_in.p4",
+            "line" : 10,
+            "column" : 6,
+            "source_fragment" : "ig_md.ethertype = hdr.vlan.ethertype"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_vlan_in.act_set_def_iface",
+      "id" : 36,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.source_id"]
+            },
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "ingress_port"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_vlan_in.p4",
+            "line" : 14,
+            "column" : 6,
+            "source_fragment" : "ig_md.source_id = ig_intr_md.ingress_port"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.ethertype"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ethernet", "ethertype"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_vlan_in.p4",
+            "line" : 15,
+            "column" : 6,
+            "source_fragment" : "ig_md.ethertype = hdr.ethernet.ethertype"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_vlan_out.act_set_vlan_port",
+      "id" : 37,
+      "runtime_data" : [
+        {
+          "name" : "port",
+          "bitwidth" : 9
+        },
+        {
+          "name" : "vlan",
+          "bitwidth" : 12
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "egress_spec"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_vlan_out.p4",
+            "line" : 9,
+            "column" : 6,
+            "source_fragment" : "ig_intr_md.egress_spec = port"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "vlan"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_vlan_out.p4",
+            "line" : 10,
+            "column" : 6,
+            "source_fragment" : "hdr.vlan.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["vlan", "ethertype"]
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.ethertype"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_vlan_out.p4",
+            "line" : 11,
+            "column" : 6,
+            "source_fragment" : "hdr.vlan.ethertype = ig_md.ethertype"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ethernet", "ethertype"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x8100"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/cst_ethertype.p4",
+            "line" : 25,
+            "column" : 31,
+            "source_fragment" : "0x8100; ..."
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["vlan", "vid"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 1
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_vlan_out.p4",
+            "line" : 13,
+            "column" : 6,
+            "source_fragment" : "hdr.vlan.vid = vlan"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_vlan_out.act_set_port",
+      "id" : 38,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "egress_spec"]
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.target_id"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_vlan_out.p4",
+            "line" : 17,
+            "column" : 6,
+            "source_fragment" : "ig_intr_md.egress_spec = ig_md.target_id"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ethernet", "ethertype"]
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.ethertype"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_vlan_out.p4",
+            "line" : 18,
+            "column" : 6,
+            "source_fragment" : "hdr.ethernet.ethertype = ig_md.ethertype"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_vrf.act_set_vrf",
+      "id" : 39,
+      "runtime_data" : [
+        {
+          "name" : "vrf",
+          "bitwidth" : 16
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.vrf"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_vrf.p4",
+            "line" : 8,
+            "column" : 6,
+            "source_fragment" : "ig_md.vrf = vrf"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_vrf.act_set_default_vrf",
+      "id" : 40,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.vrf"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_vrf.p4",
+            "line" : 12,
+            "column" : 6,
+            "source_fragment" : "ig_md.vrf = 0"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_vrf.act_set_mpls_xconn_encap",
+      "id" : 41,
+      "runtime_data" : [
+        {
+          "name" : "target",
+          "bitwidth" : 9
+        },
+        {
+          "name" : "tunlab",
+          "bitwidth" : 20
+        },
+        {
+          "name" : "svclab",
+          "bitwidth" : 20
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.vrf"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_vrf.p4",
+            "line" : 16,
+            "column" : 6,
+            "source_fragment" : "ig_md.vrf = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.mpls0_valid"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_vrf.p4",
+            "line" : 17,
+            "column" : 6,
+            "source_fragment" : "ig_md.mpls0_valid = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.mpls1_valid"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_vrf.p4",
+            "line" : 18,
+            "column" : 6,
+            "source_fragment" : "ig_md.mpls1_valid = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.arp_valid"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_vrf.p4",
+            "line" : 19,
+            "column" : 6,
+            "source_fragment" : "ig_md.arp_valid = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.llc_valid"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_vrf.p4",
+            "line" : 20,
+            "column" : 6,
+            "source_fragment" : "ig_md.llc_valid = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.ipv4_valid"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_vrf.p4",
+            "line" : 21,
+            "column" : 6,
+            "source_fragment" : "ig_md.ipv4_valid = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.ipv6_valid"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_vrf.p4",
+            "line" : 22,
+            "column" : 6,
+            "source_fragment" : "ig_md.ipv6_valid = 0"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "eth2"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_vrf.p4",
+            "line" : 23,
+            "column" : 6,
+            "source_fragment" : "hdr.eth2.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["eth2", "dst_mac_addr"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ethernet", "dst_mac_addr"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_vrf.p4",
+            "line" : 24,
+            "column" : 6,
+            "source_fragment" : "hdr.eth2.dst_mac_addr = hdr.ethernet.dst_mac_addr"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["eth2", "src_mac_addr"]
+            },
+            {
+              "type" : "field",
+              "value" : ["ethernet", "src_mac_addr"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_vrf.p4",
+            "line" : 25,
+            "column" : 6,
+            "source_fragment" : "hdr.eth2.src_mac_addr = hdr.ethernet.src_mac_addr"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["eth2", "ethertype"]
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.ethertype"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_vrf.p4",
+            "line" : 26,
+            "column" : 6,
+            "source_fragment" : "hdr.eth2.ethertype = ig_md.ethertype"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.target_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_vrf.p4",
+            "line" : 27,
+            "column" : 6,
+            "source_fragment" : "ig_md.target_id = target"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.ethertype"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x8847"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/cst_ethertype.p4",
+            "line" : 27,
+            "column" : 37,
+            "source_fragment" : "0x8847; ..."
+          }
+        },
+        {
+          "op" : "push",
+          "parameters" : [
+            {
+              "type" : "header_stack",
+              "value" : "mpls"
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x2"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_vrf.p4",
+            "line" : 29,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls.push_front(2)"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "mpls[0]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_vrf.p4",
+            "line" : 30,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[0].setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["mpls[0]", "label"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 1
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_vrf.p4",
+            "line" : 31,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[0].label = tunlab"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["mpls[0]", "ttl"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0xff"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_vrf.p4",
+            "line" : 32,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[0].ttl = 255"
+          }
+        },
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "mpls[1]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_vrf.p4",
+            "line" : 33,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[1].setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["mpls[1]", "label"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 2
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_vrf.p4",
+            "line" : 34,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[1].label = svclab"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["mpls[1]", "ttl"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0xff"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_vrf.p4",
+            "line" : 35,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[1].ttl = 255"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["mpls[1]", "bos"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x01"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_vrf.p4",
+            "line" : 36,
+            "column" : 6,
+            "source_fragment" : "hdr.mpls[1].bos = 1"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_vrf.act_set_bridge",
+      "id" : 42,
+      "runtime_data" : [
+        {
+          "name" : "bridge",
+          "bitwidth" : 9
+        }
+      ],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.bridge_id"]
+            },
+            {
+              "type" : "runtime_data",
+              "value" : 0
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_vrf.p4",
+            "line" : 40,
+            "column" : 6,
+            "source_fragment" : "ig_md.bridge_id = bridge"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl.ig_ctl_llc.send_to_cpu",
+      "id" : 43,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.nexthop_id"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0040"
+            }
+          ],
+          "source_info" : {
+            "filename" : "router.p4",
+            "line" : 5,
+            "column" : 26,
+            "source_fragment" : "64; ..."
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl32",
+      "id" : 44,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "egress_spec"]
+            },
+            {
+              "type" : "field",
+              "value" : ["pkt_out", "egress_port"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl.p4",
+            "line" : 32,
+            "column" : 9,
+            "source_fragment" : "ig_intr_md.egress_spec = hdr.pkt_out.egress_port"
+          }
+        },
+        {
+          "op" : "remove_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "pkt_out"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl.p4",
+            "line" : 33,
+            "column" : 9,
+            "source_fragment" : "hdr.pkt_out.setInvalid()"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl39",
+      "id" : 45,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.mpls0_valid"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x01"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl.p4",
+            "line" : 39,
+            "column" : 13,
+            "source_fragment" : "ig_md.mpls0_valid = 1"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl42",
+      "id" : 46,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.mpls1_valid"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x01"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl.p4",
+            "line" : 42,
+            "column" : 13,
+            "source_fragment" : "ig_md.mpls1_valid = 1"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl_mpls179",
+      "id" : 47,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.mpls_label"]
+            },
+            {
+              "type" : "field",
+              "value" : ["mpls[0]", "label"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 179,
+            "column" : 12,
+            "source_fragment" : "ig_md.mpls_label = hdr.mpls[0].label"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "key_0"]
+            },
+            {
+              "type" : "field",
+              "value" : ["mpls[0]", "label"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 179,
+            "column" : 31,
+            "source_fragment" : "hdr.mpls[0].label"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl_mpls182",
+      "id" : 48,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.mpls_label"]
+            },
+            {
+              "type" : "field",
+              "value" : ["mpls[1]", "label"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 182,
+            "column" : 15,
+            "source_fragment" : "ig_md.mpls_label = hdr.mpls[1].label"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "key_1"]
+            },
+            {
+              "type" : "field",
+              "value" : ["mpls[1]", "label"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 182,
+            "column" : 34,
+            "source_fragment" : "hdr.mpls[1].label"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl_bridge90",
+      "id" : 49,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.vrf"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0000"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 90,
+            "column" : 12,
+            "source_fragment" : "ig_md.vrf = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.mpls0_valid"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 91,
+            "column" : 12,
+            "source_fragment" : "ig_md.mpls0_valid = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.mpls1_valid"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 92,
+            "column" : 12,
+            "source_fragment" : "ig_md.mpls1_valid = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.arp_valid"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 93,
+            "column" : 12,
+            "source_fragment" : "ig_md.arp_valid = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.llc_valid"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 94,
+            "column" : 12,
+            "source_fragment" : "ig_md.llc_valid = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.ipv4_valid"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 95,
+            "column" : 12,
+            "source_fragment" : "ig_md.ipv4_valid = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.ipv6_valid"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 96,
+            "column" : 12,
+            "source_fragment" : "ig_md.ipv6_valid = 0"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl_bridge103",
+      "id" : 50,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "remove_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "eth2"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 103,
+            "column" : 14,
+            "source_fragment" : "hdr.eth2.setInvalid()"
+          }
+        },
+        {
+          "op" : "remove_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "mpls[1]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 104,
+            "column" : 14,
+            "source_fragment" : "hdr.mpls[1].setInvalid()"
+          }
+        },
+        {
+          "op" : "remove_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "mpls[0]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 105,
+            "column" : 14,
+            "source_fragment" : "hdr.mpls[0].setInvalid()"
+          }
+        },
+        {
+          "op" : "remove_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "vlan"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 106,
+            "column" : 14,
+            "source_fragment" : "hdr.vlan.setInvalid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.mpls0_remove"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 107,
+            "column" : 14,
+            "source_fragment" : "ig_md.mpls0_remove = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.mpls1_remove"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 108,
+            "column" : 14,
+            "source_fragment" : "ig_md.mpls1_remove = 0"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl_bridge99",
+      "id" : 51,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.target_id"]
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.bridge_trg"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 99,
+            "column" : 12,
+            "source_fragment" : "ig_md.target_id = ig_md.bridge_trg"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "act",
+      "id" : 52,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ig_ctl_ipv4_tmp"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "b2d",
+                  "left" : null,
+                  "right" : {
+                    "type" : "bool",
+                    "value" : true
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name" : "act_0",
+      "id" : 53,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ig_ctl_ipv4_tmp"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "b2d",
+                  "left" : null,
+                  "right" : {
+                    "type" : "bool",
+                    "value" : false
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name" : "act_1",
+      "id" : 54,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ig_ctl_ipv6_tmp"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "b2d",
+                  "left" : null,
+                  "right" : {
+                    "type" : "bool",
+                    "value" : true
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name" : "act_2",
+      "id" : 55,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ig_ctl_ipv6_tmp"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "b2d",
+                  "left" : null,
+                  "right" : {
+                    "type" : "bool",
+                    "value" : false
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl53",
+      "id" : 56,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "add_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "pkt_in"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl.p4",
+            "line" : 53,
+            "column" : 11,
+            "source_fragment" : "hdr.pkt_in.setValid()"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["pkt_in", "ingress_port"]
+            },
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "ingress_port"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl.p4",
+            "line" : 54,
+            "column" : 11,
+            "source_fragment" : "hdr.pkt_in.ingress_port = ig_intr_md.ingress_port"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["standard_metadata", "egress_spec"]
+            },
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.nexthop_id"]
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl.p4",
+            "line" : 55,
+            "column" : 11,
+            "source_fragment" : "ig_intr_md.egress_spec = ig_md.nexthop_id"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "hasReturned"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "b2d",
+                  "left" : null,
+                  "right" : {
+                    "type" : "bool",
+                    "value" : true
+                  }
+                }
+              }
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl.p4",
+            "line" : 56,
+            "column" : 11,
+            "source_fragment" : "return"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl60",
+      "id" : 57,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "remove_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "vlan"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl.p4",
+            "line" : 60,
+            "column" : 14,
+            "source_fragment" : "hdr.vlan.setInvalid()"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl_mpls2l13",
+      "id" : 58,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.ethertype"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0800"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/cst_ethertype.p4",
+            "line" : 23,
+            "column" : 31,
+            "source_fragment" : "0x0800; ..."
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl_mpls2l15",
+      "id" : 59,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.ethertype"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x86dd"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/cst_ethertype.p4",
+            "line" : 26,
+            "column" : 31,
+            "source_fragment" : "0x86dd; ..."
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl_mpls2l11",
+      "id" : 60,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "remove_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "mpls[0]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls2.p4",
+            "line" : 11,
+            "column" : 14,
+            "source_fragment" : "hdr.mpls[0].setInvalid()"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl_mpls2l22",
+      "id" : 61,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.ethertype"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0800"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/cst_ethertype.p4",
+            "line" : 23,
+            "column" : 31,
+            "source_fragment" : "0x0800; ..."
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl_mpls2l24",
+      "id" : 62,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.ethertype"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x86dd"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/cst_ethertype.p4",
+            "line" : 26,
+            "column" : 31,
+            "source_fragment" : "0x86dd; ..."
+          }
+        }
+      ]
+    },
+    {
+      "name" : "ig_ctl_mpls2l20",
+      "id" : 63,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "remove_header",
+          "parameters" : [
+            {
+              "type" : "header",
+              "value" : "mpls[1]"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls2.p4",
+            "line" : 20,
+            "column" : 14,
+            "source_fragment" : "hdr.mpls[1].setInvalid()"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "act_3",
+      "id" : 64,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "hasReturned"]
+            },
+            {
+              "type" : "expression",
+              "value" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "b2d",
+                  "left" : null,
+                  "right" : {
+                    "type" : "bool",
+                    "value" : false
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipelines" : [
+    {
+      "name" : "ingress",
+      "id" : 0,
+      "source_info" : {
+        "filename" : "./include/ig_ctl.p4",
+        "line" : 7,
+        "column" : 8,
+        "source_fragment" : "ig_ctl"
+      },
+      "init_table" : "tbl_act",
+      "tables" : [
+        {
+          "name" : "tbl_act",
+          "id" : 0,
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [64],
+          "actions" : ["act_3"],
+          "base_default_next" : "node_3",
+          "next_tables" : {
+            "act_3" : "node_3"
+          },
+          "default_entry" : {
+            "action_id" : 64,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_ig_ctl32",
+          "id" : 1,
+          "source_info" : {
+            "filename" : "./include/ig_ctl.p4",
+            "line" : 32,
+            "column" : 32,
+            "source_fragment" : "= hdr.pkt_out.egress_port; ..."
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [44],
+          "actions" : ["ig_ctl32"],
+          "base_default_next" : null,
+          "next_tables" : {
+            "ig_ctl32" : null
+          },
+          "default_entry" : {
+            "action_id" : 44,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_ig_ctl39",
+          "id" : 2,
+          "source_info" : {
+            "filename" : "./include/ig_ctl.p4",
+            "line" : 39,
+            "column" : 31,
+            "source_fragment" : "="
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [45],
+          "actions" : ["ig_ctl39"],
+          "base_default_next" : "node_7",
+          "next_tables" : {
+            "ig_ctl39" : "node_7"
+          },
+          "default_entry" : {
+            "action_id" : 45,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_ig_ctl42",
+          "id" : 3,
+          "source_info" : {
+            "filename" : "./include/ig_ctl.p4",
+            "line" : 42,
+            "column" : 31,
+            "source_fragment" : "="
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [46],
+          "actions" : ["ig_ctl42"],
+          "base_default_next" : "ig_ctl.ig_ctl_vlan_in.tbl_vlan_in",
+          "next_tables" : {
+            "ig_ctl42" : "ig_ctl.ig_ctl_vlan_in.tbl_vlan_in"
+          },
+          "default_entry" : {
+            "action_id" : 46,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "ig_ctl.ig_ctl_vlan_in.tbl_vlan_in",
+          "id" : 4,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_vlan_in.p4",
+            "line" : 18,
+            "column" : 9,
+            "source_fragment" : "tbl_vlan_in"
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "name" : "ig_intr_md.ingress_port",
+              "target" : ["standard_metadata", "ingress_port"],
+              "mask" : null
+            },
+            {
+              "match_type" : "exact",
+              "name" : "hdr.vlan.vid",
+              "target" : ["vlan", "vid"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [35, 36],
+          "actions" : ["ig_ctl.ig_ctl_vlan_in.act_set_iface", "ig_ctl.ig_ctl_vlan_in.act_set_def_iface"],
+          "base_default_next" : "ig_ctl.ig_ctl_vrf.tbl_vrf",
+          "next_tables" : {
+            "ig_ctl.ig_ctl_vlan_in.act_set_iface" : "ig_ctl.ig_ctl_vrf.tbl_vrf",
+            "ig_ctl.ig_ctl_vlan_in.act_set_def_iface" : "ig_ctl.ig_ctl_vrf.tbl_vrf"
+          },
+          "default_entry" : {
+            "action_id" : 36,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        },
+        {
+          "name" : "ig_ctl.ig_ctl_vrf.tbl_vrf",
+          "id" : 5,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_vrf.p4",
+            "line" : 43,
+            "column" : 9,
+            "source_fragment" : "tbl_vrf"
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "name" : "ig_md.source_id",
+              "target" : ["scalars", "ingress_metadata_t.source_id"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [39, 41, 42, 40],
+          "actions" : ["ig_ctl.ig_ctl_vrf.act_set_vrf", "ig_ctl.ig_ctl_vrf.act_set_mpls_xconn_encap", "ig_ctl.ig_ctl_vrf.act_set_bridge", "ig_ctl.ig_ctl_vrf.act_set_default_vrf"],
+          "base_default_next" : "node_11",
+          "next_tables" : {
+            "ig_ctl.ig_ctl_vrf.act_set_vrf" : "node_11",
+            "ig_ctl.ig_ctl_vrf.act_set_mpls_xconn_encap" : "node_11",
+            "ig_ctl.ig_ctl_vrf.act_set_bridge" : "node_11",
+            "ig_ctl.ig_ctl_vrf.act_set_default_vrf" : "node_11"
+          },
+          "default_entry" : {
+            "action_id" : 40,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        },
+        {
+          "name" : "tbl_ig_ctl_arp_send_to_cpu",
+          "id" : 6,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_arp.p4",
+            "line" : 21,
+            "column" : 11,
+            "source_fragment" : "send_to_cpu()"
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [4],
+          "actions" : ["ig_ctl.ig_ctl_arp.send_to_cpu"],
+          "base_default_next" : "node_13",
+          "next_tables" : {
+            "ig_ctl.ig_ctl_arp.send_to_cpu" : "node_13"
+          },
+          "default_entry" : {
+            "action_id" : 4,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_ig_ctl_llc_send_to_cpu",
+          "id" : 7,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_llc.p4",
+            "line" : 21,
+            "column" : 11,
+            "source_fragment" : "send_to_cpu()"
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [43],
+          "actions" : ["ig_ctl.ig_ctl_llc.send_to_cpu"],
+          "base_default_next" : "node_15",
+          "next_tables" : {
+            "ig_ctl.ig_ctl_llc.send_to_cpu" : "node_15"
+          },
+          "default_entry" : {
+            "action_id" : 43,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_ig_ctl_mpls179",
+          "id" : 8,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 179,
+            "column" : 29,
+            "source_fragment" : "= hdr.mpls[0].label"
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [47],
+          "actions" : ["ig_ctl_mpls179"],
+          "base_default_next" : "ig_ctl.ig_ctl_mpls.tbl_mpls_fib",
+          "next_tables" : {
+            "ig_ctl_mpls179" : "ig_ctl.ig_ctl_mpls.tbl_mpls_fib"
+          },
+          "default_entry" : {
+            "action_id" : 47,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "ig_ctl.ig_ctl_mpls.tbl_mpls_fib",
+          "id" : 9,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 105,
+            "column" : 9,
+            "source_fragment" : "tbl_mpls_fib"
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "name" : "ig_md.mpls_label",
+              "target" : ["scalars", "key_0"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [5, 7, 9, 11, 0],
+          "actions" : ["ig_ctl.ig_ctl_mpls.act_mpls_swap_set_nexthop", "ig_ctl.ig_ctl_mpls.act_mpls_decap_ipv4", "ig_ctl.ig_ctl_mpls.act_mpls_decap_l2vpn", "ig_ctl.ig_ctl_mpls.act_mpls_decap_vpls", "NoAction"],
+          "base_default_next" : "node_18",
+          "next_tables" : {
+            "ig_ctl.ig_ctl_mpls.act_mpls_swap_set_nexthop" : "node_18",
+            "ig_ctl.ig_ctl_mpls.act_mpls_decap_ipv4" : "node_18",
+            "ig_ctl.ig_ctl_mpls.act_mpls_decap_l2vpn" : "node_18",
+            "ig_ctl.ig_ctl_mpls.act_mpls_decap_vpls" : "node_18",
+            "NoAction" : "node_18"
+          },
+          "default_entry" : {
+            "action_id" : 0,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        },
+        {
+          "name" : "tbl_ig_ctl_mpls182",
+          "id" : 10,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 182,
+            "column" : 32,
+            "source_fragment" : "= hdr.mpls[1].label"
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [48],
+          "actions" : ["ig_ctl_mpls182"],
+          "base_default_next" : "ig_ctl.ig_ctl_mpls.tbl_mpls_fib_decap",
+          "next_tables" : {
+            "ig_ctl_mpls182" : "ig_ctl.ig_ctl_mpls.tbl_mpls_fib_decap"
+          },
+          "default_entry" : {
+            "action_id" : 48,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "ig_ctl.ig_ctl_mpls.tbl_mpls_fib_decap",
+          "id" : 11,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 141,
+            "column" : 9,
+            "source_fragment" : "tbl_mpls_fib_decap"
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "name" : "ig_md.mpls_label",
+              "target" : ["scalars", "key_1"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [6, 8, 10, 12, 1],
+          "actions" : ["ig_ctl.ig_ctl_mpls.act_mpls_swap_set_nexthop", "ig_ctl.ig_ctl_mpls.act_mpls_decap_l3vpn", "ig_ctl.ig_ctl_mpls.act_mpls_decap_l2vpn", "ig_ctl.ig_ctl_mpls.act_mpls_decap_vpls", "NoAction"],
+          "base_default_next" : "node_21",
+          "next_tables" : {
+            "ig_ctl.ig_ctl_mpls.act_mpls_swap_set_nexthop" : "node_21",
+            "ig_ctl.ig_ctl_mpls.act_mpls_decap_l3vpn" : "node_21",
+            "ig_ctl.ig_ctl_mpls.act_mpls_decap_l2vpn" : "node_21",
+            "ig_ctl.ig_ctl_mpls.act_mpls_decap_vpls" : "node_21",
+            "NoAction" : "node_21"
+          },
+          "default_entry" : {
+            "action_id" : 1,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        },
+        {
+          "name" : "tbl_ig_ctl_bridge90",
+          "id" : 12,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 90,
+            "column" : 22,
+            "source_fragment" : "= 0; ..."
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [49],
+          "actions" : ["ig_ctl_bridge90"],
+          "base_default_next" : "ig_ctl.ig_ctl_bridge.tbl_bridge_learn",
+          "next_tables" : {
+            "ig_ctl_bridge90" : "ig_ctl.ig_ctl_bridge.tbl_bridge_learn"
+          },
+          "default_entry" : {
+            "action_id" : 49,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "ig_ctl.ig_ctl_bridge.tbl_bridge_learn",
+          "id" : 13,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 25,
+            "column" : 9,
+            "source_fragment" : "tbl_bridge_learn"
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "name" : "ig_md.bridge_id",
+              "target" : ["scalars", "ingress_metadata_t.bridge_id"],
+              "mask" : null
+            },
+            {
+              "match_type" : "exact",
+              "name" : "hdr.ethernet.src_mac_addr",
+              "target" : ["ethernet", "src_mac_addr"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [14, 15],
+          "actions" : ["ig_ctl.ig_ctl_bridge.act_set_bridge_port", "ig_ctl.ig_ctl_bridge.act_bridge_miss"],
+          "base_default_next" : "ig_ctl.ig_ctl_bridge.tbl_bridge_target",
+          "next_tables" : {
+            "ig_ctl.ig_ctl_bridge.act_set_bridge_port" : "ig_ctl.ig_ctl_bridge.tbl_bridge_target",
+            "ig_ctl.ig_ctl_bridge.act_bridge_miss" : "ig_ctl.ig_ctl_bridge.tbl_bridge_target"
+          },
+          "default_entry" : {
+            "action_id" : 15,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        },
+        {
+          "name" : "ig_ctl.ig_ctl_bridge.tbl_bridge_target",
+          "id" : 14,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 73,
+            "column" : 9,
+            "source_fragment" : "tbl_bridge_target"
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "name" : "ig_md.bridge_id",
+              "target" : ["scalars", "ingress_metadata_t.bridge_id"],
+              "mask" : null
+            },
+            {
+              "match_type" : "exact",
+              "name" : "hdr.ethernet.dst_mac_addr",
+              "target" : ["ethernet", "dst_mac_addr"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [16, 17, 18],
+          "actions" : ["ig_ctl.ig_ctl_bridge.act_set_bridge_out", "ig_ctl.ig_ctl_bridge.act_set_bridge_vpls", "ig_ctl.ig_ctl_bridge.act_bridge_punt"],
+          "base_default_next" : "tbl_ig_ctl_bridge99",
+          "next_tables" : {
+            "ig_ctl.ig_ctl_bridge.act_set_bridge_out" : "tbl_ig_ctl_bridge99",
+            "ig_ctl.ig_ctl_bridge.act_set_bridge_vpls" : "tbl_ig_ctl_bridge99",
+            "ig_ctl.ig_ctl_bridge.act_bridge_punt" : "tbl_ig_ctl_bridge99"
+          },
+          "default_entry" : {
+            "action_id" : 18,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        },
+        {
+          "name" : "tbl_ig_ctl_bridge99",
+          "id" : 15,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 99,
+            "column" : 28,
+            "source_fragment" : "="
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [51],
+          "actions" : ["ig_ctl_bridge99"],
+          "base_default_next" : "node_26",
+          "next_tables" : {
+            "ig_ctl_bridge99" : "node_26"
+          },
+          "default_entry" : {
+            "action_id" : 51,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_ig_ctl_bridge_send_to_cpu",
+          "id" : 16,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 101,
+            "column" : 15,
+            "source_fragment" : "send_to_cpu()"
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [13],
+          "actions" : ["ig_ctl.ig_ctl_bridge.send_to_cpu"],
+          "base_default_next" : "node_30",
+          "next_tables" : {
+            "ig_ctl.ig_ctl_bridge.send_to_cpu" : "node_30"
+          },
+          "default_entry" : {
+            "action_id" : 13,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_ig_ctl_bridge103",
+          "id" : 17,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 103,
+            "column" : 14,
+            "source_fragment" : "hdr.eth2.setInvalid(); ..."
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [50],
+          "actions" : ["ig_ctl_bridge103"],
+          "base_default_next" : "node_30",
+          "next_tables" : {
+            "ig_ctl_bridge103" : "node_30"
+          },
+          "default_entry" : {
+            "action_id" : 50,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "ig_ctl.ig_ctl_ipv4.tbl_ipv4_fib_host",
+          "id" : 18,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv4.p4",
+            "line" : 72,
+            "column" : 9,
+            "source_fragment" : "tbl_ipv4_fib_host"
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "name" : "hdr.ipv4.dst_ipv4_addr",
+              "target" : ["ipv4", "dst_ipv4_addr"],
+              "mask" : null
+            },
+            {
+              "match_type" : "exact",
+              "name" : "ig_md.vrf",
+              "target" : ["scalars", "ingress_metadata_t.vrf"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [19, 22, 24, 2],
+          "actions" : ["ig_ctl.ig_ctl_ipv4.act_ipv4_cpl_set_nexthop", "ig_ctl.ig_ctl_ipv4.act_ipv4_set_nexthop", "ig_ctl.ig_ctl_ipv4.act_ipv4_mpls_encap_set_nexthop", "NoAction"],
+          "base_default_next" : null,
+          "next_tables" : {
+            "__HIT__" : "tbl_act_0",
+            "__MISS__" : "tbl_act_1"
+          },
+          "default_entry" : {
+            "action_id" : 2,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_act_0",
+          "id" : 19,
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [52],
+          "actions" : ["act"],
+          "base_default_next" : "node_34",
+          "next_tables" : {
+            "act" : "node_34"
+          },
+          "default_entry" : {
+            "action_id" : 52,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_act_1",
+          "id" : 20,
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [53],
+          "actions" : ["act_0"],
+          "base_default_next" : "node_34",
+          "next_tables" : {
+            "act_0" : "node_34"
+          },
+          "default_entry" : {
+            "action_id" : 53,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "ig_ctl.ig_ctl_ipv4.tbl_ipv4_fib_lpm",
+          "id" : 21,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv4.p4",
+            "line" : 90,
+            "column" : 9,
+            "source_fragment" : "tbl_ipv4_fib_lpm"
+          },
+          "key" : [
+            {
+              "match_type" : "lpm",
+              "name" : "hdr.ipv4.dst_ipv4_addr",
+              "target" : ["ipv4", "dst_ipv4_addr"],
+              "mask" : null
+            },
+            {
+              "match_type" : "exact",
+              "name" : "ig_md.vrf",
+              "target" : ["scalars", "ingress_metadata_t.vrf"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "lpm",
+          "type" : "simple",
+          "max_size" : 512,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [20, 23, 25, 21],
+          "actions" : ["ig_ctl.ig_ctl_ipv4.act_ipv4_cpl_set_nexthop", "ig_ctl.ig_ctl_ipv4.act_ipv4_set_nexthop", "ig_ctl.ig_ctl_ipv4.act_ipv4_mpls_encap_set_nexthop", "ig_ctl.ig_ctl_ipv4.act_ipv4_fib_discard"],
+          "base_default_next" : "node_36",
+          "next_tables" : {
+            "ig_ctl.ig_ctl_ipv4.act_ipv4_cpl_set_nexthop" : "node_36",
+            "ig_ctl.ig_ctl_ipv4.act_ipv4_set_nexthop" : "node_36",
+            "ig_ctl.ig_ctl_ipv4.act_ipv4_mpls_encap_set_nexthop" : "node_36",
+            "ig_ctl.ig_ctl_ipv4.act_ipv4_fib_discard" : "node_36"
+          },
+          "default_entry" : {
+            "action_id" : 21,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        },
+        {
+          "name" : "ig_ctl.ig_ctl_ipv6.tbl_ipv6_fib_host",
+          "id" : 22,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv6.p4",
+            "line" : 73,
+            "column" : 9,
+            "source_fragment" : "tbl_ipv6_fib_host"
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "name" : "hdr.ipv6.dst_addr",
+              "target" : ["ipv6", "dst_addr"],
+              "mask" : null
+            },
+            {
+              "match_type" : "exact",
+              "name" : "ig_md.vrf",
+              "target" : ["scalars", "ingress_metadata_t.vrf"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [26, 29, 31, 3],
+          "actions" : ["ig_ctl.ig_ctl_ipv6.act_ipv6_cpl_set_nexthop", "ig_ctl.ig_ctl_ipv6.act_ipv6_set_nexthop", "ig_ctl.ig_ctl_ipv6.act_ipv6_mpls_encap_set_nexthop", "NoAction"],
+          "base_default_next" : null,
+          "next_tables" : {
+            "__HIT__" : "tbl_act_2",
+            "__MISS__" : "tbl_act_3"
+          },
+          "default_entry" : {
+            "action_id" : 3,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_act_2",
+          "id" : 23,
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [54],
+          "actions" : ["act_1"],
+          "base_default_next" : "node_40",
+          "next_tables" : {
+            "act_1" : "node_40"
+          },
+          "default_entry" : {
+            "action_id" : 54,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_act_3",
+          "id" : 24,
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [55],
+          "actions" : ["act_2"],
+          "base_default_next" : "node_40",
+          "next_tables" : {
+            "act_2" : "node_40"
+          },
+          "default_entry" : {
+            "action_id" : 55,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "ig_ctl.ig_ctl_ipv6.tbl_ipv6_fib_lpm",
+          "id" : 25,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv6.p4",
+            "line" : 91,
+            "column" : 9,
+            "source_fragment" : "tbl_ipv6_fib_lpm"
+          },
+          "key" : [
+            {
+              "match_type" : "lpm",
+              "name" : "hdr.ipv6.dst_addr",
+              "target" : ["ipv6", "dst_addr"],
+              "mask" : null
+            },
+            {
+              "match_type" : "exact",
+              "name" : "ig_md.vrf",
+              "target" : ["scalars", "ingress_metadata_t.vrf"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "lpm",
+          "type" : "simple",
+          "max_size" : 512,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [27, 30, 32, 28],
+          "actions" : ["ig_ctl.ig_ctl_ipv6.act_ipv6_cpl_set_nexthop", "ig_ctl.ig_ctl_ipv6.act_ipv6_set_nexthop", "ig_ctl.ig_ctl_ipv6.act_ipv6_mpls_encap_set_nexthop", "ig_ctl.ig_ctl_ipv6.act_ipv6_fib_discard"],
+          "base_default_next" : "node_42",
+          "next_tables" : {
+            "ig_ctl.ig_ctl_ipv6.act_ipv6_cpl_set_nexthop" : "node_42",
+            "ig_ctl.ig_ctl_ipv6.act_ipv6_set_nexthop" : "node_42",
+            "ig_ctl.ig_ctl_ipv6.act_ipv6_mpls_encap_set_nexthop" : "node_42",
+            "ig_ctl.ig_ctl_ipv6.act_ipv6_fib_discard" : "node_42"
+          },
+          "default_entry" : {
+            "action_id" : 28,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        },
+        {
+          "name" : "tbl_ig_ctl53",
+          "id" : 26,
+          "source_info" : {
+            "filename" : "./include/ig_ctl.p4",
+            "line" : 53,
+            "column" : 11,
+            "source_fragment" : "hdr.pkt_in.setValid(); ..."
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [56],
+          "actions" : ["ig_ctl53"],
+          "base_default_next" : "node_44",
+          "next_tables" : {
+            "ig_ctl53" : "node_44"
+          },
+          "default_entry" : {
+            "action_id" : 56,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_ig_ctl60",
+          "id" : 27,
+          "source_info" : {
+            "filename" : "./include/ig_ctl.p4",
+            "line" : 60,
+            "column" : 14,
+            "source_fragment" : "hdr.vlan.setInvalid()"
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [57],
+          "actions" : ["ig_ctl60"],
+          "base_default_next" : "node_47",
+          "next_tables" : {
+            "ig_ctl60" : "node_47"
+          },
+          "default_entry" : {
+            "action_id" : 57,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_ig_ctl_mpls2l11",
+          "id" : 28,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls2.p4",
+            "line" : 11,
+            "column" : 14,
+            "source_fragment" : "hdr.mpls[0].setInvalid()"
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [60],
+          "actions" : ["ig_ctl_mpls2l11"],
+          "base_default_next" : "node_49",
+          "next_tables" : {
+            "ig_ctl_mpls2l11" : "node_49"
+          },
+          "default_entry" : {
+            "action_id" : 60,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_ig_ctl_mpls2l13",
+          "id" : 29,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls2.p4",
+            "line" : 13,
+            "column" : 32,
+            "source_fragment" : "="
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [58],
+          "actions" : ["ig_ctl_mpls2l13"],
+          "base_default_next" : "node_52",
+          "next_tables" : {
+            "ig_ctl_mpls2l13" : "node_52"
+          },
+          "default_entry" : {
+            "action_id" : 58,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_ig_ctl_mpls2l15",
+          "id" : 30,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls2.p4",
+            "line" : 15,
+            "column" : 32,
+            "source_fragment" : "="
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [59],
+          "actions" : ["ig_ctl_mpls2l15"],
+          "base_default_next" : "node_52",
+          "next_tables" : {
+            "ig_ctl_mpls2l15" : "node_52"
+          },
+          "default_entry" : {
+            "action_id" : 59,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_ig_ctl_mpls2l20",
+          "id" : 31,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls2.p4",
+            "line" : 20,
+            "column" : 14,
+            "source_fragment" : "hdr.mpls[1].setInvalid()"
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [63],
+          "actions" : ["ig_ctl_mpls2l20"],
+          "base_default_next" : "node_54",
+          "next_tables" : {
+            "ig_ctl_mpls2l20" : "node_54"
+          },
+          "default_entry" : {
+            "action_id" : 63,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_ig_ctl_mpls2l22",
+          "id" : 32,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls2.p4",
+            "line" : 22,
+            "column" : 32,
+            "source_fragment" : "="
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [61],
+          "actions" : ["ig_ctl_mpls2l22"],
+          "base_default_next" : "ig_ctl.ig_ctl_nexthop.tbl_nexthop",
+          "next_tables" : {
+            "ig_ctl_mpls2l22" : "ig_ctl.ig_ctl_nexthop.tbl_nexthop"
+          },
+          "default_entry" : {
+            "action_id" : 61,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_ig_ctl_mpls2l24",
+          "id" : 33,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls2.p4",
+            "line" : 24,
+            "column" : 32,
+            "source_fragment" : "="
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [62],
+          "actions" : ["ig_ctl_mpls2l24"],
+          "base_default_next" : "ig_ctl.ig_ctl_nexthop.tbl_nexthop",
+          "next_tables" : {
+            "ig_ctl_mpls2l24" : "ig_ctl.ig_ctl_nexthop.tbl_nexthop"
+          },
+          "default_entry" : {
+            "action_id" : 62,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "ig_ctl.ig_ctl_nexthop.tbl_nexthop",
+          "id" : 34,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_nexthop.p4",
+            "line" : 36,
+            "column" : 9,
+            "source_fragment" : "tbl_nexthop"
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "name" : "ig_md.nexthop_id",
+              "target" : ["scalars", "ingress_metadata_t.nexthop_id"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [33, 34],
+          "actions" : ["ig_ctl.ig_ctl_nexthop.act_ipv4_fib_hit", "ig_ctl.ig_ctl_nexthop.act_ipv4_fib_discard"],
+          "base_default_next" : "ig_ctl.ig_ctl_vlan_out.tbl_vlan_out",
+          "next_tables" : {
+            "ig_ctl.ig_ctl_nexthop.act_ipv4_fib_hit" : "ig_ctl.ig_ctl_vlan_out.tbl_vlan_out",
+            "ig_ctl.ig_ctl_nexthop.act_ipv4_fib_discard" : "ig_ctl.ig_ctl_vlan_out.tbl_vlan_out"
+          },
+          "default_entry" : {
+            "action_id" : 34,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        },
+        {
+          "name" : "ig_ctl.ig_ctl_vlan_out.tbl_vlan_out",
+          "id" : 35,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_vlan_out.p4",
+            "line" : 21,
+            "column" : 9,
+            "source_fragment" : "tbl_vlan_out"
+          },
+          "key" : [
+            {
+              "match_type" : "exact",
+              "name" : "ig_md.target_id",
+              "target" : ["scalars", "ingress_metadata_t.target_id"],
+              "mask" : null
+            }
+          ],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [38, 37],
+          "actions" : ["ig_ctl.ig_ctl_vlan_out.act_set_port", "ig_ctl.ig_ctl_vlan_out.act_set_vlan_port"],
+          "base_default_next" : null,
+          "next_tables" : {
+            "ig_ctl.ig_ctl_vlan_out.act_set_port" : null,
+            "ig_ctl.ig_ctl_vlan_out.act_set_vlan_port" : null
+          },
+          "default_entry" : {
+            "action_id" : 38,
+            "action_const" : false,
+            "action_data" : [],
+            "action_entry_const" : false
+          }
+        }
+      ],
+      "action_profiles" : [],
+      "conditionals" : [
+        {
+          "name" : "node_3",
+          "id" : 0,
+          "source_info" : {
+            "filename" : "./include/ig_ctl.p4",
+            "line" : 25,
+            "column" : 10,
+            "source_fragment" : "ig_intr_md.ingress_port == CPU_PORT"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "field",
+                "value" : ["standard_metadata", "ingress_port"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x0040"
+              }
+            }
+          },
+          "true_next" : "tbl_ig_ctl32",
+          "false_next" : "node_5"
+        },
+        {
+          "name" : "node_5",
+          "id" : 1,
+          "source_info" : {
+            "filename" : "./include/ig_ctl.p4",
+            "line" : 38,
+            "column" : 15,
+            "source_fragment" : "hdr.mpls[0].isValid()"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "d2b",
+              "left" : null,
+              "right" : {
+                "type" : "field",
+                "value" : ["mpls[0]", "$valid$"]
+              }
+            }
+          },
+          "true_next" : "tbl_ig_ctl39",
+          "false_next" : "node_7"
+        },
+        {
+          "name" : "node_7",
+          "id" : 2,
+          "source_info" : {
+            "filename" : "./include/ig_ctl.p4",
+            "line" : 41,
+            "column" : 15,
+            "source_fragment" : "hdr.mpls[1].isValid()"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "d2b",
+              "left" : null,
+              "right" : {
+                "type" : "field",
+                "value" : ["mpls[1]", "$valid$"]
+              }
+            }
+          },
+          "true_next" : "tbl_ig_ctl42",
+          "false_next" : "ig_ctl.ig_ctl_vlan_in.tbl_vlan_in"
+        },
+        {
+          "name" : "node_11",
+          "id" : 3,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_arp.p4",
+            "line" : 20,
+            "column" : 12,
+            "source_fragment" : "ig_md.arp_valid==1"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "field",
+                "value" : ["scalars", "ingress_metadata_t.arp_valid"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x01"
+              }
+            }
+          },
+          "true_next" : "tbl_ig_ctl_arp_send_to_cpu",
+          "false_next" : "node_13"
+        },
+        {
+          "name" : "node_13",
+          "id" : 4,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_llc.p4",
+            "line" : 20,
+            "column" : 12,
+            "source_fragment" : "ig_md.llc_valid==1"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "field",
+                "value" : ["scalars", "ingress_metadata_t.llc_valid"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x01"
+              }
+            }
+          },
+          "true_next" : "tbl_ig_ctl_llc_send_to_cpu",
+          "false_next" : "node_15"
+        },
+        {
+          "name" : "node_15",
+          "id" : 5,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 178,
+            "column" : 13,
+            "source_fragment" : "ig_md.mpls0_valid == 1"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "field",
+                "value" : ["scalars", "ingress_metadata_t.mpls0_valid"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x01"
+              }
+            }
+          },
+          "true_next" : "tbl_ig_ctl_mpls179",
+          "false_next" : "node_21"
+        },
+        {
+          "name" : "node_18",
+          "id" : 6,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 181,
+            "column" : 16,
+            "source_fragment" : "(ig_md.mpls_op_type == 1) && (ig_md.mpls1_valid == 1)"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "and",
+              "left" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "==",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["scalars", "ingress_metadata_t.mpls_op_type"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0x01"
+                  }
+                }
+              },
+              "right" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "==",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["scalars", "ingress_metadata_t.mpls1_valid"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0x01"
+                  }
+                }
+              }
+            }
+          },
+          "true_next" : "tbl_ig_ctl_mpls182",
+          "false_next" : "node_21"
+        },
+        {
+          "name" : "node_21",
+          "id" : 7,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 89,
+            "column" : 13,
+            "source_fragment" : "ig_md.bridge_id != 0"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "!=",
+              "left" : {
+                "type" : "field",
+                "value" : ["scalars", "ingress_metadata_t.bridge_id"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x0000"
+              }
+            }
+          },
+          "true_next" : "tbl_ig_ctl_bridge90",
+          "false_next" : "node_30"
+        },
+        {
+          "name" : "node_26",
+          "id" : 8,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 100,
+            "column" : 16,
+            "source_fragment" : "(ig_md.bridge_src == 0) || (ig_md.bridge_trg == 0)"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "or",
+              "left" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "==",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["scalars", "ingress_metadata_t.bridge_src"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0x0000"
+                  }
+                }
+              },
+              "right" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "==",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["scalars", "ingress_metadata_t.bridge_trg"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0x0000"
+                  }
+                }
+              }
+            }
+          },
+          "true_next" : "tbl_ig_ctl_bridge_send_to_cpu",
+          "false_next" : "node_28"
+        },
+        {
+          "name" : "node_28",
+          "id" : 9,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_bridge.p4",
+            "line" : 102,
+            "column" : 23,
+            "source_fragment" : "hdr.mpls[1].isValid() && (ig_md.mpls_op_type != 3)"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "and",
+              "left" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "d2b",
+                  "left" : null,
+                  "right" : {
+                    "type" : "field",
+                    "value" : ["mpls[1]", "$valid$"]
+                  }
+                }
+              },
+              "right" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "!=",
+                  "left" : {
+                    "type" : "field",
+                    "value" : ["scalars", "ingress_metadata_t.mpls_op_type"]
+                  },
+                  "right" : {
+                    "type" : "hexstr",
+                    "value" : "0x03"
+                  }
+                }
+              }
+            }
+          },
+          "true_next" : "tbl_ig_ctl_bridge103",
+          "false_next" : "node_30"
+        },
+        {
+          "name" : "node_30",
+          "id" : 10,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv4.p4",
+            "line" : 113,
+            "column" : 12,
+            "source_fragment" : "ig_md.ipv4_valid==1"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "field",
+                "value" : ["scalars", "ingress_metadata_t.ipv4_valid"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x01"
+              }
+            }
+          },
+          "true_next" : "ig_ctl.ig_ctl_ipv4.tbl_ipv4_fib_host",
+          "false_next" : "node_36"
+        },
+        {
+          "name" : "node_34",
+          "id" : 11,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv4.p4",
+            "line" : 114,
+            "column" : 15,
+            "source_fragment" : "!tbl_ipv4_fib_host.apply().hit"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "not",
+              "left" : null,
+              "right" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "d2b",
+                  "left" : null,
+                  "right" : {
+                    "type" : "field",
+                    "value" : ["scalars", "ig_ctl_ipv4_tmp"]
+                  }
+                }
+              }
+            }
+          },
+          "true_next" : "ig_ctl.ig_ctl_ipv4.tbl_ipv4_fib_lpm",
+          "false_next" : "node_36"
+        },
+        {
+          "name" : "node_36",
+          "id" : 12,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv6.p4",
+            "line" : 114,
+            "column" : 12,
+            "source_fragment" : "ig_md.ipv6_valid==1"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "field",
+                "value" : ["scalars", "ingress_metadata_t.ipv6_valid"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x01"
+              }
+            }
+          },
+          "true_next" : "ig_ctl.ig_ctl_ipv6.tbl_ipv6_fib_host",
+          "false_next" : "node_42"
+        },
+        {
+          "name" : "node_40",
+          "id" : 13,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_ipv6.p4",
+            "line" : 115,
+            "column" : 15,
+            "source_fragment" : "!tbl_ipv6_fib_host.apply().hit"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "not",
+              "left" : null,
+              "right" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "d2b",
+                  "left" : null,
+                  "right" : {
+                    "type" : "field",
+                    "value" : ["scalars", "ig_ctl_ipv6_tmp"]
+                  }
+                }
+              }
+            }
+          },
+          "true_next" : "ig_ctl.ig_ctl_ipv6.tbl_ipv6_fib_lpm",
+          "false_next" : "node_42"
+        },
+        {
+          "name" : "node_42",
+          "id" : 14,
+          "source_info" : {
+            "filename" : "./include/ig_ctl.p4",
+            "line" : 52,
+            "column" : 14,
+            "source_fragment" : "ig_md.nexthop_id == CPU_PORT"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "field",
+                "value" : ["scalars", "ingress_metadata_t.nexthop_id"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x0040"
+              }
+            }
+          },
+          "true_next" : "tbl_ig_ctl53",
+          "false_next" : "node_44"
+        },
+        {
+          "name" : "node_44",
+          "id" : 15,
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "not",
+              "left" : null,
+              "right" : {
+                "type" : "expression",
+                "value" : {
+                  "op" : "d2b",
+                  "left" : null,
+                  "right" : {
+                    "type" : "field",
+                    "value" : ["scalars", "hasReturned"]
+                  }
+                }
+              }
+            }
+          },
+          "false_next" : null,
+          "true_next" : "node_45"
+        },
+        {
+          "name" : "node_45",
+          "id" : 16,
+          "source_info" : {
+            "filename" : "./include/ig_ctl.p4",
+            "line" : 59,
+            "column" : 15,
+            "source_fragment" : "hdr.vlan.isValid()"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "d2b",
+              "left" : null,
+              "right" : {
+                "type" : "field",
+                "value" : ["vlan", "$valid$"]
+              }
+            }
+          },
+          "true_next" : "tbl_ig_ctl60",
+          "false_next" : "node_47"
+        },
+        {
+          "name" : "node_47",
+          "id" : 17,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls2.p4",
+            "line" : 10,
+            "column" : 15,
+            "source_fragment" : "ig_md.mpls0_remove == 1"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "field",
+                "value" : ["scalars", "ingress_metadata_t.mpls0_remove"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x01"
+              }
+            }
+          },
+          "true_next" : "tbl_ig_ctl_mpls2l11",
+          "false_next" : "node_52"
+        },
+        {
+          "name" : "node_49",
+          "id" : 18,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls2.p4",
+            "line" : 12,
+            "column" : 18,
+            "source_fragment" : "ig_md.ipv4_valid == 1"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "field",
+                "value" : ["scalars", "ingress_metadata_t.ipv4_valid"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x01"
+              }
+            }
+          },
+          "true_next" : "tbl_ig_ctl_mpls2l13",
+          "false_next" : "tbl_ig_ctl_mpls2l15"
+        },
+        {
+          "name" : "node_52",
+          "id" : 19,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls2.p4",
+            "line" : 19,
+            "column" : 15,
+            "source_fragment" : "ig_md.mpls1_remove == 1"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "field",
+                "value" : ["scalars", "ingress_metadata_t.mpls1_remove"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x01"
+              }
+            }
+          },
+          "true_next" : "tbl_ig_ctl_mpls2l20",
+          "false_next" : "ig_ctl.ig_ctl_nexthop.tbl_nexthop"
+        },
+        {
+          "name" : "node_54",
+          "id" : 20,
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls2.p4",
+            "line" : 21,
+            "column" : 18,
+            "source_fragment" : "ig_md.ipv4_valid == 1"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "field",
+                "value" : ["scalars", "ingress_metadata_t.ipv4_valid"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x01"
+              }
+            }
+          },
+          "true_next" : "tbl_ig_ctl_mpls2l22",
+          "false_next" : "tbl_ig_ctl_mpls2l24"
+        }
+      ]
+    },
+    {
+      "name" : "egress",
+      "id" : 1,
+      "source_info" : {
+        "filename" : "./include/eg_ctl.p4",
+        "line" : 6,
+        "column" : 8,
+        "source_fragment" : "eg_ctl"
+      },
+      "init_table" : null,
+      "tables" : [],
+      "action_profiles" : [],
+      "conditionals" : []
+    }
+  ],
+  "checksums" : [
+    {
+      "name" : "cksum",
+      "id" : 0,
+      "source_info" : {
+        "filename" : "./include/ig_ctl_compute_checksum.p4",
+        "line" : 6,
+        "column" : 6,
+        "source_fragment" : "update_checksum( ..."
+      },
+      "target" : ["ipv4", "hdr_checksum"],
+      "type" : "generic",
+      "calculation" : "calc",
+      "verify" : false,
+      "update" : true,
+      "if_cond" : {
+        "type" : "expression",
+        "value" : {
+          "op" : "d2b",
+          "left" : null,
+          "right" : {
+            "type" : "field",
+            "value" : ["ipv4", "$valid$"]
+          }
+        }
+      }
+    }
+  ],
+  "force_arith" : [],
+  "extern_instances" : [],
+  "field_aliases" : [
+    [
+      "queueing_metadata.enq_timestamp",
+      ["standard_metadata", "enq_timestamp"]
+    ],
+    [
+      "queueing_metadata.enq_qdepth",
+      ["standard_metadata", "enq_qdepth"]
+    ],
+    [
+      "queueing_metadata.deq_timedelta",
+      ["standard_metadata", "deq_timedelta"]
+    ],
+    [
+      "queueing_metadata.deq_qdepth",
+      ["standard_metadata", "deq_qdepth"]
+    ],
+    [
+      "intrinsic_metadata.ingress_global_timestamp",
+      ["standard_metadata", "ingress_global_timestamp"]
+    ],
+    [
+      "intrinsic_metadata.egress_global_timestamp",
+      ["standard_metadata", "egress_global_timestamp"]
+    ],
+    [
+      "intrinsic_metadata.mcast_grp",
+      ["standard_metadata", "mcast_grp"]
+    ],
+    [
+      "intrinsic_metadata.egress_rid",
+      ["standard_metadata", "egress_rid"]
+    ],
+    [
+      "intrinsic_metadata.priority",
+      ["standard_metadata", "priority"]
+    ]
+  ],
+  "program" : "../build/router.p4i",
+  "__meta__" : {
+    "version" : [2, 18],
+    "compiler" : "https://github.com/p4lang/p4c"
+  }
+}
