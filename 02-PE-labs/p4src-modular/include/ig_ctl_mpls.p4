@@ -5,7 +5,7 @@ control IngressControlMPLS(inout headers hdr,
                            inout ingress_metadata_t ig_md,
                            inout standard_metadata_t ig_intr_md) {
 
-   action act_mpls_swap_set_nexthop(label_t egress_label, PortId_t nexthop_id) {
+   action act_mpls_swap0_set_nexthop(label_t egress_label, PortId_t nexthop_id) {
       /*              
        * Encapsulate MPLS header
        */             
@@ -15,6 +15,22 @@ control IngressControlMPLS(inout headers hdr,
        */
       ig_md.nexthop_id = nexthop_id;
       ig_md.mpls_op_type = 0;
+      ig_md.ipv4_valid = 0;
+      ig_md.ipv6_valid = 0;
+   }
+
+   action act_mpls_swap1_set_nexthop(label_t egress_label, PortId_t nexthop_id) {
+      /*              
+       * Encapsulate MPLS header
+       */             
+      hdr.mpls[1].label = egress_label;
+      /*              
+       * Indicate nexthop_id
+       */
+      ig_md.nexthop_id = nexthop_id;
+      ig_md.mpls_op_type = 0;
+      ig_md.ipv4_valid = 0;
+      ig_md.ipv6_valid = 0;
    }
 
    action act_mpls_decap_ipv4(switch_vrf_t vrf) {
@@ -80,6 +96,8 @@ control IngressControlMPLS(inout headers hdr,
       ig_md.mpls0_remove = 0;
       ig_md.mpls1_remove = 0;
       ig_md.mpls_op_type = 2;
+      ig_md.ipv4_valid = 0;
+      ig_md.ipv6_valid = 0;
    }
 
    action act_mpls_decap_vpls(PortId_t bridge) {
@@ -97,6 +115,8 @@ control IngressControlMPLS(inout headers hdr,
        * MPLS tunnel decap
        */
       ig_md.mpls_op_type = 2;
+      ig_md.ipv4_valid = 0;
+      ig_md.ipv6_valid = 0;
    }
 
 
@@ -110,7 +130,7 @@ control IngressControlMPLS(inout headers hdr,
          /*
           * mpls core swap
           */
-         act_mpls_swap_set_nexthop;
+         act_mpls_swap0_set_nexthop;
 
          /*
           * mpls decapsulation if PHP
@@ -146,7 +166,7 @@ control IngressControlMPLS(inout headers hdr,
          /*
           * mpls core swap
           */
-         act_mpls_swap_set_nexthop;
+         act_mpls_swap1_set_nexthop;
           
          /*
           * mpls decapsulation if PHP

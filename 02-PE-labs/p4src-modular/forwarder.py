@@ -407,7 +407,7 @@ def writeMplsRules(delete, p4info_helper, ingress_sw, dst_label, new_label, port
         match_fields={
             "ig_md.mpls_label": (dst_label)
         },
-        action_name="ig_ctl.ig_ctl_mpls.act_mpls_swap_set_nexthop",
+        action_name="ig_ctl.ig_ctl_mpls.act_mpls_swap0_set_nexthop",
         action_params={
             "egress_label": new_label,
             "nexthop_id": port
@@ -418,7 +418,7 @@ def writeMplsRules(delete, p4info_helper, ingress_sw, dst_label, new_label, port
         match_fields={
             "ig_md.mpls_label": (dst_label)
         },
-        action_name="ig_ctl.ig_ctl_mpls.act_mpls_swap_set_nexthop",
+        action_name="ig_ctl.ig_ctl_mpls.act_mpls_swap1_set_nexthop",
         action_params={
             "egress_label": new_label,
             "nexthop_id": port

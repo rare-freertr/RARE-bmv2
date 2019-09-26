@@ -14,7 +14,7 @@ tables {
     match_type: EXACT
   }
   action_refs {
-    id: 16791516
+    id: 16798230
   }
   action_refs {
     id: 16824210
@@ -43,7 +43,7 @@ tables {
     match_type: EXACT
   }
   action_refs {
-    id: 16791516
+    id: 16826845
   }
   action_refs {
     id: 16806468
@@ -356,9 +356,26 @@ actions {
 }
 actions {
   preamble {
-    id: 16791516
-    name: "ig_ctl.ig_ctl_mpls.act_mpls_swap_set_nexthop"
-    alias: "act_mpls_swap_set_nexthop"
+    id: 16798230
+    name: "ig_ctl.ig_ctl_mpls.act_mpls_swap0_set_nexthop"
+    alias: "act_mpls_swap0_set_nexthop"
+  }
+  params {
+    id: 1
+    name: "egress_label"
+    bitwidth: 20
+  }
+  params {
+    id: 2
+    name: "nexthop_id"
+    bitwidth: 9
+  }
+}
+actions {
+  preamble {
+    id: 16826845
+    name: "ig_ctl.ig_ctl_mpls.act_mpls_swap1_set_nexthop"
+    alias: "act_mpls_swap1_set_nexthop"
   }
   params {
     id: 1

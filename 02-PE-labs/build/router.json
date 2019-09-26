@@ -900,7 +900,7 @@
       ]
     },
     {
-      "name" : "ig_ctl.ig_ctl_mpls.act_mpls_swap_set_nexthop",
+      "name" : "ig_ctl.ig_ctl_mpls.act_mpls_swap0_set_nexthop",
       "id" : 5,
       "runtime_data" : [
         {
@@ -969,11 +969,49 @@
             "column" : 6,
             "source_fragment" : "ig_md.mpls_op_type = 0"
           }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.ipv4_valid"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 18,
+            "column" : 6,
+            "source_fragment" : "ig_md.ipv4_valid = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.ipv6_valid"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 19,
+            "column" : 6,
+            "source_fragment" : "ig_md.ipv6_valid = 0"
+          }
         }
       ]
     },
     {
-      "name" : "ig_ctl.ig_ctl_mpls.act_mpls_swap_set_nexthop",
+      "name" : "ig_ctl.ig_ctl_mpls.act_mpls_swap1_set_nexthop",
       "id" : 6,
       "runtime_data" : [
         {
@@ -991,7 +1029,7 @@
           "parameters" : [
             {
               "type" : "field",
-              "value" : ["mpls[0]", "label"]
+              "value" : ["mpls[1]", "label"]
             },
             {
               "type" : "runtime_data",
@@ -1000,9 +1038,9 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 12,
+            "line" : 26,
             "column" : 6,
-            "source_fragment" : "hdr.mpls[0].label = egress_label"
+            "source_fragment" : "hdr.mpls[1].label = egress_label"
           }
         },
         {
@@ -1019,7 +1057,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 16,
+            "line" : 30,
             "column" : 6,
             "source_fragment" : "ig_md.nexthop_id = nexthop_id"
           }
@@ -1038,9 +1076,47 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 17,
+            "line" : 31,
             "column" : 6,
             "source_fragment" : "ig_md.mpls_op_type = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.ipv4_valid"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 32,
+            "column" : 6,
+            "source_fragment" : "ig_md.ipv4_valid = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.ipv6_valid"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 33,
+            "column" : 6,
+            "source_fragment" : "ig_md.ipv6_valid = 0"
           }
         }
       ]
@@ -1069,7 +1145,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 34,
+            "line" : 50,
             "column" : 6,
             "source_fragment" : "ig_md.vrf = vrf"
           }
@@ -1088,7 +1164,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 35,
+            "line" : 51,
             "column" : 6,
             "source_fragment" : "ig_md.mpls_op_type = 1"
           }
@@ -1107,7 +1183,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 36,
+            "line" : 52,
             "column" : 6,
             "source_fragment" : "ig_md.mpls0_remove = 1"
           }
@@ -1138,7 +1214,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 54,
+            "line" : 70,
             "column" : 6,
             "source_fragment" : "ig_md.vrf = vrf"
           }
@@ -1157,7 +1233,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 55,
+            "line" : 71,
             "column" : 6,
             "source_fragment" : "ig_md.mpls_op_type = 1"
           }
@@ -1176,7 +1252,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 56,
+            "line" : 72,
             "column" : 6,
             "source_fragment" : "ig_md.mpls1_remove = 1"
           }
@@ -1207,7 +1283,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 68,
+            "line" : 84,
             "column" : 6,
             "source_fragment" : "ig_md.ethertype = hdr.eth2.ethertype"
           }
@@ -1226,7 +1302,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 69,
+            "line" : 85,
             "column" : 6,
             "source_fragment" : "hdr.ethernet.dst_mac_addr = hdr.eth2.dst_mac_addr"
           }
@@ -1245,7 +1321,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 70,
+            "line" : 86,
             "column" : 6,
             "source_fragment" : "hdr.ethernet.src_mac_addr = hdr.eth2.src_mac_addr"
           }
@@ -1260,7 +1336,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 71,
+            "line" : 87,
             "column" : 6,
             "source_fragment" : "hdr.eth2.setInvalid()"
           }
@@ -1275,7 +1351,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 72,
+            "line" : 88,
             "column" : 6,
             "source_fragment" : "hdr.mpls[1].setInvalid()"
           }
@@ -1290,7 +1366,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 73,
+            "line" : 89,
             "column" : 6,
             "source_fragment" : "hdr.mpls[0].setInvalid()"
           }
@@ -1305,7 +1381,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 74,
+            "line" : 90,
             "column" : 6,
             "source_fragment" : "hdr.vlan.setInvalid()"
           }
@@ -1324,7 +1400,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 75,
+            "line" : 91,
             "column" : 6,
             "source_fragment" : "ig_md.target_id = port"
           }
@@ -1343,7 +1419,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 80,
+            "line" : 96,
             "column" : 6,
             "source_fragment" : "ig_md.mpls0_remove = 0"
           }
@@ -1362,7 +1438,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 81,
+            "line" : 97,
             "column" : 6,
             "source_fragment" : "ig_md.mpls1_remove = 0"
           }
@@ -1381,9 +1457,47 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 82,
+            "line" : 98,
             "column" : 6,
             "source_fragment" : "ig_md.mpls_op_type = 2"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.ipv4_valid"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 99,
+            "column" : 6,
+            "source_fragment" : "ig_md.ipv4_valid = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.ipv6_valid"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 100,
+            "column" : 6,
+            "source_fragment" : "ig_md.ipv6_valid = 0"
           }
         }
       ]
@@ -1412,7 +1526,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 68,
+            "line" : 84,
             "column" : 6,
             "source_fragment" : "ig_md.ethertype = hdr.eth2.ethertype"
           }
@@ -1431,7 +1545,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 69,
+            "line" : 85,
             "column" : 6,
             "source_fragment" : "hdr.ethernet.dst_mac_addr = hdr.eth2.dst_mac_addr"
           }
@@ -1450,7 +1564,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 70,
+            "line" : 86,
             "column" : 6,
             "source_fragment" : "hdr.ethernet.src_mac_addr = hdr.eth2.src_mac_addr"
           }
@@ -1465,7 +1579,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 71,
+            "line" : 87,
             "column" : 6,
             "source_fragment" : "hdr.eth2.setInvalid()"
           }
@@ -1480,7 +1594,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 72,
+            "line" : 88,
             "column" : 6,
             "source_fragment" : "hdr.mpls[1].setInvalid()"
           }
@@ -1495,7 +1609,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 73,
+            "line" : 89,
             "column" : 6,
             "source_fragment" : "hdr.mpls[0].setInvalid()"
           }
@@ -1510,7 +1624,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 74,
+            "line" : 90,
             "column" : 6,
             "source_fragment" : "hdr.vlan.setInvalid()"
           }
@@ -1529,7 +1643,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 75,
+            "line" : 91,
             "column" : 6,
             "source_fragment" : "ig_md.target_id = port"
           }
@@ -1548,7 +1662,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 80,
+            "line" : 96,
             "column" : 6,
             "source_fragment" : "ig_md.mpls0_remove = 0"
           }
@@ -1567,7 +1681,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 81,
+            "line" : 97,
             "column" : 6,
             "source_fragment" : "ig_md.mpls1_remove = 0"
           }
@@ -1586,9 +1700,47 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 82,
+            "line" : 98,
             "column" : 6,
             "source_fragment" : "ig_md.mpls_op_type = 2"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.ipv4_valid"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 99,
+            "column" : 6,
+            "source_fragment" : "ig_md.ipv4_valid = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.ipv6_valid"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 100,
+            "column" : 6,
+            "source_fragment" : "ig_md.ipv6_valid = 0"
           }
         }
       ]
@@ -1617,7 +1769,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 90,
+            "line" : 108,
             "column" : 6,
             "source_fragment" : "ig_md.bridge_id = bridge"
           }
@@ -1636,7 +1788,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 91,
+            "line" : 109,
             "column" : 6,
             "source_fragment" : "ig_md.bridge_src = bridge"
           }
@@ -1655,7 +1807,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 92,
+            "line" : 110,
             "column" : 6,
             "source_fragment" : "ig_md.ethertype = hdr.eth2.ethertype"
           }
@@ -1674,7 +1826,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 93,
+            "line" : 111,
             "column" : 6,
             "source_fragment" : "hdr.ethernet.dst_mac_addr = hdr.eth2.dst_mac_addr"
           }
@@ -1693,7 +1845,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 94,
+            "line" : 112,
             "column" : 6,
             "source_fragment" : "hdr.ethernet.src_mac_addr = hdr.eth2.src_mac_addr"
           }
@@ -1712,9 +1864,47 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 99,
+            "line" : 117,
             "column" : 6,
             "source_fragment" : "ig_md.mpls_op_type = 2"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.ipv4_valid"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 118,
+            "column" : 6,
+            "source_fragment" : "ig_md.ipv4_valid = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.ipv6_valid"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 119,
+            "column" : 6,
+            "source_fragment" : "ig_md.ipv6_valid = 0"
           }
         }
       ]
@@ -1743,7 +1933,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 90,
+            "line" : 108,
             "column" : 6,
             "source_fragment" : "ig_md.bridge_id = bridge"
           }
@@ -1762,7 +1952,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 91,
+            "line" : 109,
             "column" : 6,
             "source_fragment" : "ig_md.bridge_src = bridge"
           }
@@ -1781,7 +1971,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 92,
+            "line" : 110,
             "column" : 6,
             "source_fragment" : "ig_md.ethertype = hdr.eth2.ethertype"
           }
@@ -1800,7 +1990,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 93,
+            "line" : 111,
             "column" : 6,
             "source_fragment" : "hdr.ethernet.dst_mac_addr = hdr.eth2.dst_mac_addr"
           }
@@ -1819,7 +2009,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 94,
+            "line" : 112,
             "column" : 6,
             "source_fragment" : "hdr.ethernet.src_mac_addr = hdr.eth2.src_mac_addr"
           }
@@ -1838,9 +2028,47 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 99,
+            "line" : 117,
             "column" : 6,
             "source_fragment" : "ig_md.mpls_op_type = 2"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.ipv4_valid"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 118,
+            "column" : 6,
+            "source_fragment" : "ig_md.ipv4_valid = 0"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["scalars", "ingress_metadata_t.ipv6_valid"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x00"
+            }
+          ],
+          "source_info" : {
+            "filename" : "./include/ig_ctl_mpls.p4",
+            "line" : 119,
+            "column" : 6,
+            "source_fragment" : "ig_md.ipv6_valid = 0"
           }
         }
       ]
@@ -4490,7 +4718,7 @@
       ]
     },
     {
-      "name" : "ig_ctl_mpls179",
+      "name" : "ig_ctl_mpls199",
       "id" : 47,
       "runtime_data" : [],
       "primitives" : [
@@ -4508,7 +4736,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 179,
+            "line" : 199,
             "column" : 12,
             "source_fragment" : "ig_md.mpls_label = hdr.mpls[0].label"
           }
@@ -4527,7 +4755,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 179,
+            "line" : 199,
             "column" : 31,
             "source_fragment" : "hdr.mpls[0].label"
           }
@@ -4535,7 +4763,7 @@
       ]
     },
     {
-      "name" : "ig_ctl_mpls182",
+      "name" : "ig_ctl_mpls202",
       "id" : 48,
       "runtime_data" : [],
       "primitives" : [
@@ -4553,7 +4781,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 182,
+            "line" : 202,
             "column" : 15,
             "source_fragment" : "ig_md.mpls_label = hdr.mpls[1].label"
           }
@@ -4572,7 +4800,7 @@
           ],
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 182,
+            "line" : 202,
             "column" : 34,
             "source_fragment" : "hdr.mpls[1].label"
           }
@@ -5523,11 +5751,11 @@
           }
         },
         {
-          "name" : "tbl_ig_ctl_mpls179",
+          "name" : "tbl_ig_ctl_mpls199",
           "id" : 8,
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 179,
+            "line" : 199,
             "column" : 29,
             "source_fragment" : "= hdr.mpls[0].label"
           },
@@ -5539,10 +5767,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [47],
-          "actions" : ["ig_ctl_mpls179"],
+          "actions" : ["ig_ctl_mpls199"],
           "base_default_next" : "ig_ctl.ig_ctl_mpls.tbl_mpls_fib",
           "next_tables" : {
-            "ig_ctl_mpls179" : "ig_ctl.ig_ctl_mpls.tbl_mpls_fib"
+            "ig_ctl_mpls199" : "ig_ctl.ig_ctl_mpls.tbl_mpls_fib"
           },
           "default_entry" : {
             "action_id" : 47,
@@ -5556,7 +5784,7 @@
           "id" : 9,
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 105,
+            "line" : 125,
             "column" : 9,
             "source_fragment" : "tbl_mpls_fib"
           },
@@ -5575,10 +5803,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [5, 7, 9, 11, 0],
-          "actions" : ["ig_ctl.ig_ctl_mpls.act_mpls_swap_set_nexthop", "ig_ctl.ig_ctl_mpls.act_mpls_decap_ipv4", "ig_ctl.ig_ctl_mpls.act_mpls_decap_l2vpn", "ig_ctl.ig_ctl_mpls.act_mpls_decap_vpls", "NoAction"],
+          "actions" : ["ig_ctl.ig_ctl_mpls.act_mpls_swap0_set_nexthop", "ig_ctl.ig_ctl_mpls.act_mpls_decap_ipv4", "ig_ctl.ig_ctl_mpls.act_mpls_decap_l2vpn", "ig_ctl.ig_ctl_mpls.act_mpls_decap_vpls", "NoAction"],
           "base_default_next" : "node_18",
           "next_tables" : {
-            "ig_ctl.ig_ctl_mpls.act_mpls_swap_set_nexthop" : "node_18",
+            "ig_ctl.ig_ctl_mpls.act_mpls_swap0_set_nexthop" : "node_18",
             "ig_ctl.ig_ctl_mpls.act_mpls_decap_ipv4" : "node_18",
             "ig_ctl.ig_ctl_mpls.act_mpls_decap_l2vpn" : "node_18",
             "ig_ctl.ig_ctl_mpls.act_mpls_decap_vpls" : "node_18",
@@ -5592,11 +5820,11 @@
           }
         },
         {
-          "name" : "tbl_ig_ctl_mpls182",
+          "name" : "tbl_ig_ctl_mpls202",
           "id" : 10,
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 182,
+            "line" : 202,
             "column" : 32,
             "source_fragment" : "= hdr.mpls[1].label"
           },
@@ -5608,10 +5836,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [48],
-          "actions" : ["ig_ctl_mpls182"],
+          "actions" : ["ig_ctl_mpls202"],
           "base_default_next" : "ig_ctl.ig_ctl_mpls.tbl_mpls_fib_decap",
           "next_tables" : {
-            "ig_ctl_mpls182" : "ig_ctl.ig_ctl_mpls.tbl_mpls_fib_decap"
+            "ig_ctl_mpls202" : "ig_ctl.ig_ctl_mpls.tbl_mpls_fib_decap"
           },
           "default_entry" : {
             "action_id" : 48,
@@ -5625,7 +5853,7 @@
           "id" : 11,
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 141,
+            "line" : 161,
             "column" : 9,
             "source_fragment" : "tbl_mpls_fib_decap"
           },
@@ -5644,10 +5872,10 @@
           "support_timeout" : false,
           "direct_meters" : null,
           "action_ids" : [6, 8, 10, 12, 1],
-          "actions" : ["ig_ctl.ig_ctl_mpls.act_mpls_swap_set_nexthop", "ig_ctl.ig_ctl_mpls.act_mpls_decap_l3vpn", "ig_ctl.ig_ctl_mpls.act_mpls_decap_l2vpn", "ig_ctl.ig_ctl_mpls.act_mpls_decap_vpls", "NoAction"],
+          "actions" : ["ig_ctl.ig_ctl_mpls.act_mpls_swap1_set_nexthop", "ig_ctl.ig_ctl_mpls.act_mpls_decap_l3vpn", "ig_ctl.ig_ctl_mpls.act_mpls_decap_l2vpn", "ig_ctl.ig_ctl_mpls.act_mpls_decap_vpls", "NoAction"],
           "base_default_next" : "node_21",
           "next_tables" : {
-            "ig_ctl.ig_ctl_mpls.act_mpls_swap_set_nexthop" : "node_21",
+            "ig_ctl.ig_ctl_mpls.act_mpls_swap1_set_nexthop" : "node_21",
             "ig_ctl.ig_ctl_mpls.act_mpls_decap_l3vpn" : "node_21",
             "ig_ctl.ig_ctl_mpls.act_mpls_decap_l2vpn" : "node_21",
             "ig_ctl.ig_ctl_mpls.act_mpls_decap_vpls" : "node_21",
@@ -6569,7 +6797,7 @@
           "id" : 5,
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 178,
+            "line" : 198,
             "column" : 13,
             "source_fragment" : "ig_md.mpls0_valid == 1"
           },
@@ -6587,7 +6815,7 @@
               }
             }
           },
-          "true_next" : "tbl_ig_ctl_mpls179",
+          "true_next" : "tbl_ig_ctl_mpls199",
           "false_next" : "node_21"
         },
         {
@@ -6595,7 +6823,7 @@
           "id" : 6,
           "source_info" : {
             "filename" : "./include/ig_ctl_mpls.p4",
-            "line" : 181,
+            "line" : 201,
             "column" : 16,
             "source_fragment" : "(ig_md.mpls_op_type == 1) && (ig_md.mpls1_valid == 1)"
           },
@@ -6633,7 +6861,7 @@
               }
             }
           },
-          "true_next" : "tbl_ig_ctl_mpls182",
+          "true_next" : "tbl_ig_ctl_mpls202",
           "false_next" : "node_21"
         },
         {
