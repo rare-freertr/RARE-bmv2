@@ -1,0 +1,130 @@
+hostname c6
+buggy
+!
+logging buffered debug 10240
+logging file debug c6.log
+!
+crypto rsakey rsa import MIIEowIBAAKCAQEA4TVLggBxqTPxWt7QODwMeryYFrXcmd2WmJj5MxzEoOntrGOGyaepaVJeVh4rwEIciwl5Nu3yHkryQwb/8Lo633pNmnPgamiTcz+o3C1T3T0c/wihHYDXe8+56y6VAJghDAe3M/2XOb1EIBWzYAipPZMCW3PswKHKjhTmm0ifGUlDQF8D2Ap05K8t0s4PI3RnN7MpC5bfUy+eezV3wZ4e9vNXp8fJ1BmKqTCaicFFSx0JIMNfIe4nrRAiKD2ITCNphG0HcNFT6raPBcgjru9+KUVgcq0c3anuf9d0FZW2iWJifyn7mxICKRCz28G9ABZdADdzViBtr8lY02yQuCBnVQIDAQABAoIBAC/4skTW418veVHp9GCGKgJa+eqcgokj8lg+/ZYtopTEP6Rg7u01kZiluwKNGrSxYHMdaXyR4ukg/cnZS9tzT+canj0wQbVo4T/DZ6y+2wZdZjfNFsS6FSyCaw/1tDeUMDXnztZ8RiI+dqx+8t6Z+bLsBayFXQELdaIeQaECLyGrWyTSq3SCZhYFNyPZ0c6tI+sxyGU1XQr5rkTTSDKxYLOB2XasmzBiwsn75/n3vObS0bV5Lajpb7V/pTtNP4QCnOeZ7g9CqGKA6UTCE/i77fZ/VIeyYrgEY2/msPYYjmV4WchfHvR4Oo3eBNmLBINgrOAlpzqTI2IF8PCbn7ed3mECgYEA8GitWackjh6qd9dgULarLyZe1ZgY3yA0Ld+SoxBJ/5t3hS4cQ16XnrqonARpcBclvANI5aIa/NU7Fjgu78r12Tlz7uUyfcibZaNmZPnHGWy1PO7zdvuPTXSLnr48TUcYTXapScBvco4adndftZJfh4VbLIazMSW+tH9AYcxYlmcCgYEA79BAjN12W7CJ+JEM0Jt1HAp59pr/NNwoA+1SfbvcyghBV6x3Hg9wQkEA19RsGUzpNTJnfgJDF39hijJSd+m9UVDc0yHVRT2psIrPnQ+HoPzekgBMKW71AmCjsZqosjUb4kKUzj+6yQB4nFF13qyOMSfHdLmGNrkcC6K5A5VqZuMCgYAT7+poY/chHiPu+lqPdwatS1ZUCmANqQMKxt7HTSOF4iPAVLmdUKvsSviOr8L6u8CyXedeu9nXG+vhhNlHo6JN2Hjn1/QfAFL609k7CIfdcOl62yovtN8GgmLN0GL52aqHSg7yAdZ8PpKtPmseiLwJZiLQh3821TWCjIcPVT4HgwKBgFUmVqUtxWbNClBOAITZjf2E4sVjR5aXTUYHsDCg0caSo9DjlfAAf1WnCwuXi0J4gp225fRiDTx8qD+PmqSlQ+lpkt8MtlM9j9D1mL4l03ygDM8+d8yGb0yGz9iyF5AfN2VhSsDo9AOGvUyTyAxmrJ5bh4C0lyk7FPA0uQjCtuMNAoGBAOulr7yvxekwShsBeNDBLZTfknKGN6bCjAlNEwgPVc/hx9HRM4rC1YkBYx/124bUfEuvs8MfMMFzFxFuG81SxzGo1nsF3t6TdSZ0IDOPByzRC5ZLpQojtVHlK8CVmQzHaopFpDiQcteHGKLe+bDkDwP7qd9kGwYAtbVK0SrDI5mG
+!
+crypto dsakey dsa import MIH2AgEAAkBdHH+NJ78OHDDYJMwqqEA7/Fmyn0SPNCe3+doCqKSbwYPS7FpgIqP8R7cIv0GDzxmCPFYJIZ/pWmu0VleClF4LAhUAlTGwTPM+Vla+iYnYroywSCsBQ+MCQBmx+2JlMnQWpPj65oNafjpAXmYFVw0AqPAguzRmbS0A6XsDAygDkIFC0IX806b2lCwIvm4/nyNtY6lyxq0mi00CQDQfodwCipoFayCfWXjC7z7jTN26MXmk4oP+pgSG9aF8dG34Wrx7A/GHoTkaAwMbTbXgzlOQ5O5UtIKy04xai1UCFDK+gTIq1c/alJ2EOsvC5tvW1siW
+!
+crypto ecdsakey ecdsa import MIHbAgEBBEAA392naCtU5jkwV+4yD1PBoFODWiOqRdA3Mej7Buh+NOrlsgq/6R0p1CND6Rf+EyYARnsYvMBLD/msqdFczUZvoAwGCgEDJAMDAggBAQ2hgYUDgYIABCZQjKVjdcoDTm5Mwvf+IOeYAZ7+ptlG7cGxPZGXj5saqQDMNB+Jnj0sck0s+rsTDwP3wt/0BFv14Fm35kU8W+gUrlYtFQ/ZKy88cuAGy3z1UeSWVErszXYDaBLmFyb+H7/LfO9bIfDtHxJ30XyXpAlmLCKRywfxnXrrqLuxLEez
+!
+aaa tacacs tac
+ no log-error
+ secret $v10$Y29yZQ==
+ server 10.10.10.9
+ exit
+!
+vrf definition v1
+ rd 1:1
+ rt-import 1:1
+ rt-export 1:1
+ label-mode per-prefix
+ exit
+!
+router ospf4 1
+ vrf v1
+ router-id 10.10.10.6
+ traffeng-id 0.0.0.0
+ area 0 enable
+ redistribute connected
+ exit
+!
+interface loopback0
+ no description
+ vrf forwarding v1
+ ipv4 address 10.10.10.6 255.255.255.255
+ no shutdown
+ no log-link-change
+ exit
+!
+interface ethernet0
+ no description
+ macaddr 0000.0a00.0040
+ no shutdown
+ no log-link-change
+ exit
+!
+interface sdn3
+ no description
+ mtu 1500
+ macaddr 0048.0729.7433
+ vrf forwarding v1
+ ipv4 address 10.3.6.6 255.255.255.0
+ mpls enable
+ mpls ldp4
+ router ospf4 1 enable
+ router ospf4 1 area 0
+ no shutdown
+ no log-link-change
+ exit
+!
+interface sdn7
+ no description
+ mtu 1500
+ macaddr 005a.7377.224c
+ vrf forwarding v1
+ ipv4 address 10.6.7.6 255.255.255.0
+ mpls enable
+ mpls ldp4
+ router ospf4 1 enable
+ router ospf4 1 area 0
+ no shutdown
+ no log-link-change
+ exit
+!
+proxy-profile v1
+ vrf v1
+ source loopback0
+ exit
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+alias test bash description 
+alias test bash parameter optional
+!
+server telnet ssh
+ security protocol ssh
+ security authentication tac
+ security rsakey rsa
+ security dsakey dsa
+ security ecdsakey ecdsa
+ port 22
+ exec authorization tac
+ no login authentication
+ vrf v1
+ exit
+!
+server telnet tel
+ security protocol telnet
+ no exec authorization
+ no login authentication
+ vrf v1
+ exit
+!
+server p4lang p4
+ export-vrf v1 1
+ export-port sdn3 3
+ export-port sdn7 7
+ interconnect ethernet0
+ vrf v1
+ exit
+!
+client proxy v1
+client name-server 8.8.8.8
+client config-save
+client time-zone CET
+!
+end
