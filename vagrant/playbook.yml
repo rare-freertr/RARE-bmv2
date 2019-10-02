@@ -6,9 +6,6 @@
     - name: Install build-essential
       apt:
         name: build-essential
-    - name: Install mininet
-      apt:
-        name: mininet
     - name: Install p4lang-3rd-party-xenial
       apt:
         name: p4lang-3rd-party-xenial
@@ -21,12 +18,9 @@
     - name: Install python-psutil
       apt:
         name: python-psutil
-    - name: Install emacs-nox
-      apt:
-        name: emacs-nox
     - name: Clone RARE software
       git:
         repo: 'https://github.com/frederic-loui/RARE.git'
         dest: /home/vagrant/RARE/
         force: yes
-        version: HEAD
+        version: master
