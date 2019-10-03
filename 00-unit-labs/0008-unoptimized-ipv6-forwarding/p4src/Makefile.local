@@ -1,0 +1,3 @@
+## Set to the name of the test-specific p4 program, e.g.
+## P4_PROGRAM = optimized-ipv4-forwarding.p4
+P4_PROGRAM = unoptimized-ipv6-forwarding.p4

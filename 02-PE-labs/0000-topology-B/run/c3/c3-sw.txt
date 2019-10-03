@@ -1,0 +1,149 @@
+hostname c3
+buggy
+!
+logging buffered debug 10240
+logging file debug c3.log
+!
+crypto rsakey rsa import MIIEoQIBAAKCAQBoWUxEmnyRJqo5lx/GgZFjekaSLb6T5MJb8blOWKn6j/MKL+QdFkiZKfOxhWlOR6n1lvdNbAvkWO61M+ZWuXeFaHw+pzNLT5Iv/Nb78cbt6VERiSnAsrpUYMIgDZWDj5l3aV52yUv7VQDjFEeCblIwvsOnzoLRzXf53VLThaufaBZ6U/ewBQTebwYHxW+U2lkjPFMbo5h7WhWkG+HXix/ujgkb+c8ICvDmTZEp9FlYpo2C4umUt/YaCv1XFp75ISSiZEHwWUzUY1QlqrOI1pIZ5H/0CI7DOS80SJR1gdqBjBPh5I9Mc0AX17Wz3UbSDfns/suIYlv7dIh7Ln2rZNtxAgMBAAECggEASE9xWa0Qm2mG1sfR/jZ1cNEgLFZE1anVwe9dcVxh1j+AtVOAqWNyxajbte30jol8zrJiB6XTC9dQ/ALOINT/bVR9nNEy64JllJmKxSbDqsRfKF67r0xrcONoQtwG+xc8yxIaowhVfgJmzfWUpF8c16iqXxPtdcQD2wOzTN85kgmhQqzeDoenhqqdByqdo9xRE8sA2gzqOdQPC+lA0MURAUOZM2K/KoaA6bSP4Fksa8yMKzEt+rbqM0x65zeqWnuRaLf+jSVyWmI0NYZO0s5keBPBzy5zAWhLcIPPBqOy4c6WpN8o8vmyXy3uOTfLJAeqeT9YRjGSPF3NIAb57q/BEQKBgQDH3IAXmJ+2G9HwMG9FIdCf1jzQV9cfaKs82Ttm9FQFZL8nuagiFfQSq5COBsdzaQCDQAnKTB2hs/99nHEdBc0XkfbTX5zuOyfPL85RRwNthGw2X0Cc5cEjsDf8nH5P8aGLAJgOMBzG0LX1pWEX8Un+fwr/quldKDo5GMsT9ZPGLQKBgQCFqL7fruxIc2FovRwuGXH9cGW7f/5kTWxu/OtsPLOm/zAHotylCotI2x9bJZrHl8OIVPrnODSoRkhjPHpmJI+9plx4C70cXDoOWxdTs7YpesznVI19MXrKgDr2dHm+g8EzzimkHukDrnRfqijMzXANK1kCePB3mJwBks8LUQfY1QKBgBZXYcJBf2j+ByPQZj/WHdogOsAXcabDLpEov2ks2s+XiX7JVDArQBNuNkSKIXWXQUVqvS1uAMn4sxC5kjNqWJjP6kWKpKJE3phcgbW4OHvfl7EkSLbBQCvbIQcN/1i0bBh7woOjgTQAVLbW+9mPUXQvg209D8UoIAoN6XWbuB8pAoGAKgEiG0Hp18sK7dOgq4wrmq5cClTrKbJ7RVYO1nEtNGo2OfAgz21E4JycehSTU+6J8KpkP44WXlvYG/fBr6AF3GAP51opEGSbii9uYUu1D8wb4Qddf96w7DroTNPF/u2BJjrAM2fTaujEgdwD/nkBoeHhkzlWuP8o6AWvM6s/gBECgYAvk/JbvETGC3HKq3rUt8+MuZYgySMf35ORd2PJNRz9vBYlTNUmycoisaTCIP1YqV48D7kHgeCU+ip18xH6+uHtXcZKqh+cReFkAA6lkdRYu9kIcwTzwmGzzmJnTQTDp/xxgoJ/g4I1BKmCBYJPrySOgix2WIkfTaq3yom9vSV5hA==
+!
+crypto dsakey dsa import MIH2AgEAAkBdHH+NJ78OHDDYJMwqqEA7/Fmyn0SPNCe3+doCqKSbwYPS7FpgIqP8R7cIv0GDzxmCPFYJIZ/pWmu0VleClF4LAhUAlTGwTPM+Vla+iYnYroywSCsBQ+MCQBmx+2JlMnQWpPj65oNafjpAXmYFVw0AqPAguzRmbS0A6XsDAygDkIFC0IX806b2lCwIvm4/nyNtY6lyxq0mi00CQDQfodwCipoFayCfWXjC7z7jTN26MXmk4oP+pgSG9aF8dG34Wrx7A/GHoTkaAwMbTbXgzlOQ5O5UtIKy04xai1UCFDK+gTIq1c/alJ2EOsvC5tvW1siW
+!
+crypto ecdsakey ecdsa import MIHbAgEBBEAA392naCtU5jkwV+4yD1PBoFODWiOqRdA3Mej7Buh+NOrlsgq/6R0p1CND6Rf+EyYARnsYvMBLD/msqdFczUZvoAwGCgEDJAMDAggBAQ2hgYUDgYIABCZQjKVjdcoDTm5Mwvf+IOeYAZ7+ptlG7cGxPZGXj5saqQDMNB+Jnj0sck0s+rsTDwP3wt/0BFv14Fm35kU8W+gUrlYtFQ/ZKy88cuAGy3z1UeSWVErszXYDaBLmFyb+H7/LfO9bIfDtHxJ30XyXpAlmLCKRywfxnXrrqLuxLEez
+!
+aaa tacacs tac
+ no log-error
+ secret $v10$Y29yZQ==
+ server 10.10.10.9
+ exit
+!
+vrf definition v1
+ rd 1:1
+ rt-import 1:1
+ rt-export 1:1
+ label-mode per-prefix
+ exit
+!
+router ospf4 1
+ vrf v1
+ router-id 10.10.10.3
+ traffeng-id 0.0.0.0
+ area 0 enable
+ redistribute connected
+ exit
+!
+interface loopback0
+ no description
+ vrf forwarding v1
+ ipv4 address 10.10.10.3 255.255.255.255
+ no shutdown
+ no log-link-change
+ exit
+!
+interface ethernet0
+ no description
+ macaddr 0000.0a00.0040
+ no shutdown
+ no log-link-change
+ exit
+!
+interface sdn2
+ no description
+ mtu 1500
+ macaddr 002e.4d26.432f
+ vrf forwarding v1
+ ipv4 address 10.2.3.3 255.255.255.0
+ ipv4 bfd 1000 3000 3
+ mpls enable
+ mpls ldp4
+ router ospf4 1 enable
+ router ospf4 1 area 0
+ router ospf4 1 bfd
+ no shutdown
+ no log-link-change
+ exit
+!
+interface sdn4
+ no description
+ mtu 1500
+ macaddr 0025.7b6d.3431
+ vrf forwarding v1
+ ipv4 address 10.3.4.3 255.255.255.0
+ ipv4 bfd 1000 3000 3
+ mpls enable
+ mpls ldp4
+ router ospf4 1 enable
+ router ospf4 1 area 0
+ router ospf4 1 bfd
+ no shutdown
+ no log-link-change
+ exit
+!
+interface sdn6
+ no description
+ mtu 1500
+ macaddr 003f.7732.124e
+ vrf forwarding v1
+ ipv4 address 10.3.6.3 255.255.255.0
+ mpls enable
+ mpls ldp4
+ router ospf4 1 enable
+ router ospf4 1 area 0
+ no shutdown
+ no log-link-change
+ exit
+!
+proxy-profile v1
+ vrf v1
+ source loopback0
+ exit
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+alias test bash description 
+alias test bash parameter optional
+!
+server telnet ssh
+ security protocol ssh
+ security authentication tac
+ security rsakey rsa
+ security dsakey dsa
+ security ecdsakey ecdsa
+ port 22
+ exec authorization tac
+ no login authentication
+ vrf v1
+ exit
+!
+server telnet tel
+ security protocol telnet
+ no exec authorization
+ no login authentication
+ vrf v1
+ exit
+!
+server p4lang p4
+ export-vrf v1 1
+ export-port sdn2 2
+ export-port sdn4 4
+ export-port sdn6 6
+ interconnect ethernet0
+ vrf v1
+ exit
+!
+client proxy v1
+client name-server 8.8.8.8
+client config-save
+client time-zone CET
+!
+end

@@ -1,0 +1,13 @@
+mc_node_create 100 1 2 3 4
+mc_mgrp_create 100
+mc_node_associate 100 0
+mirroring_add_mc 100 100
+table_add ctl_ingress.tbl_vlan_match ctl_ingress.act_vlan_hit 1 0 0 => 100
+table_add ctl_ingress.tbl_vlan_match ctl_ingress.act_vlan_hit 2 1 102 => 100
+table_add ctl_ingress.tbl_vlan_match ctl_ingress.act_vlan_hit 3 1 103 => 100
+table_add ctl_ingress.tbl_vlan_match ctl_ingress.act_vlan_hit 4 1 104 => 100
+
+table_add ctl_egress.tbl_vlan_out ctl_egress.egress_no_tag 100 1 =>
+table_add ctl_egress.tbl_vlan_out ctl_egress.egress_push_tag 100 2 => 102
+table_add ctl_egress.tbl_vlan_out ctl_egress.egress_push_tag 100 3 => 103
+table_add ctl_egress.tbl_vlan_out ctl_egress.egress_push_tag 100 4 => 104
