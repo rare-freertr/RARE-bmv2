@@ -36,10 +36,13 @@ The way to launch and test the different labs is as addressed in [RARE Repos](ht
 ## Launching Unit Labs
 ### Unoptimized-ipv4
 [Unoptimized IPv4 simple lab](https://github.com/frederic-loui/RARE/tree/master/00-unit-labs/0001-unoptimized-ipv4-forwarding/p4src)
-Launching the unoptimized IPv4 Unit Lab
+
+Launching the unoptimized IPv4 Unit Lab:
+
 vagrant up --provider virtualbox  --provision-with repositories,ansible,unoptimized-ipv4,unoptimized-ipv4-controlp,unoptimized-ipv4-connc
 
 
 ### IPv4 ISIS and Segment Routing
 [ISIS-SR unit lab](https://github.com/frederic-loui/RARE/tree/master/00-unit-labs/0006-ipv4-isis-sr-operation/p4src)
+
 vagrant up --provider virtualbox  --provision-with repositories,ansible,ipv4-isis-sr,ipv4-isis-sr-controlp,ipv4-isis-sr-connc
