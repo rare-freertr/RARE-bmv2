@@ -101,7 +101,8 @@ Vagrant.configure("2") do |config|
                       inline: <<-SHELL
            sudo killall simple_switch
     SHELL
-  config.vm.provision "unoptimized-ipv4",
+
+    config.vm.provision "unoptimized-ipv4",
                       type: "shell",
                       run: "never",
                       inline: <<-SHELL
@@ -153,7 +154,7 @@ Vagrant.configure("2") do |config|
     echo "sh run int lo1"
     sleep 2
     echo "exit"
-    ) |ip netns exec cpe1 telnet 127.0.01 2323; true
+    ) |ip netns exec cpe1 inetutils-telnet 127.0.01 2323; true
     echo
 
     echo "\033[0;34mConfiguring ISIS CPE2\033[0m"
@@ -166,7 +167,7 @@ Vagrant.configure("2") do |config|
     echo "sh run int eth0"
     sleep 2
     echo "exit"
-    ) |ip netns exec cpe2 telnet 127.0.01 2323; true
+    ) |ip netns exec cpe2 inetutils-telnet 127.0.01 2323; true
     echo
 
     echo "\033[0;34mConfiguring ISIS CORE\033[0m"
@@ -183,7 +184,7 @@ Vagrant.configure("2") do |config|
     echo "sh run int lo1"
     sleep 2
     echo "exit"
-    ) |ip netns exec core1 telnet 127.0.01 2323; true
+    ) |ip netns exec core1 inetutils-telnet 127.0.01 2323; true
     echo
 
 
@@ -231,7 +232,7 @@ config.vm.provision "unoptimized-ipv4-connc",
     echo "ping 10.0.1.1 /vrf v1"
     sleep 2
     echo "exit"
-    ) | ip netns exec core1 telnet 127.0.01 2323; true
+    ) | ip netns exec core1 inetutils-telnet 127.0.01 2323; true
     echo "\033[0;34mChecking CPE connectivity\033[0m"    
     echo TBD
 
@@ -249,7 +250,7 @@ config.vm.provision "ipv4-isis-sr-connc",
     echo "sh mpls for"
     sleep 2
     echo "exit"
-    ) | ip netns exec core1 telnet 127.0.01 2323; true
+    ) | ip netns exec core1 inetutils-telnet 127.0.01 2323; true
 
 
     echo "\033[0;34mShowning CPE1 mpls\033[0m"    
@@ -258,7 +259,7 @@ config.vm.provision "ipv4-isis-sr-connc",
     echo "sh mpls for"
     sleep 2
     echo "exit"
-    ) | ip netns exec cpe1 telnet 127.0.01 2323; true
+    ) | ip netns exec cpe1 inetutils-telnet 127.0.01 2323; true
 
     echo "\033[0;34mConnectivity check\033[0m"
 
@@ -268,7 +269,7 @@ config.vm.provision "ipv4-isis-sr-connc",
     echo "ping 10.2.2.2 /vrf v1 /interface lo0"
     sleep 2
     echo "exit"
-    ) | ip netns exec cpe1 telnet 127.0.01 2323; true
+    ) | ip netns exec cpe1 inetutils-telnet 127.0.01 2323; true
     
 
     echo "\033[0;34mShowning CPE2 mpls\033[0m"    
@@ -277,7 +278,7 @@ config.vm.provision "ipv4-isis-sr-connc",
     echo "sh mpls for"
     sleep 2
     echo "exit"
-    ) | ip netns exec cpe2 telnet 127.0.01 2323; true
+    ) | ip netns exec cpe2 inetutils-telnet 127.0.01 2323; true
 
     SHELL
 

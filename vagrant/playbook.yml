@@ -12,6 +12,9 @@
     - name: Install java jdk
       apt:
         name: default-jdk
+    - name: Install telnet
+      apt:
+        name: inetutils-telnet
     - name: Install p4lang-p4c
       apt:
         name: p4lang-p4c
