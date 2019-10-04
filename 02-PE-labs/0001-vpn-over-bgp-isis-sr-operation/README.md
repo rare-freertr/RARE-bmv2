@@ -1,5 +1,5 @@
 # Lab topology
-The topology used is common to all unit labs defined [here](https://github.com/frederic-loui/RARE/tree/master/00-unit-labs/0000-topology).
+The topology used is common to all unit labs defined [here](https://github.com/frederic-loui/RARE/tree/master/02-PE-labs/0000-topology-A).
 # Lab title:
 **VPN over BGP with ISIS IPv4 MPLS-SR as transport with `core1` as a pure LSR**
 # Lab objective
