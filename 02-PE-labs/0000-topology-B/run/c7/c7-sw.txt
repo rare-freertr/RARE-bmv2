@@ -1,0 +1,319 @@
+hostname c7
+buggy
+!
+logging buffered debug 10240
+logging file debug c7.log
+!
+crypto rsakey rsa import MIIEowIBAAKCAQEA56KS8SGg6yW14P5BB/Cma1S0i9Bqa6pU6XiYUqv7qDlKHtDsV5kDzyp/m0JGmvlAc4b5+Jf+BiGaNFApxlfQSbn6FtFrPYKp+z0CD23jiWbOrpB8/HfgK18ZlzCBTJWSQY0DoZaZDUlCOgIvbej8DFIHodhacu75KcMWN4Jv5AeSCidAPpWL9aCqXkvVCbl3ExiyUBih91Kte/nFAjhviKZbJRof7tFwNki72ZJJxVgImA5sjnpD0/O1whUMuy0VCWr5TWGsLLQcDGBpboTlIAUMGHs9wXsxPuWnkehRdaqkPh6QyO7PwKHkagQYUAgjxyj3d7mnz2R/V/imZAVirwIDAQABAoIBAQC6rkmi0KlyGjhVFlSu44IcKm4/6D58exBoAWsx5a2yTEmyQErZ5lYtlmC1blqc95i8AuJfOY/evSIcWybv1UHmyV4HGcxGDJKWCvsoGDYzPIoCIiy5BJvEGKb1NIBgioMPFWkBx++dx5b6TVyQRh8shsfj5gwvaO2ifLnhDtzCdtbvWPZg4o70u1oKk54GxnkPALN3O6F7Zpk/+iJKz0MkYRBNkAZKE4X9A10LPEAlLON01iqSf/JEEPTTHlxOlWcqmkiRBIGeFcvGmPANuIjgTPE4hCNv5gDSuU9w23/ugFiA5GIkXr7KlRDXfB17/r7BaiMr9VuaPj1aWhbbUJ3xAoGBAPZ9EJ4sVVFLaLuE9Qwhx4ecPmJiYWzN1oBD3HJsKK5SFQcCf6ti4UqTSjABAmDIWJKwcFua07djvoPGqru06HNhSttPWqmWW0qv1i1GV/823A8yuRFEAuVCOBYbH8yO+yLSExyLM+ETRZfnjch3E9QJyZmpGWfvPp2OnIVZK6NtAoGBAPCSx3JmCdQ+vksLt/h2FLKcJ7k7Lp7WXwZOWFiU/NoyCi0f9JP2m6qaIzAkFsL97GjR0/JMEtykxUcORf9DdzHhCiVJCpzyQ97X7Vv35eiSjssGtdp2Txrdnm0IzdjKQyyJz0fNPZjpMMbwHLzcpYIPDAlu2Zlv8c8/2SbwY7ELAoGAT1T/VTlFmG2h3sCzMd1pX78s4PNzEdbKE+xDdlxTV4+5jtECEEI56ouvU/XvMwEoaMX607DoNV0YA0ecyd829XO56Q4ISw7GgSpIz7eVOOIKP6X+pIz0NZ9zd8HxISBfudxNJGG1J9rRCkwPeRbCPfuMdDVVpPr+dy1gORbzEZ0CgYAMndYB5OINFIFMVEAAssihGVln+HeYcuum3AL8GkwscUVhWnSsMdm2F8FSrAHZlhGI6cAwy9aNZcLG2DPJkFM29XNfwzXgR0BR9ocHNLgE+3KrqR1uaJf7c7X0R+rrvKfLNSr+u//H/irFtB/9s6Cmcn2SHRMiXeGTmeichyzjQwKBgA+TlA7iskcku4biH5rU6LkXAHHMHn3T+qocXG6+gaWfGU3yp4cUgDYm85iDjS/8N2G7SKMaGrHlXQCU3QAesBCHWPuBC06WJLBnuQu9iSM7Afcbhjk49OMXsikc7fhHELCNqiNXRK652hDwwUJ3iB8qEE3Xnor8xm2vCgaHYqJ1
+!
+crypto dsakey dsa import MIH2AgEAAkBdHH+NJ78OHDDYJMwqqEA7/Fmyn0SPNCe3+doCqKSbwYPS7FpgIqP8R7cIv0GDzxmCPFYJIZ/pWmu0VleClF4LAhUAlTGwTPM+Vla+iYnYroywSCsBQ+MCQBmx+2JlMnQWpPj65oNafjpAXmYFVw0AqPAguzRmbS0A6XsDAygDkIFC0IX806b2lCwIvm4/nyNtY6lyxq0mi00CQDQfodwCipoFayCfWXjC7z7jTN26MXmk4oP+pgSG9aF8dG34Wrx7A/GHoTkaAwMbTbXgzlOQ5O5UtIKy04xai1UCFDK+gTIq1c/alJ2EOsvC5tvW1siW
+!
+crypto ecdsakey ecdsa import MIHbAgEBBEAA392naCtU5jkwV+4yD1PBoFODWiOqRdA3Mej7Buh+NOrlsgq/6R0p1CND6Rf+EyYARnsYvMBLD/msqdFczUZvoAwGCgEDJAMDAggBAQ2hgYUDgYIABCZQjKVjdcoDTm5Mwvf+IOeYAZ7+ptlG7cGxPZGXj5saqQDMNB+Jnj0sck0s+rsTDwP3wt/0BFv14Fm35kU8W+gUrlYtFQ/ZKy88cuAGy3z1UeSWVErszXYDaBLmFyb+H7/LfO9bIfDtHxJ30XyXpAlmLCKRywfxnXrrqLuxLEez
+!
+aaa tacacs tac
+ no log-error
+ secret $v10$Y29yZQ==
+ server 10.10.10.9
+ exit
+!
+bridge 1
+ rd 1:5
+ rt-import 1:5
+ rt-export 1:5
+ mac-learn
+ exit
+!
+bridge 2
+ rd 1:6
+ rt-import 1:6
+ rt-export 1:6
+ mac-learn
+ exit
+!
+vrf definition v1
+ rd 1:1
+ rt-import 1:1
+ rt-export 1:1
+ label-mode per-prefix
+ exit
+!
+vrf definition v2
+ rd 1:2
+ rt-import 1:2
+ rt-export 1:2
+ exit
+!
+vrf definition v3
+ rd 1:3
+ rt-import 1:4
+ rt-export 1:3
+ exit
+!
+router ospf4 1
+ vrf v1
+ router-id 10.10.10.7
+ traffeng-id 0.0.0.0
+ area 0 enable
+ redistribute connected
+ exit
+!
+interface loopback0
+ no description
+ vrf forwarding v1
+ ipv4 address 10.10.10.7 255.255.255.255
+ no shutdown
+ no log-link-change
+ exit
+!
+interface bvi1
+ no description
+ no shutdown
+ no log-link-change
+ exit
+!
+interface bvi2
+ no description
+ no shutdown
+ no log-link-change
+ exit
+!
+interface ethernet0
+ no description
+ macaddr 0000.0a00.0040
+ no shutdown
+ no log-link-change
+ exit
+!
+interface sdn11
+ no description
+ mtu 1500
+ macaddr 0029.0026.5716
+ no shutdown
+ no log-link-change
+ exit
+!
+interface sdn11.2
+ no description
+ vrf forwarding v2
+ ipv4 address 10.7.11.7 255.255.255.0
+ ipv6 address 10:7:11::7 ffff:ffff:ffff:ffff::
+ mpls enable
+ no shutdown
+ no log-link-change
+ exit
+!
+interface sdn11.3
+ no description
+ vrf forwarding v3
+ ipv4 address 10.7.11.7 255.255.255.0
+ ipv6 address 10:7:11::7 ffff:ffff:ffff:ffff::
+ mpls enable
+ no shutdown
+ no log-link-change
+ exit
+!
+interface sdn11.4
+ no description
+ bridge-group 1
+ no shutdown
+ no log-link-change
+ exit
+!
+interface sdn11.5
+ no description
+ bridge-group 2
+ no shutdown
+ no log-link-change
+ exit
+!
+interface sdn6
+ no description
+ mtu 1500
+ macaddr 0039.1923.2e0e
+ vrf forwarding v1
+ ipv4 address 10.6.7.7 255.255.255.0
+ mpls enable
+ mpls ldp4
+ router ospf4 1 enable
+ router ospf4 1 area 0
+ no shutdown
+ no log-link-change
+ exit
+!
+router bgp4 1
+ vrf v1
+ local-as 1
+ router-id 10.10.10.7
+ address-family vpnuni ovpnuni vpls evpn
+ neighbor 10.10.10.9 remote-as 1
+ no neighbor 10.10.10.9 description
+ neighbor 10.10.10.9 local-as 1
+ neighbor 10.10.10.9 address-family vpnuni ovpnuni vpls evpn
+ neighbor 10.10.10.9 distance 200
+ neighbor 10.10.10.9 update-source loopback0
+ neighbor 10.10.10.9 pmsitun
+ neighbor 10.10.10.9 send-community all
+ afi-vrf v2 enable
+ afi-vrf v2 redistribute connected
+ afi-vrf v2 redistribute bgp4 2
+ afi-vrf v3 enable
+ afi-vrf v3 redistribute connected
+ afi-vrf v3 redistribute bgp4 3
+ afi-ovrf v2 enable
+ afi-ovrf v2 redistribute connected
+ afi-ovrf v2 redistribute bgp6 2
+ afi-ovrf v3 enable
+ afi-ovrf v3 redistribute connected
+ afi-ovrf v3 redistribute bgp6 3
+ afi-vpls 1:5 bridge-group 1
+ afi-vpls 1:5 update-source loopback0
+ afi-evpn 106 bridge-group 2
+ afi-evpn 106 bmac 0004.5d7b.1234
+ afi-evpn 106 encapsulation cmac
+ afi-evpn 106 update-source loopback0
+ exit
+!
+router bgp4 2
+ vrf v2
+ local-as 1
+ router-id 10.10.10.7
+ address-family unicast
+ neighbor 10.7.11.11 remote-as 2
+ no neighbor 10.7.11.11 description
+ neighbor 10.7.11.11 local-as 1
+ neighbor 10.7.11.11 address-family unicast
+ neighbor 10.7.11.11 distance 20
+ redistribute connected
+ redistribute bgp4 1
+ exit
+!
+router bgp4 3
+ vrf v3
+ local-as 1
+ router-id 10.10.10.7
+ address-family unicast
+ neighbor 10.7.11.11 remote-as 2
+ no neighbor 10.7.11.11 description
+ neighbor 10.7.11.11 local-as 1
+ neighbor 10.7.11.11 address-family unicast
+ neighbor 10.7.11.11 distance 20
+ redistribute connected
+ redistribute bgp4 1
+ exit
+!
+router bgp6 2
+ vrf v2
+ local-as 1
+ router-id 10.10.10.7
+ address-family unicast
+ neighbor 10:7:11::11 remote-as 2
+ no neighbor 10:7:11::11 description
+ neighbor 10:7:11::11 local-as 1
+ neighbor 10:7:11::11 address-family unicast
+ neighbor 10:7:11::11 distance 20
+ redistribute connected
+ redistribute bgp4 1
+ exit
+!
+router bgp6 3
+ vrf v3
+ local-as 1
+ router-id 10.10.10.7
+ address-family unicast
+ neighbor 10:7:11::11 remote-as 2
+ no neighbor 10:7:11::11 description
+ neighbor 10:7:11::11 local-as 1
+ neighbor 10:7:11::11 address-family unicast
+ neighbor 10:7:11::11 distance 20
+ redistribute connected
+ redistribute bgp4 1
+ exit
+!
+proxy-profile v1
+ vrf v1
+ source loopback0
+ exit
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+alias test bash description 
+alias test bash parameter optional
+!
+server telnet ssh
+ security protocol ssh
+ security authentication tac
+ security rsakey rsa
+ security dsakey dsa
+ security ecdsakey ecdsa
+ port 22
+ exec authorization tac
+ no login authentication
+ vrf v1
+ exit
+!
+server telnet tel
+ security protocol telnet
+ no exec authorization
+ no login authentication
+ vrf v1
+ exit
+!
+server p4lang p4
+ export-vrf v1 1
+ export-vrf v2 2
+ export-vrf v3 3
+ export-port sdn6 6
+ export-port sdn11 11
+ export-port sdn11.2 112
+ export-port sdn11.3 113
+ export-port sdn11.4 114
+ export-port sdn11.5 115
+ export-bridge 1
+ export-bridge 2
+ interconnect ethernet0
+ vrf v1
+ exit
+!
+client proxy v1
+client name-server 8.8.8.8
+client config-save
+client time-zone CET
+!
+end

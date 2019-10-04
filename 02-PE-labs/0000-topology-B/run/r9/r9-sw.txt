@@ -1,0 +1,131 @@
+hostname r9
+buggy
+!
+logging buffered debug 10240
+logging file debug r9.log
+!
+crypto rsakey rsa import MIIEpQIBAAKCAQEA/Je5EtuO1wXKs80w7kPc892U7r551+2J5b2h6SBMOFVwKawQEO+4IRg0NUgoUNVY9N940kCKHh1eyceVzVRCMoepzHs8iF3LtLGaKTLzC4k2U2tJj2mEMpH2ZyUe1ArzOxUjgpyfFOaEcG0mjmUE3gLrBiojwGbm4LUfxgpHLOaZPDItErB2ub6sdt9vfW/fh5mO7O6LWqHkqUFax852BBSU1oBe0atgnp8BmdoFsSbf3el+2I4lh5+N0vs54pCLRrxnAQY4CBuR4IbyTMgHKK1GF0KgFHJvyb293BZ81tYY40tkIybV+8R9+NaGPIXs23RvrKCJyxwPIpp7o1ZTLwIDAQABAoIBAQDT3oOrcKRYcZA7zqH7SMr9dl/k/bn/x0wCe1Ri0ed83RVOrvdu7VQZ1k58XsEKRFnwU73pRZ9UcTg/sfxSFRnNfoOLc9crXtluAAaaBhVdGMOLpxM1isELFemDTNyV6XVpmmqFtM+u3Ug7cSKFD/DMM9BlBFWmnemMlABJwfc/jaZjvW5Hb4zTCQrqqZk+xyt80WkXBFvGzTv7+QPpLXwCWQdFEkz2mo8X1NnVYuDEmHOWlhySTBYRi9p1hIMIpDWade3wTkAhk++fQYYhXWbrhK08LGEGKxOYjKKenXEl30TiP0FebtBzFv+ZseqZKrTmN34v13Qwy2zJNhFmeTLpAoGBAP9duZ3XqLXXurDSioGXmXZ+8Et4wAzValyYk9vlsY6eN8Qzo2c8ZxZqJSWP43+72Zz8f6yDiF2yZctQwnG/VGKqlKHtAQrFK9jgBEGydX4eb+NgjjumDv51IbXVQrB/UsxkCPZpolbffq4+edOHYPF8ymzNV3rNBGYxYar4N85tAoGBAP04PEd4sveFTyukm9i2GyMXI+kjfNg1dNeH/9iOvJ1ogyCpYCn7SQXVb6q6v61Th9FJajd682cBmkC5xBfpTjB8i7nRBOGh8F1JP13PqUVH8AeAmye0vcVfW1Xj+74Or0ye1VOAp5xhULg2KCDkUFVoma6QoVwcf/EC1KsJj3aLAoGBAMuez1/l01fUAb/20YxN9oc+5po3WWOiVKIq41NnDrJ6xFrFFhk+V7DOyHnwBuYWQonj6GYFp5mWo4aACdurRT07aTLIiZkt6S2QSrSb+QWsfWkf16oGWlRZz5xuxTN5AuuJJIBfcJu2sAt+M6QQgaNs7vfcsFFx4n0eCRPLwqvtAoGAUxgbH9EJ2ZPTcRzpT2oi6Zb0X9MXatPP7dJhMK1WU8kyDovGVMBzLAjoRfxWXghlL1aKFn6wVQL/nXHYWYhj8iFMsMNYeLptaA9bTeuRPnzm1W9setEi3Rv3mu3fdHTZLamJk4dKeVSt6mVLMc/6VKyokdJAQTvQ+EPXifDvNRUCgYEA7FipwD56l1t1BcXDOzrug4Rw6VcgbiDiRcvNv37yH7/3UxIfW5WgqsPDNJrnMeOINur3KGrIk4cv+U5+Fa2cjCZ7jbYTT1AjaX4PuKg8vsoxSwaS6wQLno1GXgAAiiN3e6WMUmr9/gri+29o3mHrvBCBJh2sHFLKANSLX+U+QWE=
+!
+crypto dsakey dsa import MIH2AgEAAkBdHH+NJ78OHDDYJMwqqEA7/Fmyn0SPNCe3+doCqKSbwYPS7FpgIqP8R7cIv0GDzxmCPFYJIZ/pWmu0VleClF4LAhUAlTGwTPM+Vla+iYnYroywSCsBQ+MCQBmx+2JlMnQWpPj65oNafjpAXmYFVw0AqPAguzRmbS0A6XsDAygDkIFC0IX806b2lCwIvm4/nyNtY6lyxq0mi00CQDQfodwCipoFayCfWXjC7z7jTN26MXmk4oP+pgSG9aF8dG34Wrx7A/GHoTkaAwMbTbXgzlOQ5O5UtIKy04xai1UCFDK+gTIq1c/alJ2EOsvC5tvW1siW
+!
+crypto ecdsakey ecdsa import MIHbAgEBBEAA392naCtU5jkwV+4yD1PBoFODWiOqRdA3Mej7Buh+NOrlsgq/6R0p1CND6Rf+EyYARnsYvMBLD/msqdFczUZvoAwGCgEDJAMDAggBAQ2hgYUDgYIABCZQjKVjdcoDTm5Mwvf+IOeYAZ7+ptlG7cGxPZGXj5saqQDMNB+Jnj0sck0s+rsTDwP3wt/0BFv14Fm35kU8W+gUrlYtFQ/ZKy88cuAGy3z1UeSWVErszXYDaBLmFyb+H7/LfO9bIfDtHxJ30XyXpAlmLCKRywfxnXrrqLuxLEez
+!
+aaa userlist loc
+ no log-error
+ username floui
+ username floui password $v10$MTIzNA==
+ username mc36
+ username mc36 password $v10$MTIzNA==
+ allowed .*
+ exit
+!
+access-list rr
+ sequence 10 permit all 10.10.10.0 255.255.255.0 all any all
+ exit
+!
+vrf definition v1
+ rd 1:1
+ rt-import 1:1
+ rt-export 1:1
+ label-mode per-prefix
+ exit
+!
+router ospf4 1
+ vrf v1
+ router-id 10.10.10.9
+ traffeng-id 0.0.0.0
+ area 0 enable
+ redistribute connected
+ exit
+!
+interface loopback0
+ no description
+ vrf forwarding v1
+ ipv4 address 10.10.10.9 255.255.255.255
+ no shutdown
+ no log-link-change
+ exit
+!
+interface ethernet0
+ no description
+ vrf forwarding v1
+ ipv4 address 10.5.9.9 255.255.255.0
+ mpls enable
+ mpls ldp4
+ router ospf4 1 enable
+ router ospf4 1 area 0
+ no shutdown
+ no log-link-change
+ exit
+!
+router bgp4 1
+ vrf v1
+ local-as 1
+ router-id 10.10.10.9
+ address-family vpnuni ovpnuni vpls evpn
+ template t remote-as 1
+ no template t description
+ template t local-as 1
+ template t address-family vpnuni ovpnuni vpls evpn
+ template t distance 200
+ template t update-source loopback0
+ template t pmsitun
+ template t route-reflector-client
+ template t send-community all
+ listen rr t
+ exit
+!
+proxy-profile v1
+ vrf v1
+ source loopback0
+ exit
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+alias test bash description 
+alias test bash parameter optional
+!
+server telnet ssh
+ security protocol ssh
+ security authentication loc
+ security rsakey rsa
+ security dsakey dsa
+ security ecdsakey ecdsa
+ port 22
+ exec authorization loc
+ no login authentication
+ vrf v1
+ exit
+!
+server telnet tel
+ security protocol telnet
+ no exec authorization
+ no login authentication
+ vrf v1
+ exit
+!
+server tacacs core
+ authentication loc
+ authorization loc
+ secret $v10$Y29yZQ==
+ logging
+ vrf v1
+ exit
+!
+client proxy v1
+client name-server 8.8.8.8
+client config-save
+client time-zone CET
+!
+end

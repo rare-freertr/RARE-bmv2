@@ -60,20 +60,16 @@ Vagrant.configure("2") do |config|
   # View the documentation for the provider you are using for more
   # information on available options.
 
-  config.vm.define :lvgeantrare, primary: true do |libvrtgeantrare|
+  config.vm.define :geantrare, primary: true do |libvrtgeantrare|
     config.vm.provider :libvirt do |libvirt|
       libvirt.memory = 8192
       libvirt.cpus = 4
     end
-  end
-
-  config.vm.define :vbgeantrare do |vboxgeantrare|
     config.vm.provider :virtualbox do |vb|
       vb.memory = 8192
       vb.cpus = 4
     end
   end
-
   
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
@@ -84,14 +80,12 @@ Vagrant.configure("2") do |config|
   # SHELL
 
 
-  config.vm.provision "shell", inline: <<-SHELL
+  config.vm.provision  "repositories",
+                       type: "shell",
+                       inline: <<-SHELL
    sudo add-apt-repository ppa:frederic-loui/p4lang-master-xenial-nightly  
    sudo add-apt-repository ppa:frederic-loui/p4lang-xenial
-     apt update
-  #    apt install -y git
-  #    apt install -y p4lang
-  #    apt install -y build-essential
-  #    apt install -y mininet
+   sudo apt update
   SHELL
 
   config.vm.provision "ansible" do |ansible|
@@ -99,6 +93,195 @@ Vagrant.configure("2") do |config|
     ansible.playbook = "playbook.yml"
   end
 
+  ## Scenario instantiation providers:
+
+    config.vm.provision "clean",
+                      type: "shell",
+                      run: "never",
+                      inline: <<-SHELL
+           sudo killall simple_switch
+    SHELL
+
+    config.vm.provision "unoptimized-ipv4",
+                      type: "shell",
+                      run: "never",
+                      inline: <<-SHELL
+    cd /home/vagrant/RARE/00-unit-labs/0000-topology
+    echo Running topology
+    make
+    echo Running Unoptimized IPv4 Unit Lab
+    cd /home/vagrant/RARE/00-unit-labs/0001-unoptimized-ipv4-forwarding/p4src
+    make    
+  SHELL
+
+  config.vm.provision "ipv4-isis-sr",
+                      type: "shell",
+                      run: "never",
+                      inline: <<-SHELL
+    cd /home/vagrant/RARE/00-unit-labs/0000-topology
+    echo "\033[0;34mRunning topology\033[0m"
+    make
+    echo "\033[0;34mRunning IPv4 ISIS-sr Unit Lab\033[0m"
+    cd /home/vagrant/RARE/00-unit-labs/0006-ipv4-isis-sr-operation/p4src
+    make    
+  SHELL
+
+  ## Table Population and control plane management
+
+  config.vm.provision "unoptimized-ipv4-controlp",
+                      type: "shell",
+                      run: "never",
+                      inline: <<-SHELL
+    echo "\033[0;34mInstalling data into switch tables\033[0m"
+    echo "table_add tbl_ipv4_fib_host act_ipv4_fib_hit 10.0.1.254 =\> 00:00:0a:00:01:fe 254" | simple_switch_CLI --thrift-port 9090  
+    echo "table_add tbl_ipv4_fib_host act_ipv4_fib_hit 10.0.1.1  =\> 00:00:0a:00:01:01 1" | simple_switch_CLI --thrift-port 9090  
+    SHELL
+
+
+    config.vm.provision "ipv4-isis-sr-controlp",
+                      type: "shell",
+                      run: "never",
+                      inline: <<-SHELL
+    echo "\033[0;34mConfiguring ISIS CPE1\033[0m"
+    (
+    sleep 2
+    echo "sh run router isis4 1"
+    sleep 2
+    echo "sh run int eth0"
+    sleep 2
+    echo "sh run int lo0"
+    sleep 2
+    echo "sh run int lo1"
+    sleep 2
+    echo "exit"
+    ) |ip netns exec cpe1 inetutils-telnet 127.0.01 2323; true
+    echo
+
+    echo "\033[0;34mConfiguring ISIS CPE2\033[0m"
+    (
+    sleep 2
+    echo "sh run router isis4 1"
+    sleep 2
+    echo "sh run int lo0"
+    sleep 2
+    echo "sh run int eth0"
+    sleep 2
+    echo "exit"
+    ) |ip netns exec cpe2 inetutils-telnet 127.0.01 2323; true
+    echo
+
+    echo "\033[0;34mConfiguring ISIS CORE\033[0m"
+    (
+    sleep 2
+    echo "sh run router isis4 1"
+    sleep 2
+    echo "sh run int eth0"
+    sleep 2
+    echo "sh run int eth1"
+    sleep 2
+    echo "sh run int lo0"
+    sleep 2
+    echo "sh run int lo1"
+    sleep 2
+    echo "exit"
+    ) |ip netns exec core1 inetutils-telnet 127.0.01 2323; true
+    echo
+
+
+    echo "\033[0;34mInstalling data into switch tables\033[0m"
+    echo "\033[0;34mNextHop Control traffic\033[0m"
+    echo "table_add tbl_nexthop act_cpl_opr_fib_hit 1 3 =\> 1" | simple_switch_CLI --thrift-port 9090  
+    echo "table_add tbl_nexthop act_cpl_opr_fib_hit 2 3 =\> 2" | simple_switch_CLI --thrift-port 9090  
+    echo "table_add tbl_nexthop act_cpl_opr_fib_hit 255 3 =\> 255" | simple_switch_CLI --thrift-port 9090  
+    echo "table_add tbl_nexthop act_cpl_opr_fib_hit 254 3 =\> 254" | simple_switch_CLI --thrift-port 9090  
+
+    echo "\033[0;34mNextHop Dataplane Transient traffic\033[0m"
+    echo "table_add tbl_nexthop act_ipv4_fib_hit 1 0 =\>  00:00:0a:00:01:01 1" | simple_switch_CLI --thrift-port 9090
+    echo "table_add tbl_nexthop act_ipv4_fib_hit 2 0 =\>  00:00:0a:00:02:02 2" | simple_switch_CLI --thrift-port 9090
+    echo "table_add tbl_nexthop act_ipv4_fib_hit 255 0 =\>  00:00:0a:00:01:fe 255" | simple_switch_CLI --thrift-port 9090
+    echo "table_add tbl_nexthop act_ipv4_fib_hit 254 0 =\>  00:00:0a:00:02:fe 254" | simple_switch_CLI --thrift-port 9090
+
+
+    echo "\033[0;34mRMAC FIB (ISIS Operation)\033[0m"
+    echo "table_add tbl_rmac_fib act_rmac_set_nexthop 09:00:2b:00:00:05 =\>" | simple_switch_CLI --thrift-port 9090  
+    echo "table_add tbl_rmac_fib act_rmac_set_nexthop 01:80:c2:00:00:15 =\>" | simple_switch_CLI --thrift-port 9090  
+    echo "table_add tbl_rmac_fib act_rmac_set_nexthop 01:80:c2:00:00:14 =\>" | simple_switch_CLI --thrift-port 9090
+
+    echo "\033[0;34mP4 Core IGP Peers reachability\033[0m"
+    echo "table_add tbl_ipv4_fib_host act_ipv4_set_nexthop 10.1.1.1 =\> 1"  | simple_switch_CLI --thrift-port 9090
+    echo "table_add tbl_ipv4_fib_host act_ipv4_set_nexthop 10.0.1.1 =\> 1"  | simple_switch_CLI --thrift-port 9090
+    echo "table_add tbl_ipv4_fib_host act_ipv4_set_nexthop 10.254.254.254 =\> 255"  | simple_switch_CLI --thrift-port 9090
+    echo "table_add tbl_ipv4_fib_host act_ipv4_set_nexthop 10.0.1.254 =\> 255"  | simple_switch_CLI --thrift-port 9090
+    echo "table_add tbl_ipv4_fib_host act_ipv4_set_nexthop 10.0.2.254 =\> 254"  | simple_switch_CLI --thrift-port 9090
+    echo "table_add tbl_ipv4_fib_host act_ipv4_set_nexthop 10.2.2.2 =\> 2"  | simple_switch_CLI --thrift-port 9090
+    echo "table_add tbl_ipv4_fib_host act_ipv4_set_nexthop 10.0.2.2 =\> 2"  | simple_switch_CLI --thrift-port 9090
+
+
+
+  SHELL
+
+  ## Connectivity checks
+config.vm.provision "unoptimized-ipv4-connc",
+                      type: "shell",
+                      run: "never",
+                      inline: <<-SHELL
+
+    echo "\033[0;34mChecking CORE connectivity\033[0m"    
+    (
+    sleep 2
+    echo "ping 10.0.1.1 /vrf v1"
+    sleep 2
+    echo "exit"
+    ) | ip netns exec core1 inetutils-telnet 127.0.01 2323; true
+    echo "\033[0;34mChecking CPE connectivity\033[0m"    
+    echo TBD
+
+    SHELL
+
+
+config.vm.provision "ipv4-isis-sr-connc",
+                      type: "shell",
+                      run: "never",
+                      inline: <<-SHELL
+
+    echo "\033[0;34mShowning CORE mpls\033[0m"    
+    (
+    sleep 2
+    echo "sh mpls for"
+    sleep 2
+    echo "exit"
+    ) | ip netns exec core1 inetutils-telnet 127.0.01 2323; true
+
+
+    echo "\033[0;34mShowning CPE1 mpls\033[0m"    
+    (
+    sleep 2
+    echo "sh mpls for"
+    sleep 2
+    echo "exit"
+    ) | ip netns exec cpe1 inetutils-telnet 127.0.01 2323; true
+
+    echo "\033[0;34mConnectivity check\033[0m"
+
+    echo "\033[0;34mShowning CPE1 mpls\033[0m"    
+    (
+    sleep 2
+    echo "ping 10.2.2.2 /vrf v1 /interface lo0"
+    sleep 2
+    echo "exit"
+    ) | ip netns exec cpe1 inetutils-telnet 127.0.01 2323; true
+    
+
+    echo "\033[0;34mShowning CPE2 mpls\033[0m"    
+    (
+    sleep 2
+    echo "sh mpls for"
+    sleep 2
+    echo "exit"
+    ) | ip netns exec cpe2 inetutils-telnet 127.0.01 2323; true
+
+    SHELL
 
 
 end
+

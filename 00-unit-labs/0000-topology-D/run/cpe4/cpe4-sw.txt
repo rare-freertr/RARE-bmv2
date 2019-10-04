@@ -1,0 +1,83 @@
+hostname cpe4
+buggy
+!
+logging buffered debug 10240
+logging file debug cpe4.log
+!
+vrf definition c1
+ rd 1:2
+ rt-import 1:2
+ rt-export 1:2
+ exit
+!
+vrf definition v1
+ exit
+!
+interface loopback0
+ no description
+ vrf forwarding c1
+ ipv4 address 10.4.4.4 255.255.255.255
+ no shutdown
+ no log-link-change
+ exit
+!
+interface loopback2
+ no description
+ vrf forwarding c1
+ ipv4 address 10.10.10.4 255.255.255.0
+ no shutdown
+ no log-link-change
+ exit
+!
+interface ethernet0
+ no description
+ macaddr 0000.0a00.0404
+ vrf forwarding v1
+ ipv4 address 10.0.4.4 255.255.255.0
+ no shutdown
+ no log-link-change
+ exit
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+alias test bash description 
+alias test bash parameter optional
+!
+server telnet tel
+ security protocol telnet
+ exec width 130
+ exec height 25
+ no exec authorization
+ no login authentication
+ vrf v1
+ exit
+!
+client name-server 8.8.8.8
+client config-save
+client time-zone CET
+!
+end

@@ -34,7 +34,7 @@ make
 ```
 
 # Control Plane operation
-* Enable `MPLS forwarding` and `LDP` on `cpe1`, `core1`,`cpe2` routers
+* Enable `MPLS forwarding` and `ISIS-SR` on `cpe1`, `core1`,`cpe2` routers
   * `cpe1`
 
         cpe1#sh run router isis4 1
@@ -315,6 +315,7 @@ In this lab we extended our `tbl_nexthop` by adding a key field that set the tra
 
 * Ensure IGP peers reachability from `p4-core1` perspective:
    * `tbl_ipv4_fib_host` rules
+   
          # Entry corresponding to router IPv4 address
          # P4 Object: tbl_ipv4_fib_host
          # Table key: 10.1.1.1
@@ -372,6 +373,7 @@ In this lab we extended our `tbl_nexthop` by adding a key field that set the tra
          table_add tbl_ipv4_fib_host act_ipv4_set_nexthop 10.0.2.2 => 2
 
   * `tbl_ipv4_fib_lpm` rules
+  
          # Entry corresponding to router IPv4 subnet prefix
          # P4 Object: tbl_ipv4_fib_lpm
          # Table key: 1.1.1.0/24
@@ -519,6 +521,7 @@ If you notice just right after ISIS convergence, `ping` tests were successful. A
 However, there is one big difference between LDP. In SR case, MPLS encapsulation include only the NODE SID. (i.e `10.1.1.1`, `10.254.254.254`,`10.2.2.2`) While LDP was allocation for each IPv4 FEC.
 
 Let's write some P4 rules based on `core1` MPLS forwarding and SR information:
+
     # Entry corresponding to Label imposition from core1
     # at P4 level (swap against itself) for FEC to cpe1
     # This is a special case as FreeRTR is performing label imposition at control plane level
@@ -536,7 +539,7 @@ Let's write some P4 rules based on `core1` MPLS forwarding and SR information:
     # Table key: 972512
     # Action id: act_mpls_swap_set_nexthop
     # Action params: {972512 255}
-    # Trigger: when core1 FreeRTR LDP has converged    
+    # Trigger: when core1 FreeRTR ISIS-SR has converged    
     table_add tbl_mpls_fib act_mpls_swap_set_nexthop 972512 => 972512 255
 
     # Entry corresponding to Label imposition from core1
@@ -546,7 +549,7 @@ Let's write some P4 rules based on `core1` MPLS forwarding and SR information:
     # Table key: 930982
     # Action id: act_mpls_swap_set_nexthop
     # Action params: {930982 2}
-    # Trigger: when core1 FreeRTR LDP has converged        
+    # Trigger: when core1 FreeRTR ISIS-SR has converged        
     table_add tbl_mpls_fib act_mpls_swap_set_nexthop 930982 => 930982 2
 
     # Entry corresponding to Label swap operation from core1
@@ -556,7 +559,7 @@ Let's write some P4 rules based on `core1` MPLS forwarding and SR information:
     # Table key: 972513
     # Action id: act_mpls_swap_set_nexthop
     # Action params: {930982 2}
-    # Trigger: when core1 FreeRTR LDP has converged             
+    # Trigger: when core1 FreeRTR ISIS-SR has converged             
     table_add tbl_mpls_fib act_mpls_swap_set_nexthop 972513 => 930982 2
 
     # Entry corresponding to Label swap operation from core1
@@ -566,7 +569,7 @@ Let's write some P4 rules based on `core1` MPLS forwarding and SR information:
     # Table key: 972511
     # Action id: act_mpls_swap_set_nexthop
     # Action params: {662376 1}
-    # Trigger: when core1 FreeRTR LDP has converged                 
+    # Trigger: when core1 FreeRTR ISIS-SR has converged                 
     table_add tbl_mpls_fib act_mpls_swap_set_nexthop 972511 => 662376 1
 
 # Lab verification
@@ -595,6 +598,7 @@ Let's write some P4 rules based on `core1` MPLS forwarding and SR information:
       cpe2#                  
 
 * On `core1`
+
       core1#ping 1.1.1.1 /vrf v1 /interface lo1                                         
       pinging 1.1.1.1, src=6.6.6.6, cnt=5, len=64, tim=1000, ttl=255, tos=0, sweep=false
       !!!!!                                                                             
