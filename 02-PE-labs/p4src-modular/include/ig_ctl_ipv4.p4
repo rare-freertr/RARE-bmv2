@@ -67,6 +67,22 @@ control IngressControlIPv4(inout headers hdr,
    }
 
 
+   action act_ipv4_srv_encap_set_nexthop(ipv6_addr_t target, PortId_t nexthop_id) {
+      ig_md.ethertype = ETHERTYPE_IPV6;
+      hdr.ipv4b.setValid();
+      hdr.ipv4b = hdr.ipv4;
+      hdr.ipv4.setInvalid();
+      hdr.ipv6.setValid();
+      hdr.ipv6.version = 6;
+      hdr.ipv6.payload_len = hdr.ipv4b.total_len;
+      hdr.ipv6.next_hdr = IP_PROTOCOL_IPV4;
+      hdr.ipv6.hop_limit = 255;
+      hdr.ipv6.src_addr = target;
+      hdr.ipv6.dst_addr = target;
+      ig_md.nexthop_id = nexthop_id;
+   }
+
+
 
    
    table tbl_ipv4_fib_host {
@@ -81,6 +97,7 @@ control IngressControlIPv4(inout headers hdr,
          act_ipv4_cpl_set_nexthop;
          act_ipv4_set_nexthop;
          act_ipv4_mpls_encap_set_nexthop;
+         act_ipv4_srv_encap_set_nexthop;
          @defaultonly NoAction;
       }
       size = IPV4_HOST_TABLE_SIZE;
@@ -99,10 +116,12 @@ control IngressControlIPv4(inout headers hdr,
          act_ipv4_cpl_set_nexthop;
          act_ipv4_set_nexthop;
          act_ipv4_mpls_encap_set_nexthop;
+         act_ipv4_srv_encap_set_nexthop;
          act_ipv4_fib_discard;
+         @defaultonly NoAction;
       }
       size = IPV4_LPM_TABLE_SIZE;
-      default_action = act_ipv4_fib_discard();
+      default_action = NoAction();
    }
 
    apply {

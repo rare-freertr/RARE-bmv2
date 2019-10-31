@@ -10,6 +10,12 @@ vrf definition c1
  rt-export 1:2
  exit
 !
+vrf definition c2
+ rd 1:3
+ rt-import 1:3
+ rt-export 1:3
+ exit
+!
 vrf definition c8
  exit
 !
@@ -32,6 +38,15 @@ interface loopback2
  vrf forwarding c1
  ipv4 address 10.10.10.1 255.255.255.0
  ipv6 address fd00::1 ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+ no shutdown
+ no log-link-change
+ exit
+!
+interface loopback3
+ no description
+ vrf forwarding c2
+ ipv4 address 10.20.1.1 255.255.255.0
+ ipv6 address fc00::1 ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
  no shutdown
  no log-link-change
  exit
@@ -60,6 +75,15 @@ interface ethernet0.111
  no log-link-change
  exit
 !
+interface ethernet0.22
+ no description
+ vrf forwarding c2
+ ipv4 address 10.20.0.1 255.255.255.0
+ ipv6 address fc00:0:0:1::1 ffff:ffff:ffff:ffff::
+ no shutdown
+ no log-link-change
+ exit
+!
 interface ethernet0.333
  no description
  vrf forwarding c8
@@ -76,10 +100,33 @@ interface ethernet0.444
  no log-link-change
  exit
 !
+interface ethernet0.555
+ no description
+ vrf forwarding c8
+ ipv4 address 2.4.5.11 255.255.255.0
+ no shutdown
+ no log-link-change
+ exit
+!
 !
 ipv4 route c1 0.0.0.0 0.0.0.0 10.0.1.254
 !
 ipv6 route c1 :: :: fd00:0:0:1::fe
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ipv4 route c2 0.0.0.0 0.0.0.0 10.20.0.254
+!
+ipv6 route c2 :: :: fc00:0:0:1::fe
 !
 !
 !

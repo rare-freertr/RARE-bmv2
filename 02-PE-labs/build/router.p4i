@@ -831,6 +831,169 @@ const bit<16> ETHERTYPE_IPV6 = 0x86dd;
 const bit<16> ETHERTYPE_MPLS_UCAST = 0x8847;
 const bit<16> ETHERTYPE_MPLS_MCAST = 0x8848;
 # 8 "router.p4" 2
+# 1 "./include/cst_ip_protocol.p4" 1
+/*
+ * Copyright 2019-present GÉANT RARE project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed On an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// source here: 
+// https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml
+
+
+
+
+const bit<8> IP_PROTOCOL_HOPOPT = 0;
+const bit<8> IP_PROTOCOL_ICMP = 1;
+const bit<8> IP_PROTOCOL_IGMP = 2;
+const bit<8> IP_PROTOCOL_GGP = 3;
+const bit<8> IP_PROTOCOL_IPV4 = 4;
+const bit<8> IP_PROTOCOL_ST = 5;
+const bit<8> IP_PROTOCOL_TCP = 6;
+const bit<8> IP_PROTOCOL_CBT = 7;
+const bit<8> IP_PROTOCOL_EGP = 8;
+const bit<8> IP_PROTOCOL_IGP = 9;
+const bit<8> IP_PROTOCOL_BBN_RCC_MON = 10;
+const bit<8> IP_PROTOCOL_NVP_II = 11;
+const bit<8> IP_PROTOCOL_PUP = 12;
+const bit<8> IP_PROTOCOL_ARGUS = 13;
+const bit<8> IP_PROTOCOL_EMCON = 14;
+const bit<8> IP_PROTOCOL_XNET = 15;
+const bit<8> IP_PROTOCOL_CHAOS = 16;
+const bit<8> IP_PROTOCOL_UDP = 17;
+const bit<8> IP_PROTOCOL_MUX = 18;
+const bit<8> IP_PROTOCOL_DCN_MEAS = 19;
+const bit<8> IP_PROTOCOL_HMP = 20;
+const bit<8> IP_PROTOCOL_PRM = 21;
+const bit<8> IP_PROTOCOL_XNS_IDP = 22;
+const bit<8> IP_PROTOCOL_TRUNK_1 = 23;
+const bit<8> IP_PROTOCOL_TRUNK_2 = 24;
+const bit<8> IP_PROTOCOL_LEAF_1 = 25;
+const bit<8> IP_PROTOCOL_LEAF_2 = 26;
+const bit<8> IP_PROTOCOL_RDP = 27;
+const bit<8> IP_PROTOCOL_IRTP = 28;
+const bit<8> IP_PROTOCOL_ISO_TP4 = 29;
+const bit<8> IP_PROTOCOL_NETBLT = 30;
+const bit<8> IP_PROTOCOL_MFE_NSP = 31;
+const bit<8> IP_PROTOCOL_MERIT_INP = 32;
+const bit<8> IP_PROTOCOL_DCCP = 33;
+const bit<8> IP_PROTOCOL_3PC = 34;
+const bit<8> IP_PROTOCOL_IDPR = 35;
+const bit<8> IP_PROTOCOL_XTP = 36;
+const bit<8> IP_PROTOCOL_DDP = 37;
+const bit<8> IP_PROTOCOL_IDPR_CMTP = 38;
+const bit<8> IP_PROTOCOL_TP = 39;
+const bit<8> IP_PROTOCOL_IL = 40;
+const bit<8> IP_PROTOCOL_IPV6 = 41;
+const bit<8> IP_PROTOCOL_SDRP = 42;
+const bit<8> IP_PROTOCOL_IPV6_ROUTE = 43;
+const bit<8> IP_PROTOCOL_IPV6_FRAG = 44;
+const bit<8> IP_PROTOCOL_IDRP = 45;
+const bit<8> IP_PROTOCOL_RSVP = 46;
+const bit<8> IP_PROTOCOL_GRE = 47;
+const bit<8> IP_PROTOCOL_DSR = 48;
+const bit<8> IP_PROTOCOL_BNA = 49;
+const bit<8> IP_PROTOCOL_ESP = 50;
+const bit<8> IP_PROTOCOL_AH = 51;
+const bit<8> IP_PROTOCOL_I_NLSP = 52;
+const bit<8> IP_PROTOCOL_SWIPE = 53;
+const bit<8> IP_PROTOCOL_NARP = 54;
+const bit<8> IP_PROTOCOL_MOBILE = 55;
+const bit<8> IP_PROTOCOL_TLSP = 56;
+const bit<8> IP_PROTOCOL_SKIP = 57;
+const bit<8> IP_PROTOCOL_IPV6_ICMP = 58;
+const bit<8> IP_PROTOCOL_IPV6_NONXT = 59;
+const bit<8> IP_PROTOCOL_IPV6_OPTS = 60;
+const bit<8> IP_PROTOCOL_CFTP = 62;
+const bit<8> IP_PROTOCOL_SAT_EXPAK = 64;
+const bit<8> IP_PROTOCOL_KRYPTOLAN = 65;
+const bit<8> IP_PROTOCOL_RVD = 66;
+const bit<8> IP_PROTOCOL_IPPC = 67;
+const bit<8> IP_PROTOCOL_SAT_MON = 69;
+const bit<8> IP_PROTOCOL_VISA = 70;
+const bit<8> IP_PROTOCOL_IPCV = 71;
+const bit<8> IP_PROTOCOL_CPNX = 72;
+const bit<8> IP_PROTOCOL_CPHB = 73;
+const bit<8> IP_PROTOCOL_WSN = 74;
+const bit<8> IP_PROTOCOL_PVP = 75;
+const bit<8> IP_PROTOCOL_BR_SAT_MON = 76;
+const bit<8> IP_PROTOCOL_SUN_ND = 77;
+const bit<8> IP_PROTOCOL_WB_MON = 78;
+const bit<8> IP_PROTOCOL_WB_EXPAK = 79;
+const bit<8> IP_PROTOCOL_ISO_IP = 80;
+const bit<8> IP_PROTOCOL_VMTP = 81;
+const bit<8> IP_PROTOCOL_SECURE_VMTP = 82;
+const bit<8> IP_PROTOCOL_VINES = 83;
+const bit<8> IP_PROTOCOL_TTP = 84;
+const bit<8> IP_PROTOCOL_IPTM = 84;
+const bit<8> IP_PROTOCOL_NSFNET_IGP = 85;
+const bit<8> IP_PROTOCOL_DGP = 86;
+const bit<8> IP_PROTOCOL_TCF = 87;
+const bit<8> IP_PROTOCOL_EIGRP = 88;
+const bit<8> IP_PROTOCOL_OSPFIGP = 89;
+const bit<8> IP_PROTOCOL_SPRITE_RPC = 90;
+const bit<8> IP_PROTOCOL_LARP = 91;
+const bit<8> IP_PROTOCOL_MTP = 92;
+const bit<8> IP_PROTOCOL_AX25 = 93;
+const bit<8> IP_PROTOCOL_IPIP = 94;
+const bit<8> IP_PROTOCOL_MICP = 95;
+const bit<8> IP_PROTOCOL_SCC_SP = 96;
+const bit<8> IP_PROTOCOL_ETHERIP = 97;
+const bit<8> IP_PROTOCOL_ENCAP = 98;
+const bit<8> IP_PROTOCOL_GMTP = 100;
+const bit<8> IP_PROTOCOL_IFMP = 101;
+const bit<8> IP_PROTOCOL_PNNI = 102;
+const bit<8> IP_PROTOCOL_PIM = 103;
+const bit<8> IP_PROTOCOL_ARIS = 104;
+const bit<8> IP_PROTOCOL_SCPS = 105;
+const bit<8> IP_PROTOCOL_QNX = 106;
+const bit<8> IP_PROTOCOL_A_N = 107;
+const bit<8> IP_PROTOCOL_IPCOMP = 108;
+const bit<8> IP_PROTOCOL_SNP = 109;
+const bit<8> IP_PROTOCOL_COMPAQ_PEER = 110;
+const bit<8> IP_PROTOCOL_IPX_IN_IP = 111;
+const bit<8> IP_PROTOCOL_VRRP = 112;
+const bit<8> IP_PROTOCOL_PGM = 113;
+const bit<8> IP_PROTOCOL_L2TP = 115;
+const bit<8> IP_PROTOCOL_DDX = 116;
+const bit<8> IP_PROTOCOL_IATP = 117;
+const bit<8> IP_PROTOCOL_STP = 118;
+const bit<8> IP_PROTOCOL_SRP = 119;
+const bit<8> IP_PROTOCOL_UTI = 120;
+const bit<8> IP_PROTOCOL_SMP = 121;
+const bit<8> IP_PROTOCOL_SM = 122;
+const bit<8> IP_PROTOCOL_PTP = 123;
+const bit<8> IP_PROTOCOL_ISISoIPV4 = 124;
+const bit<8> IP_PROTOCOL_FIRE = 125;
+const bit<8> IP_PROTOCOL_CRTP = 126;
+const bit<8> IP_PROTOCOL_CRUDP = 127;
+const bit<8> IP_PROTOCOL_SSCOPMCE = 128;
+const bit<8> IP_PROTOCOL_IPLT = 129;
+const bit<8> IP_PROTOCOL_SPS = 130;
+const bit<8> IP_PROTOCOL_PIPE = 131;
+const bit<8> IP_PROTOCOL_SCTP = 132;
+const bit<8> IP_PROTOCOL_FC = 133;
+const bit<8> IP_PROTOCOL_RSVP_E2E_IGNORE = 134;
+const bit<8> IP_PROTOCOL_MOBILITY_HEADER = 135;
+const bit<8> IP_PROTOCOL_UDPLITE = 136;
+const bit<8> IP_PROTOCOL_MPLS_IN_IP = 137;
+const bit<8> IP_PROTOCOL_MANET = 138;
+const bit<8> IP_PROTOCOL_HIP = 139;
+const bit<8> IP_PROTOCOL_SHIM6 = 140;
+const bit<8> IP_PROTOCOL_WESP = 141;
+const bit<8> IP_PROTOCOL_ROHC = 142;
+# 9 "router.p4" 2
 # 1 "./include/cst_table_size.p4" 1
 /*
 Copyright 2013-present Barefoot Networks, Inc. 
@@ -847,7 +1010,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-# 9 "router.p4" 2
+# 10 "router.p4" 2
 # 1 "./include/hdr_pkt_in.p4" 1
 
 
@@ -856,7 +1019,7 @@ header pkt_in_header_t {
    PortId_t ingress_port;
    bit<7> _padding;
 }
-# 10 "router.p4" 2
+# 11 "router.p4" 2
 # 1 "./include/hdr_pkt_out.p4" 1
 
 
@@ -865,7 +1028,7 @@ header pkt_out_header_t {
    PortId_t egress_port;
    bit<7> _padding;
 }
-# 11 "router.p4" 2
+# 12 "router.p4" 2
 # 1 "./include/hdr_ethernet.p4" 1
 
 
@@ -878,7 +1041,7 @@ header ethernet_t {
    mac_addr_t src_mac_addr;
    ethertype_t ethertype;
 }
-# 12 "router.p4" 2
+# 13 "router.p4" 2
 # 1 "./include/hdr_arp.p4" 1
 
 
@@ -897,7 +1060,7 @@ header arp_t {
     mac_addr_t tha;
     ipv4_addr_t spa;
 }
-# 13 "router.p4" 2
+# 14 "router.p4" 2
 # 1 "./include/hdr_llc.p4" 1
 
 
@@ -907,7 +1070,7 @@ header llc_t {
    bit<8> ssap;
    bit<8> control_;
 }
-# 14 "router.p4" 2
+# 15 "router.p4" 2
 # 1 "./include/hdr_vlan.p4" 1
 
 
@@ -921,7 +1084,7 @@ header llc_t {
      vlan_id_t vid;
      ethertype_t ethertype;
  }
-# 15 "router.p4" 2
+# 16 "router.p4" 2
 # 1 "./include/hdr_mpls.p4" 1
 
 
@@ -932,7 +1095,7 @@ header mpls_t {
    bit<1> bos;
    bit<8> ttl;
 }
-# 16 "router.p4" 2
+# 17 "router.p4" 2
 # 1 "./include/hdr_ipv4.p4" 1
 
 
@@ -951,7 +1114,7 @@ header ipv4_t {
    ipv4_addr_t src_ipv4_addr;
    ipv4_addr_t dst_ipv4_addr;
 }
-# 17 "router.p4" 2
+# 18 "router.p4" 2
 # 1 "./include/hdr_ipv6.p4" 1
 
 
@@ -966,7 +1129,7 @@ header ipv6_t {
     bit<128> src_addr;
     bit<128> dst_addr;
 }
-# 18 "router.p4" 2
+# 19 "router.p4" 2
 
 /*----------------------------------------------------------------------------* 
  *                   I N G R E S S   P R O C E S S I N G                      * 
@@ -983,13 +1146,18 @@ struct headers {
    ethernet_t ethernet;
    vlan_t vlan;
    mpls_t[3] mpls;
+   ipv4_t ipv4c;
+   ipv6_t ipv6c;
    ethernet_t eth2;
    arp_t arp;
    llc_t llc;
    ipv4_t ipv4;
    ipv6_t ipv6;
+   ethernet_t eth3;
+   ipv4_t ipv4b;
+   ipv6_t ipv6b;
 }
-# 25 "router.p4" 2
+# 26 "router.p4" 2
 
 /*------------------ I N G R E S S  G L O B A L  M E T A D A T A ------------ */
 # 1 "./include/mtd_ig_metadata.p4" 1
@@ -1010,6 +1178,8 @@ struct ingress_metadata_t {
    switch_vrf_t vrf;
    label_t mpls_label;
     bit<3> mpls_op_type;
+    bit<3> srv_op_type;
+    bit<3> vlan_size;
     bit<1> mpls0_remove;
     bit<1> mpls1_remove;
     bit<1> mpls0_valid;
@@ -1019,7 +1189,7 @@ struct ingress_metadata_t {
     bit<1> ipv4_valid;
     bit<1> ipv6_valid;
 }
-# 28 "router.p4" 2
+# 29 "router.p4" 2
 
 /*------------------ I N G R E S S   P A R S E R -----------------------------*/
 # 1 "./include/ig_prs_main.p4" 1
@@ -1093,7 +1263,11 @@ parser ig_prs_main(packet_in pkt,
 
    state prs_eth2 {
       pkt.extract(hdr.eth2);
-      transition accept;
+      transition select(hdr.eth2.ethertype) {
+         ETHERTYPE_IPV4: prs_ipv4;
+         ETHERTYPE_IPV6: prs_ipv6;
+         default: accept;
+      }
    }
 
 
@@ -1101,12 +1275,38 @@ parser ig_prs_main(packet_in pkt,
    state prs_ipv4 {
       pkt.extract(hdr.ipv4);
       ig_md.ipv4_valid = 1;
-      transition accept;
+      transition select(hdr.ipv4.protocol) {
+         IP_PROTOCOL_IPV4: prs_ipv4b;
+         IP_PROTOCOL_IPV6: prs_ipv6b;
+         IP_PROTOCOL_ETHERIP: prs_eth3;
+         default: accept;
+      }
    }
 
    state prs_ipv6 {
       pkt.extract(hdr.ipv6);
       ig_md.ipv6_valid = 1;
+      transition select(hdr.ipv6.next_hdr) {
+         IP_PROTOCOL_IPV4: prs_ipv4b;
+         IP_PROTOCOL_IPV6: prs_ipv6b;
+         IP_PROTOCOL_ETHERIP: prs_eth3;
+         default: accept;
+      }
+   }
+
+
+   state prs_eth3 {
+      pkt.extract(hdr.eth3);
+      transition accept;
+   }
+
+   state prs_ipv4b {
+      pkt.extract(hdr.ipv4b);
+      transition accept;
+   }
+
+   state prs_ipv6b {
+      pkt.extract(hdr.ipv6b);
       transition accept;
    }
 
@@ -1131,7 +1331,7 @@ parser ig_prs_main(packet_in pkt,
    }
 
 }
-# 31 "router.p4" 2
+# 32 "router.p4" 2
 
 /*------------------ V E R I F Y  C H E C K S U M ----------------------------*/
 # 1 "./include/ig_ctl_verify_checksum.p4" 1
@@ -1142,7 +1342,7 @@ control ig_ctl_verify_checksum(inout headers hdr, inout ingress_metadata_t ig_md
     apply {
   }
 }
-# 34 "router.p4" 2
+# 35 "router.p4" 2
 
 /*------------------ I N G R E S S - M A T C H - A C T I O N ---------------- */
 # 1 "./include/ig_ctl_vlan_in.p4" 1
@@ -1156,6 +1356,7 @@ control IngressControlVlanIn(inout headers hdr,
    action act_set_iface(PortId_t src) {
       ig_md.source_id = src;
       ig_md.ethertype = hdr.vlan.ethertype;
+      ig_md.vlan_size = 4;
    }
 
    action act_set_def_iface() {
@@ -1180,7 +1381,7 @@ control IngressControlVlanIn(inout headers hdr,
          tbl_vlan_in.apply();
    }
 }
-# 37 "router.p4" 2
+# 38 "router.p4" 2
 # 1 "./include/ig_ctl_vlan_out.p4" 1
 
 
@@ -1218,7 +1419,7 @@ control IngressControlVlanOut(inout headers hdr,
          tbl_vlan_out.apply();
    }
 }
-# 38 "router.p4" 2
+# 39 "router.p4" 2
 # 1 "./include/ig_ctl_vrf.p4" 1
 
 
@@ -1281,7 +1482,7 @@ control IngressControlVRF(inout headers hdr,
    }
 
 }
-# 39 "router.p4" 2
+# 40 "router.p4" 2
 # 1 "./include/ig_ctl_arp.p4" 1
 
 
@@ -1308,7 +1509,7 @@ control IngressControlARP(inout headers hdr,
    }
 
 }
-# 40 "router.p4" 2
+# 41 "router.p4" 2
 # 1 "./include/ig_ctl_llc.p4" 1
 
 
@@ -1335,7 +1536,7 @@ control IngressControlLLC(inout headers hdr,
    }
 
 }
-# 41 "router.p4" 2
+# 42 "router.p4" 2
 # 1 "./include/ig_ctl_nexthop.p4" 1
 
 
@@ -1392,7 +1593,7 @@ control IngressControlNexthop(inout headers hdr,
    }
 
 }
-# 42 "router.p4" 2
+# 43 "router.p4" 2
 # 1 "./include/ig_ctl_bridge.p4" 1
 
 
@@ -1462,6 +1663,29 @@ control IngressControlBridge(inout headers hdr,
       ig_md.mpls_op_type = 3;
    }
 
+   action act_set_bridge_srv(PortId_t port, ipv6_addr_t target) {
+      ig_md.bridge_trg = port;
+      ig_md.vrf = 0;
+      ig_md.mpls0_valid = 0;
+      ig_md.mpls1_valid = 0;
+      ig_md.arp_valid = 0;
+      ig_md.llc_valid = 0;
+      ig_md.ipv4_valid = 0;
+      ig_md.ipv6_valid = 0;
+      hdr.vlan.setInvalid();
+      hdr.eth2.setValid();
+      hdr.eth2 = hdr.ethernet;
+      hdr.eth2.ethertype = ig_md.ethertype;
+      ig_md.ethertype = ETHERTYPE_IPV6;
+      hdr.ipv6c.setValid();
+      hdr.ipv6c.version = 6;
+      hdr.ipv6c.payload_len = (bit<16>)ig_intr_md.packet_length - (bit<16>)ig_md.vlan_size;
+      hdr.ipv6c.next_hdr = IP_PROTOCOL_ETHERIP;
+      hdr.ipv6c.hop_limit = 255;
+      hdr.ipv6c.src_addr = target;
+      hdr.ipv6c.dst_addr = target;
+   }
+
    action act_bridge_punt() {
       ig_md.bridge_trg = 0;
    }
@@ -1474,6 +1698,7 @@ control IngressControlBridge(inout headers hdr,
       actions = {
          act_set_bridge_out;
          act_set_bridge_vpls;
+         act_set_bridge_srv;
          act_bridge_punt;
       }
       size = 1024;
@@ -1482,32 +1707,34 @@ control IngressControlBridge(inout headers hdr,
 
 
    apply {
-         if (ig_md.bridge_id != 0) {
-            ig_md.vrf = 0;
-            ig_md.mpls0_valid = 0;
-            ig_md.mpls1_valid = 0;
-            ig_md.arp_valid = 0;
-            ig_md.llc_valid = 0;
-            ig_md.ipv4_valid = 0;
-            ig_md.ipv6_valid = 0;
-            tbl_bridge_learn.apply();
-            tbl_bridge_target.apply();
-            ig_md.target_id = ig_md.bridge_trg;
-            if ((ig_md.bridge_src == 0) || (ig_md.bridge_trg == 0)) {
-               send_to_cpu();
-            } else if (hdr.mpls[1].isValid() && (ig_md.mpls_op_type != 3)) {
-              hdr.eth2.setInvalid();
-              hdr.mpls[1].setInvalid();
-              hdr.mpls[0].setInvalid();
-              hdr.vlan.setInvalid();
-              ig_md.mpls0_remove = 0;
-              ig_md.mpls1_remove = 0;
-            }
+         if (ig_md.bridge_id == 0) {
+            return;
          }
-
+        ig_md.vrf = 0;
+        ig_md.mpls0_valid = 0;
+        ig_md.mpls1_valid = 0;
+        ig_md.arp_valid = 0;
+        ig_md.llc_valid = 0;
+        ig_md.ipv4_valid = 0;
+        ig_md.ipv6_valid = 0;
+        tbl_bridge_learn.apply();
+        tbl_bridge_target.apply();
+        ig_md.target_id = ig_md.bridge_trg;
+        if ((ig_md.bridge_src == 0) || (ig_md.bridge_trg == 0)) {
+           send_to_cpu();
+           return;
+        }
+        if (hdr.mpls[1].isValid() && (ig_md.mpls_op_type != 3)) {
+          hdr.eth2.setInvalid();
+          hdr.mpls[1].setInvalid();
+          hdr.mpls[0].setInvalid();
+          hdr.vlan.setInvalid();
+          ig_md.mpls0_remove = 0;
+          ig_md.mpls1_remove = 0;
+        }
    }
 }
-# 43 "router.p4" 2
+# 44 "router.p4" 2
 # 1 "./include/ig_ctl_mpls.p4" 1
 
 
@@ -1716,7 +1943,7 @@ control IngressControlMPLS(inout headers hdr,
          }
    }
 }
-# 44 "router.p4" 2
+# 45 "router.p4" 2
 # 1 "./include/ig_ctl_mpls2.p4" 1
 
 
@@ -1747,7 +1974,7 @@ control IngressControlMPLS2(inout headers hdr,
 
    }
 }
-# 45 "router.p4" 2
+# 46 "router.p4" 2
 # 1 "./include/ig_ctl_ipv4.p4" 1
 
 
@@ -1818,6 +2045,22 @@ control IngressControlIPv4(inout headers hdr,
    }
 
 
+   action act_ipv4_srv_encap_set_nexthop(ipv6_addr_t target, PortId_t nexthop_id) {
+      ig_md.ethertype = ETHERTYPE_IPV6;
+      hdr.ipv4b.setValid();
+      hdr.ipv4b = hdr.ipv4;
+      hdr.ipv4.setInvalid();
+      hdr.ipv6.setValid();
+      hdr.ipv6.version = 6;
+      hdr.ipv6.payload_len = hdr.ipv4b.total_len;
+      hdr.ipv6.next_hdr = IP_PROTOCOL_IPV4;
+      hdr.ipv6.hop_limit = 255;
+      hdr.ipv6.src_addr = target;
+      hdr.ipv6.dst_addr = target;
+      ig_md.nexthop_id = nexthop_id;
+   }
+
+
 
 
    table tbl_ipv4_fib_host {
@@ -1832,6 +2075,7 @@ control IngressControlIPv4(inout headers hdr,
          act_ipv4_cpl_set_nexthop;
          act_ipv4_set_nexthop;
          act_ipv4_mpls_encap_set_nexthop;
+         act_ipv4_srv_encap_set_nexthop;
          @defaultonly NoAction;
       }
       size = 1024;
@@ -1850,10 +2094,12 @@ control IngressControlIPv4(inout headers hdr,
          act_ipv4_cpl_set_nexthop;
          act_ipv4_set_nexthop;
          act_ipv4_mpls_encap_set_nexthop;
+         act_ipv4_srv_encap_set_nexthop;
          act_ipv4_fib_discard;
+         @defaultonly NoAction;
       }
       size = 512;
-      default_action = act_ipv4_fib_discard();
+      default_action = NoAction();
    }
 
    apply {
@@ -1868,7 +2114,7 @@ control IngressControlIPv4(inout headers hdr,
         }
    }
 }
-# 46 "router.p4" 2
+# 47 "router.p4" 2
 # 1 "./include/ig_ctl_ipv6.p4" 1
 
 
@@ -1938,6 +2184,38 @@ control IngressControlIPv6(inout headers hdr,
       ig_md.nexthop_id = nexthop_id;
    }
 
+   action act_srv_decap_ipv4(switch_vrf_t vrf) {
+      ig_md.vrf = vrf;
+      ig_md.srv_op_type = 4;
+   }
+
+   action act_srv_decap_ipv6(switch_vrf_t vrf) {
+      ig_md.vrf = vrf;
+      ig_md.srv_op_type = 6;
+   }
+
+   action act_srv_decap_evpn(PortId_t bridge) {
+      ig_md.vrf = 0;
+      ig_md.srv_op_type = 2;
+      ig_md.bridge_id = bridge;
+      ig_md.ethertype = hdr.eth3.ethertype;
+      hdr.ethernet.src_mac_addr = hdr.eth3.src_mac_addr;
+      hdr.ethernet.dst_mac_addr = hdr.eth3.dst_mac_addr;
+   }
+
+
+   action act_ipv6_srv_encap_set_nexthop(ipv6_addr_t target, PortId_t nexthop_id) {
+      ig_md.ethertype = ETHERTYPE_IPV6;
+      hdr.ipv6b.setValid();
+      hdr.ipv6b = hdr.ipv6;
+      hdr.ipv6.version = 6;
+      hdr.ipv6.payload_len = hdr.ipv6b.payload_len + 40;
+      hdr.ipv6.next_hdr = IP_PROTOCOL_IPV6;
+      hdr.ipv6.hop_limit = 255;
+      hdr.ipv6.src_addr = target;
+      hdr.ipv6.dst_addr = target;
+      ig_md.nexthop_id = nexthop_id;
+   }
 
 
 
@@ -1954,6 +2232,10 @@ control IngressControlIPv6(inout headers hdr,
          act_ipv6_cpl_set_nexthop;
          act_ipv6_set_nexthop;
          act_ipv6_mpls_encap_set_nexthop;
+         act_ipv6_srv_encap_set_nexthop;
+         act_srv_decap_ipv4;
+         act_srv_decap_ipv6;
+         act_srv_decap_evpn;
          @defaultonly NoAction;
       }
       size = 1024;
@@ -1972,10 +2254,12 @@ control IngressControlIPv6(inout headers hdr,
          act_ipv6_cpl_set_nexthop;
          act_ipv6_set_nexthop;
          act_ipv6_mpls_encap_set_nexthop;
+         act_ipv6_srv_encap_set_nexthop;
          act_ipv6_fib_discard;
+         @defaultonly NoAction;
       }
       size = 512;
-      default_action = act_ipv6_fib_discard();
+      default_action = NoAction();
    }
 
    apply {
@@ -1990,7 +2274,289 @@ control IngressControlIPv6(inout headers hdr,
         }
    }
 }
-# 47 "router.p4" 2
+# 48 "router.p4" 2
+# 1 "./include/ig_ctl_ipv4b.p4" 1
+
+
+
+control IngressControlIPv4b(inout headers hdr,
+                           inout ingress_metadata_t ig_md,
+                           inout standard_metadata_t ig_intr_md) {
+
+   action send_to_cpu() {
+      /*                                                                 
+       * Prepend pkt_in header to pkt sent to controller                 
+       * by calling setValid() so it is tekne into account by deparser   
+       */
+        ig_md.nexthop_id = CPU_PORT;
+   }
+
+   action act_ipv4_cpl_set_nexthop() {
+      /*
+       * Send to CPU 
+       * CPU => 64 
+       */
+      send_to_cpu();
+   }
+
+   action act_ipv4_fib_discard() {
+      mark_to_drop(ig_intr_md);
+   }
+
+   /*
+    * Perform L3 forwarding
+    */
+   action act_ipv4_set_nexthop(PortId_t nexthop_id) {
+       /*
+       * ig_md.nexthop_id is set now to the egress_port 
+       * set by the control plane entry 
+       * for further processing by ig_tm_md.ucast_egress_port
+       */
+      ig_md.nexthop_id = nexthop_id;
+   }
+
+
+   action act_ipv4_mpls_encap_set_nexthop(label_t vpn_label, label_t egress_label, PortId_t nexthop_id) {
+      /*
+       * Egress packet is now a MPLS packet
+       * (LABEL imposition)
+       */
+      ig_md.ethertype = ETHERTYPE_MPLS_UCAST;
+      /*
+       * Encapsulate MPLS header
+       * And set egress label
+       */
+      hdr.mpls.push_front(2);
+      hdr.mpls[0].setValid();
+      hdr.mpls[0].label = egress_label;
+      hdr.mpls[0].ttl = hdr.ipv4.ttl;
+      /*
+       * MPLS VPN     
+       */
+
+      hdr.mpls[1].setValid();
+      hdr.mpls[1].label = vpn_label;
+      hdr.mpls[1].ttl = hdr.ipv4.ttl;
+      hdr.mpls[1].bos = 1;
+      /*
+       * Set nexthop_id for further forwarding process
+       */
+      ig_md.nexthop_id = nexthop_id;
+   }
+
+
+
+   action act_ipv4_srv_encap_set_nexthop(ipv6_addr_t target, PortId_t nexthop_id) {
+      ig_md.ethertype = ETHERTYPE_IPV6;
+      hdr.ipv4b.setValid();
+      hdr.ipv4b = hdr.ipv4;
+      hdr.ipv4.setInvalid();
+      hdr.ipv6.setValid();
+      hdr.ipv6.version = 6;
+      hdr.ipv6.payload_len = hdr.ipv4b.total_len;
+      hdr.ipv6.next_hdr = IP_PROTOCOL_IPV4;
+      hdr.ipv6.hop_limit = 255;
+      hdr.ipv6.src_addr = target;
+      hdr.ipv6.dst_addr = target;
+      ig_md.nexthop_id = nexthop_id;
+   }
+
+
+
+
+   table tbl_ipv4_fib_host {
+      key = {
+         /*
+          * we match /32 host route
+          */
+         hdr.ipv4b.dst_ipv4_addr: exact;
+         ig_md.vrf: exact;
+      }
+      actions = {
+         act_ipv4_cpl_set_nexthop;
+         act_ipv4_set_nexthop;
+         act_ipv4_mpls_encap_set_nexthop;
+         act_ipv4_srv_encap_set_nexthop;
+         @defaultonly NoAction;
+      }
+      size = 1024;
+      const default_action = NoAction();
+   }
+
+   table tbl_ipv4_fib_lpm {
+      key = {
+         /*
+          * we match network route via Long Prefix Match kind operation
+          */
+         hdr.ipv4b.dst_ipv4_addr: lpm;
+         ig_md.vrf: exact;
+      }
+      actions = {
+         act_ipv4_cpl_set_nexthop;
+         act_ipv4_set_nexthop;
+         act_ipv4_mpls_encap_set_nexthop;
+         act_ipv4_srv_encap_set_nexthop;
+         act_ipv4_fib_discard;
+         @defaultonly NoAction;
+      }
+      size = 512;
+      default_action = NoAction();
+   }
+
+   apply {
+        /*                                             
+         * It is a dataplane packet                 
+         */
+        //if (hdr.ipv4.isValid() && hdr.ipv4.ttl > 1) {  
+        if (ig_md.srv_op_type==4) {
+            ig_md.ethertype = ETHERTYPE_IPV4;
+           if (!tbl_ipv4_fib_host.apply().hit) {
+              tbl_ipv4_fib_lpm.apply();
+           }
+        }
+   }
+}
+# 49 "router.p4" 2
+# 1 "./include/ig_ctl_ipv6b.p4" 1
+
+
+
+control IngressControlIPv6b(inout headers hdr,
+                           inout ingress_metadata_t ig_md,
+                           inout standard_metadata_t ig_intr_md) {
+
+   action send_to_cpu() {
+      /*                                                                 
+       * Prepend pkt_in header to pkt sent to controller                 
+       * by calling setValid() so it is tekne into account by deparser   
+       */
+        ig_md.nexthop_id = CPU_PORT;
+   }
+
+   action act_ipv6_cpl_set_nexthop() {
+      /*
+       * Send to CPU 
+       * CPU => 64 
+       */
+      send_to_cpu();
+   }
+
+   action act_ipv6_fib_discard() {
+      mark_to_drop(ig_intr_md);
+   }
+
+   /*
+    * Perform L3 forwarding
+    */
+   action act_ipv6_set_nexthop(PortId_t nexthop_id) {
+       /*
+       * ig_md.nexthop_id is set now to the egress_port 
+       * set by the control plane entry 
+       * for further processing by ig_tm_md.ucast_egress_port
+       */
+      ig_md.nexthop_id = nexthop_id;
+   }
+
+
+   action act_ipv6_mpls_encap_set_nexthop(label_t vpn_label, label_t egress_label, PortId_t nexthop_id) {
+      /*
+       * Egress packet is now a MPLS packet
+       * (LABEL imposition)
+       */
+      ig_md.ethertype = ETHERTYPE_MPLS_UCAST;
+      /*
+       * Encapsulate MPLS header
+       * And set egress label
+       */
+      hdr.mpls.push_front(2);
+      hdr.mpls[0].setValid();
+      hdr.mpls[0].label = egress_label;
+      hdr.mpls[0].ttl = hdr.ipv6.hop_limit;
+      /*
+       * MPLS VPN
+       */
+
+      hdr.mpls[1].setValid();
+      hdr.mpls[1].label = vpn_label;
+      hdr.mpls[1].ttl = hdr.ipv6.hop_limit;
+      hdr.mpls[1].bos = 1;
+      /*
+       * Set nexthop_id for further forwarding process
+       */
+      ig_md.nexthop_id = nexthop_id;
+   }
+
+
+   action act_ipv6_srv_encap_set_nexthop(ipv6_addr_t target, PortId_t nexthop_id) {
+      ig_md.ethertype = ETHERTYPE_IPV6;
+      hdr.ipv6b.setValid();
+      hdr.ipv6b = hdr.ipv6;
+      hdr.ipv6.version = 6;
+      hdr.ipv6.payload_len = hdr.ipv6b.payload_len + 40;
+      hdr.ipv6.next_hdr = IP_PROTOCOL_IPV6;
+      hdr.ipv6.hop_limit = 255;
+      hdr.ipv6.src_addr = target;
+      hdr.ipv6.dst_addr = target;
+      ig_md.nexthop_id = nexthop_id;
+   }
+
+
+
+
+
+   table tbl_ipv6_fib_host {
+      key = {
+         /*
+          * we match /32 host route
+          */
+         hdr.ipv6b.dst_addr: exact;
+         ig_md.vrf: exact;
+      }
+      actions = {
+         act_ipv6_cpl_set_nexthop;
+         act_ipv6_set_nexthop;
+         act_ipv6_mpls_encap_set_nexthop;
+         act_ipv6_srv_encap_set_nexthop;
+         @defaultonly NoAction;
+      }
+      size = 1024;
+      const default_action = NoAction();
+   }
+
+   table tbl_ipv6_fib_lpm {
+      key = {
+         /*
+          * we match network route via Long Prefix Match kind operation
+          */
+         hdr.ipv6b.dst_addr: lpm;
+         ig_md.vrf: exact;
+      }
+      actions = {
+         act_ipv6_cpl_set_nexthop;
+         act_ipv6_set_nexthop;
+         act_ipv6_mpls_encap_set_nexthop;
+         act_ipv6_srv_encap_set_nexthop;
+         act_ipv6_fib_discard;
+         @defaultonly NoAction;
+      }
+      size = 512;
+      default_action = NoAction();
+   }
+
+   apply {
+        /*                                             
+         * It is a dataplane packet                 
+         */
+        //if (hdr.ipv6.isValid() && hdr.ipv6.ttl > 1) {  
+        if (ig_md.srv_op_type==6) {
+            ig_md.ethertype = ETHERTYPE_IPV6;
+           if (!tbl_ipv6_fib_host.apply().hit) {
+              tbl_ipv6_fib_lpm.apply();
+           }
+        }
+   }
+}
+# 50 "router.p4" 2
 # 1 "./include/ig_ctl.p4" 1
 
 
@@ -2008,6 +2574,8 @@ control ig_ctl(inout headers hdr,
    IngressControlBridge() ig_ctl_bridge;
    IngressControlIPv4() ig_ctl_ipv4;
    IngressControlIPv6() ig_ctl_ipv6;
+   IngressControlIPv4b() ig_ctl_ipv4b;
+   IngressControlIPv6b() ig_ctl_ipv6b;
    IngressControlNexthop() ig_ctl_nexthop;
    IngressControlVlanIn() ig_ctl_vlan_in;
    IngressControlVlanOut() ig_ctl_vlan_out;
@@ -2035,14 +2603,20 @@ control ig_ctl(inout headers hdr,
            if (hdr.mpls[1].isValid()) {
              ig_md.mpls1_valid = 1;
            }
+           if (ig_md.bridge_id != 0) {
+             ig_md.ipv4_valid=0;
+             ig_md.ipv6_valid=0;
+           }
          ig_ctl_vlan_in.apply(hdr,ig_md,ig_intr_md);
          ig_ctl_vrf.apply(hdr,ig_md);
          ig_ctl_arp.apply(hdr,ig_md,ig_intr_md);
          ig_ctl_llc.apply(hdr,ig_md,ig_intr_md);
          ig_ctl_mpls.apply(hdr,ig_md,ig_intr_md);
-         ig_ctl_bridge.apply(hdr,ig_md,ig_intr_md);
          ig_ctl_ipv4.apply(hdr,ig_md,ig_intr_md);
          ig_ctl_ipv6.apply(hdr,ig_md,ig_intr_md);
+         ig_ctl_bridge.apply(hdr,ig_md,ig_intr_md);
+         ig_ctl_ipv4b.apply(hdr,ig_md,ig_intr_md);
+         ig_ctl_ipv6b.apply(hdr,ig_md,ig_intr_md);
          if ( ig_md.nexthop_id == CPU_PORT) {
            hdr.pkt_in.setValid();
            hdr.pkt_in.ingress_port = ig_intr_md.ingress_port;
@@ -2054,13 +2628,20 @@ control ig_ctl(inout headers hdr,
               hdr.vlan.setInvalid();
            }
 
+           if (ig_md.srv_op_type != 0) {
+              hdr.ipv6.setInvalid();
+           }
+           if (ig_md.srv_op_type == 2) {
+              hdr.eth3.setInvalid();
+           }
+
          ig_ctl_mpls2.apply(hdr,ig_md,ig_intr_md);
          ig_ctl_nexthop.apply(hdr,ig_md,ig_intr_md);
          ig_ctl_vlan_out.apply(hdr,ig_md,ig_intr_md);
       }
    }
 }
-# 48 "router.p4" 2
+# 51 "router.p4" 2
 
 /*------------------ E G R E S S - M A T C H - A C T I O N ------------------ */
 # 1 "./include/eg_ctl.p4" 1
@@ -2079,7 +2660,7 @@ control eg_ctl(
    apply {
    }
 }
-# 51 "router.p4" 2
+# 54 "router.p4" 2
 
 /*------------------ C O M P U T E  C H E C K S U M --------------------------*/
 # 1 "./include/ig_ctl_compute_checksum.p4" 1
@@ -2105,7 +2686,7 @@ control ig_ctl_compute_checksum(inout headers hdr, inout ingress_metadata_t ig_m
               HashAlgorithm.csum16);
    }
 }
-# 54 "router.p4" 2
+# 57 "router.p4" 2
 
 /*------------------ I N G R E S S  D E P A R S E R ------------------------- */
 # 1 "./include/ig_ctl_dprs.p4" 1
@@ -2126,7 +2707,7 @@ control ig_ctl_dprs(packet_out pkt,
       pkt.emit(hdr);
    }
 }
-# 57 "router.p4" 2
+# 60 "router.p4" 2
 
 /*------------------ F I N A L  P A C K A G E ------------------------------- */
 V1Switch(

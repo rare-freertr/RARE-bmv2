@@ -1,5 +1,6 @@
 hostname c2
 buggy
+banner encoded DQogICAgWFhYWFhYICAgICBYICAgIFhYWFhYWCAgWFhYWFhYWA0KICAgICBYWCAgWFggICBYWFggICAgWFggIFhYICBYWCAgWFgNCiAgICAgWFggIFhYICBYWCBYWCAgIFhYICBYWCAgWFggICBYDQogICAgIFhYICBYWCBYWCAgIFhYICBYWCAgWFggIFhYIFgNCiAgICAgWFhYWFggIFhYICAgWFggIFhYWFhYICAgWFhYWA0KICAgICBYWCBYWCAgWFhYWFhYWCAgWFggWFggICBYWCBYDQogICAgIFhYICBYWCBYWCAgIFhYICBYWCAgWFggIFhYDQogICAgIFhYICBYWCBYWCAgIFhYICBYWCAgWFggIFhYICAgWA0KICAgICBYWCAgWFggWFggICBYWCAgWFggIFhYICBYWCAgWFgNCiAgICBYWFggIFhYIFhYICAgWFggWFhYICBYWCBYWFhYWFhYDQo=
 !
 logging buffered debug 10240
 logging file debug c2.log
@@ -31,10 +32,19 @@ router ospf4 1
  redistribute connected
  exit
 !
+router ospf6 1
+ vrf v1
+ router-id 10.10.10.2
+ traffeng-id ::
+ area 0 enable
+ redistribute connected
+ exit
+!
 interface loopback0
  no description
  vrf forwarding v1
  ipv4 address 10.10.10.2 255.255.255.255
+ ipv6 address 10:10:10::2 ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
  no shutdown
  no log-link-change
  exit
@@ -52,10 +62,14 @@ interface sdn1
  macaddr 0055.4149.521a
  vrf forwarding v1
  ipv4 address 10.1.2.2 255.255.255.0
+ ipv6 address 10:1:2::2 ffff:ffff:ffff:ffff::
  mpls enable
  mpls ldp4
+ mpls ldp6
  router ospf4 1 enable
  router ospf4 1 area 0
+ router ospf6 1 enable
+ router ospf6 1 area 0
  no shutdown
  no log-link-change
  exit
@@ -67,11 +81,17 @@ interface sdn3
  vrf forwarding v1
  ipv4 address 10.2.3.2 255.255.255.0
  ipv4 bfd 1000 3000 3
+ ipv6 address 10:2:3::2 ffff:ffff:ffff:ffff::
+ ipv6 bfd 1000 3000 3
  mpls enable
  mpls ldp4
+ mpls ldp6
  router ospf4 1 enable
  router ospf4 1 area 0
  router ospf4 1 bfd
+ router ospf6 1 enable
+ router ospf6 1 area 0
+ router ospf6 1 bfd
  no shutdown
  no log-link-change
  exit
@@ -83,12 +103,19 @@ interface sdn5
  vrf forwarding v1
  ipv4 address 10.2.5.2 255.255.255.0
  ipv4 bfd 1000 3000 3
+ ipv6 address 10:2:5::2 ffff:ffff:ffff:ffff::
+ ipv6 bfd 1000 3000 3
  mpls enable
  mpls ldp4
+ mpls ldp6
  router ospf4 1 enable
  router ospf4 1 area 0
  router ospf4 1 bfd
  router ospf4 1 cost 100
+ router ospf6 1 enable
+ router ospf6 1 area 0
+ router ospf6 1 bfd
+ router ospf6 1 cost 100
  no shutdown
  no log-link-change
  exit

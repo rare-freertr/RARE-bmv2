@@ -1,5 +1,6 @@
 hostname c5
 buggy
+banner encoded DQogICAgWFhYWFhYICAgICBYICAgIFhYWFhYWCAgWFhYWFhYWA0KICAgICBYWCAgWFggICBYWFggICAgWFggIFhYICBYWCAgWFgNCiAgICAgWFggIFhYICBYWCBYWCAgIFhYICBYWCAgWFggICBYDQogICAgIFhYICBYWCBYWCAgIFhYICBYWCAgWFggIFhYIFgNCiAgICAgWFhYWFggIFhYICAgWFggIFhYWFhYICAgWFhYWA0KICAgICBYWCBYWCAgWFhYWFhYWCAgWFggWFggICBYWCBYDQogICAgIFhYICBYWCBYWCAgIFhYICBYWCAgWFggIFhYDQogICAgIFhYICBYWCBYWCAgIFhYICBYWCAgWFggIFhYICAgWA0KICAgICBYWCAgWFggWFggICBYWCAgWFggIFhYICBYWCAgWFgNCiAgICBYWFggIFhYIFhYICAgWFggWFhYICBYWCBYWFhYWFhYDQo=
 !
 logging buffered debug 10240
 logging file debug c5.log
@@ -31,10 +32,19 @@ router ospf4 1
  redistribute connected
  exit
 !
+router ospf6 1
+ vrf v1
+ router-id 10.10.10.5
+ traffeng-id ::
+ area 0 enable
+ redistribute connected
+ exit
+!
 interface loopback0
  no description
  vrf forwarding v1
  ipv4 address 10.10.10.5 255.255.255.255
+ ipv6 address 10:10:10::5 ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
  no shutdown
  no log-link-change
  exit
@@ -53,12 +63,19 @@ interface sdn2
  vrf forwarding v1
  ipv4 address 10.2.5.5 255.255.255.0
  ipv4 bfd 1000 3000 3
+ ipv6 address 10:2:5::5 ffff:ffff:ffff:ffff::
+ ipv6 bfd 1000 3000 3
  mpls enable
  mpls ldp4
+ mpls ldp6
  router ospf4 1 enable
  router ospf4 1 area 0
  router ospf4 1 bfd
  router ospf4 1 cost 100
+ router ospf6 1 enable
+ router ospf6 1 area 0
+ router ospf6 1 bfd
+ router ospf6 1 cost 100
  no shutdown
  no log-link-change
  exit
@@ -70,11 +87,17 @@ interface sdn4
  vrf forwarding v1
  ipv4 address 10.4.5.5 255.255.255.0
  ipv4 bfd 1000 3000 3
+ ipv6 address 10:4:5::5 ffff:ffff:ffff:ffff::
+ ipv6 bfd 1000 3000 3
  mpls enable
  mpls ldp4
+ mpls ldp6
  router ospf4 1 enable
  router ospf4 1 area 0
  router ospf4 1 bfd
+ router ospf6 1 enable
+ router ospf6 1 area 0
+ router ospf6 1 bfd
  no shutdown
  no log-link-change
  exit
@@ -85,10 +108,14 @@ interface sdn9
  macaddr 0013.6b28.4129
  vrf forwarding v1
  ipv4 address 10.5.9.5 255.255.255.0
+ ipv6 address 10:5:9::5 ffff:ffff:ffff:ffff::
  mpls enable
  mpls ldp4
+ mpls ldp6
  router ospf4 1 enable
  router ospf4 1 area 0
+ router ospf6 1 enable
+ router ospf6 1 area 0
  no shutdown
  no log-link-change
  exit

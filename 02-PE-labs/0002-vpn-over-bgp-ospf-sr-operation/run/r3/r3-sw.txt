@@ -17,10 +17,23 @@ bridge 2
  mac-learn
  exit
 !
+bridge 3
+ rd 1:3
+ rt-import 1:3
+ rt-export 1:3
+ mac-learn
+ exit
+!
 vrf definition c1
  rd 1:2
  rt-import 1:2
  rt-export 1:2
+ exit
+!
+vrf definition c2
+ rd 1:3
+ rt-import 1:3
+ rt-export 1:3
  exit
 !
 vrf definition c7
@@ -81,6 +94,15 @@ interface loopback2
  no log-link-change
  exit
 !
+interface loopback3
+ no description
+ vrf forwarding c2
+ ipv4 address 10.20.30.3 255.255.255.0
+ ipv6 address fc00::3 ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+ no shutdown
+ no log-link-change
+ exit
+!
 interface bvi1
  no description
  vrf forwarding c7
@@ -93,6 +115,14 @@ interface bvi2
  no description
  vrf forwarding c7
  ipv4 address 2.3.4.23 255.255.255.0
+ no shutdown
+ no log-link-change
+ exit
+!
+interface bvi3
+ no description
+ vrf forwarding c7
+ ipv4 address 2.4.5.23 255.255.255.0
  no shutdown
  no log-link-change
  exit
@@ -113,6 +143,20 @@ interface ethernet0
  no log-link-change
  exit
 !
+interface tunnel1
+ no description
+ tunnel vrf v1
+ tunnel source loopback0
+ tunnel destination fd00:1234:1234:3333::
+ tunnel mode srv6
+ vrf forwarding v1
+ ipv6 address fd00:1234:1234:3333:: ffff:ffff:ffff:ffff::
+ router ospf6 1 enable
+ router ospf6 1 area 0
+ no shutdown
+ no log-link-change
+ exit
+!
 router bgp4 1
  vrf v1
  local-as 1
@@ -125,21 +169,48 @@ router bgp4 1
  template r distance 200
  template r update-source loopback0
  template r pmsitun
+ template r segrout
  template r route-reflector-client
  template r send-community standard extended
  neighbor 10.4.4.4 template r
  neighbor 10.254.254.254 template r
  afi-vrf c1 enable
  afi-vrf c1 redistribute connected
+ afi-vrf c2 enable
+ afi-vrf c2 srv6 tunnel1
+ afi-vrf c2 redistribute connected
+ afi-vrf c2 redistribute static
  afi-ovrf c1 enable
  afi-ovrf c1 redistribute connected
+ afi-ovrf c2 enable
+ afi-ovrf c2 srv6 tunnel1
+ afi-ovrf c2 redistribute connected
+ afi-ovrf c2 redistribute static
  afi-vpls 1:1 bridge-group 1
  afi-vpls 1:1 update-source loopback0
  afi-evpn 444 bridge-group 2
  afi-evpn 444 bmac 003e.7a61.1021
  afi-evpn 444 encapsulation cmac
  afi-evpn 444 update-source loopback0
+ afi-evpn 555 bridge-group 3
+ afi-evpn 555 srv6 tunnel1
+ afi-evpn 555 bmac 000a.6a0e.2001
+ afi-evpn 555 encapsulation cmac
+ afi-evpn 555 update-source loopback0
  exit
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
 !
 !
 !

@@ -110,6 +110,9 @@ tables {
     id: 16807553
   }
   action_refs {
+    id: 16779014
+  }
+  action_refs {
     id: 16821376
   }
   size: 1024
@@ -118,7 +121,7 @@ tables {
   preamble {
     id: 33584403
     name: "ig_ctl.ig_ctl_ipv4.tbl_ipv4_fib_host"
-    alias: "tbl_ipv4_fib_host"
+    alias: "ig_ctl_ipv4.tbl_ipv4_fib_host"
   }
   match_fields {
     id: 1
@@ -140,6 +143,9 @@ tables {
   }
   action_refs {
     id: 16812549
+  }
+  action_refs {
+    id: 16814698
   }
   action_refs {
     id: 16800567
@@ -153,7 +159,7 @@ tables {
   preamble {
     id: 33587017
     name: "ig_ctl.ig_ctl_ipv4.tbl_ipv4_fib_lpm"
-    alias: "tbl_ipv4_fib_lpm"
+    alias: "ig_ctl_ipv4.tbl_ipv4_fib_lpm"
   }
   match_fields {
     id: 1
@@ -177,7 +183,15 @@ tables {
     id: 16812549
   }
   action_refs {
+    id: 16814698
+  }
+  action_refs {
     id: 16802518
+  }
+  action_refs {
+    id: 16800567
+    annotations: "@defaultonly"
+    scope: DEFAULT_ONLY
   }
   size: 512
 }
@@ -185,7 +199,7 @@ tables {
   preamble {
     id: 33586257
     name: "ig_ctl.ig_ctl_ipv6.tbl_ipv6_fib_host"
-    alias: "tbl_ipv6_fib_host"
+    alias: "ig_ctl_ipv6.tbl_ipv6_fib_host"
   }
   match_fields {
     id: 1
@@ -209,6 +223,18 @@ tables {
     id: 16806501
   }
   action_refs {
+    id: 16808653
+  }
+  action_refs {
+    id: 16786221
+  }
+  action_refs {
+    id: 16803946
+  }
+  action_refs {
+    id: 16838236
+  }
+  action_refs {
     id: 16800567
     annotations: "@defaultonly"
     scope: DEFAULT_ONLY
@@ -220,7 +246,7 @@ tables {
   preamble {
     id: 33556344
     name: "ig_ctl.ig_ctl_ipv6.tbl_ipv6_fib_lpm"
-    alias: "tbl_ipv6_fib_lpm"
+    alias: "ig_ctl_ipv6.tbl_ipv6_fib_lpm"
   }
   match_fields {
     id: 1
@@ -244,7 +270,171 @@ tables {
     id: 16806501
   }
   action_refs {
+    id: 16808653
+  }
+  action_refs {
     id: 16803646
+  }
+  action_refs {
+    id: 16800567
+    annotations: "@defaultonly"
+    scope: DEFAULT_ONLY
+  }
+  size: 512
+}
+tables {
+  preamble {
+    id: 33561875
+    name: "ig_ctl.ig_ctl_ipv4b.tbl_ipv4_fib_host"
+    alias: "ig_ctl_ipv4b.tbl_ipv4_fib_host"
+  }
+  match_fields {
+    id: 1
+    name: "hdr.ipv4b.dst_ipv4_addr"
+    bitwidth: 32
+    match_type: EXACT
+  }
+  match_fields {
+    id: 2
+    name: "ig_md.vrf"
+    bitwidth: 16
+    match_type: EXACT
+  }
+  action_refs {
+    id: 16823942
+  }
+  action_refs {
+    id: 16787548
+  }
+  action_refs {
+    id: 16814479
+  }
+  action_refs {
+    id: 16798001
+  }
+  action_refs {
+    id: 16800567
+    annotations: "@defaultonly"
+    scope: DEFAULT_ONLY
+  }
+  const_default_action_id: 16800567
+  size: 1024
+}
+tables {
+  preamble {
+    id: 33560133
+    name: "ig_ctl.ig_ctl_ipv4b.tbl_ipv4_fib_lpm"
+    alias: "ig_ctl_ipv4b.tbl_ipv4_fib_lpm"
+  }
+  match_fields {
+    id: 1
+    name: "hdr.ipv4b.dst_ipv4_addr"
+    bitwidth: 32
+    match_type: LPM
+  }
+  match_fields {
+    id: 2
+    name: "ig_md.vrf"
+    bitwidth: 16
+    match_type: EXACT
+  }
+  action_refs {
+    id: 16823942
+  }
+  action_refs {
+    id: 16787548
+  }
+  action_refs {
+    id: 16814479
+  }
+  action_refs {
+    id: 16798001
+  }
+  action_refs {
+    id: 16807035
+  }
+  action_refs {
+    id: 16800567
+    annotations: "@defaultonly"
+    scope: DEFAULT_ONLY
+  }
+  size: 512
+}
+tables {
+  preamble {
+    id: 33581778
+    name: "ig_ctl.ig_ctl_ipv6b.tbl_ipv6_fib_host"
+    alias: "ig_ctl_ipv6b.tbl_ipv6_fib_host"
+  }
+  match_fields {
+    id: 1
+    name: "hdr.ipv6b.dst_addr"
+    bitwidth: 128
+    match_type: EXACT
+  }
+  match_fields {
+    id: 2
+    name: "ig_md.vrf"
+    bitwidth: 16
+    match_type: EXACT
+  }
+  action_refs {
+    id: 16797487
+  }
+  action_refs {
+    id: 16802023
+  }
+  action_refs {
+    id: 16797543
+  }
+  action_refs {
+    id: 16833742
+  }
+  action_refs {
+    id: 16800567
+    annotations: "@defaultonly"
+    scope: DEFAULT_ONLY
+  }
+  const_default_action_id: 16800567
+  size: 1024
+}
+tables {
+  preamble {
+    id: 33568251
+    name: "ig_ctl.ig_ctl_ipv6b.tbl_ipv6_fib_lpm"
+    alias: "ig_ctl_ipv6b.tbl_ipv6_fib_lpm"
+  }
+  match_fields {
+    id: 1
+    name: "hdr.ipv6b.dst_addr"
+    bitwidth: 128
+    match_type: LPM
+  }
+  match_fields {
+    id: 2
+    name: "ig_md.vrf"
+    bitwidth: 16
+    match_type: EXACT
+  }
+  action_refs {
+    id: 16797487
+  }
+  action_refs {
+    id: 16802023
+  }
+  action_refs {
+    id: 16797543
+  }
+  action_refs {
+    id: 16833742
+  }
+  action_refs {
+    id: 16788845
+  }
+  action_refs {
+    id: 16800567
+    annotations: "@defaultonly"
+    scope: DEFAULT_ONLY
   }
   size: 512
 }
@@ -498,6 +688,23 @@ actions {
 }
 actions {
   preamble {
+    id: 16779014
+    name: "ig_ctl.ig_ctl_bridge.act_set_bridge_srv"
+    alias: "act_set_bridge_srv"
+  }
+  params {
+    id: 1
+    name: "port"
+    bitwidth: 9
+  }
+  params {
+    id: 2
+    name: "target"
+    bitwidth: 128
+  }
+}
+actions {
+  preamble {
     id: 16821376
     name: "ig_ctl.ig_ctl_bridge.act_bridge_punt"
     alias: "act_bridge_punt"
@@ -507,7 +714,7 @@ actions {
   preamble {
     id: 16800296
     name: "ig_ctl.ig_ctl_ipv4.act_ipv4_cpl_set_nexthop"
-    alias: "act_ipv4_cpl_set_nexthop"
+    alias: "ig_ctl_ipv4.act_ipv4_cpl_set_nexthop"
   }
 }
 actions {
@@ -521,7 +728,7 @@ actions {
   preamble {
     id: 16813144
     name: "ig_ctl.ig_ctl_ipv4.act_ipv4_set_nexthop"
-    alias: "act_ipv4_set_nexthop"
+    alias: "ig_ctl_ipv4.act_ipv4_set_nexthop"
   }
   params {
     id: 1
@@ -533,7 +740,7 @@ actions {
   preamble {
     id: 16812549
     name: "ig_ctl.ig_ctl_ipv4.act_ipv4_mpls_encap_set_nexthop"
-    alias: "act_ipv4_mpls_encap_set_nexthop"
+    alias: "ig_ctl_ipv4.act_ipv4_mpls_encap_set_nexthop"
   }
   params {
     id: 1
@@ -553,23 +760,40 @@ actions {
 }
 actions {
   preamble {
+    id: 16814698
+    name: "ig_ctl.ig_ctl_ipv4.act_ipv4_srv_encap_set_nexthop"
+    alias: "ig_ctl_ipv4.act_ipv4_srv_encap_set_nexthop"
+  }
+  params {
+    id: 1
+    name: "target"
+    bitwidth: 128
+  }
+  params {
+    id: 2
+    name: "nexthop_id"
+    bitwidth: 9
+  }
+}
+actions {
+  preamble {
     id: 16833310
     name: "ig_ctl.ig_ctl_ipv6.act_ipv6_cpl_set_nexthop"
-    alias: "act_ipv6_cpl_set_nexthop"
+    alias: "ig_ctl_ipv6.act_ipv6_cpl_set_nexthop"
   }
 }
 actions {
   preamble {
     id: 16803646
     name: "ig_ctl.ig_ctl_ipv6.act_ipv6_fib_discard"
-    alias: "act_ipv6_fib_discard"
+    alias: "ig_ctl_ipv6.act_ipv6_fib_discard"
   }
 }
 actions {
   preamble {
     id: 16797613
     name: "ig_ctl.ig_ctl_ipv6.act_ipv6_set_nexthop"
-    alias: "act_ipv6_set_nexthop"
+    alias: "ig_ctl_ipv6.act_ipv6_set_nexthop"
   }
   params {
     id: 1
@@ -581,7 +805,7 @@ actions {
   preamble {
     id: 16806501
     name: "ig_ctl.ig_ctl_ipv6.act_ipv6_mpls_encap_set_nexthop"
-    alias: "act_ipv6_mpls_encap_set_nexthop"
+    alias: "ig_ctl_ipv6.act_ipv6_mpls_encap_set_nexthop"
   }
   params {
     id: 1
@@ -595,6 +819,189 @@ actions {
   }
   params {
     id: 3
+    name: "nexthop_id"
+    bitwidth: 9
+  }
+}
+actions {
+  preamble {
+    id: 16786221
+    name: "ig_ctl.ig_ctl_ipv6.act_srv_decap_ipv4"
+    alias: "act_srv_decap_ipv4"
+  }
+  params {
+    id: 1
+    name: "vrf"
+    bitwidth: 16
+  }
+}
+actions {
+  preamble {
+    id: 16803946
+    name: "ig_ctl.ig_ctl_ipv6.act_srv_decap_ipv6"
+    alias: "act_srv_decap_ipv6"
+  }
+  params {
+    id: 1
+    name: "vrf"
+    bitwidth: 16
+  }
+}
+actions {
+  preamble {
+    id: 16838236
+    name: "ig_ctl.ig_ctl_ipv6.act_srv_decap_evpn"
+    alias: "act_srv_decap_evpn"
+  }
+  params {
+    id: 1
+    name: "bridge"
+    bitwidth: 9
+  }
+}
+actions {
+  preamble {
+    id: 16808653
+    name: "ig_ctl.ig_ctl_ipv6.act_ipv6_srv_encap_set_nexthop"
+    alias: "ig_ctl_ipv6.act_ipv6_srv_encap_set_nexthop"
+  }
+  params {
+    id: 1
+    name: "target"
+    bitwidth: 128
+  }
+  params {
+    id: 2
+    name: "nexthop_id"
+    bitwidth: 9
+  }
+}
+actions {
+  preamble {
+    id: 16823942
+    name: "ig_ctl.ig_ctl_ipv4b.act_ipv4_cpl_set_nexthop"
+    alias: "ig_ctl_ipv4b.act_ipv4_cpl_set_nexthop"
+  }
+}
+actions {
+  preamble {
+    id: 16807035
+    name: "ig_ctl.ig_ctl_ipv4b.act_ipv4_fib_discard"
+    alias: "ig_ctl_ipv4b.act_ipv4_fib_discard"
+  }
+}
+actions {
+  preamble {
+    id: 16787548
+    name: "ig_ctl.ig_ctl_ipv4b.act_ipv4_set_nexthop"
+    alias: "ig_ctl_ipv4b.act_ipv4_set_nexthop"
+  }
+  params {
+    id: 1
+    name: "nexthop_id"
+    bitwidth: 9
+  }
+}
+actions {
+  preamble {
+    id: 16814479
+    name: "ig_ctl.ig_ctl_ipv4b.act_ipv4_mpls_encap_set_nexthop"
+    alias: "ig_ctl_ipv4b.act_ipv4_mpls_encap_set_nexthop"
+  }
+  params {
+    id: 1
+    name: "vpn_label"
+    bitwidth: 20
+  }
+  params {
+    id: 2
+    name: "egress_label"
+    bitwidth: 20
+  }
+  params {
+    id: 3
+    name: "nexthop_id"
+    bitwidth: 9
+  }
+}
+actions {
+  preamble {
+    id: 16798001
+    name: "ig_ctl.ig_ctl_ipv4b.act_ipv4_srv_encap_set_nexthop"
+    alias: "ig_ctl_ipv4b.act_ipv4_srv_encap_set_nexthop"
+  }
+  params {
+    id: 1
+    name: "target"
+    bitwidth: 128
+  }
+  params {
+    id: 2
+    name: "nexthop_id"
+    bitwidth: 9
+  }
+}
+actions {
+  preamble {
+    id: 16797487
+    name: "ig_ctl.ig_ctl_ipv6b.act_ipv6_cpl_set_nexthop"
+    alias: "ig_ctl_ipv6b.act_ipv6_cpl_set_nexthop"
+  }
+}
+actions {
+  preamble {
+    id: 16788845
+    name: "ig_ctl.ig_ctl_ipv6b.act_ipv6_fib_discard"
+    alias: "ig_ctl_ipv6b.act_ipv6_fib_discard"
+  }
+}
+actions {
+  preamble {
+    id: 16802023
+    name: "ig_ctl.ig_ctl_ipv6b.act_ipv6_set_nexthop"
+    alias: "ig_ctl_ipv6b.act_ipv6_set_nexthop"
+  }
+  params {
+    id: 1
+    name: "nexthop_id"
+    bitwidth: 9
+  }
+}
+actions {
+  preamble {
+    id: 16797543
+    name: "ig_ctl.ig_ctl_ipv6b.act_ipv6_mpls_encap_set_nexthop"
+    alias: "ig_ctl_ipv6b.act_ipv6_mpls_encap_set_nexthop"
+  }
+  params {
+    id: 1
+    name: "vpn_label"
+    bitwidth: 20
+  }
+  params {
+    id: 2
+    name: "egress_label"
+    bitwidth: 20
+  }
+  params {
+    id: 3
+    name: "nexthop_id"
+    bitwidth: 9
+  }
+}
+actions {
+  preamble {
+    id: 16833742
+    name: "ig_ctl.ig_ctl_ipv6b.act_ipv6_srv_encap_set_nexthop"
+    alias: "ig_ctl_ipv6b.act_ipv6_srv_encap_set_nexthop"
+  }
+  params {
+    id: 1
+    name: "target"
+    bitwidth: 128
+  }
+  params {
+    id: 2
     name: "nexthop_id"
     bitwidth: 9
   }

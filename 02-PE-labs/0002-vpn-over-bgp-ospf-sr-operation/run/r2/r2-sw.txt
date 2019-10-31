@@ -97,6 +97,14 @@ interface ethernet0.444
  no log-link-change
  exit
 !
+interface ethernet0.555
+ no description
+ vrf forwarding c8
+ ipv4 address 2.4.5.12 255.255.255.0
+ no shutdown
+ no log-link-change
+ exit
+!
 interface ethernet1
  no description
  macaddr 0000.0a00.1703
@@ -120,6 +128,20 @@ interface pwether1
  vrf forwarding c9
  ipv4 address 2.2.2.2 255.255.255.0
  pseudowire v1 loopback0 pweompls 10.254.254.254 11
+ no shutdown
+ no log-link-change
+ exit
+!
+interface tunnel1
+ no description
+ tunnel vrf v1
+ tunnel source loopback0
+ tunnel destination fd00:1234:1234:2222::
+ tunnel mode srv6
+ vrf forwarding v1
+ ipv6 address fd00:1234:1234:2222:: ffff:ffff:ffff:ffff::
+ router ospf6 1 enable
+ router ospf6 1 area 0
  no shutdown
  no log-link-change
  exit
