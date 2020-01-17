@@ -82,11 +82,11 @@ all:
 	$(SRC_DIR)/forwarder.py --p4runtime_address 127.0.0.1:11080 --freerouter_address 127.0.0.1 --freerouter_port 9088 &
 
 clean: 
-	-sudo killall -9 rawInt.bin
-	-sudo killall -9 pcapInt.bin
-	-sudo killall -9 java
-	-sudo killall -9 python2
-	-sudo killall -9 simple_switch_grpc
+	-sudo pkill -9 rawInt.bin
+	-sudo pkill -9 pcapInt.bin
+	-sudo pkill -9 java
+	-sudo pkill -9 python2
+	-sudo pkill -9 simple_switch_grpc
 	-ip link del veth10a
 	-ip link del veth12a
 	-ip link del veth1Aa

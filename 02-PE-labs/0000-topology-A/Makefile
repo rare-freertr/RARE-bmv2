@@ -9,8 +9,8 @@ all:
 	sudo $(BIN_DIR)/setup_r4.sh
 
 clean: 
-	-sudo killall pcapInt.bin
-	-sudo killall java
+	-sudo pkill -9 pcapInt.bin
+	-sudo pkill -9 java
 	-sudo $(BIN_DIR)/teardown_r1.sh
 	-sudo $(BIN_DIR)/teardown_r2.sh
 	-sudo $(BIN_DIR)/teardown_core1.sh
