@@ -4,6 +4,9 @@ buggy
 logging buffered debug 10240
 logging file debug core1.log
 !
+bundle 1
+ exit
+!
 bridge 1
  rd 1:1
  rt-import 1:1
@@ -70,6 +73,19 @@ interface loopback2
  vrf forwarding c1
  ipv4 address 10.10.254.1 255.255.255.0
  ipv6 address fd00::fe ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+ no shutdown
+ no log-link-change
+ exit
+!
+interface bundle1
+ no description
+ mtu 1500
+ macaddr 0000.0a00.04fe
+ vrf forwarding v1
+ ipv4 address 10.0.4.254 255.255.255.0
+ mpls enable
+ router isis4 1 enable
+ router isis4 1 circuit level1
  no shutdown
  no log-link-change
  exit
@@ -172,12 +188,8 @@ interface sdn2.444
 interface sdn4
  no description
  mtu 1500
- macaddr 0000.0a00.04fe
- vrf forwarding v1
- ipv4 address 10.0.4.254 255.255.255.0
- mpls enable
- router isis4 1 enable
- router isis4 1 circuit level1
+ macaddr 0057.752d.4f26
+ bundle-group 1
  no shutdown
  no log-link-change
  exit
@@ -279,6 +291,7 @@ server p4lang p4
  export-port sdn1.444 71
  export-port sdn2.444 72
  export-port sdn4.444 73
+ export-port bundle1 74
  export-bridge 1
  export-bridge 2
  interconnect ethernet0

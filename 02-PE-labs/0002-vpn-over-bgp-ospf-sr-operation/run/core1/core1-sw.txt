@@ -4,6 +4,9 @@ buggy
 logging buffered debug 10240
 logging file debug core1.log
 !
+bundle 1
+ exit
+!
 bridge 1
  rd 1:1
  rt-import 1:1
@@ -97,6 +100,12 @@ interface loopback3
  vrf forwarding c2
  ipv4 address 10.20.254.254 255.255.255.0
  ipv6 address fc00::fefe ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+ no shutdown
+ no log-link-change
+ exit
+!
+interface bundle1
+ no description
  no shutdown
  no log-link-change
  exit
@@ -398,6 +407,7 @@ server p4lang p4
  export-port sdn1.555 75
  export-port sdn2.555 76
  export-port sdn4.555 77
+ export-port bundle1 78
  export-bridge 1
  export-bridge 2
  export-bridge 3

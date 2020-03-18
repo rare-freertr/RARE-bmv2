@@ -35,8 +35,8 @@ build: dirs
 		-I ./ -o $(BUILD_DIR) --p4runtime-files $(compiled_p4info) $(P4_PROGRAM) 
 
 clean: 
-	-sudo pkill simple_switch 
-	-sudo pkill python2
+	-sudo kill -9 `pidof simple_switch_grpc`
+	-sudo kill -9 `pidof python2`
 	-rm -rf $(BUILD_DIR) $(LOG_DIR) $(RUN_DIR)/bm-0-log.ipc
 
 dirs:
