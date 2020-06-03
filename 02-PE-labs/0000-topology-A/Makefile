@@ -3,6 +3,7 @@ BIN_DIR=$(BASE_DIR)/bin
 
 all: 
 	echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6
+	echo 1 > /proc/sys/net/ipv6/conf/default/disable_ipv6
 	sudo $(BIN_DIR)/setup_r1.sh
 	sudo $(BIN_DIR)/setup_r2.sh
 	sudo $(BIN_DIR)/setup_core1.sh

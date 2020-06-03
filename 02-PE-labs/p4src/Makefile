@@ -27,7 +27,6 @@ run: build
 			-i $(P4_SWITCH_CPU_PORT)@$(P4_SWITCH_CPU) \
 			--thrift-port 9090 --nanolog ipc://$(RUN_DIR)/bm-0-log.ipc --device-id 0 $(compiled_json) \
 		        -- --grpc-server-addr 127.0.0.1:50051 > $(LOG_DIR)/$(LOG_FILE).out 2>&1 &
-	ping -c 3 10.10.10.227
 #	./forwarder.py > $(LOG_DIR)/forwarder.log 2>&1 &
 
 build: dirs 

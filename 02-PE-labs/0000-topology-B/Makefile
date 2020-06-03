@@ -1,6 +1,6 @@
 BASE_DIR=$(PWD)
 BIN_DIR=$(BASE_DIR)/bin
-SRC_DIR=$(BASE_DIR)/../p4src-modular
+SRC_DIR=$(BASE_DIR)/../p4src
 
 all: 
 	ip link add veth10a type veth peer name veth10b
