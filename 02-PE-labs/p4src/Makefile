@@ -36,7 +36,7 @@ build: dirs
 clean: 
 	-sudo kill -9 `pidof simple_switch_grpc`
 	-sudo kill -9 `pidof python2`
-	-rm -rf $(BUILD_DIR) $(LOG_DIR) $(RUN_DIR)/bm-0-log.ipc
+	-rm -rf $(BUILD_DIR) $(LOG_DIR) $(RUN_DIR)/bm-0-log.ipc p4runtime-requests.txt
 
 dirs:
 	mkdir -p $(BUILD_DIR) $(LOG_DIR)

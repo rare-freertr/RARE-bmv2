@@ -7,9 +7,11 @@ control IngressControlCoPP(inout headers hdr,
 
    action act_deny() {
       mark_to_drop(ig_intr_md); 
+      ig_md.dropping = 1;
    }
 
    action act_permit() {
+      ig_md.dropping = 0;
    }
    
    
@@ -48,14 +50,6 @@ control IngressControlCoPP(inout headers hdr,
    }
 
    apply {
-        if (hdr.tcp.isValid()) {
-          ig_md.layer4_srcprt = hdr.tcp.src_port;
-          ig_md.layer4_dstprt = hdr.tcp.dst_port;
-        }
-        if (hdr.udp.isValid()) {
-          ig_md.layer4_srcprt = hdr.udp.src_port;
-          ig_md.layer4_dstprt = hdr.udp.dst_port;
-        }
         if (ig_md.ipv4_valid==1)  {  
           tbl_ipv4_copp.apply();                    
         }               

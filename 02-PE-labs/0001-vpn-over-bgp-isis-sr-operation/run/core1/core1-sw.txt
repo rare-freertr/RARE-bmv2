@@ -4,6 +4,16 @@ buggy
 logging buffered debug 10240
 logging file debug core1.log
 !
+access-list test4
+ sequence 10 deny 1 10.1.1.1 255.255.255.255 0 10.10.40.4 255.255.255.255 0
+ sequence 20 permit all any all any all
+ exit
+!
+access-list test6
+ sequence 10 deny 58 4321::104 ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff 0 4321::101 ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff 0
+ sequence 20 permit all any all any all
+ exit
+!
 bundle 1
  exit
 !
@@ -130,8 +140,10 @@ interface sdn1.111
  macaddr 0000.0a00.01fe
  vrf forwarding c1
  ipv4 address 10.0.1.254 255.255.255.0
+ ipv4 access-group-in test4
  ipv6 address fd00:0:0:1::fe ffff:ffff:ffff:ffff::
  ipv6 enable
+ ipv6 access-group-in test6
  no shutdown
  no log-link-change
  exit
@@ -279,19 +291,19 @@ server telnet tel
 server p4lang p4
  export-vrf v1 1
  export-vrf c1 2
- export-port sdn1 1
- export-port sdn2 2
- export-port sdn4 4
- export-port sdn1.111 65
- export-port sdn2.222 66
- export-port sdn1.11 67
- export-port sdn1.333 68
- export-port sdn2.333 69
- export-port sdn4.333 70
- export-port sdn1.444 71
- export-port sdn2.444 72
- export-port sdn4.444 73
- export-port bundle1 74
+ export-port sdn1 1 0
+ export-port sdn2 2 0
+ export-port sdn4 4 0
+ export-port sdn1.111 65 0
+ export-port sdn2.222 66 0
+ export-port sdn1.11 67 0
+ export-port sdn1.333 68 0
+ export-port sdn2.333 69 0
+ export-port sdn4.333 70 0
+ export-port sdn1.444 71 0
+ export-port sdn2.444 72 0
+ export-port sdn4.444 73 0
+ export-port bundle1 74 0
  export-bridge 1
  export-bridge 2
  interconnect ethernet0
