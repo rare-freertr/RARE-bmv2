@@ -1008,43 +1008,43 @@ def main(p4info_file_path, bmv2_file_path, p4runtime_address, freerouter_address
             writeCoppRules6(3,p4info_helper,sw1,int(splt[1]),splt[2],int(splt[3]),int(splt[4]),splt[5],splt[6],splt[7],splt[8],int(splt[9]),int(splt[10]),int(splt[11]),int(splt[12]))
             continue
 
-        if splt[0] == "in4acl_add":
+        if splt[0] == "inacl4_add":
             writeInAclRules4(1,p4info_helper,sw1,int(splt[1]),int(splt[2]),splt[3],int(splt[4]),int(splt[5]),splt[6],splt[7],splt[8],splt[9],int(splt[10]),int(splt[11]),int(splt[12]),int(splt[13]))
             continue
-        if splt[0] == "in4acl_mod":
+        if splt[0] == "inacl4_mod":
             writeInAclRules4(2,p4info_helper,sw1,int(splt[1]),int(splt[2]),splt[3],int(splt[4]),int(splt[5]),splt[6],splt[7],splt[8],splt[9],int(splt[10]),int(splt[11]),int(splt[12]),int(splt[13]))
             continue
-        if splt[0] == "in4acl_del":
+        if splt[0] == "inacl4_del":
             writeInAclRules4(3,p4info_helper,sw1,int(splt[1]),int(splt[2]),splt[3],int(splt[4]),int(splt[5]),splt[6],splt[7],splt[8],splt[9],int(splt[10]),int(splt[11]),int(splt[12]),int(splt[13]))
             continue
 
-        if splt[0] == "in6acl_add":
+        if splt[0] == "inacl6_add":
             writeInAclRules6(1,p4info_helper,sw1,int(splt[1]),int(splt[2]),splt[3],int(splt[4]),int(splt[5]),splt[6],splt[7],splt[8],splt[9],int(splt[10]),int(splt[11]),int(splt[12]),int(splt[13]))
             continue
-        if splt[0] == "in6acl_mod":
+        if splt[0] == "inacl6_mod":
             writeInAclRules6(2,p4info_helper,sw1,int(splt[1]),int(splt[2]),splt[3],int(splt[4]),int(splt[5]),splt[6],splt[7],splt[8],splt[9],int(splt[10]),int(splt[11]),int(splt[12]),int(splt[13]))
             continue
-        if splt[0] == "in6acl_del":
+        if splt[0] == "inacl6_del":
             writeInAclRules6(3,p4info_helper,sw1,int(splt[1]),int(splt[2]),splt[3],int(splt[4]),int(splt[5]),splt[6],splt[7],splt[8],splt[9],int(splt[10]),int(splt[11]),int(splt[12]),int(splt[13]))
             continue
 
-        if splt[0] == "out4acl_add":
+        if splt[0] == "outacl4_add":
             writeOutAclRules4(1,p4info_helper,sw1,int(splt[1]),int(splt[2]),splt[3],int(splt[4]),int(splt[5]),splt[6],splt[7],splt[8],splt[9],int(splt[10]),int(splt[11]),int(splt[12]),int(splt[13]))
             continue
-        if splt[0] == "out4acl_mod":
+        if splt[0] == "outacl4_mod":
             writeOutAclRules4(2,p4info_helper,sw1,int(splt[1]),int(splt[2]),splt[3],int(splt[4]),int(splt[5]),splt[6],splt[7],splt[8],splt[9],int(splt[10]),int(splt[11]),int(splt[12]),int(splt[13]))
             continue
-        if splt[0] == "out4acl_del":
+        if splt[0] == "outacl4_del":
             writeOutAclRules4(3,p4info_helper,sw1,int(splt[1]),int(splt[2]),splt[3],int(splt[4]),int(splt[5]),splt[6],splt[7],splt[8],splt[9],int(splt[10]),int(splt[11]),int(splt[12]),int(splt[13]))
             continue
 
-        if splt[0] == "out6acl_add":
+        if splt[0] == "outacl6_add":
             writeOutAclRules6(1,p4info_helper,sw1,int(splt[1]),int(splt[2]),splt[3],int(splt[4]),int(splt[5]),splt[6],splt[7],splt[8],splt[9],int(splt[10]),int(splt[11]),int(splt[12]),int(splt[13]))
             continue
-        if splt[0] == "out6acl_mod":
+        if splt[0] == "outacl6_mod":
             writeOutAclRules6(2,p4info_helper,sw1,int(splt[1]),int(splt[2]),splt[3],int(splt[4]),int(splt[5]),splt[6],splt[7],splt[8],splt[9],int(splt[10]),int(splt[11]),int(splt[12]),int(splt[13]))
             continue
-        if splt[0] == "out6acl_del":
+        if splt[0] == "outacl6_del":
             writeOutAclRules6(3,p4info_helper,sw1,int(splt[1]),int(splt[2]),splt[3],int(splt[4]),int(splt[5]),splt[6],splt[7],splt[8],splt[9],int(splt[10]),int(splt[11]),int(splt[12]),int(splt[13]))
             continue
 
