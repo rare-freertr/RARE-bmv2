@@ -9,7 +9,7 @@ control IngressControlMPLS(inout headers hdr,
       /*              
        * Encapsulate MPLS header
        */             
-      hdr.mpls[0].label = egress_label;
+      hdr.mpls0.label = egress_label;
       /*              
        * Indicate nexthop_id
        */
@@ -23,7 +23,7 @@ control IngressControlMPLS(inout headers hdr,
       /*              
        * Encapsulate MPLS header
        */             
-      hdr.mpls[1].label = egress_label;
+      hdr.mpls1.label = egress_label;
       /*              
        * Indicate nexthop_id
        */
@@ -41,7 +41,7 @@ control IngressControlMPLS(inout headers hdr,
       /*
        * Decapsulate MPLS header
        */
-//      hdr.mpls[0].setInvalid();
+//      hdr.mpls0.setInvalid();
 //      hdr.ipv4.setValid();
       /*
        * Indicate effective VRF during
@@ -61,7 +61,7 @@ control IngressControlMPLS(inout headers hdr,
       /*
        * Decapsulate MPLS header
        */
-//      hdr.mpls[1].setInvalid();
+//      hdr.mpls1.setInvalid();
 //      hdr.ipv4.setValid();
       /*
        * Indicate effective VRF during
@@ -69,6 +69,7 @@ control IngressControlMPLS(inout headers hdr,
        */
       ig_md.vrf = vrf;
       ig_md.mpls_op_type = 1;
+      ig_md.mpls0_remove = 1;
       ig_md.mpls1_remove = 1;
 
    }
@@ -85,8 +86,8 @@ control IngressControlMPLS(inout headers hdr,
       hdr.ethernet.dst_mac_addr = hdr.eth2.dst_mac_addr;
       hdr.ethernet.src_mac_addr = hdr.eth2.src_mac_addr;
       hdr.eth2.setInvalid();
-      hdr.mpls[1].setInvalid();
-      hdr.mpls[0].setInvalid();
+      hdr.mpls1.setInvalid();
+      hdr.mpls0.setInvalid();
       hdr.vlan.setInvalid();
       ig_md.target_id = port;
       /*
@@ -196,10 +197,10 @@ control IngressControlMPLS(inout headers hdr,
 
    apply {
          if (ig_md.mpls0_valid == 1) {
-            ig_md.mpls_label = hdr.mpls[0].label;
+            ig_md.mpls_label = hdr.mpls0.label;
             tbl_mpls_fib.apply();
             if ((ig_md.mpls_op_type == 1) && (ig_md.mpls1_valid == 1)) {
-               ig_md.mpls_label = hdr.mpls[1].label;
+               ig_md.mpls_label = hdr.mpls1.label;
                tbl_mpls_fib_decap.apply();
             }
          }

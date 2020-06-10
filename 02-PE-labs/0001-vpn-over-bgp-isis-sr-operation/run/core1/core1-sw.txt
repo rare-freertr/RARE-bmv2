@@ -140,10 +140,8 @@ interface sdn1.111
  macaddr 0000.0a00.01fe
  vrf forwarding c1
  ipv4 address 10.0.1.254 255.255.255.0
- ipv4 access-group-in test4
  ipv6 address fd00:0:0:1::fe ffff:ffff:ffff:ffff::
  ipv6 enable
- ipv6 access-group-in test6
  no shutdown
  no log-link-change
  exit

@@ -38,7 +38,7 @@ control IngressControlIPv4(inout headers hdr,
    }
 
 
-   action act_ipv4_mpls_encap_set_nexthop(label_t vpn_label, label_t egress_label, NextHopId_t nexthop_id) {
+   action act_ipv4_mpls1_encap_set_nexthop(label_t egress_label, NextHopId_t nexthop_id) {
       /*
        * Egress packet is now a MPLS packet
        * (LABEL imposition)
@@ -48,18 +48,38 @@ control IngressControlIPv4(inout headers hdr,
        * Encapsulate MPLS header
        * And set egress label
        */
-      hdr.mpls.push_front(2);
-      hdr.mpls[0].setValid();
-      hdr.mpls[0].label = egress_label;
-      hdr.mpls[0].ttl = hdr.ipv4.ttl;
+      hdr.mpls0.setValid();
+      hdr.mpls0.label = egress_label;
+      hdr.mpls0.ttl = hdr.ipv4.ttl;
+      hdr.mpls0.bos = 1;
+      /*
+       * Set nexthop_id for further forwarding process
+       */
+      ig_md.nexthop_id = nexthop_id;
+   }
+
+
+   action act_ipv4_mpls2_encap_set_nexthop(label_t vpn_label, label_t egress_label, NextHopId_t nexthop_id) {
+      /*
+       * Egress packet is now a MPLS packet
+       * (LABEL imposition)
+       */
+      ig_md.ethertype = ETHERTYPE_MPLS_UCAST;
+      /*
+       * Encapsulate MPLS header
+       * And set egress label
+       */
+      hdr.mpls0.setValid();
+      hdr.mpls0.label = egress_label;
+      hdr.mpls0.ttl = hdr.ipv4.ttl;
       /*
        * MPLS VPN     
        */
 
-      hdr.mpls[1].setValid();
-      hdr.mpls[1].label = vpn_label;
-      hdr.mpls[1].ttl = hdr.ipv4.ttl;
-      hdr.mpls[1].bos = 1;
+      hdr.mpls1.setValid();
+      hdr.mpls1.label = vpn_label;
+      hdr.mpls1.ttl = hdr.ipv4.ttl;
+      hdr.mpls1.bos = 1;
       /*
        * Set nexthop_id for further forwarding process
        */
@@ -96,7 +116,8 @@ control IngressControlIPv4(inout headers hdr,
       actions = {
          act_ipv4_cpl_set_nexthop;
          act_ipv4_set_nexthop;
-         act_ipv4_mpls_encap_set_nexthop;
+         act_ipv4_mpls1_encap_set_nexthop;
+         act_ipv4_mpls2_encap_set_nexthop;
          act_ipv4_srv_encap_set_nexthop;
          @defaultonly NoAction;
       }
@@ -115,7 +136,8 @@ control IngressControlIPv4(inout headers hdr,
       actions = {
          act_ipv4_cpl_set_nexthop;
          act_ipv4_set_nexthop;
-         act_ipv4_mpls_encap_set_nexthop;
+         act_ipv4_mpls1_encap_set_nexthop;
+         act_ipv4_mpls2_encap_set_nexthop;
          act_ipv4_srv_encap_set_nexthop;
          act_ipv4_fib_discard;
          @defaultonly NoAction;
