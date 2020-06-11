@@ -187,6 +187,12 @@ router bgp4 1
 alias test bash description 
 alias test bash parameter optional
 !
+server telnet c1
+ no exec authorization
+ no login authentication
+ vrf c1
+ exit
+!
 server telnet tel
  security protocol telnet
  exec width 130

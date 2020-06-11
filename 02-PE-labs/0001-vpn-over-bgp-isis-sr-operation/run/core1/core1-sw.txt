@@ -4,6 +4,22 @@ buggy
 logging buffered debug 10240
 logging file debug core1.log
 !
+access-list all4
+ sequence 10 permit all any all any all
+ exit
+!
+access-list all6
+ sequence 10 permit all any all any all
+ exit
+!
+access-list tcp4
+ sequence 10 permit 6 any all any all
+ exit
+!
+access-list tcp6
+ sequence 10 permit 6 any all any all
+ exit
+!
 access-list test4
  sequence 10 deny 1 10.1.1.1 255.255.255.255 0 10.10.40.4 255.255.255.255 0
  sequence 20 permit all any all any all
@@ -253,7 +269,9 @@ ipv6 route c1 fd00::1 ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff fd00:0:0:1::1
 !
 !
 !
+ipv4 nat c1 sequence 10 srclist tcp4 interface loopback2
 !
+ipv6 nat c1 sequence 10 srclist tcp6 interface loopback2
 !
 !
 !
@@ -276,6 +294,12 @@ ipv6 route c1 fd00::1 ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff fd00:0:0:1::1
 !
 alias test bash description 
 alias test bash parameter optional
+!
+server telnet c1
+ no exec authorization
+ no login authentication
+ vrf c1
+ exit
 !
 server telnet tel
  security protocol telnet
