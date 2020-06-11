@@ -391,23 +391,23 @@ server p4lang p4
  export-vrf v1 1
  export-vrf c1 2
  export-vrf c2 3
- export-port sdn1 1
- export-port sdn2 2
- export-port sdn4 4
- export-port sdn1.111 65
- export-port sdn2.222 66
- export-port sdn1.11 67
- export-port sdn1.333 68
- export-port sdn2.333 69
- export-port sdn4.333 70
- export-port sdn1.444 71
- export-port sdn2.444 72
- export-port sdn4.444 73
- export-port sdn1.22 74
- export-port sdn1.555 75
- export-port sdn2.555 76
- export-port sdn4.555 77
- export-port bundle1 78
+ export-port sdn1 1 0
+ export-port sdn2 2 0
+ export-port sdn4 4 0
+ export-port sdn1.111 65 0
+ export-port sdn2.222 66 0
+ export-port sdn1.11 67 0
+ export-port sdn1.333 68 0
+ export-port sdn2.333 69 0
+ export-port sdn4.333 70 0
+ export-port sdn1.444 71 0
+ export-port sdn2.444 72 0
+ export-port sdn4.444 73 0
+ export-port sdn1.22 74 0
+ export-port sdn1.555 75 0
+ export-port sdn2.555 76 0
+ export-port sdn4.555 77 0
+ export-port bundle1 78 0
  export-bridge 1
  export-bridge 2
  export-bridge 3
