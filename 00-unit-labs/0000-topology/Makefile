@@ -4,11 +4,12 @@ BIN_DIR=$(BASE_DIR)/bin
 .DEFAULT_GOAL = all
 
 $(BIN_DIR)/rawInt.bin: $(BIN_DIR)/rawInt.bin.in
+	set -e; \
 	. /etc/os-release; \
+	cp $? $@; \
 	if [ $$ID = "nixos" ]; then \
-	  cp $@.nixos $@; \
-	else \
-	  cp $? $@; \
+	  glibc=$$(nix-instantiate --eval -E 'with import <nixpkgs> {}; toString glibc' | sed -e "s/\"//g"); \
+	  nix-shell -p patchelf -p glibc --run "patchelf --set-interpreter $$glibc/lib/ld-linux-* $@"; \
 	fi
 
 all: $(BIN_DIR)/rawInt.bin
