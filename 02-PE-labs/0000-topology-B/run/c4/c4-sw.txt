@@ -1,0 +1,175 @@
+hostname c4
+buggy
+banner encoded DQogICAgWFhYWFhYICAgICBYICAgIFhYWFhYWCAgWFhYWFhYWA0KICAgICBYWCAgWFggICBYWFggICAgWFggIFhYICBYWCAgWFgNCiAgICAgWFggIFhYICBYWCBYWCAgIFhYICBYWCAgWFggICBYDQogICAgIFhYICBYWCBYWCAgIFhYICBYWCAgWFggIFhYIFgNCiAgICAgWFhYWFggIFhYICAgWFggIFhYWFhYICAgWFhYWA0KICAgICBYWCBYWCAgWFhYWFhYWCAgWFggWFggICBYWCBYDQogICAgIFhYICBYWCBYWCAgIFhYICBYWCAgWFggIFhYDQogICAgIFhYICBYWCBYWCAgIFhYICBYWCAgWFggIFhYICAgWA0KICAgICBYWCAgWFggWFggICBYWCAgWFggIFhYICBYWCAgWFgNCiAgICBYWFggIFhYIFhYICAgWFggWFhYICBYWCBYWFhYWFhYDQo=
+!
+logging buffered debug 10240
+logging file debug c4.log
+!
+crypto rsakey rsa import MIIEoQIBAAKCAQBYn0QZ3jUlciV5j+2IjyeJ2TMXmggMVGTlFrC6s3wgSN6O5FXtVQAFOyvfB9pYxtT25kV8DkeKJmcIUaQvvccNCiSS6omjs7AMK7p4NI6L4S1McUgDKcIz+6DkMXvFRBqe9sv4RO/9bBX5wHGqHG4SSZCvfDf9yeNywQiWDF+CPQ4MT2FiWdIBedN7COWpF0UUIyHFfvUWuyQ6HtJkjNdIgVhDBBwk+hGAUc7T4DEMg+N/XAAJ/c8Y3EBlS50hwTnE8x5PQBFGjodukW74OHUf/xqtnDNpUponomRsdBYtqK6Nka1WidWuUVZvys//yGHUEyRzQl/ruZ2PY/fY7L5lAgMBAAECggEAEK5p8zSQbGwAAdHFtF694oSvyVGFEk0QcM7ElWATjUAqJFt2kSXeyx1INMMVpoBGtfLCQYeuj6KK4lX7wcDHJv0xxTXAkr/P83qHrvi1nD7Wd/0awP2rQH2s20c1NPyMxj9ORX00b09ZE5nVy19umKKgSWfoYi0OUxtislvB3pHGztKldrZ3uwQg84LiWzVW9g0ftM/ylZkfz7Ia+fZtxx1grla9kR7WpAQNk9jF+x4FAmFgEhImYqpLOfHA1pKEHJHsi4FwqSYlQ1RoXWG8TqVWLN80h/Um6eSk5Cb7x1MQ2pRLZtE70wzJHskTM9KIvZDfe0vYqncezN6Fl5imAQKBgQCXDMnVSQR9txY+7D72nnEE4LCz302FkMOIdNWdLmUsGhQ1Y8JDAj2Gh8NGB9tnqTQxYiw2SAp1LT5Xc+l/BDzKn4bP6QOgHNzI3DCzalg7C9A11W76YFf79rgDwyuqGRiiZjQZIE7Bb09n8VRDdgRVB5TRM7EJE3pXRWuPHBMzrQKBgQCWMnWFQ5Yb0EkZ4LjgzbogwM9HrMIMyx6tL39wuka4LobfjsAbYTviPLv9goHCqp24vxaAo1tvZx7Ipb3eMQmw6IkBFpbV4dVOJZnuppGqTJhhpO5wViR6WdkjDU+6eduVAGkTe7I5rWWfOq6fMlI7nSURlal+4990sPUJpfnMmQKBgCzlMSxCqqIPA/6py0ET8LWpbvvXeDwlvehWCZPRUWLdUXpY70lpZg4RVhn/hdf2s7ul2Uw891bCns/xdMo64TK8XZ54PIqfaYQN5i+9gQHzzeviRz0F28DZIPKFVPoWwXqrc/qv3pih0/EqCoiOkFURjsrrWUhAUNGVoZWEm7R1AoGAdLNGHsJx2rCOa/3wiDMxAIvvQiiYKeqUrkmugn8pvafhAcjfuSZmqhU4l/QUMJXysH5A1LiYrcl44Lvu97owZnV3JhJQJmUvIGYU4ZooqiKTb6L/5Ob5ttsi3JpWLXTLSU2lVw8QXsI8qGinD2jA/jLOf4hCxyX1FKz9534/xlkCgYABE6nAdpLwGkfjsplQE3nTg4llkXrYCRGzFjkbW071tdUrpavvGW49t4m57Ije7XicETGRXehXPlscTx65XbvnP73iHGSA4t/50VMyGVCzHDePppWJ2CiwA6XFw8Wg6vvAtuIrmI7DGoGOwBiErZQ77cPDM3qXXa9yFj2wsqVgTg==
+!
+crypto dsakey dsa import MIH2AgEAAkBdHH+NJ78OHDDYJMwqqEA7/Fmyn0SPNCe3+doCqKSbwYPS7FpgIqP8R7cIv0GDzxmCPFYJIZ/pWmu0VleClF4LAhUAlTGwTPM+Vla+iYnYroywSCsBQ+MCQBmx+2JlMnQWpPj65oNafjpAXmYFVw0AqPAguzRmbS0A6XsDAygDkIFC0IX806b2lCwIvm4/nyNtY6lyxq0mi00CQDQfodwCipoFayCfWXjC7z7jTN26MXmk4oP+pgSG9aF8dG34Wrx7A/GHoTkaAwMbTbXgzlOQ5O5UtIKy04xai1UCFDK+gTIq1c/alJ2EOsvC5tvW1siW
+!
+crypto ecdsakey ecdsa import MIHbAgEBBEAA392naCtU5jkwV+4yD1PBoFODWiOqRdA3Mej7Buh+NOrlsgq/6R0p1CND6Rf+EyYARnsYvMBLD/msqdFczUZvoAwGCgEDJAMDAggBAQ2hgYUDgYIABCZQjKVjdcoDTm5Mwvf+IOeYAZ7+ptlG7cGxPZGXj5saqQDMNB+Jnj0sck0s+rsTDwP3wt/0BFv14Fm35kU8W+gUrlYtFQ/ZKy88cuAGy3z1UeSWVErszXYDaBLmFyb+H7/LfO9bIfDtHxJ30XyXpAlmLCKRywfxnXrrqLuxLEez
+!
+aaa tacacs tac
+ no log-error
+ secret $v10$Y29yZQ==
+ server 10.10.10.9
+ exit
+!
+vrf definition v1
+ rd 1:1
+ rt-import 1:1
+ rt-export 1:1
+ label-mode per-prefix
+ exit
+!
+router ospf4 1
+ vrf v1
+ router-id 10.10.10.4
+ traffeng-id 0.0.0.0
+ area 0 enable
+ redistribute connected
+ exit
+!
+router ospf6 1
+ vrf v1
+ router-id 10.10.10.4
+ traffeng-id ::
+ area 0 enable
+ redistribute connected
+ exit
+!
+interface loopback0
+ no description
+ vrf forwarding v1
+ ipv4 address 10.10.10.4 255.255.255.255
+ ipv6 address 10:10:10::4 ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+ no shutdown
+ no log-link-change
+ exit
+!
+interface ethernet0
+ no description
+ macaddr 0000.0a00.0040
+ no shutdown
+ no log-link-change
+ exit
+!
+interface sdn3
+ no description
+ mtu 1500
+ macaddr 0015.0000.011f
+ vrf forwarding v1
+ ipv4 address 10.3.4.4 255.255.255.0
+ ipv4 bfd 1000 3000 3
+ ipv6 address 10:3:4::4 ffff:ffff:ffff:ffff::
+ ipv6 bfd 1000 3000 3
+ mpls enable
+ mpls ldp4
+ mpls ldp6
+ router ospf4 1 enable
+ router ospf4 1 area 0
+ router ospf4 1 bfd
+ router ospf6 1 enable
+ router ospf6 1 area 0
+ router ospf6 1 bfd
+ no shutdown
+ no log-link-change
+ exit
+!
+interface sdn5
+ no description
+ mtu 1500
+ macaddr 002e.0c18.4b56
+ vrf forwarding v1
+ ipv4 address 10.4.5.4 255.255.255.0
+ ipv4 bfd 1000 3000 3
+ ipv6 address 10:4:5::4 ffff:ffff:ffff:ffff::
+ ipv6 bfd 1000 3000 3
+ mpls enable
+ mpls ldp4
+ mpls ldp6
+ router ospf4 1 enable
+ router ospf4 1 area 0
+ router ospf4 1 bfd
+ router ospf6 1 enable
+ router ospf6 1 area 0
+ router ospf6 1 bfd
+ no shutdown
+ no log-link-change
+ exit
+!
+interface sdn8
+ no description
+ mtu 1500
+ macaddr 0056.254e.4c62
+ vrf forwarding v1
+ ipv4 address 10.4.8.4 255.255.255.0
+ ipv6 address 10:4:8::4 ffff:ffff:ffff:ffff::
+ mpls enable
+ mpls ldp4
+ mpls ldp6
+ router ospf4 1 enable
+ router ospf4 1 area 0
+ router ospf6 1 enable
+ router ospf6 1 area 0
+ no shutdown
+ no log-link-change
+ exit
+!
+proxy-profile v1
+ vrf v1
+ source loopback0
+ exit
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+alias test bash description 
+alias test bash parameter optional
+!
+server telnet ssh
+ security protocol ssh
+ security authentication tac
+ security rsakey rsa
+ security dsakey dsa
+ security ecdsakey ecdsa
+ port 22
+ exec authorization tac
+ no login authentication
+ vrf v1
+ exit
+!
+server telnet tel
+ security protocol telnet
+ no exec authorization
+ no login authentication
+ vrf v1
+ exit
+!
+server p4lang p4
+ export-vrf v1 1
+ export-port sdn3 3
+ export-port sdn5 5
+ export-port sdn8 8
+ interconnect ethernet0
+ vrf v1
+ exit
+!
+client proxy v1
+client name-server 8.8.8.8
+client config-save
+client time-zone CET
+!
+end

@@ -34,8 +34,8 @@ build: dirs
 		-I ./ -o $(BUILD_DIR) --p4runtime-files $(compiled_p4info) $(P4_PROGRAM) 
 
 clean: 
-	-sudo killall -9 $(BMV2_SWITCH_EXE)
-	-sudo killall -9 python2
+	-sudo pkill -9 $(BMV2_SWITCH_EXE)
+	-sudo pkill -9 python2
 	-rm -rf $(BUILD_DIR) $(LOG_DIR) $(RUN_DIR)
 
 dirs:

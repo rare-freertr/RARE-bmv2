@@ -1,0 +1,217 @@
+hostname r2
+buggy
+!
+logging buffered debug 10240
+logging file debug r2.log
+!
+vrf definition c7
+ exit
+!
+vrf definition c8
+ exit
+!
+vrf definition c9
+ exit
+!
+vrf definition v1
+ rd 1:1
+ rt-import 1:1
+ rt-export 1:1
+ label-mode per-prefix
+ exit
+!
+router ospf4 1
+ vrf v1
+ router-id 10.2.2.2
+ traffeng-id 0.0.0.0
+ segrout 10
+ area 0 enable
+ area 0 segrout
+ exit
+!
+router ospf6 1
+ vrf v1
+ router-id 10.2.2.2
+ traffeng-id ::
+ area 0 enable
+ exit
+!
+interface loopback0
+ no description
+ macaddr 0000.0a02.0202
+ vrf forwarding v1
+ ipv4 address 10.2.2.2 255.255.255.255
+ ipv6 address fd00::1002 ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+ router ospf4 1 enable
+ router ospf4 1 area 0
+ router ospf4 1 segrout index 2
+ router ospf6 1 enable
+ router ospf6 1 area 0
+ no shutdown
+ no log-link-change
+ exit
+!
+interface loopback1
+ no description
+ vrf forwarding v1
+ ipv4 address 2.2.2.2 255.255.255.0
+ no shutdown
+ no log-link-change
+ exit
+!
+interface ethernet0
+ no description
+ no shutdown
+ no log-link-change
+ exit
+!
+interface ethernet0.222
+ no description
+ macaddr 0000.0a00.0202
+ vrf forwarding v1
+ ipv4 address 10.0.2.2 255.255.255.0
+ ipv6 address fd00:0:0:2::2 ffff:ffff:ffff:ffff::
+ ipv6 enable
+ mpls enable
+ router ospf4 1 enable
+ router ospf4 1 area 0
+ router ospf6 1 enable
+ router ospf6 1 area 0
+ no shutdown
+ no log-link-change
+ exit
+!
+interface ethernet0.333
+ no description
+ vrf forwarding c8
+ ipv4 address 2.2.2.12 255.255.255.0
+ no shutdown
+ no log-link-change
+ exit
+!
+interface ethernet0.444
+ no description
+ vrf forwarding c8
+ ipv4 address 2.3.4.12 255.255.255.0
+ no shutdown
+ no log-link-change
+ exit
+!
+interface ethernet0.555
+ no description
+ vrf forwarding c8
+ ipv4 address 2.4.5.12 255.255.255.0
+ no shutdown
+ no log-link-change
+ exit
+!
+interface ethernet1
+ no description
+ macaddr 0000.0a00.1703
+ vrf forwarding v1
+ ipv4 address 10.0.23.2 255.255.255.0
+ ipv6 address fd00:0:0:23::2 ffff:ffff:ffff:ffff::
+ ipv6 enable
+ mpls enable
+ router ospf4 1 enable
+ router ospf4 1 area 0
+ router ospf6 1 enable
+ router ospf6 1 area 0
+ no shutdown
+ no log-link-change
+ exit
+!
+interface pwether1
+ no description
+ mtu 1500
+ macaddr 0035.6c6a.0869
+ vrf forwarding c9
+ ipv4 address 2.2.2.2 255.255.255.0
+ pseudowire v1 loopback0 pweompls 10.254.254.254 11
+ no shutdown
+ no log-link-change
+ exit
+!
+interface tunnel1
+ no description
+ tunnel vrf v1
+ tunnel source loopback0
+ tunnel destination fd00:1234:1234:2222::
+ tunnel mode srv6
+ vrf forwarding v1
+ ipv6 address fd00:1234:1234:2222:: ffff:ffff:ffff:ffff::
+ router ospf6 1 enable
+ router ospf6 1 area 0
+ no shutdown
+ no log-link-change
+ exit
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+alias test bash description 
+alias test bash parameter optional
+!
+server telnet tel
+ security protocol telnet
+ exec width 130
+ exec height 25
+ no exec authorization
+ no login authentication
+ vrf v1
+ exit
+!
+client name-server 8.8.8.8
+client config-save
+client time-zone CET
+!
+end

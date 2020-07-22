@@ -1,0 +1,339 @@
+hostname core1
+buggy
+!
+logging buffered debug 10240
+logging file debug core1.log
+!
+access-list all4
+ sequence 10 permit all any all any all
+ exit
+!
+access-list all6
+ sequence 10 permit all any all any all
+ exit
+!
+access-list tcp4
+ sequence 10 permit 6 any all any all
+ exit
+!
+access-list tcp6
+ sequence 10 permit 6 any all any all
+ exit
+!
+access-list test4
+ sequence 10 deny 1 10.1.1.1 255.255.255.255 0 10.10.40.4 255.255.255.255 0
+ sequence 20 permit all any all any all
+ exit
+!
+access-list test6
+ sequence 10 deny 58 4321::104 ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff 0 4321::101 ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff 0
+ sequence 20 permit all any all any all
+ exit
+!
+bundle 1
+ exit
+!
+bridge 1
+ rd 1:1
+ rt-import 1:1
+ rt-export 1:1
+ mac-learn
+ exit
+!
+bridge 2
+ rd 1:2
+ rt-import 1:2
+ rt-export 1:2
+ mac-learn
+ exit
+!
+vrf definition c1
+ rd 1:2
+ rt-import 1:2
+ rt-export 1:2
+ exit
+!
+vrf definition v1
+ rd 1:1
+ rt-import 1:1
+ rt-export 1:1
+ label-mode per-prefix
+ exit
+!
+router isis4 1
+ vrf v1
+ net-id 49.0001.0000.0afe.fefe.00
+ traffeng-id ::
+ is-type level1
+ segrout 10
+ level1 segrout
+ exit
+!
+interface loopback0
+ no description
+ macaddr 0000.0afe.fefe
+ vrf forwarding v1
+ ipv4 address 10.254.254.254 255.255.255.255
+ router isis4 1 enable
+ router isis4 1 passive
+ router isis4 1 circuit level1
+ router isis4 1 segrout index 1
+ router isis4 1 segrout node
+ no shutdown
+ no log-link-change
+ exit
+!
+interface loopback1
+ no description
+ vrf forwarding v1
+ ipv4 address 6.6.6.6 255.255.255.0
+ router isis4 1 enable
+ router isis4 1 passive
+ router isis4 1 circuit level1
+ no shutdown
+ no log-link-change
+ exit
+!
+interface loopback2
+ no description
+ vrf forwarding c1
+ ipv4 address 10.10.254.1 255.255.255.0
+ ipv6 address fd00::fe ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+ no shutdown
+ no log-link-change
+ exit
+!
+interface bundle1
+ no description
+ mtu 1500
+ macaddr 0000.0a00.04fe
+ vrf forwarding v1
+ ipv4 address 10.0.4.254 255.255.255.0
+ mpls enable
+ router isis4 1 enable
+ router isis4 1 circuit level1
+ no shutdown
+ no log-link-change
+ exit
+!
+interface bvi1
+ no description
+ no shutdown
+ no log-link-change
+ exit
+!
+interface bvi2
+ no description
+ no shutdown
+ no log-link-change
+ exit
+!
+interface ethernet0
+ no description
+ macaddr 0000.0a00.0040
+ no shutdown
+ no log-link-change
+ exit
+!
+interface sdn1
+ no description
+ mtu 1500
+ macaddr 0070.4465.1e0e
+ no shutdown
+ no log-link-change
+ exit
+!
+interface sdn1.11
+ no description
+ xconnect v1 loopback0 pweompls 10.2.2.2 11
+ no shutdown
+ no log-link-change
+ exit
+!
+interface sdn1.111
+ no description
+ mtu 1500
+ macaddr 0000.0a00.01fe
+ vrf forwarding c1
+ ipv4 address 10.0.1.254 255.255.255.0
+ ipv6 address fd00:0:0:1::fe ffff:ffff:ffff:ffff::
+ ipv6 enable
+ no shutdown
+ no log-link-change
+ exit
+!
+interface sdn1.333
+ no description
+ bridge-group 1
+ no shutdown
+ no log-link-change
+ exit
+!
+interface sdn1.444
+ no description
+ bridge-group 2
+ no shutdown
+ no log-link-change
+ exit
+!
+interface sdn2
+ no description
+ mtu 1500
+ macaddr 002a.1177.5670
+ no shutdown
+ no log-link-change
+ exit
+!
+interface sdn2.222
+ no description
+ mtu 1500
+ macaddr 0000.0a00.02fe
+ vrf forwarding v1
+ ipv4 address 10.0.2.254 255.255.255.0
+ mpls enable
+ router isis4 1 enable
+ router isis4 1 circuit level1
+ no shutdown
+ no log-link-change
+ exit
+!
+interface sdn2.333
+ no description
+ bridge-group 1
+ no shutdown
+ no log-link-change
+ exit
+!
+interface sdn2.444
+ no description
+ bridge-group 2
+ no shutdown
+ no log-link-change
+ exit
+!
+interface sdn4
+ no description
+ mtu 1500
+ macaddr 0057.752d.4f26
+ bundle-group 1
+ no shutdown
+ no log-link-change
+ exit
+!
+interface sdn4.333
+ no description
+ bridge-group 1
+ no shutdown
+ no log-link-change
+ exit
+!
+interface sdn4.444
+ no description
+ bridge-group 2
+ no shutdown
+ no log-link-change
+ exit
+!
+router bgp4 1
+ vrf v1
+ local-as 1
+ router-id 10.254.254.254
+ address-family vpnuni ovpnuni vpls evpn
+ neighbor 10.3.3.3 remote-as 1
+ neighbor 10.3.3.3 description lo0@core1 <--> lo0@cpe3
+ neighbor 10.3.3.3 local-as 1
+ neighbor 10.3.3.3 address-family vpnuni ovpnuni vpls evpn
+ neighbor 10.3.3.3 distance 200
+ neighbor 10.3.3.3 update-source loopback0
+ neighbor 10.3.3.3 pmsitun
+ neighbor 10.3.3.3 send-community standard extended
+ afi-vrf c1 enable
+ afi-vrf c1 redistribute connected
+ afi-vrf c1 redistribute static
+ afi-ovrf c1 enable
+ afi-ovrf c1 redistribute connected
+ afi-ovrf c1 redistribute static
+ afi-vpls 1:1 bridge-group 1
+ afi-vpls 1:1 update-source loopback0
+ afi-evpn 444 bridge-group 2
+ afi-evpn 444 bmac 0049.0f77.7763
+ afi-evpn 444 encapsulation cmac
+ afi-evpn 444 update-source loopback0
+ exit
+!
+!
+ipv4 route c1 10.1.1.1 255.255.255.1 10.0.1.1
+ipv4 route c1 10.10.10.0 255.255.255.0 10.0.1.1
+!
+ipv6 route c1 fd00::1 ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff fd00:0:0:1::1
+!
+!
+!
+ipv4 nat c1 sequence 10 srclist tcp4 interface loopback2
+!
+ipv6 nat c1 sequence 10 srclist tcp6 interface loopback2
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+alias test bash description 
+alias test bash parameter optional
+!
+server telnet c1
+ no exec authorization
+ no login authentication
+ vrf c1
+ exit
+!
+server telnet tel
+ security protocol telnet
+ exec width 130
+ exec height 25
+ no exec authorization
+ no login authentication
+ vrf v1
+ exit
+!
+server p4lang p4
+ export-vrf v1 1
+ export-vrf c1 2
+ export-port sdn1 1 0
+ export-port sdn2 2 0
+ export-port sdn4 4 0
+ export-port sdn1.111 65 0
+ export-port sdn2.222 66 0
+ export-port sdn1.11 67 0
+ export-port sdn1.333 68 0
+ export-port sdn2.333 69 0
+ export-port sdn4.333 70 0
+ export-port sdn1.444 71 0
+ export-port sdn2.444 72 0
+ export-port sdn4.444 73 0
+ export-port bundle1 74 0
+ export-bridge 1
+ export-bridge 2
+ interconnect ethernet0
+ vrf v1
+ exit
+!
+client name-server 8.8.8.8
+client config-save
+client time-zone CET
+!
+end

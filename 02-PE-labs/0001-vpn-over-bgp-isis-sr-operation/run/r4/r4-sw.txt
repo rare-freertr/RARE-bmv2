@@ -1,0 +1,209 @@
+hostname r4
+buggy
+!
+logging buffered debug 10240
+logging file debug r4.log
+!
+bridge 1
+ rd 1:1
+ rt-import 1:1
+ rt-export 1:1
+ exit
+!
+bridge 2
+ rd 1:2
+ rt-import 1:2
+ rt-export 1:2
+ mac-learn
+ exit
+!
+vrf definition c1
+ rd 1:2
+ rt-import 1:2
+ rt-export 1:2
+ exit
+!
+vrf definition c7
+ exit
+!
+vrf definition c8
+ exit
+!
+vrf definition v1
+ exit
+!
+router isis4 1
+ vrf v1
+ net-id 49.0001.0000.0a04.0404.00
+ traffeng-id ::
+ is-type level1
+ segrout 10
+ level1 segrout
+ exit
+!
+interface loopback0
+ no description
+ vrf forwarding v1
+ ipv4 address 10.4.4.4 255.255.255.255
+ router isis4 1 enable
+ router isis4 1 circuit level1
+ router isis4 1 segrout index 4
+ no shutdown
+ no log-link-change
+ exit
+!
+interface loopback2
+ no description
+ vrf forwarding c1
+ ipv4 address 10.10.40.4 255.255.255.0
+ ipv6 address fd00::4 ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+ no shutdown
+ no log-link-change
+ exit
+!
+interface bvi1
+ no description
+ vrf forwarding c7
+ ipv4 address 2.2.2.24 255.255.255.0
+ no shutdown
+ no log-link-change
+ exit
+!
+interface bvi2
+ no description
+ vrf forwarding c7
+ ipv4 address 2.3.4.24 255.255.255.0
+ no shutdown
+ no log-link-change
+ exit
+!
+interface ethernet0
+ no description
+ macaddr 0000.0a00.0404
+ vrf forwarding v1
+ ipv4 address 10.0.4.4 255.255.255.0
+ mpls enable
+ router isis4 1 enable
+ router isis4 1 circuit level1
+ no shutdown
+ no log-link-change
+ exit
+!
+interface ethernet0.333
+ no description
+ vrf forwarding c8
+ ipv4 address 2.2.2.14 255.255.255.0
+ no shutdown
+ no log-link-change
+ exit
+!
+interface ethernet0.444
+ no description
+ vrf forwarding c8
+ ipv4 address 2.3.4.14 255.255.255.0
+ no shutdown
+ no log-link-change
+ exit
+!
+router bgp4 1
+ vrf v1
+ local-as 1
+ router-id 10.4.4.4
+ address-family vpnuni ovpnuni vpls evpn
+ neighbor 10.3.3.3 remote-as 1
+ neighbor 10.3.3.3 description lo0@core1 <--> lo0@r3
+ neighbor 10.3.3.3 local-as 1
+ neighbor 10.3.3.3 address-family vpnuni ovpnuni vpls evpn
+ neighbor 10.3.3.3 distance 200
+ neighbor 10.3.3.3 update-source loopback0
+ neighbor 10.3.3.3 pmsitun
+ neighbor 10.3.3.3 send-community standard extended
+ afi-vrf c1 enable
+ afi-vrf c1 redistribute connected
+ afi-vrf c1 redistribute static
+ afi-ovrf c1 enable
+ afi-ovrf c1 redistribute connected
+ afi-ovrf c1 redistribute static
+ afi-vpls 1:1 bridge-group 1
+ afi-vpls 1:1 update-source loopback0
+ afi-evpn 444 bridge-group 2
+ afi-evpn 444 bmac 0006.2500.235a
+ afi-evpn 444 encapsulation cmac
+ afi-evpn 444 update-source loopback0
+ exit
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+alias test bash description 
+alias test bash parameter optional
+!
+server telnet c1
+ no exec authorization
+ no login authentication
+ vrf c1
+ exit
+!
+server telnet tel
+ security protocol telnet
+ exec width 130
+ exec height 25
+ no exec authorization
+ no login authentication
+ vrf v1
+ exit
+!
+client name-server 8.8.8.8
+client config-save
+client time-zone CET
+!
+end

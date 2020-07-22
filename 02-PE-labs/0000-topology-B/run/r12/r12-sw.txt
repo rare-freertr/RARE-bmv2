@@ -1,0 +1,212 @@
+hostname r12
+buggy
+banner encoded DQogICAgWFhYWFhYICAgICBYICAgIFhYWFhYWCAgWFhYWFhYWA0KICAgICBYWCAgWFggICBYWFggICAgWFggIFhYICBYWCAgWFgNCiAgICAgWFggIFhYICBYWCBYWCAgIFhYICBYWCAgWFggICBYDQogICAgIFhYICBYWCBYWCAgIFhYICBYWCAgWFggIFhYIFgNCiAgICAgWFhYWFggIFhYICAgWFggIFhYWFhYICAgWFhYWA0KICAgICBYWCBYWCAgWFhYWFhYWCAgWFggWFggICBYWCBYDQogICAgIFhYICBYWCBYWCAgIFhYICBYWCAgWFggIFhYDQogICAgIFhYICBYWCBYWCAgIFhYICBYWCAgWFggIFhYICAgWA0KICAgICBYWCAgWFggWFggICBYWCAgWFggIFhYICBYWCAgWFgNCiAgICBYWFggIFhYIFhYICAgWFggWFhYICBYWCBYWFhYWFhYDQo=
+!
+logging buffered debug 10240
+logging file debug r12.log
+!
+vrf definition v2
+ rd 1:2
+ rt-import 1:2
+ rt-export 1:2
+ exit
+!
+vrf definition v3
+ rd 1:3
+ rt-import 1:4
+ rt-export 1:3
+ exit
+!
+vrf definition v4
+ rd 1:4
+ exit
+!
+vrf definition v5
+ rd 1:5
+ exit
+!
+interface loopback2
+ no description
+ vrf forwarding v2
+ ipv4 address 10.10.10.12 255.255.255.255
+ ipv6 address 10:10:10::12 ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+ no shutdown
+ no log-link-change
+ exit
+!
+interface loopback3
+ no description
+ vrf forwarding v3
+ ipv4 address 10.11.12.12 255.255.255.255
+ ipv6 address 10:11:12::12 ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+ no shutdown
+ no log-link-change
+ exit
+!
+interface ethernet0
+ no description
+ no shutdown
+ no log-link-change
+ exit
+!
+interface ethernet0.2
+ no description
+ vrf forwarding v2
+ ipv4 address 10.8.12.12 255.255.255.0
+ ipv6 address 10:8:12::12 ffff:ffff:ffff:ffff::
+ mpls enable
+ no shutdown
+ no log-link-change
+ exit
+!
+interface ethernet0.3
+ no description
+ vrf forwarding v3
+ ipv4 address 10.8.12.12 255.255.255.0
+ ipv6 address 10:8:12::12 ffff:ffff:ffff:ffff::
+ mpls enable
+ no shutdown
+ no log-link-change
+ exit
+!
+interface ethernet0.4
+ no description
+ vrf forwarding v4
+ ipv4 address 10.11.12.12 255.255.255.0
+ ipv6 address 10:11:12::12 ffff:ffff:ffff:ffff::
+ no shutdown
+ no log-link-change
+ exit
+!
+interface ethernet0.5
+ no description
+ vrf forwarding v5
+ ipv4 address 10.10.10.12 255.255.255.0
+ ipv6 address 10:10:10::12 ffff:ffff:ffff:ffff::
+ no shutdown
+ no log-link-change
+ exit
+!
+router bgp4 1
+ vrf v2
+ local-as 2
+ router-id 10.10.10.12
+ address-family unicast
+ neighbor 10.8.12.8 remote-as 1
+ no neighbor 10.8.12.8 description
+ neighbor 10.8.12.8 local-as 2
+ neighbor 10.8.12.8 address-family unicast
+ neighbor 10.8.12.8 distance 20
+ neighbor 10.8.12.8 allow-as-in
+ redistribute connected
+ exit
+!
+router bgp4 3
+ vrf v3
+ local-as 2
+ router-id 10.10.10.12
+ address-family unicast
+ neighbor 10.8.12.8 remote-as 1
+ no neighbor 10.8.12.8 description
+ neighbor 10.8.12.8 local-as 2
+ neighbor 10.8.12.8 address-family unicast
+ neighbor 10.8.12.8 distance 20
+ neighbor 10.8.12.8 allow-as-in
+ redistribute connected
+ exit
+!
+router bgp6 2
+ vrf v2
+ local-as 2
+ router-id 10.10.10.12
+ address-family unicast
+ neighbor 10:8:12::8 remote-as 1
+ no neighbor 10:8:12::8 description
+ neighbor 10:8:12::8 local-as 2
+ neighbor 10:8:12::8 address-family unicast
+ neighbor 10:8:12::8 distance 20
+ neighbor 10:8:12::8 allow-as-in
+ redistribute connected
+ exit
+!
+router bgp6 3
+ vrf v3
+ local-as 2
+ router-id 10.10.10.12
+ address-family unicast
+ neighbor 10:8:12::8 remote-as 1
+ no neighbor 10:8:12::8 description
+ neighbor 10:8:12::8 local-as 2
+ neighbor 10:8:12::8 address-family unicast
+ neighbor 10:8:12::8 distance 20
+ neighbor 10:8:12::8 allow-as-in
+ redistribute connected
+ exit
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+alias test bash description 
+alias test bash parameter optional
+!
+server telnet tel
+ security protocol telnet
+ no exec authorization
+ no login authentication
+ vrf v2
+ exit
+!
+client name-server 8.8.8.8
+client config-save
+client time-zone CET
+!
+end
