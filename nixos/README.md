@@ -81,8 +81,9 @@ $ echo $PATH
 
 But Nix also provides a way to use packages without cluttering the
 user's environment by using the `nix-shell` utility.  It creates a
-`chroot` environment in which all required dependencies are present
-until the shell is terminated.  For RARE, this is done by executing
+subshell with an environment in which all required dependencies are
+present until the shell is terminated.  For RARE, this is done by
+executing
 
 ```
 $ nix-shell nixos/RARE-env.nix
@@ -90,7 +91,7 @@ $ nix-shell nixos/RARE-env.nix
 
 in the top-level directory of the RARE repository. The file
 `RARE-env.nix` contains a piece of Nix code that essentially specifies
-which packages must be present in the `chroot`.
+which packages must be present in the environment.
 
 When executed for the first time, it will download a lot of standard
 packages from `cache.nixos.org` and then proceed to re-build the
