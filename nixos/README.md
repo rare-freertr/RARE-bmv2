@@ -136,24 +136,20 @@ Make sure you have Git and GNUmake in your user environment
 $ nix-env -iA nixos.gitAndTools.gitFull nixos.gnumake
 ```
 
-Checkout the `RARE` repo and execute as root (you may have to install `gnumake` for root as well)
-
-```
-$ git clone https://github.com/frederic-loui/RARE.git
-```
-
 On NixOS we have the choice to install the `nixpkgs` overlay at the
 user level or at the system level.
 
 ### Add overlays at the user level
 
-This works in exactly the same way as described before. Execute
+This works in exactly the same way as described before.
 
 ```
-# make install-nix-overlays-nixpkgs
+$ git clone https://github.com/frederic-loui/RARE.git
+$ cd RARE/nixos
+$ make install-nix-overlays-nixpkgs
 ```
 
-in the `nixos` directory of the repository, then
+To create the environment to run the RARE labs
 
 ```
 $ nix-shell nixos/RARE-env.nix
@@ -161,7 +157,15 @@ $ nix-shell nixos/RARE-env.nix
 
 ### Add overlays at the system level
 
-To enable the overlays for the entire system, add
+To enable the overlays for the entire system, execute as root (you may
+have to add `gnumake` to root's environment with `nix-env -iA
+nixos.gnumake` first)
+
+```
+# make install-nix-overlays-nixos
+```
+
+in the `nixos` directory of the RARE repository. Then add
 
 ```
   nixpkgs.overlays = import /etc/nixos/overlays/overlays.nix;
@@ -171,7 +175,7 @@ To enable the overlays for the entire system, add
 ```
 
 to `/etc/nixos/configuration.nix` and make sure the function arguments
-in `confiuguration.nix` include `options`, e.g.
+at the top of `confiuguration.nix` include `options`, e.g.
 
 ```
 $ head -1 /etc/nixos/configuration.nix
