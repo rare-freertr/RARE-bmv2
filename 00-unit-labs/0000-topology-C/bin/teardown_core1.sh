@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ip netns exec core1 ip link set core1-eth0 down
 #ip netns exec core1 ip link set core1-eth1 down

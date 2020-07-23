@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 FREERTR_HOME=$(pwd)
 FREERTR_HOSTNAME=cpe1
