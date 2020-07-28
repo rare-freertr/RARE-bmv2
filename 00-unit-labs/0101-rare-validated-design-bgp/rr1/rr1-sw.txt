@@ -120,7 +120,7 @@ router bgp4 65535
  template bgp4 description rr clients
  template bgp4 local-as 65535
  template bgp4 address-family unicast multicast other flowspec vpnuni vpnmlt vpnflw ovpnuni ovpnmlt ovpnflw vpls mspw evpn mdt srte mvpn omvpn
- template bgp4 distance 200
+ template bgp4 distance 255
  template bgp4 connection-mode active
  template bgp4 compression both
  template bgp4 update-source loopback1
@@ -149,7 +149,7 @@ router bgp6 65535
  template bgp6 description rr clients
  template bgp6 local-as 65535
  template bgp6 address-family unicast multicast other flowspec vpnuni vpnmlt vpnflw ovpnuni ovpnmlt ovpnflw vpls mspw evpn mdt srte mvpn omvpn
- template bgp6 distance 200
+ template bgp6 distance 255
  template bgp6 connection-mode active
  template bgp6 compression both
  template bgp6 update-source loopback1
