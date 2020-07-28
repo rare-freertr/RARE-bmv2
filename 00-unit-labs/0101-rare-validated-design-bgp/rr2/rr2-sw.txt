@@ -136,12 +136,6 @@ router bgp4 65535
  template bgp4 next-hop-unchanged
  template bgp4 send-community all
  listen ACL-IPv4-RR-CLIENT bgp4
- neighbor 10.10.10.10 remote-as 65535
- neighbor 10.10.10.10 description basic ibgp -> rr1
- neighbor 10.10.10.10 local-as 65535
- neighbor 10.10.10.10 address-family unicast multicast other flowspec vpnuni vpnmlt vpnflw ovpnuni ovpnmlt ovpnflw vpls mspw evpn mdt srte mvpn omvpn
- neighbor 10.10.10.10 distance 200
- neighbor 10.10.10.10 update-source loopback1
  exit
 !
 router bgp6 65535
@@ -171,12 +165,6 @@ router bgp6 65535
  template bgp6 next-hop-unchanged
  template bgp6 send-community all
  listen ACL-IPv6-RR-CLIENT bgp6
- neighbor fd00::a remote-as 65535
- neighbor fd00::a description basic ibgp -> rr1
- neighbor fd00::a local-as 65535
- neighbor fd00::a address-family unicast multicast other flowspec vpnuni vpnmlt vpnflw ovpnuni ovpnmlt ovpnflw vpls mspw evpn mdt srte mvpn omvpn
- neighbor fd00::a distance 200
- neighbor fd00::a update-source loopback1
  exit
 !
 !
