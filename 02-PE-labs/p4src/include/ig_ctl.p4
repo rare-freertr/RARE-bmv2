@@ -40,6 +40,7 @@ control ig_ctl(inout headers hdr,
              */
             ig_intr_md.egress_spec = (PortId_t)hdr.cpu.port;
             hdr.cpu.setInvalid();
+            ig_md.punting = 1;
             return;
         }
         /*
@@ -61,6 +62,7 @@ control ig_ctl(inout headers hdr,
             hdr.cpu.setValid();
             hdr.cpu.port = ig_md.ingress_id;
             ig_intr_md.egress_spec = CPU_PORT;
+            ig_md.punting = 1;
             return;
         }
         ig_ctl_ipv4.apply(hdr,ig_md,ig_intr_md);
@@ -71,31 +73,31 @@ control ig_ctl(inout headers hdr,
         if ( ig_md.nexthop_id == CPU_PORT) {
             ig_ctl_tunnel.apply(hdr,ig_md,ig_intr_md);
             if (ig_md.need_recir == 1) {
-                if (hdr.vlan.isValid()) {
-                    hdr.vlan.setInvalid();
-                }
-                if (hdr.pppoeD.isValid()) {
-                    hdr.pppoeD.setInvalid();
-                }
+                if (hdr.vlan.isValid()) hdr.vlan.setInvalid();
+                if (hdr.pppoeD.isValid()) hdr.pppoeD.setInvalid();
+                if (hdr.pppoeB.isValid()) hdr.pppoeB.setInvalid();
+                if (hdr.l2tpbr.isValid()) hdr.l2tpbr.setInvalid();
                 return;
             }
             ig_ctl_copp.apply(hdr,ig_md,ig_intr_md);
             if (ig_md.dropping == 1) {
                 return;
             }
+            if (hdr.pppoeB.isValid() && hdr.eth5.isValid() && hdr.eth6.isValid()) {
+                hdr.ethernet = hdr.eth5;
+                hdr.eth5.setInvalid();
+            }
             hdr.cpu.setValid();
             hdr.cpu.port = ig_md.ingress_id;
             ig_intr_md.egress_spec = CPU_PORT;
+            ig_md.punting = 1;
             return;
         }
 
-        if (hdr.vlan.isValid()) {
-            hdr.vlan.setInvalid();
-        }
-
-        if (hdr.pppoeD.isValid()) {
-            hdr.pppoeD.setInvalid();
-        }
+        if (hdr.vlan.isValid()) hdr.vlan.setInvalid();
+        if (hdr.pppoeD.isValid()) hdr.pppoeD.setInvalid();
+        if (hdr.pppoeB.isValid()) hdr.pppoeB.setInvalid();
+        if (hdr.l2tpbr.isValid()) hdr.l2tpbr.setInvalid();
 
         if (ig_md.srv_op_type != 0) {
             hdr.ipv6.setInvalid();

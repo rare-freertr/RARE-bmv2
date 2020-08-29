@@ -134,7 +134,7 @@ def writeGre4rules(delete, p4info_helper, ingress_sw, nexthop, port, phport, sip
             "ig_md.layer4_srcprt": 0,
             "ig_md.layer4_dstprt": 0
         },
-        action_name="ig_ctl.ig_ctl_tunnel.act_tunnel4_gre",
+        action_name="ig_ctl.ig_ctl_tunnel.act_tunnel_gre",
         action_params={
             "port": port
         })
@@ -177,7 +177,7 @@ def writeGre6rules(delete, p4info_helper, ingress_sw, nexthop, port, phport, sip
             "ig_md.layer4_srcprt": 0,
             "ig_md.layer4_dstprt": 0
         },
-        action_name="ig_ctl.ig_ctl_tunnel.act_tunnel6_gre",
+        action_name="ig_ctl.ig_ctl_tunnel.act_tunnel_gre",
         action_params={
             "port": port
         })
@@ -194,6 +194,98 @@ def writeGre6rules(delete, p4info_helper, ingress_sw, nexthop, port, phport, sip
             "acl_port": port,
             "src_ip_addr": sip,
             "dst_ip_addr": dip,
+        })
+    if delete == 1:
+        ingress_sw.WriteTableEntry(table_entry1, False)
+    elif delete == 2:
+        ingress_sw.ModifyTableEntry(table_entry1, False)
+    else:
+        ingress_sw.DeleteTableEntry(table_entry1, False)
+    if delete == 1:
+        ingress_sw.WriteTableEntry(table_entry2, False)
+    elif delete == 2:
+        ingress_sw.ModifyTableEntry(table_entry2, False)
+    else:
+        ingress_sw.DeleteTableEntry(table_entry2, False)
+
+
+def writeL2tp4rules(delete, p4info_helper, ingress_sw, nexthop, port, phport, sip, dip, dmac, vrf, smac, sprt, dprt, tid):
+    table_entry1 = p4info_helper.buildTableEntry(
+        table_name="ig_ctl.ig_ctl_tunnel.tbl_tunnel4",
+        match_fields={
+            "ig_md.vrf": vrf,
+            "hdr.ipv4.protocol": 17,
+            "hdr.ipv4.src_addr": dip,
+            "hdr.ipv4.dst_addr": sip,
+            "ig_md.layer4_srcprt": dprt,
+            "ig_md.layer4_dstprt": sprt,
+        },
+        action_name="ig_ctl.ig_ctl_tunnel.act_tunnel_l2tp",
+        action_params={
+            "port": port
+        })
+    table_entry2 = p4info_helper.buildTableEntry(
+        table_name="ig_ctl.ig_ctl_nexthop.tbl_nexthop",
+        match_fields={
+            "ig_md.nexthop_id": nexthop,
+        },
+        action_name="ig_ctl.ig_ctl_nexthop.act_ipv4_l2tp4",
+        action_params={
+            "dst_mac_addr": dmac,
+            "src_mac_addr": smac,
+            "egress_port": phport,
+            "acl_port": port,
+            "src_ip_addr": sip,
+            "dst_ip_addr": dip,
+            "src_port": sprt,
+            "dst_port": dprt,
+            "tunnel_id": tid,
+        })
+    if delete == 1:
+        ingress_sw.WriteTableEntry(table_entry1, False)
+    elif delete == 2:
+        ingress_sw.ModifyTableEntry(table_entry1, False)
+    else:
+        ingress_sw.DeleteTableEntry(table_entry1, False)
+    if delete == 1:
+        ingress_sw.WriteTableEntry(table_entry2, False)
+    elif delete == 2:
+        ingress_sw.ModifyTableEntry(table_entry2, False)
+    else:
+        ingress_sw.DeleteTableEntry(table_entry2, False)
+
+
+def writeL2tp6rules(delete, p4info_helper, ingress_sw, nexthop, port, phport, sip, dip, dmac, vrf, smac, sprt, dprt, tid):
+    table_entry1 = p4info_helper.buildTableEntry(
+        table_name="ig_ctl.ig_ctl_tunnel.tbl_tunnel6",
+        match_fields={
+            "ig_md.vrf": vrf,
+            "hdr.ipv6.next_hdr": 17,
+            "hdr.ipv6.src_addr": dip,
+            "hdr.ipv6.dst_addr": sip,
+            "ig_md.layer4_srcprt": dprt,
+            "ig_md.layer4_dstprt": sprt,
+        },
+        action_name="ig_ctl.ig_ctl_tunnel.act_tunnel_l2tp",
+        action_params={
+            "port": port
+        })
+    table_entry2 = p4info_helper.buildTableEntry(
+        table_name="ig_ctl.ig_ctl_nexthop.tbl_nexthop",
+        match_fields={
+            "ig_md.nexthop_id": nexthop,
+        },
+        action_name="ig_ctl.ig_ctl_nexthop.act_ipv4_l2tp6",
+        action_params={
+            "dst_mac_addr": dmac,
+            "src_mac_addr": smac,
+            "egress_port": phport,
+            "acl_port": port,
+            "src_ip_addr": sip,
+            "dst_ip_addr": dip,
+            "src_port": sprt,
+            "dst_port": dprt,
+            "tunnel_id": tid,
         })
     if delete == 1:
         ingress_sw.WriteTableEntry(table_entry1, False)
@@ -439,6 +531,45 @@ def writeBrsrv6rules(delete, p4info_helper, ingress_sw, bridge, addr, port, targ
         ingress_sw.ModifyTableEntry(table_entry2, False)
     else:
         ingress_sw.DeleteTableEntry(table_entry2, False)
+
+
+def writeRoumacRules(delete, p4info_helper, ingress_sw, bridge, addr, nexthop, ppp):
+    table_entry1 = p4info_helper.buildTableEntry(
+        table_name="ig_ctl.ig_ctl_bridge.tbl_bridge_learn",
+        match_fields={
+            "ig_md.bridge_id": bridge,
+            "hdr.ethernet.src_mac_addr": addr
+        },
+        action_name="ig_ctl.ig_ctl_bridge.act_set_bridge_port",
+        action_params={
+        })
+    if delete == 1:
+        ingress_sw.WriteTableEntry(table_entry1, False)
+    elif delete == 2:
+        ingress_sw.ModifyTableEntry(table_entry1, False)
+    else:
+        ingress_sw.DeleteTableEntry(table_entry1, False)
+    if ppp == 0:
+        actnam = "ig_ctl.ig_ctl_bridge.act_set_bridge_routed"
+    else:
+        actnam = "ig_ctl.ig_ctl_bridge.act_set_bridge_ppprouted"
+    table_entry2 = p4info_helper.buildTableEntry(
+        table_name="ig_ctl.ig_ctl_bridge.tbl_bridge_target",
+        match_fields={
+            "ig_md.bridge_id": bridge,
+            "hdr.ethernet.dst_mac_addr": addr
+        },
+        action_name=actnam,
+        action_params={
+            "nexthop": nexthop
+        })
+    if delete == 1:
+        ingress_sw.WriteTableEntry(table_entry2, False)
+    elif delete == 2:
+        ingress_sw.ModifyTableEntry(table_entry2, False)
+    else:
+        ingress_sw.DeleteTableEntry(table_entry2, False)
+
 
 
 def writeBrmacRules(delete, p4info_helper, ingress_sw, bridge, addr, port):
@@ -1585,6 +1716,27 @@ def main(p4info_file_path, bmv2_file_path, p4runtime_address, freerouter_address
             writeGre6rules(3,p4info_helper,sw1,int(splt[1]),int(splt[2]),int(splt[3]),splt[4],splt[5],splt[6],int(splt[7]),splt[8])
             continue
 
+
+        if splt[0] == "l2tp4_add":
+            writeL2tp4rules(1,p4info_helper,sw1,int(splt[1]),int(splt[2]),int(splt[3]),splt[4],splt[5],splt[6],int(splt[7]),splt[8],int(splt[9]),int(splt[10]),int(splt[11]))
+            continue
+        if splt[0] == "l2tp4_mod":
+            writeL2tp4rules(2,p4info_helper,sw1,int(splt[1]),int(splt[2]),int(splt[3]),splt[4],splt[5],splt[6],int(splt[7]),splt[8],int(splt[9]),int(splt[10]),int(splt[11]))
+            continue
+        if splt[0] == "l2tp4_del":
+            writeL2tp4rules(3,p4info_helper,sw1,int(splt[1]),int(splt[2]),int(splt[3]),splt[4],splt[5],splt[6],int(splt[7]),splt[8],int(splt[9]),int(splt[10]),int(splt[11]))
+            continue
+
+        if splt[0] == "l2tp6_add":
+            writeL2tp6rules(1,p4info_helper,sw1,int(splt[1]),int(splt[2]),int(splt[3]),splt[4],splt[5],splt[6],int(splt[7]),splt[8],int(splt[9]),int(splt[10]),int(splt[11]))
+            continue
+        if splt[0] == "l2tp6_mod":
+            writeL2tp6rules(2,p4info_helper,sw1,int(splt[1]),int(splt[2]),int(splt[3]),splt[4],splt[5],splt[6],int(splt[7]),splt[8],int(splt[9]),int(splt[10]),int(splt[11]))
+            continue
+        if splt[0] == "l2tp6_del":
+            writeL2tp6rules(3,p4info_helper,sw1,int(splt[1]),int(splt[2]),int(splt[3]),splt[4],splt[5],splt[6],int(splt[7]),splt[8],int(splt[9]),int(splt[10]),int(splt[11]))
+            continue
+
         if splt[0] == "xconnect_add":
             writeXconnRules(1,p4info_helper,sw1,int(splt[1]),int(splt[3]),int(splt[4]),int(splt[5]),int(splt[6]))
             continue
@@ -1613,6 +1765,16 @@ def main(p4info_file_path, bmv2_file_path, p4runtime_address, freerouter_address
             continue
         if splt[0] == "bridgemac_del":
             writeBrmacRules(3,p4info_helper,sw1,int(splt[1]),splt[2],int(splt[3]))
+            continue
+
+        if splt[0] == "routedmac_add":
+            writeRoumacRules(1,p4info_helper,sw1,int(splt[1]),splt[2],int(splt[3]),int(splt[4]))
+            continue
+        if splt[0] == "routedmac_mod":
+            writeRoumacRules(2,p4info_helper,sw1,int(splt[1]),splt[2],int(splt[3]),int(splt[4]))
+            continue
+        if splt[0] == "routedmac_del":
+            writeRoumacRules(3,p4info_helper,sw1,int(splt[1]),splt[2],int(splt[3]),int(splt[4]))
             continue
 
         if splt[0] == "bridgelabel_add":
