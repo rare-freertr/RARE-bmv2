@@ -11,6 +11,7 @@ parser ig_prs_main(packet_in pkt,
                    inout standard_metadata_t ig_intr_md) {
 
     state start {
+        ig_md.vlan_size = 0;
         transition select(ig_intr_md.ingress_port) {
 CPU_PORT:
             prs_cpu;
@@ -30,6 +31,7 @@ CPU_PORT:
     }
 
     state prs_cpu {
+        ig_md.vlan_size = 2;
         pkt.extract(hdr.cpu);
         ig_md.ingress_id = hdr.cpu.port;
         transition prs_ethernet;
@@ -255,6 +257,8 @@ ETHERTYPE_ROUTEDMAC:
         transition select(hdr.udp.src_port) {
 1701:
             prs_l2tp;
+4789:
+            prs_vxlan;
         default:
             accept;
         }
@@ -275,6 +279,12 @@ PPPTYPE_ROUTEDMAC:
         default:
             accept;
         }
+    }
+
+
+    state prs_vxlan {
+        pkt.extract(hdr.vxlan);
+        transition prs_eth5;
     }
 
     state prs_l2tpbr {
