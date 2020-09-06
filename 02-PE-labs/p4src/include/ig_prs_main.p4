@@ -254,11 +254,19 @@ ETHERTYPE_ROUTEDMAC:
         pkt.extract(hdr.udp);
         ig_md.layer4_srcprt = hdr.udp.src_port;
         ig_md.layer4_dstprt = hdr.udp.dst_port;
-        transition select(hdr.udp.src_port) {
-1701:
-            prs_l2tp;
-4789:
-            prs_vxlan;
+        transition select(hdr.udp.src_port, hdr.udp.dst_port) {
+            (1701, 0 &&& 0):
+                prs_l2tp;
+            (0 &&& 0, 1701):
+                prs_l2tp;
+            (4789, 0 &&& 0):
+                prs_vxlan;
+            (0 &&& 0, 4789):
+                prs_vxlan;
+            (2554, 0 &&& 0):
+                prs_pckoudp;
+            (0 &&& 0, 2554):
+                prs_pckoudp;
         default:
             accept;
         }
@@ -284,6 +292,10 @@ PPPTYPE_ROUTEDMAC:
 
     state prs_vxlan {
         pkt.extract(hdr.vxlan);
+        transition prs_eth5;
+    }
+
+    state prs_pckoudp {
         transition prs_eth5;
     }
 
