@@ -44,6 +44,7 @@ control IngressControlIPv6b(inout headers hdr,
          * (LABEL imposition)
          */
         ig_md.ethertype = ETHERTYPE_MPLS_UCAST;
+        ig_md.mpls0_remove = 0;
         /*
          * Encapsulate MPLS header
          * And set egress label
@@ -65,6 +66,8 @@ control IngressControlIPv6b(inout headers hdr,
          * (LABEL imposition)
          */
         ig_md.ethertype = ETHERTYPE_MPLS_UCAST;
+        ig_md.mpls0_remove = 0;
+        ig_md.mpls1_remove = 0;
         /*
          * Encapsulate MPLS header
          * And set egress label
@@ -155,6 +158,10 @@ ig_md.vrf:
          */
         //if (hdr.ipv6.isValid() && hdr.ipv6.ttl > 1) {
         if (ig_md.srv_op_type==6)  {
+            if (hdr.ipv6b.next_hdr==IP_PROTOCOL_HOPOPT) {
+                act_ipv6_cpl_set_nexthop();
+                return;
+            }
             ig_md.ethertype = ETHERTYPE_IPV6;
             if (!tbl_ipv6_fib_host.apply().hit) {
                 tbl_ipv6_fib_lpm.apply();

@@ -44,6 +44,7 @@ control IngressControlIPv4(inout headers hdr,
          * (LABEL imposition)
          */
         ig_md.ethertype = ETHERTYPE_MPLS_UCAST;
+        ig_md.mpls0_remove = 0;
         /*
          * Encapsulate MPLS header
          * And set egress label
@@ -65,6 +66,8 @@ control IngressControlIPv4(inout headers hdr,
          * (LABEL imposition)
          */
         ig_md.ethertype = ETHERTYPE_MPLS_UCAST;
+        ig_md.mpls0_remove = 0;
+        ig_md.mpls1_remove = 0;
         /*
          * Encapsulate MPLS header
          * And set egress label
@@ -156,6 +159,10 @@ ig_md.vrf:
          */
         //if (hdr.ipv4.isValid() && hdr.ipv4.ttl > 1) {
         if (ig_md.ipv4_valid==1)  {
+            if (hdr.ipv4.protocol==IP_PROTOCOL_RSVP) {
+                act_ipv4_cpl_set_nexthop();
+                return;
+            }
             if (!tbl_ipv4_fib_host.apply().hit) {
                 tbl_ipv4_fib_lpm.apply();
             }
