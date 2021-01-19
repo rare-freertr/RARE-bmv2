@@ -1270,7 +1270,7 @@ def writeCoppRules4(delete, p4info_helper, ingress_sw, pri, act, pr, prm, sa, sa
         table_name="ig_ctl.ig_ctl_copp.tbl_ipv4_copp",
         match_fields=matches,
         action_name="ig_ctl.ig_ctl_copp.act_"+act,
-        priority=pri,
+        priority=65535-pri,
         action_params={
         })
     if delete == 1:
@@ -1292,7 +1292,7 @@ def writeCoppRules6(delete, p4info_helper, ingress_sw, pri, act, pr, prm, sa, sa
         table_name="ig_ctl.ig_ctl_copp.tbl_ipv6_copp",
         match_fields=matches,
         action_name="ig_ctl.ig_ctl_copp.act_"+act,
-        priority=pri,
+        priority=65535-pri,
         action_params={
         })
     if delete == 1:
@@ -1314,7 +1314,7 @@ def writeInAclRules4(delete, p4info_helper, ingress_sw, port, pri, act, pr, prm,
         table_name="ig_ctl.ig_ctl_acl_in.tbl_ipv4_acl",
         match_fields=matches,
         action_name="ig_ctl.ig_ctl_acl_in.act_"+act,
-        priority=pri,
+        priority=65535-pri,
         action_params={
         })
     if delete == 1:
@@ -1336,7 +1336,7 @@ def writeInAclRules6(delete, p4info_helper, ingress_sw, port, pri, act, pr, prm,
         table_name="ig_ctl.ig_ctl_acl_in.tbl_ipv6_acl",
         match_fields=matches,
         action_name="ig_ctl.ig_ctl_acl_in.act_"+act,
-        priority=pri,
+        priority=65535-pri,
         action_params={
         })
     if delete == 1:
@@ -1358,7 +1358,7 @@ def writeOutAclRules4(delete, p4info_helper, ingress_sw, port, pri, act, pr, prm
         table_name="ig_ctl.ig_ctl_acl_out.tbl_ipv4_acl",
         match_fields=matches,
         action_name="ig_ctl.ig_ctl_acl_out.act_"+act,
-        priority=pri,
+        priority=65535-pri,
         action_params={
         })
     if delete == 1:
@@ -1380,7 +1380,7 @@ def writeOutAclRules6(delete, p4info_helper, ingress_sw, port, pri, act, pr, prm
         table_name="ig_ctl.ig_ctl_acl_out.tbl_ipv6_acl",
         match_fields=matches,
         action_name="ig_ctl.ig_ctl_acl_out.act_"+act,
-        priority=pri,
+        priority=65535-pri,
         action_params={
         })
     if delete == 1:
@@ -1402,7 +1402,7 @@ def writeNatCfgRules4(delete, p4info_helper, ingress_sw, vrf, pri, act, pr, prm,
         table_name="ig_ctl.ig_ctl_nat.tbl_ipv4_nat_cfg",
         match_fields=matches,
         action_name="ig_ctl.ig_ctl_nat.act_"+act,
-        priority=pri,
+        priority=65535-pri,
         action_params={
         })
     if delete == 1:
@@ -1424,7 +1424,7 @@ def writeNatCfgRules6(delete, p4info_helper, ingress_sw, vrf, pri, act, pr, prm,
         table_name="ig_ctl.ig_ctl_nat.tbl_ipv6_nat_cfg",
         match_fields=matches,
         action_name="ig_ctl.ig_ctl_nat.act_"+act,
-        priority=pri,
+        priority=65535-pri,
         action_params={
         })
     if delete == 1:
@@ -1498,7 +1498,7 @@ def writePbrNormRules4(delete, p4info_helper, ingress_sw, vrf, tvrf, thop, pri, 
         table_name="ig_ctl.ig_ctl_pbr.tbl_ipv4_pbr",
         match_fields=matches,
         action_name="ig_ctl.ig_ctl_pbr.act_normal",
-        priority=pri,
+        priority=65535-pri,
         action_params={
         })
     if delete == 1:
@@ -1520,7 +1520,7 @@ def writePbrNormRules6(delete, p4info_helper, ingress_sw, vrf, tvrf, thop, pri, 
         table_name="ig_ctl.ig_ctl_pbr.tbl_ipv6_pbr",
         match_fields=matches,
         action_name="ig_ctl.ig_ctl_pbr.act_normal",
-        priority=pri,
+        priority=65535-pri,
         action_params={
         })
     if delete == 1:
@@ -1542,7 +1542,7 @@ def writePbrVrfRules4(delete, p4info_helper, ingress_sw, vrf, tvrf, thop, pri, p
         table_name="ig_ctl.ig_ctl_pbr.tbl_ipv4_pbr",
         match_fields=matches,
         action_name="ig_ctl.ig_ctl_pbr.act_setvrf",
-        priority=pri,
+        priority=65535-pri,
         action_params={
             "vrf_id": tvrf,
         })
@@ -1565,7 +1565,7 @@ def writePbrVrfRules6(delete, p4info_helper, ingress_sw, vrf, tvrf, thop, pri, p
         table_name="ig_ctl.ig_ctl_pbr.tbl_ipv6_pbr",
         match_fields=matches,
         action_name="ig_ctl.ig_ctl_pbr.act_setvrf",
-        priority=pri,
+        priority=65535-pri,
         action_params={
             "vrf_id": tvrf,
         })
@@ -1588,7 +1588,7 @@ def writePbrHopRules4(delete, p4info_helper, ingress_sw, vrf, tvrf, thop, pri, p
         table_name="ig_ctl.ig_ctl_pbr.tbl_ipv4_pbr",
         match_fields=matches,
         action_name="ig_ctl.ig_ctl_pbr.act_sethop",
-        priority=pri,
+        priority=65535-pri,
         action_params={
             "vrf_id": tvrf,
             "nexthop_id": thop,
@@ -1612,7 +1612,7 @@ def writePbrHopRules6(delete, p4info_helper, ingress_sw, vrf, tvrf, thop, pri, p
         table_name="ig_ctl.ig_ctl_pbr.tbl_ipv6_pbr",
         match_fields=matches,
         action_name="ig_ctl.ig_ctl_pbr.act_sethop",
-        priority=pri,
+        priority=65535-pri,
         action_params={
             "vrf_id": tvrf,
             "nexthop_id": thop,
@@ -1623,6 +1623,154 @@ def writePbrHopRules6(delete, p4info_helper, ingress_sw, vrf, tvrf, thop, pri, p
         ingress_sw.ModifyTableEntry(table_entry, False)
     else:
         ingress_sw.DeleteTableEntry(table_entry, False)
+
+
+def writeInQosRules4(delete, p4info_helper, ingress_sw, port, meter, pri, act, pr, prm, sa, sam, da, dam, sp, spm, dp, dpm):
+    matches={"ig_md.source_id": port}
+    add2dictIfNot(matches, "hdr.ipv4.protocol",pr,prm,0)
+    add2dictIfNot(matches, "hdr.ipv4.src_addr",sa,sam,"0.0.0.0")
+    add2dictIfNot(matches, "hdr.ipv4.dst_addr",da,dam,"0.0.0.0")
+    add2dictIfNot(matches, "ig_md.layer4_srcprt",sp,spm,0)
+    add2dictIfNot(matches, "ig_md.layer4_dstprt",dp,dpm,0)
+    table_entry = p4info_helper.buildTableEntry(
+        table_name="ig_ctl.ig_ctl_qos_in.tbl_ipv4_qos",
+        match_fields=matches,
+        action_name="ig_ctl.ig_ctl_qos_in.act_"+act,
+        priority=65535-pri,
+        action_params={
+            "metid": meter,
+        })
+    if delete == 1:
+        ingress_sw.WriteTableEntry(table_entry, False)
+    elif delete == 2:
+        ingress_sw.ModifyTableEntry(table_entry, False)
+    else:
+        ingress_sw.DeleteTableEntry(table_entry, False)
+
+
+def writeInQosRules6(delete, p4info_helper, ingress_sw, port, meter, pri, act, pr, prm, sa, sam, da, dam, sp, spm, dp, dpm):
+    matches={"ig_md.source_id": port}
+    add2dictIfNot(matches, "hdr.ipv6.next_hdr",pr,prm,0)
+    add2dictIfNot(matches, "hdr.ipv6.src_addr",sa,sam,"::")
+    add2dictIfNot(matches, "hdr.ipv6.dst_addr",da,dam,"::")
+    add2dictIfNot(matches, "ig_md.layer4_srcprt",sp,spm,0)
+    add2dictIfNot(matches, "ig_md.layer4_dstprt",dp,dpm,0)
+    table_entry = p4info_helper.buildTableEntry(
+        table_name="ig_ctl.ig_ctl_qos_in.tbl_ipv6_qos",
+        match_fields=matches,
+        action_name="ig_ctl.ig_ctl_qos_in.act_"+act,
+        priority=65535-pri,
+        action_params={
+            "metid": meter,
+        })
+    if delete == 1:
+        ingress_sw.WriteTableEntry(table_entry, False)
+    elif delete == 2:
+        ingress_sw.ModifyTableEntry(table_entry, False)
+    else:
+        ingress_sw.DeleteTableEntry(table_entry, False)
+
+
+def writeOutQosRules4(delete, p4info_helper, ingress_sw, port, meter, pri, act, pr, prm, sa, sam, da, dam, sp, spm, dp, dpm):
+    matches={"ig_md.aclport_id": port}
+    add2dictIfNot(matches, "hdr.ipv4.protocol",pr,prm,0)
+    add2dictIfNot(matches, "hdr.ipv4.src_addr",sa,sam,"0.0.0.0")
+    add2dictIfNot(matches, "hdr.ipv4.dst_addr",da,dam,"0.0.0.0")
+    add2dictIfNot(matches, "ig_md.layer4_srcprt",sp,spm,0)
+    add2dictIfNot(matches, "ig_md.layer4_dstprt",dp,dpm,0)
+    table_entry = p4info_helper.buildTableEntry(
+        table_name="ig_ctl.ig_ctl_qos_out.tbl_ipv4_qos",
+        match_fields=matches,
+        action_name="ig_ctl.ig_ctl_qos_out.act_"+act,
+        priority=65535-pri,
+        action_params={
+            "metid": meter,
+        })
+    if delete == 1:
+        ingress_sw.WriteTableEntry(table_entry, False)
+    elif delete == 2:
+        ingress_sw.ModifyTableEntry(table_entry, False)
+    else:
+        ingress_sw.DeleteTableEntry(table_entry, False)
+
+
+def writeOutQosRules6(delete, p4info_helper, ingress_sw, port, meter, pri, act, pr, prm, sa, sam, da, dam, sp, spm, dp, dpm):
+    matches={"ig_md.aclport_id": port}
+    add2dictIfNot(matches, "hdr.ipv6.next_hdr",pr,prm,0)
+    add2dictIfNot(matches, "hdr.ipv6.src_addr",sa,sam,"::")
+    add2dictIfNot(matches, "hdr.ipv6.dst_addr",da,dam,"::")
+    add2dictIfNot(matches, "ig_md.layer4_srcprt",sp,spm,0)
+    add2dictIfNot(matches, "ig_md.layer4_dstprt",dp,dpm,0)
+    table_entry = p4info_helper.buildTableEntry(
+        table_name="ig_ctl.ig_ctl_qos_out.tbl_ipv6_qos",
+        match_fields=matches,
+        action_name="ig_ctl.ig_ctl_qos_out.act_"+act,
+        priority=65535-pri,
+        action_params={
+            "metid": meter,
+        })
+    if delete == 1:
+        ingress_sw.WriteTableEntry(table_entry, False)
+    elif delete == 2:
+        ingress_sw.ModifyTableEntry(table_entry, False)
+    else:
+        ingress_sw.DeleteTableEntry(table_entry, False)
+
+
+def writeInQosRules(delete, p4info_helper, ingress_sw, meter, bytes, interval):
+    return
+
+def writeOutQosRules(delete, p4info_helper, ingress_sw, meter, bytes, interval):
+    return
+
+
+
+
+def writeFlowspecRules4(delete, p4info_helper, ingress_sw, vrf, meter, bytes, interval, pri, act, pr, prm, sa, sam, da, dam, sp, spm, dp, dpm):
+    matches={"ig_md.vrf": vrf}
+    add2dictIfNot(matches, "hdr.ipv4.protocol",pr,prm,0)
+    add2dictIfNot(matches, "hdr.ipv4.src_addr",sa,sam,"0.0.0.0")
+    add2dictIfNot(matches, "hdr.ipv4.dst_addr",da,dam,"0.0.0.0")
+    add2dictIfNot(matches, "ig_md.layer4_srcprt",sp,spm,0)
+    add2dictIfNot(matches, "ig_md.layer4_dstprt",dp,dpm,0)
+    table_entry = p4info_helper.buildTableEntry(
+        table_name="ig_ctl.ig_ctl_flowspec.tbl_ipv4_flowspec",
+        match_fields=matches,
+        action_name="ig_ctl.ig_ctl_flowspec.act4_"+act,
+        priority=65535-pri,
+        action_params={
+            "metid": meter,
+        })
+    if delete == 1:
+        ingress_sw.WriteTableEntry(table_entry, False)
+    elif delete == 2:
+        ingress_sw.ModifyTableEntry(table_entry, False)
+    else:
+        ingress_sw.DeleteTableEntry(table_entry, False)
+
+
+def writeFlowspecRules6(delete, p4info_helper, ingress_sw, vrf, meter, bytes, interval, pri, act, pr, prm, sa, sam, da, dam, sp, spm, dp, dpm):
+    matches={"ig_md.vrf": vrf}
+    add2dictIfNot(matches, "hdr.ipv6.next_hdr",pr,prm,0)
+    add2dictIfNot(matches, "hdr.ipv6.src_addr",sa,sam,"::")
+    add2dictIfNot(matches, "hdr.ipv6.dst_addr",da,dam,"::")
+    add2dictIfNot(matches, "ig_md.layer4_srcprt",sp,spm,0)
+    add2dictIfNot(matches, "ig_md.layer4_dstprt",dp,dpm,0)
+    table_entry = p4info_helper.buildTableEntry(
+        table_name="ig_ctl.ig_ctl_flowspec.tbl_ipv6_flowspec",
+        match_fields=matches,
+        action_name="ig_ctl.ig_ctl_flowspec.act6_"+act,
+        priority=65535-pri,
+        action_params={
+            "metid": meter,
+        })
+    if delete == 1:
+        ingress_sw.WriteTableEntry(table_entry, False)
+    elif delete == 2:
+        ingress_sw.ModifyTableEntry(table_entry, False)
+    else:
+        ingress_sw.DeleteTableEntry(table_entry, False)
+
 
 
 def writeMyaddrRules4(delete, p4info_helper, ingress_sw, dst_ip_addr, dst_net_mask, vrf):
@@ -2193,6 +2341,86 @@ def main(p4info_file_path, bmv2_file_path, p4runtime_address, freerouter_address
             continue
         if splt[0] == "pbr6hop_del":
             writePbrHopRules6(3,p4info_helper,sw1,int(splt[1]),int(splt[2]),int(splt[3]),int(splt[4]),int(splt[6]),int(splt[7]),splt[8],splt[9],splt[10],splt[11],int(splt[12]),int(splt[13]),int(splt[14]),int(splt[15]))
+            continue
+
+        if splt[0] == "inqos4_add":
+            writeInQosRules4(1,p4info_helper,sw1,int(splt[1]),int(splt[2]),int(splt[3]),splt[4],int(splt[5]),int(splt[6]),splt[7],splt[8],splt[9],splt[10],int(splt[11]),int(splt[12]),int(splt[13]),int(splt[14]))
+            continue
+        if splt[0] == "inqos4_mod":
+            writeInQosRules4(2,p4info_helper,sw1,int(splt[1]),int(splt[2]),int(splt[3]),splt[4],int(splt[5]),int(splt[6]),splt[7],splt[8],splt[9],splt[10],int(splt[11]),int(splt[12]),int(splt[13]),int(splt[14]))
+            continue
+        if splt[0] == "inqos4_del":
+            writeInQosRules4(3,p4info_helper,sw1,int(splt[1]),int(splt[2]),int(splt[3]),splt[4],int(splt[5]),int(splt[6]),splt[7],splt[8],splt[9],splt[10],int(splt[11]),int(splt[12]),int(splt[13]),int(splt[14]))
+            continue
+
+        if splt[0] == "inqos6_add":
+            writeInQosRules6(1,p4info_helper,sw1,int(splt[1]),int(splt[2]),int(splt[3]),splt[4],int(splt[5]),int(splt[6]),splt[7],splt[8],splt[9],splt[10],int(splt[11]),int(splt[12]),int(splt[13]),int(splt[14]))
+            continue
+        if splt[0] == "inqos6_mod":
+            writeInQosRules6(2,p4info_helper,sw1,int(splt[1]),int(splt[2]),int(splt[3]),splt[4],int(splt[5]),int(splt[6]),splt[7],splt[8],splt[9],splt[10],int(splt[11]),int(splt[12]),int(splt[13]),int(splt[14]))
+            continue
+        if splt[0] == "inqos6_del":
+            writeInQosRules6(3,p4info_helper,sw1,int(splt[1]),int(splt[2]),int(splt[3]),splt[4],int(splt[5]),int(splt[6]),splt[7],splt[8],splt[9],splt[10],int(splt[11]),int(splt[12]),int(splt[13]),int(splt[14]))
+            continue
+
+        if splt[0] == "outqos4_add":
+            writeOutQosRules4(1,p4info_helper,sw1,int(splt[1]),int(splt[2]),int(splt[3]),splt[4],int(splt[5]),int(splt[6]),splt[7],splt[8],splt[9],splt[10],int(splt[11]),int(splt[12]),int(splt[13]),int(splt[14]))
+            continue
+        if splt[0] == "outqos4_mod":
+            writeOutQosRules4(2,p4info_helper,sw1,int(splt[1]),int(splt[2]),int(splt[3]),splt[4],int(splt[5]),int(splt[6]),splt[7],splt[8],splt[9],splt[10],int(splt[11]),int(splt[12]),int(splt[13]),int(splt[14]))
+            continue
+        if splt[0] == "outqos4_del":
+            writeOutQosRules4(3,p4info_helper,sw1,int(splt[1]),int(splt[2]),int(splt[3]),splt[4],int(splt[5]),int(splt[6]),splt[7],splt[8],splt[9],splt[10],int(splt[11]),int(splt[12]),int(splt[13]),int(splt[14]))
+            continue
+
+        if splt[0] == "outqos6_add":
+            writeOutQosRules6(1,p4info_helper,sw1,int(splt[1]),int(splt[2]),int(splt[3]),splt[4],int(splt[5]),int(splt[6]),splt[7],splt[8],splt[9],splt[10],int(splt[11]),int(splt[12]),int(splt[13]),int(splt[14]))
+            continue
+        if splt[0] == "outqos6_mod":
+            writeOutQosRules6(2,p4info_helper,sw1,int(splt[1]),int(splt[2]),int(splt[3]),splt[4],int(splt[5]),int(splt[6]),splt[7],splt[8],splt[9],splt[10],int(splt[11]),int(splt[12]),int(splt[13]),int(splt[14]))
+            continue
+        if splt[0] == "outqos6_del":
+            writeOutQosRules6(3,p4info_helper,sw1,int(splt[1]),int(splt[2]),int(splt[3]),splt[4],int(splt[5]),int(splt[6]),splt[7],splt[8],splt[9],splt[10],int(splt[11]),int(splt[12]),int(splt[13]),int(splt[14]))
+            continue
+
+        if splt[0] == "inqos_add":
+            writeInQosRules(1,p4info_helper,sw1,int(splt[1]),int(splt[2]),int(splt[3]))
+            continue
+        if splt[0] == "inqos_mod":
+            writeInQosRules(2,p4info_helper,sw1,int(splt[1]),int(splt[2]),int(splt[3]))
+            continue
+        if splt[0] == "inqos_del":
+            writeInQosRules(3,p4info_helper,sw1,int(splt[1]),int(splt[2]),int(splt[3]))
+            continue
+
+        if splt[0] == "outqos_add":
+            writeOutQosRules(1,p4info_helper,sw1,int(splt[1]),int(splt[2]),int(splt[3]))
+            continue
+        if splt[0] == "outqos_mod":
+            writeOutQosRules(2,p4info_helper,sw1,int(splt[1]),int(splt[2]),int(splt[3]))
+            continue
+        if splt[0] == "outqos_del":
+            writeOutQosRules(3,p4info_helper,sw1,int(splt[1]),int(splt[2]),int(splt[3]))
+            continue
+
+        if splt[0] == "flowspec4_add":
+            writeFlowspecRules4(1,p4info_helper,sw1,int(splt[1]),int(splt[2]),int(splt[3]),int(splt[4]),int(splt[5]),splt[6],int(splt[7]),int(splt[8]),splt[9],splt[10],splt[11],splt[12],int(splt[13]),int(splt[14]),int(splt[15]),int(splt[16]))
+            continue
+        if splt[0] == "flowspec4_mod":
+            writeFlowspecRules4(2,p4info_helper,sw1,int(splt[1]),int(splt[2]),int(splt[3]),int(splt[4]),int(splt[5]),splt[6],int(splt[7]),int(splt[8]),splt[9],splt[10],splt[11],splt[12],int(splt[13]),int(splt[14]),int(splt[15]),int(splt[16]))
+            continue
+        if splt[0] == "flowspec4_del":
+            writeFlowspecRules4(3,p4info_helper,sw1,int(splt[1]),int(splt[2]),int(splt[3]),int(splt[4]),int(splt[5]),splt[6],int(splt[7]),int(splt[8]),splt[9],splt[10],splt[11],splt[12],int(splt[13]),int(splt[14]),int(splt[15]),int(splt[16]))
+            continue
+
+        if splt[0] == "flowspec6_add":
+            writeFlowspecRules6(1,p4info_helper,sw1,int(splt[1]),int(splt[2]),int(splt[3]),int(splt[4]),int(splt[5]),splt[6],int(splt[7]),int(splt[8]),splt[9],splt[10],splt[11],splt[12],int(splt[13]),int(splt[14]),int(splt[15]),int(splt[16]))
+            continue
+        if splt[0] == "flowspec6_mod":
+            writeFlowspecRules6(2,p4info_helper,sw1,int(splt[1]),int(splt[2]),int(splt[3]),int(splt[4]),int(splt[5]),splt[6],int(splt[7]),int(splt[8]),splt[9],splt[10],splt[11],splt[12],int(splt[13]),int(splt[14]),int(splt[15]),int(splt[16]))
+            continue
+        if splt[0] == "flowspec6_del":
+            writeFlowspecRules6(3,p4info_helper,sw1,int(splt[1]),int(splt[2]),int(splt[3]),int(splt[4]),int(splt[5]),splt[6],int(splt[7]),int(splt[8]),splt[9],splt[10],splt[11],splt[12],int(splt[13]),int(splt[14]),int(splt[15]),int(splt[16]))
             continue
 
         if splt[0] == "cpulabel_add":

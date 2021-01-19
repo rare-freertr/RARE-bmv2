@@ -45,10 +45,15 @@ control ig_ctl(inout headers hdr,
     IngressControlAclOut() ig_ctl_acl_out;
     IngressControlNAT() ig_ctl_nat;
     IngressControlPBR() ig_ctl_pbr;
+    IngressControlQosIn() ig_ctl_qos_in;
+    IngressControlQosOut() ig_ctl_qos_out;
+    IngressControlFlowspec() ig_ctl_flowspec;
 
+    counter((MAX_PORT+1), CounterType.packets_and_bytes) pkt_out_stats;
 
     apply {
         if (ig_intr_md.ingress_port == CPU_PORT) {
+            pkt_out_stats.count((bit<32>)ig_md.source_id);
             /*
              * pkt received from the controlled has a cpu header
              * that containes egress port id. Once retrieve
@@ -70,10 +75,18 @@ control ig_ctl(inout headers hdr,
         if (ig_md.dropping == 1) {
             return;
         }
+        ig_ctl_qos_in.apply(hdr,ig_md,ig_intr_md);
+        if (ig_md.dropping == 1) {
+            return;
+        }
         ig_ctl_vrf.apply(hdr,ig_md,ig_intr_md);
         ig_ctl_arp.apply(hdr,ig_md,ig_intr_md);
         ig_ctl_llc.apply(hdr,ig_md,ig_intr_md);
         ig_ctl_mpls.apply(hdr,ig_md,ig_intr_md);
+        ig_ctl_flowspec.apply(hdr,ig_md,ig_intr_md);
+        if (ig_md.dropping == 1) {
+            return;
+        }
         ig_ctl_nat.apply(hdr,ig_md,ig_intr_md);
         if ( ig_md.dropping == 1) {
             hdr.cpu.setValid();
@@ -127,6 +140,10 @@ control ig_ctl(inout headers hdr,
         ig_ctl_mpls2.apply(hdr,ig_md,ig_intr_md);
         ig_ctl_nexthop.apply(hdr,ig_md,ig_intr_md);
         ig_ctl_acl_out.apply(hdr,ig_md,ig_intr_md);
+        if (ig_md.dropping == 1) {
+            return;
+        }
+        ig_ctl_qos_out.apply(hdr,ig_md,ig_intr_md);
         if (ig_md.dropping == 1) {
             return;
         }
