@@ -18,8 +18,6 @@
 #define _INGRESS_CONTROL_P4_
 
 
-/*------------------ I N G R E S S - M A T C H - A C T I O N ---------------- */
-
 control ig_ctl(inout headers hdr,
                inout ingress_metadata_t ig_md,
                inout standard_metadata_t ig_intr_md) {
@@ -48,6 +46,7 @@ control ig_ctl(inout headers hdr,
     IngressControlQosIn() ig_ctl_qos_in;
     IngressControlQosOut() ig_ctl_qos_out;
     IngressControlFlowspec() ig_ctl_flowspec;
+    IngressControlMcast() ig_ctl_mcast;
 
     counter((MAX_PORT+1), CounterType.packets_and_bytes) pkt_out_stats;
 
@@ -104,6 +103,17 @@ control ig_ctl(inout headers hdr,
         if ( ig_md.nexthop_id == CPU_PORT) {
             ig_ctl_tunnel.apply(hdr,ig_md,ig_intr_md);
             if (ig_md.need_recir == 1) {
+                if (hdr.vlan.isValid()) hdr.vlan.setInvalid();
+                if (hdr.pppoeD.isValid()) hdr.pppoeD.setInvalid();
+                if (hdr.pppoeB.isValid()) hdr.pppoeB.setInvalid();
+                if (hdr.l2tpbr.isValid()) hdr.l2tpbr.setInvalid();
+                return;
+            }
+            ig_ctl_mcast.apply(hdr,ig_md,ig_intr_md);
+            if (ig_md.dropping == 1) {
+                return;
+            }
+            if (ig_md.need_clone == 1) {
                 if (hdr.vlan.isValid()) hdr.vlan.setInvalid();
                 if (hdr.pppoeD.isValid()) hdr.pppoeD.setInvalid();
                 if (hdr.pppoeB.isValid()) hdr.pppoeB.setInvalid();
