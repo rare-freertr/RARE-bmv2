@@ -23,19 +23,22 @@ control IngressControlBundle(inout headers hdr,
 
     action act_set_hash(PortId_t port) {
         ig_intr_md.egress_spec = port;
+        ig_md.vlan_size = 0;
         ig_md.need_recir = 0;
     }
 
     action act_set_port() {
         ig_intr_md.egress_spec = (PortId_t)ig_md.outport_id;
+        ig_md.vlan_size = 0;
         ig_md.need_recir = 0;
     }
 
     action act_set_recir(SubIntId_t port) {
+        ig_intr_md.egress_spec = (PortId_t)port;
+        ig_md.vlan_size = 2;
+        ig_md.need_recir = 2;
         hdr.cpu.setValid();
         hdr.cpu.port = port;
-        ig_intr_md.egress_spec = (PortId_t)port;
-        ig_md.need_recir = 1;
     }
 
     table tbl_bundle {

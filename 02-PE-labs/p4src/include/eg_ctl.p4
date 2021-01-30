@@ -20,30 +20,49 @@
 control eg_ctl(
     /* User */
     inout headers hdr,
-    inout ingress_metadata_t ig_md,
+    inout ingress_metadata_t eg_md,
     /* Intrinsic */
-    inout standard_metadata_t ig_intr_md)
+    inout standard_metadata_t eg_intr_md)
 {
 
     EgressControlMcast() eg_ctl_mcast;
-    IngressControlVlanOut() eg_ctl_vlan_out;
-    IngressControlBundle() eg_ctl_bundle;
+    EgressControlNexthop() eg_ctl_nexthop;
+    EgressControlAclOut() eg_ctl_acl_out;
+    EgressControlQosOut() eg_ctl_qos_out;
+    EgressControlVlanOut() eg_ctl_vlan_out;
+    EgressControlHairpin() eg_ctl_hairpin;
 
     apply {
 
-        if (ig_md.need_recir == 1) {
+        if (eg_md.punting != 0) {
+            return;
+        }
+
+        if (eg_md.need_recir == 1) {
             recir_headers_t rec_hdr;
             recirculate<recir_headers_t>(rec_hdr);
             return;
         }
 
-        if (ig_md.need_clone == 0) return;
+        if (eg_md.need_clone != 0) {
+            eg_ctl_mcast.apply(hdr,eg_md,eg_intr_md);
+        }
 
-        eg_ctl_mcast.apply(hdr,ig_md,ig_intr_md);
-        eg_ctl_vlan_out.apply(hdr,ig_md,ig_intr_md);
-        eg_ctl_bundle.apply(hdr,ig_md,ig_intr_md);
+        eg_ctl_nexthop.apply(hdr,eg_md,eg_intr_md);
+        eg_ctl_acl_out.apply(hdr,eg_md,eg_intr_md);
+        if (eg_md.dropping == 1) {
+            mark_to_drop(eg_intr_md);
+            return;
+        }
+        eg_ctl_qos_out.apply(hdr,eg_md,eg_intr_md);
+        if (eg_md.dropping == 1) {
+            mark_to_drop(eg_intr_md);
+            return;
+        }
+        eg_ctl_vlan_out.apply(hdr,eg_md,eg_intr_md);
+        eg_ctl_hairpin.apply(hdr,eg_md,eg_intr_md);
 
-        if (ig_md.need_recir == 1) {
+        if (eg_md.need_recir != 0) {
             recir_headers_t rec_hdr;
             recirculate<recir_headers_t>(rec_hdr);
             return;
