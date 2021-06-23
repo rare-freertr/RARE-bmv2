@@ -3412,19 +3412,19 @@ def main(p4info_file_path, bmv2_file_path, p4runtime_address, freerouter_address
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='P4Runtime Controller')
 
-    parser.add_argument('--p4info', help='p4info proto in text format from p4c',
+    parser.add_argument('--p4info', help='p4info proto in text format from p4c, default value is "../build/router.json"',
             type=str, action="store", required=False,
             default="../build/router.txt")
-    parser.add_argument('--bmv2-json', help='BMv2 JSON file from p4c',
+    parser.add_argument('--bmv2-json', help='BMv2 JSON file from p4c, default value is "../build/router.json"',
             type=str, action="store", required=False,
             default="../build/router.json")
-    parser.add_argument('--p4runtime_address', help='p4 runtime address',
+    parser.add_argument('--p4runtime_address', help='p4 runtime address, default value is "127.0.0.1:50051"',
             type=str, action="store", required=False,
-            default="127.0.0.1:9559")
-    parser.add_argument('--freerouter_address', help='freerouter address',
+            default="127.0.0.1:50051")
+    parser.add_argument('--freerouter_address', help='freerouter address, default value is "127.0.0.1"',
             type=str, action="store", required=False,
             default="127.0.0.1")
-    parser.add_argument('--freerouter_port', help='freerouter port',
+    parser.add_argument('--freerouter_port', help='freerouter port, default value is "9080"',
             type=str, action="store", required=False,
             default="9080")
     args = parser.parse_args()
