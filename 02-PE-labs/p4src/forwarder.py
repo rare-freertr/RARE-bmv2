@@ -20,6 +20,7 @@
 ###############################################################################
 
 import argparse, grpc, os, sys, socket
+from argparse import ArgumentDefaultsHelpFormatter, SUPPRESS, OPTIONAL, ZERO_OR_MORE
 from time import sleep
 
 # set our lib path
@@ -3408,23 +3409,39 @@ def main(p4info_file_path, bmv2_file_path, p4runtime_address, freerouter_address
 
 
 
+class  ArgumentDefaultHelpAndRawFormatter(ArgumentDefaultsHelpFormatter):
+    """Help message formatter which adds default values to argument help
+	and retains formatting of all help text.
+    """
+
+    def _split_lines(self, text, width):
+        return text.splitlines()
+    def _get_help_string(self, action):
+        help = action.help
+        if '%(default)' not in action.help:
+            if action.default is not SUPPRESS:
+                defaulting_nargs = [OPTIONAL, ZERO_OR_MORE]
+                if action.option_strings or action.nargs in defaulting_nargs:
+                    help += '(default: %(default)s)'
+        return help
+
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='P4Runtime Controller')
+    parser = argparse.ArgumentParser(description='P4Runtime Controller', formatter_class=ArgumentDefaultHelpAndRawFormatter)
 
-    parser.add_argument('--p4info', help='p4info proto in text format from p4c, default value is "../build/router.json"',
+    parser.add_argument('--p4info', help='p4info proto in text format from p4c\n',
             type=str, action="store", required=False,
             default="../build/router.txt")
-    parser.add_argument('--bmv2-json', help='BMv2 JSON file from p4c, default value is "../build/router.json"',
+    parser.add_argument('--bmv2-json', help='BMv2 JSON file from p4c\n',
             type=str, action="store", required=False,
             default="../build/router.json")
-    parser.add_argument('--p4runtime_address', help='p4 runtime address, default value is "127.0.0.1:50051"',
+    parser.add_argument('--p4runtime_address', help='p4 runtime address\n',
             type=str, action="store", required=False,
             default="127.0.0.1:50051")
-    parser.add_argument('--freerouter_address', help='freerouter address, default value is "127.0.0.1"',
+    parser.add_argument('--freerouter_address', help='freerouter address\n',
             type=str, action="store", required=False,
             default="127.0.0.1")
-    parser.add_argument('--freerouter_port', help='freerouter port, default value is "9080"',
+    parser.add_argument('--freerouter_port', help='freerouter port\n',
             type=str, action="store", required=False,
             default="9080")
     args = parser.parse_args()
