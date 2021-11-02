@@ -63,6 +63,8 @@ hdr.ethernet.src_mac_addr:
     action act_set_bridge_ppprouted(NextHopId_t nexthop) {
         ig_md.bridge_trg = MAX_PORT;
         ig_md.vrf = 0;
+        ig_md.nsh_valid = 0;
+        ig_md.polka_valid = 0;
         ig_md.mpls0_valid = 0;
         ig_md.mpls1_valid = 0;
         ig_md.arp_valid = 0;
@@ -83,6 +85,8 @@ hdr.ethernet.src_mac_addr:
     action act_set_bridge_routed(NextHopId_t nexthop) {
         ig_md.bridge_trg = MAX_PORT;
         ig_md.vrf = 0;
+        ig_md.nsh_valid = 0;
+        ig_md.polka_valid = 0;
         ig_md.mpls0_valid = 0;
         ig_md.mpls1_valid = 0;
         ig_md.arp_valid = 0;
@@ -102,9 +106,11 @@ hdr.ethernet.src_mac_addr:
         ig_md.bridge_trg = MAX_PORT;
         ig_md.vrf = 0;
         ig_md.nsh_valid = 0;
+        ig_md.polka_valid = 0;
         ig_md.mpls0_valid = 0;
         ig_md.mpls1_valid = 0;
         ig_md.nsh_remove = 0;
+        ig_md.polka_valid = 0;
         ig_md.mpls0_remove = 0;
         ig_md.mpls1_remove = 0;
         ig_md.arp_valid = 0;
@@ -130,6 +136,8 @@ hdr.ethernet.src_mac_addr:
     action act_set_bridge_srv(NextHopId_t port, ipv6_addr_t target) {
         ig_md.bridge_trg = MAX_PORT;
         ig_md.vrf = 0;
+        ig_md.nsh_valid = 0;
+        ig_md.polka_valid = 0;
         ig_md.mpls0_valid = 0;
         ig_md.mpls1_valid = 0;
         ig_md.arp_valid = 0;
@@ -157,6 +165,8 @@ hdr.ethernet.src_mac_addr:
     action act_set_bridge_vxlan4(NextHopId_t nexthop, ipv4_addr_t dst_ip_addr, ipv4_addr_t src_ip_addr, bit<24> instance) {
         ig_md.bridge_trg = MAX_PORT;
         ig_md.vrf = 0;
+        ig_md.nsh_valid = 0;
+        ig_md.polka_valid = 0;
         ig_md.mpls0_valid = 0;
         ig_md.mpls1_valid = 0;
         ig_md.arp_valid = 0;
@@ -203,6 +213,8 @@ hdr.ethernet.src_mac_addr:
     action act_set_bridge_vxlan6(NextHopId_t nexthop, ipv6_addr_t dst_ip_addr, ipv6_addr_t src_ip_addr, bit<24> instance) {
         ig_md.bridge_trg = MAX_PORT;
         ig_md.vrf = 0;
+        ig_md.nsh_valid = 0;
+        ig_md.polka_valid = 0;
         ig_md.mpls0_valid = 0;
         ig_md.mpls1_valid = 0;
         ig_md.arp_valid = 0;
@@ -246,6 +258,8 @@ hdr.ethernet.src_mac_addr:
     action act_set_bridge_pckoudp4(NextHopId_t nexthop, ipv4_addr_t dst_ip_addr, ipv4_addr_t src_ip_addr, bit<16> src_port, bit<16> dst_port) {
         ig_md.bridge_trg = MAX_PORT;
         ig_md.vrf = 0;
+        ig_md.nsh_valid = 0;
+        ig_md.polka_valid = 0;
         ig_md.mpls0_valid = 0;
         ig_md.mpls1_valid = 0;
         ig_md.arp_valid = 0;
@@ -286,6 +300,8 @@ hdr.ethernet.src_mac_addr:
     action act_set_bridge_pckoudp6(NextHopId_t nexthop, ipv6_addr_t dst_ip_addr, ipv6_addr_t src_ip_addr, bit<16> src_port, bit<16> dst_port) {
         ig_md.bridge_trg = MAX_PORT;
         ig_md.vrf = 0;
+        ig_md.nsh_valid = 0;
+        ig_md.polka_valid = 0;
         ig_md.mpls0_valid = 0;
         ig_md.mpls1_valid = 0;
         ig_md.arp_valid = 0;
@@ -356,6 +372,8 @@ hdr.ethernet.dst_mac_addr:
             return;
         }
         ig_md.vrf = 0;
+        ig_md.nsh_valid = 0;
+        ig_md.polka_valid = 0;
         ig_md.mpls0_valid = 0;
         ig_md.mpls1_valid = 0;
         ig_md.arp_valid = 0;
