@@ -22,12 +22,19 @@ control IngressControlOutPort(inout headers hdr,
                               inout standard_metadata_t ig_intr_md) {
 
 
-    action act_set_port(SubIntId_t port) {
+    action act_set_port_vlan(SubIntId_t port) {
         ig_md.outport_id = port;
+        ig_md.aclport_id = ig_md.target_id;
     }
 
-    action act_set_identical() {
+    action act_set_port_novlan() {
         ig_md.outport_id = ig_md.target_id;
+        ig_md.aclport_id = ig_md.target_id;
+    }
+
+    action act_set_port_nexthop(SubIntId_t port, SubIntId_t subif) {
+        ig_md.outport_id = port;
+        ig_md.aclport_id = subif;
     }
 
     action act_set_drop() {
@@ -42,11 +49,11 @@ ig_md.target_id:
             exact;
         }
         actions = {
-            act_set_identical;
-            act_set_port;
+            act_set_port_novlan;
+            act_set_port_vlan;
         }
         size = VLAN_TABLE_SIZE;
-        default_action = act_set_identical();
+        default_action = act_set_port_novlan();
     }
 
 
@@ -56,7 +63,7 @@ ig_md.nexthop_id:
             exact;
         }
         actions = {
-            act_set_port;
+            act_set_port_nexthop;
             act_set_drop;
         }
         size = NEXTHOP_TABLE_SIZE;
@@ -67,62 +74,12 @@ ig_md.nexthop_id:
 
     apply {
 
-        if (ig_md.srv_op_type != 0) {
-            hdr.ipv6.setInvalid();
-        }
-        if (ig_md.srv_op_type == 2) {
-            hdr.eth3.setInvalid();
-        }
-
-        if (ig_md.nsh_remove == 1) {
-            hdr.nsh.setInvalid();
-        }
-
-        if (ig_md.polka_remove == 1) {
-            hdr.polka.setInvalid();
-        }
-
-        if (ig_md.mpls1_remove == 1) {
-            hdr.mpls1.setInvalid();
-        }
-
-        if (ig_md.mpls0_remove == 1) {
-            hdr.mpls0.setInvalid();
-            if (ig_md.ipv4_valid == 1) {
-                ig_md.ethertype = ETHERTYPE_IPV4;
-            } else {
-                ig_md.ethertype = ETHERTYPE_IPV6;
-            }
-        }
-
-
         if (ig_md.target_id != 0) {
             tbl_vlan_out.apply();
             return;
         }
 
         tbl_nexthop.apply();
-
-        if (hdr.nsh.isValid()) {
-            if (hdr.nsh.ttl < 2) act_set_drop();
-            hdr.nsh.ttl = hdr.nsh.ttl -1;
-        }
-        if (hdr.polka.isValid()) {
-            if (hdr.polka.ttl < 2) act_set_drop();
-            hdr.polka.ttl = hdr.polka.ttl -1;
-        }
-        if (hdr.mpls0.isValid()) {
-            if (hdr.mpls0.ttl < 2) act_set_drop();
-            hdr.mpls0.ttl = hdr.mpls0.ttl -1;
-        }
-        if (hdr.ipv4.isValid()) {
-            if (hdr.ipv4.ttl < 2) act_set_drop();
-            hdr.ipv4.ttl = hdr.ipv4.ttl -1;
-        }
-        if (hdr.ipv6.isValid()) {
-            if (hdr.ipv6.hop_limit < 2) act_set_drop();
-            hdr.ipv6.hop_limit = hdr.ipv6.hop_limit -1;
-        }
 
     }
 }

@@ -38,12 +38,14 @@ control ig_ctl(inout headers hdr,
     IngressControlCoPP() ig_ctl_copp;
     IngressControlTunnel() ig_ctl_tunnel;
     IngressControlAclIn() ig_ctl_acl_in;
+    IngressControlAclOut() ig_ctl_acl_out;
     IngressControlNAT() ig_ctl_nat;
     IngressControlPBR() ig_ctl_pbr;
     IngressControlQosIn() ig_ctl_qos_in;
     IngressControlFlowspec() ig_ctl_flowspec;
     IngressControlMcast() ig_ctl_mcast;
     IngressControlOutPort() ig_ctl_outport;
+    IngressControlRewrites() ig_ctl_rewrites;
     IngressControlBundle() ig_ctl_bundle;
 
     counter((MAX_PORT+1), CounterType.packets_and_bytes) pkt_out_stats;
@@ -70,6 +72,13 @@ control ig_ctl(inout headers hdr,
         ig_ctl_pppoe.apply(hdr,ig_md,ig_intr_md);
         ig_ctl_acl_in.apply(hdr,ig_md,ig_intr_md);
         if (ig_md.dropping == 1) {
+            return;
+        }
+        if (ig_md.dropping == 2) {
+            hdr.cpu.setValid();
+            hdr.cpu.port = ig_md.ingress_id;
+            ig_intr_md.egress_spec = CPU_PORT;
+            ig_md.punting = 1;
             return;
         }
         ig_ctl_qos_in.apply(hdr,ig_md,ig_intr_md);
@@ -142,11 +151,20 @@ control ig_ctl(inout headers hdr,
             return;
         }
 
-        if (hdr.vlan.isValid()) hdr.vlan.setInvalid();
-        if (hdr.pppoeD.isValid()) hdr.pppoeD.setInvalid();
-        if (hdr.pppoeB.isValid()) hdr.pppoeB.setInvalid();
-        if (hdr.l2tpbr.isValid()) hdr.l2tpbr.setInvalid();
         ig_ctl_outport.apply(hdr,ig_md,ig_intr_md);
+        ig_ctl_acl_out.apply(hdr,ig_md,ig_intr_md);
+        if (ig_md.dropping == 1) {
+            mark_to_drop(ig_intr_md);
+            return;
+        }
+        if (ig_md.dropping == 2) {
+            hdr.cpu.setValid();
+            hdr.cpu.port = ig_md.ingress_id;
+            ig_intr_md.egress_spec = CPU_PORT;
+            ig_md.punting = 1;
+            return;
+        }
+        ig_ctl_rewrites.apply(hdr,ig_md,ig_intr_md);
         ig_ctl_bundle.apply(hdr,ig_md,ig_intr_md);
     }
 }

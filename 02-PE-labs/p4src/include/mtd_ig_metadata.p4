@@ -32,11 +32,12 @@ struct ingress_metadata_t {
     SubIntId_t bridge_trg;
     SubIntId_t meter_id;
     bit<32> meter_res;
+    @field_list(1)
     bit<4> hash_id;
     ethertype_t ethertype;
     switch_vrf_t vrf;
     bit<16> polka_next;
-    bit<1>  dropping;
+    bit<2>  dropping;
     bit<1>  punting;
     bit<1>  natted;
     bit<2>  need_recir;

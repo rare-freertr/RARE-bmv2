@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-#ifndef _IG_CTL_Acl_in_P4_
-#define _IG_CTL_Acl_in_P4_
+#ifndef _IG_CTL_Acl_out_P4_
+#define _IG_CTL_Acl_out_P4_
 
-control IngressControlAclIn(inout headers hdr,
-                            inout ingress_metadata_t ig_md,
-                            inout standard_metadata_t ig_intr_md) {
+control IngressControlAclOut(inout headers hdr,
+                             inout ingress_metadata_t ig_md,
+                             inout standard_metadata_t ig_intr_md) {
 
     direct_counter(CounterType.packets_and_bytes) acl4;
     direct_counter(CounterType.packets_and_bytes) acl6;
@@ -42,7 +42,7 @@ control IngressControlAclIn(inout headers hdr,
 
     table tbl_ipv4_acl {
         key = {
-ig_md.source_id:
+ig_md.aclport_id:
             exact;
 hdr.ipv4.protocol:
             ternary;
@@ -65,14 +65,14 @@ hdr.ipv4.identification:
             act_punt;
             @defaultonly NoAction;
         }
-        size = IPV4_INACL_TABLE_SIZE;
+        size = IPV4_OUTACL_TABLE_SIZE;
         const default_action = NoAction();
         counters = acl4;
     }
 
     table tbl_ipv6_acl {
         key = {
-ig_md.source_id:
+ig_md.aclport_id:
             exact;
 hdr.ipv6.next_hdr:
             ternary;
@@ -95,16 +95,15 @@ hdr.ipv6.flow_label:
             act_punt;
             @defaultonly NoAction;
         }
-        size = IPV6_INACL_TABLE_SIZE;
+        size = IPV6_OUTACL_TABLE_SIZE;
         const default_action = NoAction();
         counters = acl6;
     }
 
 
-
     table tbl_ipv4_insp {
         key = {
-ig_md.source_id:
+ig_md.aclport_id:
             exact;
 hdr.ipv4.protocol:
             exact;
@@ -118,17 +117,17 @@ ig_md.layer4_dstprt:
             exact;
         }
         actions = {
-            act_permit;
             act_deny;
+            act_permit;
         }
-        size = IPV4_ININSP_TABLE_SIZE;
+        size = IPV4_OUTINSP_TABLE_SIZE;
         const default_action = act_deny();
         counters = insp4;
     }
 
     table tbl_ipv6_insp {
         key = {
-ig_md.source_id:
+ig_md.aclport_id:
             exact;
 hdr.ipv6.next_hdr:
             exact;
@@ -142,10 +141,10 @@ ig_md.layer4_dstprt:
             exact;
         }
         actions = {
-            act_permit;
             act_deny;
+            act_permit;
         }
-        size = IPV6_ININSP_TABLE_SIZE;
+        size = IPV6_OUTINSP_TABLE_SIZE;
         const default_action = act_deny();
         counters = insp6;
     }
@@ -168,5 +167,5 @@ ig_md.layer4_dstprt:
     }
 }
 
-#endif // _IG_CTL_Acl_in_P4_
+#endif // _IG_CTL_Acl_out_P4_
 
