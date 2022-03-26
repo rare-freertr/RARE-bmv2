@@ -1,2 +1,2 @@
-wget src.nop.hu/src/rtr.jar
+wget src.freertr.net/src/rtr.jar
 mv rtr.jar 0000-topology-A/bin/

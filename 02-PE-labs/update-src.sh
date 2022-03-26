@@ -1,4 +1,4 @@
-wget src.nop.hu/rtr.zip
+wget src.freertr.net/rtr.zip
 mkdir a
 unzip -d a/ rtr.zip
 rm rtr.zip
