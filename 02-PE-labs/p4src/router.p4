@@ -88,6 +88,7 @@
 #include "include/ig_ctl_nat.p4"
 #include "include/ig_ctl_pbr.p4"
 #include "include/ig_ctl_qos_in.p4"
+#include "include/ig_ctl_qos_out.p4"
 #include "include/ig_ctl_flowspec.p4"
 #include "include/ig_ctl_mcast.p4"
 #include "include/ig_ctl_bundle.p4"
@@ -103,7 +104,6 @@
 #include "include/eg_ctl_vlan_out.p4"
 #include "include/eg_ctl_sgt.p4"
 #include "include/eg_ctl_nexthop.p4"
-#include "include/eg_ctl_qos_out.p4"
 #include "include/eg_ctl.p4"
 
 /*------------------ C O M P U T E  C H E C K S U M --------------------------*/
