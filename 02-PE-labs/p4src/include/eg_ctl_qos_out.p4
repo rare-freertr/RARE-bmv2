@@ -27,14 +27,14 @@ control EgressControlQosOut(inout headers hdr,
 
     action act_deny(SubIntId_t metid) {
         eg_md.meter_id = metid;
-        eg_md.dropping = 0;
+        eg_md.dropping = (bit<2>)eg_md.layer3_frag;
     }
 
     action act_permit(SubIntId_t metid) {
         eg_md.meter_id = metid;
         policer.execute_meter((bit<32>)metid, eg_md.meter_res);
         if (eg_md.meter_res == 0) {
-            eg_md.dropping = 0;
+            eg_md.dropping = (bit<2>)eg_md.layer3_frag;
         } else {
             eg_md.dropping = 1;
         }
