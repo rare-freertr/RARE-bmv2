@@ -52,10 +52,23 @@ control IngressControlVRF(inout headers hdr,
         hdr.mpls0.setValid();
         hdr.mpls0.label = tunlab;
         hdr.mpls0.ttl = 255;
+        hdr.mpls0.bos = 0;
         hdr.mpls1.setValid();
         hdr.mpls1.label = svclab;
         hdr.mpls1.ttl = 255;
         hdr.mpls1.bos = 1;
+    }
+
+    action act_set_loconn (SubIntId_t port) {
+        ig_md.vrf = 0;
+        ig_md.mpls0_valid = 0;
+        ig_md.mpls1_valid = 0;
+        ig_md.arp_valid = 0;
+        ig_md.llc_valid = 0;
+        ig_md.ipv4_valid = 0;
+        ig_md.ipv6_valid = 0;
+        ig_md.bridge_id = 0;
+        ig_md.target_id = port;
     }
 
     action act_set_bridge (SubIntId_t bridge) {
@@ -77,6 +90,7 @@ ig_md.source_id:
         actions = {
             act_set_vrf;
             act_set_mpls_xconn_encap;
+            act_set_loconn;
             act_set_bridge;
             act_set_default_vrf;
         }
