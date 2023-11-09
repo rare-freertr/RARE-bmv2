@@ -35,6 +35,8 @@ control IngressControlCoPP(inout headers hdr,
 
     table tbl_ipv4_copp {
         key = {
+ig_md.vrf:
+            exact;
 hdr.ipv4.protocol:
             ternary;
 hdr.ipv4.src_addr:
@@ -64,6 +66,8 @@ ig_md.sec_grp_id:
 
     table tbl_ipv6_copp {
         key = {
+ig_md.vrf:
+            exact;
 hdr.ipv6.next_hdr:
             ternary;
 hdr.ipv6.src_addr:
@@ -92,10 +96,10 @@ ig_md.sec_grp_id:
     }
 
     apply {
-        if (ig_md.ipv4_valid==1)  {
+        if (hdr.ipv4.isValid() && (ig_md.ipv4_valid==1))  {
             tbl_ipv4_copp.apply();
         }
-        if (ig_md.ipv6_valid==1)  {
+        if (hdr.ipv6.isValid() && (ig_md.ipv6_valid==1))  {
             tbl_ipv6_copp.apply();
         }
     }
