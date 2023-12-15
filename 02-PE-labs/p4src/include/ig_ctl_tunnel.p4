@@ -32,6 +32,19 @@ control IngressControlTunnel(inout headers hdr,
     }
 
 
+    action act_tunnel_tmux(SubIntId_t port) {
+        if (hdr.tmux.proto == IP_PROTOCOL_SKIP) hdr.ethernet.ethertype = ETHERTYPE_SGT;
+        if (hdr.tmux.proto == IP_PROTOCOL_NSH) hdr.ethernet.ethertype = ETHERTYPE_NSH;
+        if (hdr.tmux.proto == IP_PROTOCOL_IPV4) hdr.ethernet.ethertype = ETHERTYPE_IPV4;
+        if (hdr.tmux.proto == IP_PROTOCOL_IPV6) hdr.ethernet.ethertype = ETHERTYPE_IPV6;
+        if (hdr.tmux.proto == IP_PROTOCOL_MPLS_IN_IP) hdr.ethernet.ethertype = ETHERTYPE_MPLS_UCAST;
+        if (hdr.tmux.proto == IP_PROTOCOL_SRL2) hdr.ethernet.ethertype = ETHERTYPE_ROUTEDMAC;
+        ig_intr_md.egress_spec = (PortId_t)port;
+        ig_md.need_recir = 1;
+        ig_md.source_id = port;
+    }
+
+
     action act_tunnel_ip4ip(SubIntId_t port) {
         hdr.ethernet.ethertype = ETHERTYPE_IPV4;
         ig_intr_md.egress_spec = (PortId_t)port;
@@ -48,6 +61,8 @@ control IngressControlTunnel(inout headers hdr,
 
 
     action act_tunnel_l2tp(SubIntId_t port) {
+        if ((hdr.l2tp.flags & 0x8000) != 0) return;
+        if ((hdr.l2tp.ppptyp & 0x8000) != 0) return;
         if (hdr.l2tp.ppptyp == PPPTYPE_SGT) hdr.ethernet.ethertype = ETHERTYPE_SGT;
         if (hdr.l2tp.ppptyp == PPPTYPE_IPV4) hdr.ethernet.ethertype = ETHERTYPE_IPV4;
         if (hdr.l2tp.ppptyp == PPPTYPE_IPV6) hdr.ethernet.ethertype = ETHERTYPE_IPV6;
@@ -56,12 +71,12 @@ control IngressControlTunnel(inout headers hdr,
         ig_intr_md.egress_spec = (PortId_t)port;
         ig_md.need_recir = 1;
         ig_md.source_id = port;
-        if ((hdr.l2tp.flags & 0x8000) != 0) ig_md.need_recir = 0;
-        if ((hdr.l2tp.ppptyp & 0x8000) != 0) ig_md.need_recir = 0;
     }
 
 
     action act_tunnel_l3tp(SubIntId_t port) {
+        if (hdr.l3tp.tidsid == 0) return;
+        if ((hdr.l3tp.ppptyp & 0x8000) != 0) return;
         if (hdr.l3tp.ppptyp == PPPTYPE_SGT) hdr.ethernet.ethertype = ETHERTYPE_SGT;
         if (hdr.l3tp.ppptyp == PPPTYPE_IPV4) hdr.ethernet.ethertype = ETHERTYPE_IPV4;
         if (hdr.l3tp.ppptyp == PPPTYPE_IPV6) hdr.ethernet.ethertype = ETHERTYPE_IPV6;
@@ -70,7 +85,6 @@ control IngressControlTunnel(inout headers hdr,
         ig_intr_md.egress_spec = (PortId_t)port;
         ig_md.need_recir = 1;
         ig_md.source_id = port;
-        if ((hdr.l3tp.ppptyp & 0x8000) != 0) ig_md.need_recir = 0;
     }
 
 
@@ -124,6 +138,7 @@ ig_md.layer4_dstprt:
         }
         actions = {
             act_tunnel_gre;
+            act_tunnel_tmux;
             act_tunnel_ip4ip;
             act_tunnel_ip6ip;
             act_tunnel_l2tp;
@@ -156,6 +171,7 @@ ig_md.layer4_dstprt:
         }
         actions = {
             act_tunnel_gre;
+            act_tunnel_tmux;
             act_tunnel_ip4ip;
             act_tunnel_ip6ip;
             act_tunnel_l2tp;
@@ -195,6 +211,7 @@ ig_md.layer4_dstprt:
         hdr.gtp.setInvalid();
         hdr.udp.setInvalid();
         hdr.gre.setInvalid();
+        hdr.tmux.setInvalid();
         hdr.ipv4.setInvalid();
         hdr.ipv6.setInvalid();
         if (hdr.eth5.isValid()) {
