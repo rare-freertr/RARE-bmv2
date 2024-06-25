@@ -137,6 +137,8 @@ ETHERTYPE_LLDP:
         transition select(hdr.pppoeD.ppptyp) {
 PPPTYPE_SGT:
             prs_sgt;
+PPPTYPE_NSH:
+            prs_nsh;
 PPPTYPE_IPV4:
             prs_ipv4;
 PPPTYPE_IPV6:
@@ -221,6 +223,8 @@ ETHERTYPE_IPV6:
             prs_ipv6;
 8w5:
             prs_mpls0;
+8w3:
+            prs_eth2;
         default:
             accept;
         }

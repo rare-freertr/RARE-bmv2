@@ -1357,6 +1357,25 @@ def writeLoconnNeiRules(delete, p4info_helper, ingress_sw, port, target):
         ingress_sw.DeleteTableEntry(table_entry1, False)
 
 
+def writeNshConnRules(delete, p4info_helper, ingress_sw, port, sp, si):
+    table_entry1 = p4info_helper.buildTableEntry(
+        table_name="ig_ctl.ig_ctl_vrf.tbl_vrf",
+        match_fields={
+            "ig_md.source_id": port
+        },
+        action_name="ig_ctl.ig_ctl_vrf.act_set_nshconn",
+        action_params={
+            "sp": sp,
+            "si": si,
+        })
+    if delete == 1:
+        ingress_sw.WriteTableEntry(table_entry1, False)
+    elif delete == 2:
+        ingress_sw.ModifyTableEntry(table_entry1, False)
+    else:
+        ingress_sw.DeleteTableEntry(table_entry1, False)
+
+
 def writeBrprtRules(delete, p4info_helper, ingress_sw, port, bridge):
     table_entry = p4info_helper.buildTableEntry(
         table_name="ig_ctl.ig_ctl_vrf.tbl_vrf",
@@ -3172,18 +3191,40 @@ def writeCpuMplsRules(delete, p4info_helper, ingress_sw, dst_label):
         ingress_sw.DeleteTableEntry(table_entry2, False)
 
 
-def writeNshFwdRules(delete, p4info_helper, ingress_sw, sp, si, prt, src, dst, tsp, tsi):
+def writeNshIfcRules(delete, p4info_helper, ingress_sw, sp, si, prt, src, dst, tsp, tsi):
     table_entry = p4info_helper.buildTableEntry(
         table_name="ig_ctl.ig_ctl_nsh.tbl_nsh",
         match_fields={
             "hdr.nsh.sp": (sp),
             "hdr.nsh.si": (si)
         },
-        action_name="ig_ctl.ig_ctl_nsh.act_forward",
+        action_name="ig_ctl.ig_ctl_nsh.act_fwd_ifc",
         action_params={
             "port": prt,
             "src": src,
             "dst": dst,
+            "sp": tsp,
+            "si": tsi
+        }
+    )
+    if delete == 1:
+        ingress_sw.WriteTableEntry(table_entry, False)
+    elif delete == 2:
+        ingress_sw.ModifyTableEntry(table_entry, False)
+    else:
+        ingress_sw.DeleteTableEntry(table_entry, False)
+
+
+def writeNshNeiRules(delete, p4info_helper, ingress_sw, sp, si, nei, tsp, tsi):
+    table_entry = p4info_helper.buildTableEntry(
+        table_name="ig_ctl.ig_ctl_nsh.tbl_nsh",
+        match_fields={
+            "hdr.nsh.sp": (sp),
+            "hdr.nsh.si": (si)
+        },
+        action_name="ig_ctl.ig_ctl_nsh.act_fwd_nei",
+        action_params={
+            "nei": nei,
             "sp": tsp,
             "si": tsi
         }
@@ -3360,6 +3401,56 @@ def writeMroute6rules(delete, p4info_helper, ingress_sw, vrf, sess, dip, sip, in
         action_params={
             "src_mac_addr": smac,
             "dst_mac_addr": dmac
+        }
+    )
+    if delete == 1:
+        ingress_sw.WriteTableEntry(table_entry, False)
+    elif delete == 2:
+        ingress_sw.ModifyTableEntry(table_entry, False)
+    else:
+        ingress_sw.DeleteTableEntry(table_entry, False)
+
+
+
+
+def writeMneiRoute4rules(delete, p4info_helper, ingress_sw, vrf, sess, dip, sip, ingr, port, nhop):
+    global mcast
+    sess = sess & 0xfff
+    if delete != 3:
+        mcast.append({"egress_port":port, "instance":nhop})
+    table_entry = p4info_helper.buildTableEntry(
+        table_name="eg_ctl.eg_ctl_mcast.tbl_mcast",
+        match_fields={
+            "eg_md.clone_session": sess,
+            "eg_intr_md.egress_rid": nhop
+        },
+        action_name="eg_ctl.eg_ctl_mcast.act_neigh",
+        action_params={
+            "nhop": nhop
+        }
+    )
+    if delete == 1:
+        ingress_sw.WriteTableEntry(table_entry, False)
+    elif delete == 2:
+        ingress_sw.ModifyTableEntry(table_entry, False)
+    else:
+        ingress_sw.DeleteTableEntry(table_entry, False)
+
+
+def writeMneiRoute6rules(delete, p4info_helper, ingress_sw, vrf, sess, dip, sip, ingr, port, nhop):
+    global mcast
+    sess = sess & 0xfff
+    if delete != 3:
+        mcast.append({"egress_port":port, "instance":nhop})
+    table_entry = p4info_helper.buildTableEntry(
+        table_name="eg_ctl.eg_ctl_mcast.tbl_mcast",
+        match_fields={
+            "eg_md.clone_session": sess,
+            "eg_intr_md.egress_rid": nhop
+        },
+        action_name="eg_ctl.eg_ctl_mcast.act_neigh",
+        action_params={
+            "nhop": nhop
         }
     )
     if delete == 1:
@@ -3801,8 +3892,12 @@ def main(p4info_file_path, bmv2_file_path, p4runtime_address, freerouter_address
             writeMyMplsRules(mode,p4info_helper,sw1,int(splt[1]),int(splt[2]))
             continue
 
-        if cmds[0] == "nshfwd":
-            writeNshFwdRules(mode,p4info_helper,sw1,int(splt[1]),int(splt[2]),int(splt[3]),splt[4],splt[5],int(splt[6]),int(splt[7]))
+        if cmds[0] == "nshifc":
+            writeNshIfcRules(mode,p4info_helper,sw1,int(splt[1]),int(splt[2]),int(splt[3]),splt[4],splt[5],int(splt[6]),int(splt[7]))
+            continue
+
+        if cmds[0] == "nshnei":
+            writeNshNeiRules(mode,p4info_helper,sw1,int(splt[1]),int(splt[2]),int(splt[3]),int(splt[4]),int(splt[5]))
             continue
 
         if cmds[0] == "nshloc":
@@ -3935,6 +4030,10 @@ def main(p4info_file_path, bmv2_file_path, p4runtime_address, freerouter_address
             writeLoconnNeiRules(mode,p4info_helper,sw1,int(splt[1]),int(splt[2]))
             continue
 
+        if cmds[0] == "nshconn":
+            writeNshConnRules(mode,p4info_helper,sw1,int(splt[1]),int(splt[2]),int(splt[3]))
+            continue
+
         if cmds[0] == "portbridge":
             writeBrprtRules(mode,p4info_helper,sw1,int(splt[1]),int(splt[2]))
             continue
@@ -4032,6 +4131,14 @@ def main(p4info_file_path, bmv2_file_path, p4runtime_address, freerouter_address
 
         if cmds[0] == "mroute6":
             writeMroute6rules(mode,p4info_helper,sw1,int(splt[1]),int(splt[2]),splt[3],splt[4],int(splt[5]),int(splt[6]),int(splt[7]),splt[8],splt[9])
+            continue
+
+        if cmds[0] == "mneiroute4":
+            writeMneiRoute4rules(mode,p4info_helper,sw1,int(splt[1]),int(splt[2]),splt[3],splt[4],int(splt[5]),int(splt[6]),int(splt[7]))
+            continue
+
+        if cmds[0] == "mneiroute6":
+            writeMneiRoute6rules(mode,p4info_helper,sw1,int(splt[1]),int(splt[2]),splt[3],splt[4],int(splt[5]),int(splt[6]),int(splt[7]))
             continue
 
         if cmds[0] == "mlabroute4":
